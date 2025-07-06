@@ -537,8 +537,12 @@ MonoBehaviour:
   jumpForce: 16
   jumpHeight: 0.5
   movementForceInAir: 10
+  wallHopForce: 10
+  wallJumpForce: 20
   wallCheckDistance: 0.4
   wallSlideSpeed: 1
+  wallHopDirection: {x: 0.1, y: 0.5}
+  wallJumpDirection: {x: 1, y: 2}
 --- !u!95 &988552654
 Animator:
   serializedVersion: 5

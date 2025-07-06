@@ -16,19 +16,30 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpForce = 16f;
     [SerializeField] private float jumpHeight = 0.5f;
     [SerializeField] private float movementForceInAir;
+    [SerializeField] private float wallHopForce;
+    [SerializeField] private float wallJumpForce;
+
 
     [Header("Wall Sliding Settings")]
     [SerializeField] private float wallCheckDistance;
-    [SerializeField] private float wallSlideSpeed;  
+    [SerializeField] private float wallSlideSpeed;
+    [SerializeField] private Vector2 wallHopDirection;
+    [SerializeField] private Vector2 wallJumpDirection;
 
+    private int facingDirection = 1;
     private float movementInputDerection;
     private bool isFacingRight = true;
-    private bool canJump = true;
     private bool isTouchingWall;
     private bool isWallSliding;
 
     private enum MovementState { Idle, Walk, JumpStart, JumpEnd}
-    
+
+    void Start()
+    {
+        wallHopDirection.Normalize();
+        wallJumpDirection.Normalize();
+    }
+
     void Update()
     {
         CheckInput();
@@ -85,7 +96,7 @@ public class PlayerController : MonoBehaviour
         movementInputDerection = Input.GetAxisRaw("Horizontal");
 
         // Jump input
-        if (Input.GetButtonDown("Jump") && IsGrounded() == true)
+        if (Input.GetButtonDown("Jump"))
         {
             Jump();
         }
@@ -97,10 +108,22 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        if (IsGrounded() == true && canJump)
+        if (IsGrounded() == true && !isWallSliding)
         {
             playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, jumpForce);
-        }           
+        }
+        else if (isWallSliding && movementInputDerection == 0) // Wall hop
+        {
+            isWallSliding = false;
+            Vector2 forceToAdd = new Vector2(wallHopDirection.x * wallHopForce * -facingDirection, wallHopDirection.y * wallHopForce);
+            playerRigidbody.AddForce(forceToAdd, ForceMode2D.Impulse);
+        }
+        else if ((isWallSliding || isTouchingWall) && movementInputDerection != 0) // Wall jump
+        {
+            isWallSliding = false;
+            Vector2 forceToAdd = new Vector2(wallJumpDirection.x * wallJumpForce * movementInputDerection, wallJumpDirection.y * wallJumpForce);
+            playerRigidbody.AddForce(forceToAdd, ForceMode2D.Impulse);
+        }
     }
 
     private void ApplyMovement()
@@ -148,6 +171,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!isWallSliding)
         {
+            facingDirection *= -1;
             isFacingRight = !isFacingRight;
             transform.Rotate(0f, 180f, 0f);
         }
