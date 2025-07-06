@@ -14,11 +14,16 @@ public class PlayerController : MonoBehaviour
     [Header("Movement Settings")]
     [SerializeField] private float movementSpeed = 5f;
     [SerializeField] private float jumpForce = 16f;
+    [SerializeField] private float jumpHeight = 0.5f;
+    [SerializeField] private float movementForceInAir;
+
+    [Header("Wall Sliding Settings")]
     [SerializeField] private float wallCheckDistance;
-    [SerializeField] private float wallSlideSpeed;
+    [SerializeField] private float wallSlideSpeed;  
 
     private float movementInputDerection;
     private bool isFacingRight = true;
+    private bool canJump = true;
     private bool isTouchingWall;
     private bool isWallSliding;
 
@@ -41,7 +46,7 @@ public class PlayerController : MonoBehaviour
     {
         if(isTouchingWall && !IsGrounded() && playerRigidbody.velocity.y < 0)
         {
-            isWallSliding = true;       
+            isWallSliding = true;
         }
         else
         {
@@ -76,17 +81,23 @@ public class PlayerController : MonoBehaviour
 
     private void CheckInput()
     {
+        // Movement input
         movementInputDerection = Input.GetAxisRaw("Horizontal");
 
+        // Jump input
         if (Input.GetButtonDown("Jump") && IsGrounded() == true)
         {
             Jump();
+        }
+        if (Input.GetButtonUp("Jump"))
+        {
+            playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, playerRigidbody.velocity.y * jumpHeight);
         }
     }
 
     private void Jump()
     {
-        if (IsGrounded() == true)
+        if (IsGrounded() == true && canJump)
         {
             playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, jumpForce);
         }           
@@ -95,12 +106,22 @@ public class PlayerController : MonoBehaviour
     private void ApplyMovement()
     {
         // Move the player
-        playerRigidbody.velocity = new Vector2(movementInputDerection * movementSpeed, playerRigidbody.velocity.y);
+        if(IsGrounded()) playerRigidbody.velocity = new Vector2(movementInputDerection * movementSpeed, playerRigidbody.velocity.y);
+        else if (!IsGrounded() && !isWallSliding && movementInputDerection != 0)
+        {
+            Vector2 forceToAdd = new Vector2(movementInputDerection * movementForceInAir, 0f);
+            playerRigidbody.AddForce(forceToAdd, ForceMode2D.Force);
+
+            if (Mathf.Abs(playerRigidbody.velocity.x) > movementSpeed)
+            {
+                playerRigidbody.velocity = new Vector2(movementInputDerection * movementSpeed, playerRigidbody.velocity.y);
+            }
+        }
 
         // Apply wall sliding
         if (isWallSliding)
         {
-            if(playerRigidbody.velocity.y < -wallSlideSpeed)
+            if (playerRigidbody.velocity.y < -wallSlideSpeed)
             {
                 playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, -wallSlideSpeed);
             }
@@ -125,8 +146,11 @@ public class PlayerController : MonoBehaviour
 
     private void Flip()
     {
-        isFacingRight = !isFacingRight;
-        transform.Rotate(0f, 180f, 0f);
+        if (!isWallSliding)
+        {
+            isFacingRight = !isFacingRight;
+            transform.Rotate(0f, 180f, 0f);
+        }
     }
 
     private void OnDrawGizmos()
