@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
     private bool isFacingRight = true;
     private bool isTouchingWall;
     private bool isWallSliding;
-    private bool isWallJump;
+    private bool isWallJump = false;
 
 
     private enum MovementState { Idle, Walk, JumpStart, JumpEnd}
