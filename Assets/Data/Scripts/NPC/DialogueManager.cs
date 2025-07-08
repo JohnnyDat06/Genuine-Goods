@@ -5,26 +5,25 @@ using TMPro;
 
 public class DialogueManager : MonoBehaviour
 {
-    #region Singleton
     public static DialogueManager instance;
-    private void Awake()
-    {
-        if (instance == null) { instance = this; }
-        else { Destroy(gameObject); }
-    }
-    #endregion
 
     [Header("UI Components")]
     [SerializeField] private GameObject dialoguePanel;
+    [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TextMeshProUGUI dialogueText;
 
-    // DÒNG MỚI: Thêm tham chiếu đến UI Text cho tên nhân vật
-    [SerializeField] private TextMeshProUGUI nameText;
-
     private Queue<string> sentences;
-    private bool isDialogueActive = false;
+    public bool IsDialogueActive { get; private set; } // THAY ĐỔI Ở ĐÂY
     private PlayerController playerController;
     private MonoBehaviour npcControllerToDisable;
+
+    private KeyCode currentInteractionKey;
+
+    private void Awake()
+    {
+        if (instance == null) instance = this;
+        else Destroy(gameObject);
+    }
 
     void Start()
     {
@@ -34,23 +33,32 @@ public class DialogueManager : MonoBehaviour
 
     void Update()
     {
-        if (isDialogueActive && Input.anyKeyDown)
+        if (!IsDialogueActive) return; // THAY ĐỔI Ở ĐÂY
+
+        if (Input.anyKeyDown)
         {
+            if (IsIgnoredKey())
+            {
+                return;
+            }
             DisplayNextSentence();
         }
     }
 
-    public void StartDialogue(DialogueObject dialogue, MonoBehaviour npcController)
+    private bool IsIgnoredKey()
     {
-        isDialogueActive = true;
-        dialoguePanel.SetActive(true);
+        return Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) ||
+               Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) ||
+               Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow) ||
+               Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow) ||
+               Input.GetKeyDown(currentInteractionKey);
+    }
 
-        // THAY ĐỔI: Lấy tên từ DialogueObject và hiển thị lên NameText
-        // Đảm bảo NameText không bị null
-        if (nameText != null)
-        {
-            nameText.text = dialogue.CharacterName;
-        }
+    public void StartDialogue(DialogueObject dialogue, MonoBehaviour npcController, KeyCode interactionKey)
+    {
+        IsDialogueActive = true; // THAY ĐỔI Ở ĐÂY
+        dialoguePanel.SetActive(true);
+        this.currentInteractionKey = interactionKey;
 
         playerController = FindObjectOfType<PlayerController>();
         if (playerController != null)
@@ -65,6 +73,7 @@ public class DialogueManager : MonoBehaviour
             npcControllerToDisable.enabled = false;
         }
 
+        if (nameText != null) nameText.text = dialogue.CharacterName;
         sentences.Clear();
         foreach (string sentence in dialogue.DialogueLines)
         {
@@ -87,7 +96,7 @@ public class DialogueManager : MonoBehaviour
 
     void EndDialogue()
     {
-        isDialogueActive = false;
+        IsDialogueActive = false; 
         dialoguePanel.SetActive(false);
 
         if (playerController != null)
