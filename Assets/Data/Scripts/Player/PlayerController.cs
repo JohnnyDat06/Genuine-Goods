@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour
     private bool isFacingRight = true;
     private bool isTouchingWall;
     private bool isWallSliding;
+    private bool isWallJump;
+
 
     private enum MovementState { Idle, Walk, JumpStart, JumpEnd}
 
@@ -88,6 +90,8 @@ public class PlayerController : MonoBehaviour
         playerAnimator.SetInteger("State", (int)state);
         // Wall Sliding
         playerAnimator.SetBool("IsWallSliding", isWallSliding);
+        // Wall Jump
+        playerAnimator.SetBool("IsWallJump", isWallJump);
     }
 
     private void CheckInput()
