@@ -16,11 +16,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpForce = 16f;
     [SerializeField] private float jumpHeight = 0.5f;
     [SerializeField] private float movementForceInAir;
-    [SerializeField] private float wallHopForce;
-    [SerializeField] private float wallJumpForce;
 
 
     [Header("Wall Sliding Settings")]
+    [SerializeField] private float wallHopForce;
+    [SerializeField] private float wallJumpForce;
     [SerializeField] private float wallCheckDistance;
     [SerializeField] private float wallSlideSpeed;
     [SerializeField] private Vector2 wallHopDirection;
@@ -64,6 +64,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             isWallSliding = false;
+            isWallJump = false;
         }
     }
 
@@ -118,12 +119,14 @@ public class PlayerController : MonoBehaviour
         }
         else if (isWallSliding && movementInputDerection == 0) // Wall hop
         {
+            isWallJump = true;
             isWallSliding = false;
             Vector2 forceToAdd = new Vector2(wallHopDirection.x * wallHopForce * -facingDirection, wallHopDirection.y * wallHopForce);
             playerRigidbody.AddForce(forceToAdd, ForceMode2D.Impulse);
         }
         else if ((isWallSliding || isTouchingWall) && movementInputDerection != 0) // Wall jump
         {
+            isWallJump = true;
             isWallSliding = false;
             Vector2 forceToAdd = new Vector2(wallJumpDirection.x * wallJumpForce * movementInputDerection, wallJumpDirection.y * wallJumpForce);
             playerRigidbody.AddForce(forceToAdd, ForceMode2D.Impulse);
