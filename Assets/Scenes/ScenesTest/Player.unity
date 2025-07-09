@@ -540,7 +540,7 @@ MonoBehaviour:
   wallHopForce: 10
   wallJumpForce: 20
   wallCheckDistance: 0.4
-  wallSlideSpeed: 1
+  wallSlideSpeed: 0.5
   wallHopDirection: {x: 0.1, y: 0.5}
   wallJumpDirection: {x: 1, y: 2}
 --- !u!95 &988552654
