@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Movement Settings")]
     [SerializeField] private float movementSpeed = 5f;
+    [SerializeField] private float runSpeed = 5f;
     [SerializeField] private float jumpForce = 16f;
     [SerializeField] private float jumpHeight = 0.5f;
     [SerializeField] private float movementForceInAir;
@@ -28,13 +29,15 @@ public class PlayerController : MonoBehaviour
 
     private int facingDirection = 1;
     private float movementInputDerection;
+
+    private bool isRunning;
     private bool isFacingRight = true;
     private bool isTouchingWall;
     private bool isWallSliding;
     private bool isWallJump = false;
 
 
-    private enum MovementState { Idle, Walk, JumpStart, JumpEnd}
+    private enum MovementState { Idle, Walk, JumpStart, JumpEnd, Run}
 
     void Start()
     {
@@ -72,15 +75,26 @@ public class PlayerController : MonoBehaviour
     {
         MovementState state;
         // Move
-        if (movementInputDerection > 0)
+        if (movementInputDerection > 0 && !isRunning)
         {
             state = MovementState.Walk;
             if(!isFacingRight) Flip();
         }
-        else if (movementInputDerection < 0)
+        else if (movementInputDerection < 0 && !isRunning)
         {
             state = MovementState.Walk;
             if(isFacingRight) Flip();
+        }
+        // Running
+        else if (movementInputDerection > 0 && isRunning)
+        {
+            state = MovementState.Run;
+            if (!isFacingRight) Flip();
+        }
+        else if (movementInputDerection < 0 && isRunning)
+        {
+            state = MovementState.Run;
+            if (isFacingRight) Flip();
         }
         else state = MovementState.Idle;
 
@@ -108,6 +122,18 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonUp("Jump"))
         {
             playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, playerRigidbody.velocity.y * jumpHeight);
+        }
+
+        // Run input
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            isRunning = true;
+            movementSpeed = runSpeed;
+        }
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            isRunning = false;
+            movementSpeed = 3f; 
         }
     }
 
