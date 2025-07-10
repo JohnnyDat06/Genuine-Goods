@@ -533,7 +533,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   wallCheck: {fileID: 983980892}
-  movementSpeed: 5
+  movementSpeed: 3
+  runSpeed: 7
   jumpForce: 16
   jumpHeight: 0.5
   movementForceInAir: 10
