@@ -12,11 +12,11 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TextMeshProUGUI dialogueText;
 
-    private Queue<string> sentences;
-    public bool IsDialogueActive { get; private set; } // THAY ĐỔI Ở ĐÂY
-    private PlayerController playerController;
-    private MonoBehaviour npcControllerToDisable;
+    private Queue<DialogueLine> sentences;
+    public bool IsDialogueActive { get; private set; }
 
+    private PlayerController playerController;
+    private NPC_Controller npcControllerToDisable;
     private KeyCode currentInteractionKey;
 
     private void Awake()
@@ -27,20 +27,16 @@ public class DialogueManager : MonoBehaviour
 
     void Start()
     {
-        sentences = new Queue<string>();
+        sentences = new Queue<DialogueLine>();
         dialoguePanel.SetActive(false);
     }
 
     void Update()
     {
-        if (!IsDialogueActive) return; // THAY ĐỔI Ở ĐÂY
+        if (!IsDialogueActive) return;
 
-        if (Input.anyKeyDown)
+        if (Input.anyKeyDown && !IsIgnoredKey())
         {
-            if (IsIgnoredKey())
-            {
-                return;
-            }
             DisplayNextSentence();
         }
     }
@@ -54,30 +50,38 @@ public class DialogueManager : MonoBehaviour
                Input.GetKeyDown(currentInteractionKey);
     }
 
-    public void StartDialogue(DialogueObject dialogue, MonoBehaviour npcController, KeyCode interactionKey)
+    public void StartDialogue(DialogueObject dialogue, NPC_Controller npcController, KeyCode interactionKey)
     {
-        IsDialogueActive = true; // THAY ĐỔI Ở ĐÂY
+        IsDialogueActive = true;
         dialoguePanel.SetActive(true);
         this.currentInteractionKey = interactionKey;
 
+        // Vô hiệu hóa người chơi
         playerController = FindObjectOfType<PlayerController>();
         if (playerController != null)
         {
-            playerController.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            // 1. Ngừng script nhận input mới
             playerController.enabled = false;
+
+            // 2. DÒNG MỚI: Lấy Rigidbody2D của Player và dừng ngay lập tức
+            Rigidbody2D playerRb = playerController.GetComponent<Rigidbody2D>();
+            if (playerRb != null)
+            {
+                playerRb.velocity = Vector2.zero;
+            }
         }
 
+        // Vô hiệu hóa NPC
         npcControllerToDisable = npcController;
         if (npcControllerToDisable != null)
         {
             npcControllerToDisable.enabled = false;
         }
 
-        if (nameText != null) nameText.text = dialogue.CharacterName;
         sentences.Clear();
-        foreach (string sentence in dialogue.DialogueLines)
+        foreach (DialogueLine line in dialogue.DialogueLines)
         {
-            sentences.Enqueue(sentence);
+            sentences.Enqueue(line);
         }
 
         DisplayNextSentence();
@@ -90,20 +94,24 @@ public class DialogueManager : MonoBehaviour
             EndDialogue();
             return;
         }
-        string sentence = sentences.Dequeue();
-        dialogueText.text = sentence;
+
+        DialogueLine currentLine = sentences.Dequeue();
+        nameText.text = currentLine.characterName;
+        dialogueText.text = currentLine.sentence;
     }
 
-    void EndDialogue()
+    public void EndDialogue()
     {
-        IsDialogueActive = false; 
+        IsDialogueActive = false;
         dialoguePanel.SetActive(false);
 
+        // Kích hoạt lại người chơi
         if (playerController != null)
         {
             playerController.enabled = true;
         }
 
+        // Kích hoạt lại NPC
         if (npcControllerToDisable != null)
         {
             npcControllerToDisable.enabled = true;

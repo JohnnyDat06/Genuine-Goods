@@ -482,8 +482,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: NameText
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 16d1324e075522b4fa877931f1ba8c23, type: 2}
+  m_sharedMaterial: {fileID: 5716557509777636567, guid: 16d1324e075522b4fa877931f1ba8c23, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -513,7 +513,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -573,8 +573,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -751, y: -331}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -526.31616, y: -331.45892}
+  m_SizeDelta: {x: 649.3679, y: 50.9179}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &441611435
 GameObject:
@@ -818,8 +818,8 @@ Transform:
   m_GameObject: {fileID: 1382865082}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.03, y: 0.93, z: 0}
-  m_LocalScale: {x: 0.35, y: 1, z: 1}
+  m_LocalPosition: {x: -0.4597, y: 0.3809, z: 0}
+  m_LocalScale: {x: 0.28812, y: 0.4136, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1840321396}
@@ -4695,6 +4695,7 @@ MonoBehaviour:
     m_Bits: 8
   wallCheck: {fileID: 1891023355}
   movementSpeed: 5
+  runSpeed: 5
   jumpForce: 16
   jumpHeight: 0.5
   movementForceInAir: 10
@@ -4767,7 +4768,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
+    oldSize: {x: 1.28, y: 1.28}
     newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -4917,6 +4918,7 @@ GameObject:
   - component: {fileID: 1840321393}
   - component: {fileID: 1840321392}
   - component: {fileID: 1840321397}
+  - component: {fileID: 1840321398}
   m_Layer: 0
   m_Name: NPC
   m_TagString: NPC
@@ -5001,7 +5003,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.5, y: 1.5}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -5051,7 +5053,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: -1047717818, guid: 2617d2ead5e5fc54b8d909501ea0519d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5071,7 +5073,7 @@ Transform:
   m_GameObject: {fileID: 1840321391}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.4254937, y: -1.43, z: 0}
+  m_LocalPosition: {x: -4.4, y: -1.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5093,7 +5095,28 @@ MonoBehaviour:
   dialogue: {fileID: 11400000, guid: 0bb2bc9f9c9902d4490ac3bb9e32551a, type: 2}
   interactionKey: 101
   interactionPrompt: {fileID: 1382865082}
-  npcControllerScript: {fileID: 1840321392}
+  npcController: {fileID: 1840321392}
+--- !u!95 &1840321398
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1840321391}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3200dc886ef036a4da9d5c3eefb2e8ba, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1877308566
 GameObject:
   m_ObjectHideFlags: 0
@@ -5233,8 +5256,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 16d1324e075522b4fa877931f1ba8c23, type: 2}
+  m_sharedMaterial: {fileID: 5716557509777636567, guid: 16d1324e075522b4fa877931f1ba8c23, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5294,7 +5317,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -904.4535, y: -102.9823, z: -817.1426, w: -96.26608}
+  m_margin: {x: -812.0232, y: -45.89299, z: -724.7124, w: -74.51778}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
