@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
         CheckInput();
         UpdateAnimation();
         CheckIfWallSliding();
-        CanMove();
+        CheckAttack();
     }
 
     void FixedUpdate()
@@ -162,9 +162,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void CanMove()
+    private void CheckAttack()
     {
-        if (comboAttack.isAttacking)
+        if (comboAttack.isAttacking && comboAttack != null)
         {
             canMove = false;
             playerRigidbody.velocity = new Vector2(0f, playerRigidbody.velocity.y);
@@ -175,10 +175,35 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void AttackMoveForward(float distance, float duration)
+    {
+        StartCoroutine(SmoothAttackMove(distance, duration));
+    }
+
+    private IEnumerator SmoothAttackMove(float distance, float duration)
+    {
+        float elapsed = 0f;
+        Vector2 startPos = playerRigidbody.position;
+        int direction = isFacingRight ? 1 : -1;
+        Vector2 targetPos = startPos + new Vector2(direction * distance, 0f);
+
+        while (elapsed < duration)
+        {
+            float t = elapsed / duration;
+            playerRigidbody.MovePosition(Vector2.Lerp(startPos, targetPos, t));
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        playerRigidbody.MovePosition(targetPos); // đảm bảo tới đúng vị trí cuối
+    }
+
+
+
     private void ApplyMovement()
     {
         // Move the player
-        if(IsGrounded() && !comboAttack.isAttacking && canMove)
+        if(IsGrounded() && canMove)
             playerRigidbody.velocity = new Vector2(movementInputDerection * movementSpeed, playerRigidbody.velocity.y);
         else if (!IsGrounded() && !isWallSliding && movementInputDerection != 0)
         {
