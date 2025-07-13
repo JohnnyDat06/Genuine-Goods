@@ -74,6 +74,7 @@ public class ComboAttack : MonoBehaviour
         else
         {
             anim.SetBool("Attack2", false);
+            anim.SetBool("Attack1", false);
             noOfClicks = 0;
             isAttacking = false;
             playerController.canMove = true;
