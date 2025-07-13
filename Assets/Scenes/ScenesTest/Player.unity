@@ -188,7 +188,7 @@ Transform:
   m_GameObject: {fileID: 88452191}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.5, y: 0.17832005, z: -10}
+  m_LocalPosition: {x: -4.35, y: 0.17832005, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -282,7 +282,7 @@ Transform:
   m_GameObject: {fileID: 105303919}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.5, y: 0.17832005, z: -10}
+  m_LocalPosition: {x: -4.35, y: 0.17832005, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -436,7 +436,7 @@ Transform:
   m_GameObject: {fileID: 988552648}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.5, y: -1.5, z: 0}
+  m_LocalPosition: {x: -4.35, y: -1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -584,8 +584,6 @@ MonoBehaviour:
   playerController: {fileID: 988552653}
   isAttacking: 0
   maxComboDelay: 1
-  pushForce: 2
-  moveTarget: {fileID: 988552650}
 --- !u!1 &1381403664
 GameObject:
   m_ObjectHideFlags: 0

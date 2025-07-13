@@ -8,16 +8,9 @@ public class ComboAttack : MonoBehaviour
     [SerializeField] private PlayerController playerController;
     private int noOfClicks = 0;
     private float lastClikedTime = 0f;
-    public bool isAttacking;
+    [HideInInspector] public bool isAttacking;
     [SerializeField] private float maxComboDelay = 0.9f;
 
-    [SerializeField] private float pushForce = 2f;
-    [SerializeField] private Transform moveTarget;
-
-    private void Awake()
-    {
-        moveTarget = this.transform;
-    }
 
     void Update()
     {
@@ -31,27 +24,18 @@ public class ComboAttack : MonoBehaviour
             lastClikedTime = Time.time;
             noOfClicks++;
             isAttacking = true;
-            playerController.canMove = false;
             if (noOfClicks == 1) anim.SetBool("Attack1", true);
             noOfClicks = Mathf.Clamp(noOfClicks, 0, 3);
         }
     }
 
-    public void PushForward()
-    {
-        if (moveTarget != null)
-        {
-            Vector3 forward = transform.forward;
-            moveTarget.position += forward * pushForce * Time.deltaTime;
-        }
-    }
+
 
     public void Return1()
     {
         if (noOfClicks >= 2)
         {
             anim.SetBool("Attack2", true);
-            playerController.canMove = false;
             isAttacking = true;
         }
         else
@@ -59,7 +43,6 @@ public class ComboAttack : MonoBehaviour
             anim.SetBool("Attack1", false);
             noOfClicks = 0;
             isAttacking = false;
-            playerController.canMove = true;
         }
     }
 
@@ -69,14 +52,12 @@ public class ComboAttack : MonoBehaviour
         {
             anim.SetBool("Attack3", true);
             isAttacking = true;
-            playerController.canMove = false;
         }
         else
         {
             anim.SetBool("Attack2", false);
             noOfClicks = 0;
             isAttacking = false;
-            playerController.canMove = true;
         }
     }
     public void Return3()
@@ -86,6 +67,18 @@ public class ComboAttack : MonoBehaviour
          anim.SetBool("Attack3", false);
          noOfClicks = 0;
          isAttacking = false;
-         playerController.canMove = true;
+    }
+
+    public void Atk1()
+    {
+        if(playerController != null) playerController.AttackMoveForward(0.2f, 0.1f);
+    }
+    public void Atk2()
+    {
+        if (playerController != null) playerController.AttackMoveForward(0.4f, 0.1f);
+    }
+    public void Atk3()
+    {
+        if (playerController != null) playerController.AttackMoveForward(0.6f, 0.1f);
     }
 }
