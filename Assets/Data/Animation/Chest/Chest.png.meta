@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: da5beaad44a699c43810d525b897d622
+guid: 7f40873cd594eae4a934cf39165499aa
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Platform_0
+      name: Chest_0
       rect:
         serializedVersion: 2
         x: 0
@@ -111,14 +111,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 965a3ca1bf7fa434eb41a50d610f2976
-      internalID: 189590238
+      spriteID: 5abfb849f72d7314099a7d9c02b9a3bd
+      internalID: -1580794946
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Platform_1
+      name: Chest_1
       rect:
         serializedVersion: 2
         x: 32
@@ -132,14 +132,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4cff36481152aa944ab2054d582fc8c8
-      internalID: -1062326844
+      spriteID: ae9e520d0ba351b42a53abdf824cacd9
+      internalID: -208140352
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Platform_2
+      name: Chest_2
       rect:
         serializedVersion: 2
         x: 64
@@ -153,14 +153,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7fdefce09e0bc7045b25d1e04363b870
-      internalID: -414522569
+      spriteID: 4547a8c2ae57825418732c91bb7a9152
+      internalID: -1344423344
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Platform_3
+      name: Chest_3
       rect:
         serializedVersion: 2
         x: 96
@@ -174,14 +174,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a1913adb66760b54c904455132fd3804
-      internalID: -239558661
+      spriteID: 8e00e272cb3af984a92c8424c61f0ce9
+      internalID: 1185781002
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Platform_4
+      name: Chest_4
       rect:
         serializedVersion: 2
         x: 128
@@ -195,14 +195,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 17b881b903f0bfa4e823ab6fc4cd765a
-      internalID: -475818569
+      spriteID: 7ecfb87604a763b41a259c2277f858e9
+      internalID: -938385935
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Platform_5
+      name: Chest_5
       rect:
         serializedVersion: 2
         x: 160
@@ -216,14 +216,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e7618ac087bea8d468ccf9520cd4fdd5
-      internalID: -2081488448
+      spriteID: 5768e0ec781052a40bdec627af90603a
+      internalID: -1821575028
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Platform_6
+      name: Chest_6
       rect:
         serializedVersion: 2
         x: 192
@@ -237,14 +237,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1cf93cddabaec0b41a8e37fb747bc4f4
-      internalID: 851771877
+      spriteID: 67f3f96d4efe32842ae0384ec7ff6339
+      internalID: -403770548
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Platform_7
+      name: Chest_7
       rect:
         serializedVersion: 2
         x: 224
@@ -258,8 +258,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad225a72fc32f9f409ddef380b099391
-      internalID: -1199291611
+      spriteID: f85a7c9112f8f4041b22143f7cbb3c5c
+      internalID: -519085048
       vertices: []
       indices: 
       edges: []
@@ -275,14 +275,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Platform_0: 189590238
-      Platform_1: -1062326844
-      Platform_2: -414522569
-      Platform_3: -239558661
-      Platform_4: -475818569
-      Platform_5: -2081488448
-      Platform_6: 851771877
-      Platform_7: -1199291611
+      Chest_0: -1580794946
+      Chest_1: -208140352
+      Chest_2: -1344423344
+      Chest_3: 1185781002
+      Chest_4: -938385935
+      Chest_5: -1821575028
+      Chest_6: -403770548
+      Chest_7: -519085048
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
