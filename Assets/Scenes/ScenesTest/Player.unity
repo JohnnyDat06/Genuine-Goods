@@ -367,6 +367,7 @@ GameObject:
   - component: {fileID: 988552651}
   - component: {fileID: 988552653}
   - component: {fileID: 988552654}
+  - component: {fileID: 988552656}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -544,6 +545,8 @@ MonoBehaviour:
   wallSlideSpeed: 0.5
   wallHopDirection: {x: 0.1, y: 0.5}
   wallJumpDirection: {x: 1, y: 2}
+  comboAttack: {fileID: 988552656}
+  canMove: 1
 --- !u!95 &988552654
 Animator:
   serializedVersion: 5
@@ -565,6 +568,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &988552656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 988552648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 276ec7974c3cb1b49aea3e054be9370c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 988552654}
+  playerController: {fileID: 988552653}
+  isAttacking: 0
+  maxComboDelay: 1
+  pushForce: 2
+  moveTarget: {fileID: 988552650}
 --- !u!1 &1381403664
 GameObject:
   m_ObjectHideFlags: 0

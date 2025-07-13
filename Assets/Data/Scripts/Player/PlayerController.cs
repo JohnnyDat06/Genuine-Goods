@@ -18,7 +18,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpHeight = 0.5f;
     [SerializeField] private float movementForceInAir;
 
-
     [Header("Wall Sliding Settings")]
     [SerializeField] private float wallHopForce;
     [SerializeField] private float wallJumpForce;
@@ -26,6 +25,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float wallSlideSpeed;
     [SerializeField] private Vector2 wallHopDirection;
     [SerializeField] private Vector2 wallJumpDirection;
+
+    [SerializeField] private ComboAttack comboAttack;
 
     private int facingDirection = 1;
     private float movementInputDerection;
@@ -35,6 +36,7 @@ public class PlayerController : MonoBehaviour
     private bool isTouchingWall;
     private bool isWallSliding;
     private bool isWallJump = false;
+    public bool canMove = true;
 
 
     private enum MovementState { Idle, Walk, JumpStart, JumpEnd, Run}
@@ -50,6 +52,7 @@ public class PlayerController : MonoBehaviour
         CheckInput();
         UpdateAnimation();
         CheckIfWallSliding();
+        CanMove();
     }
 
     void FixedUpdate()
@@ -130,7 +133,7 @@ public class PlayerController : MonoBehaviour
             isRunning = true;
             movementSpeed = runSpeed;
         }
-        if (Input.GetKeyUp(KeyCode.LeftShift))
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             isRunning = false;
             movementSpeed = 3f; 
@@ -159,10 +162,24 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void CanMove()
+    {
+        if (comboAttack.isAttacking)
+        {
+            canMove = false;
+            playerRigidbody.velocity = new Vector2(0f, playerRigidbody.velocity.y);
+        }
+        else
+        {
+            canMove = true;
+        }
+    }
+
     private void ApplyMovement()
     {
         // Move the player
-        if(IsGrounded()) playerRigidbody.velocity = new Vector2(movementInputDerection * movementSpeed, playerRigidbody.velocity.y);
+        if(IsGrounded() && !comboAttack.isAttacking && canMove)
+            playerRigidbody.velocity = new Vector2(movementInputDerection * movementSpeed, playerRigidbody.velocity.y);
         else if (!IsGrounded() && !isWallSliding && movementInputDerection != 0)
         {
             Vector2 forceToAdd = new Vector2(movementInputDerection * movementForceInAir, 0f);
@@ -181,7 +198,7 @@ public class PlayerController : MonoBehaviour
             {
                 playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, -wallSlideSpeed);
             }
-        }
+        }       
     }
 
     private bool IsGrounded()
