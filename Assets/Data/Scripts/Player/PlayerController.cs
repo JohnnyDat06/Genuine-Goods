@@ -199,7 +199,6 @@ public class PlayerController : MonoBehaviour
     }
 
 
-
     private void ApplyMovement()
     {
         // Move the player
