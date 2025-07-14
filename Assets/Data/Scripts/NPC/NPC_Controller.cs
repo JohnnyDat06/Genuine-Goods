@@ -7,7 +7,7 @@ public class NPC_Controller : MonoBehaviour
 
     private Vector3 pointA;
     private Vector3 pointB;
-    private Vector3 currentTarget; // Mục tiêu hiện tại mà NPC đang hướng tới
+    private int direction = 1; // 1 là đi sang phải, -1 là đi sang trái
 
     private Animator animator;
 
@@ -18,71 +18,43 @@ public class NPC_Controller : MonoBehaviour
 
     void Start()
     {
-        // Xác định 2 điểm A và B dựa trên vị trí ban đầu và khoảng cách di chuyển
         pointA = transform.position;
         pointB = new Vector3(transform.position.x + moveDistance, transform.position.y, transform.position.z);
-
-        // Ban đầu, cho NPC di chuyển về phía điểm B
-        currentTarget = pointB;
-        // Đảm bảo NPC quay mặt đúng hướng khi bắt đầu
-        FlipTowardsTarget();
     }
 
-    // Được gọi tự động khi script bị vô hiệu hóa (bắt đầu hội thoại)
     private void OnDisable()
     {
-        // Buộc NPC về trạng thái Idle
         if (animator != null)
         {
             animator.SetBool("isWalking", false);
         }
     }
 
-    void Update()
+    void OnEnable()
     {
-        // Nếu không có animator thì không cần chạy animation
         if (animator != null)
         {
             animator.SetBool("isWalking", true);
         }
+    }
 
-        // Di chuyển NPC về phía mục tiêu hiện tại
-        // Vector3.MoveTowards sẽ không bao giờ đi vượt quá mục tiêu, giải quyết triệt để vấn đề "overshoot"
-        transform.position = Vector3.MoveTowards(transform.position, currentTarget, speed * Time.deltaTime);
+    void Update()
+    {
+        transform.Translate(Vector2.right * direction * speed * Time.deltaTime);
 
-        // Kiểm tra xem NPC đã đến gần mục tiêu chưa
-        // Chúng ta không dùng == vì sai số số thực, dùng một khoảng nhỏ để kiểm tra là tốt nhất
-        if (Vector3.Distance(transform.position, currentTarget) < 0.01f)
+        if (direction == 1 && transform.position.x >= pointB.x)
         {
-            // Nếu đã đến nơi, đổi mục tiêu
-            if (currentTarget == pointA)
-            {
-                currentTarget = pointB;
-            }
-            else
-            {
-                currentTarget = pointA;
-            }
-            // Sau khi đổi mục tiêu, lật hình ảnh của NPC
-            FlipTowardsTarget();
+            Flip();
+        }
+        else if (direction == -1 && transform.position.x <= pointA.x)
+        {
+            Flip();
         }
     }
 
-    private void FlipTowardsTarget()
+    private void Flip()
     {
-        // Xác định hướng của mục tiêu so với vị trí hiện tại
-        float directionToTarget = currentTarget.x - transform.position.x;
-
-        // Lật scale của NPC cho phù hợp
-        if (directionToTarget > 0 && transform.localScale.x < 0)
-        {
-            // Đang đi sang phải nhưng mặt quay sang trái -> lật lại
-            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
-        }
-        else if (directionToTarget < 0 && transform.localScale.x > 0)
-        {
-            // Đang đi sang trái nhưng mặt quay sang phải -> lật lại
-            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
-        }
+        direction *= -1;
+        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
     }
 }

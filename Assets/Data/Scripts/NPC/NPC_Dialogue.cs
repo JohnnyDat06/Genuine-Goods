@@ -4,7 +4,7 @@ public class NPC_Dialogue : MonoBehaviour
 {
     [SerializeField] private DialogueObject dialogue;
     [SerializeField] private KeyCode interactionKey = KeyCode.E;
-    [SerializeField] private GameObject interactionPrompt; // Ví dụ: phím 'E' hiển thị trên đầu NPC
+    [SerializeField] private GameObject interactionPrompt;
     [SerializeField] private NPC_Controller npcController;
 
     private bool playerIsInRange = false;
@@ -13,7 +13,8 @@ public class NPC_Dialogue : MonoBehaviour
     {
         if (playerIsInRange && !DialogueManager.instance.IsDialogueActive && Input.GetKeyDown(interactionKey))
         {
-            DialogueManager.instance.StartDialogue(dialogue, npcController, interactionKey);
+            // Trả lời gọi hàm về như cũ, không cần truyền transform của Player
+            DialogueManager.instance.StartDialogue(dialogue, npcController);
         }
     }
 
@@ -33,8 +34,7 @@ public class NPC_Dialogue : MonoBehaviour
             playerIsInRange = false;
             if (interactionPrompt != null) interactionPrompt.SetActive(false);
 
-            // Tùy chọn: nếu người chơi rời đi khi hội thoại đang diễn ra, hãy kết thúc nó
-            if (DialogueManager.instance.IsDialogueActive)
+            if (DialogueManager.instance != null && DialogueManager.instance.IsDialogueActive)
             {
                 DialogueManager.instance.EndDialogue();
             }
