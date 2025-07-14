@@ -10690,6 +10690,7 @@ GameObject:
   - component: {fileID: 1243554988}
   - component: {fileID: 1243554987}
   - component: {fileID: 1243554986}
+  - component: {fileID: 1243554992}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -10748,7 +10749,7 @@ MonoBehaviour:
   wallSlideSpeed: 0.5
   wallHopDirection: {x: 0.1, y: 0.5}
   wallJumpDirection: {x: 1, y: 2}
-  comboAttack: {fileID: 0}
+  comboAttack: {fileID: 1243554992}
   canMove: 1
 --- !u!50 &1243554988
 Rigidbody2D:
@@ -10890,6 +10891,22 @@ Transform:
   - {fileID: 578495998}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1243554992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243554985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 276ec7974c3cb1b49aea3e054be9370c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 1243554986}
+  playerController: {fileID: 1243554987}
+  isAttacking: 0
+  maxComboDelay: 0.9
 --- !u!1 &1260190075
 GameObject:
   m_ObjectHideFlags: 3
