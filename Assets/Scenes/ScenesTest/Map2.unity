@@ -14872,6 +14872,8 @@ MonoBehaviour:
   wallSlideSpeed: 0.5
   wallHopDirection: {x: 0.1, y: 0.5}
   wallJumpDirection: {x: 1, y: 2}
+  comboAttack: {fileID: 0}
+  canMove: 1
 --- !u!50 &872356540
 Rigidbody2D:
   serializedVersion: 4

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueLines:
   - characterName: "Anh B\u1EA3y Ca S\u0129"
-    sentence: "Tr\u1EDDi ban \xE1nh s\xE1ng n\u0103m th\xE1ng t\u01B0 b\u1EC1 \u2669...\u1EE6a
+    sentence: "Tr\u1EDDi ban \xE1nh s\xE1ng n\u0103m th\xE1ng t\u01B0 b\u1EC1 ...\u1EE6a
       th\u1EB1ng cu ki\u1EBFm anh c\xF3 chuy\u1EC7n g\xEC"
   - characterName: Player
     sentence: "Qua nhi\u1EC1u chuy\u1EC7n t\xED ,, c\xF3 chuy\u1EC7n g\xEC k\u1EC3
