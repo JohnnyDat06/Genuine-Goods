@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueLines:
   - characterName: "Anh Ch\xEDn Qu\xE8"
-    sentence: 123
+    sentence: Hello
   - characterName: Player
-    sentence: 123
+    sentence: Hello Nigga
   - characterName: "Anh Ch\xEDn Qu\xE8"
-    sentence: 123
+    sentence: Nig Nig con me may
   - characterName: Player
     sentence: 123
   - characterName: "Anh B\u1EA3y Ca S\u0129"
