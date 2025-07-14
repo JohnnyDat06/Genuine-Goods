@@ -46,24 +46,27 @@ public class DialogueManager : MonoBehaviour
         return Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) ||
                Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) ||
                Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow) ||
-               Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow) ||
-               Input.GetKeyDown(currentInteractionKey);
+               Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow);
+        // Đã xóa currentInteractionKey khỏi đây để tránh xung đột
     }
 
-    public void StartDialogue(DialogueObject dialogue, NPC_Controller npcController, KeyCode interactionKey)
+    public void StartDialogue(DialogueObject dialogue, NPC_Controller npcController)
     {
         IsDialogueActive = true;
         dialoguePanel.SetActive(true);
-        this.currentInteractionKey = interactionKey;
+        // this.currentInteractionKey = interactionKey; // Dòng này không còn cần thiết
 
         // Vô hiệu hóa người chơi
-        playerController = FindObjectOfType<PlayerController>();
+        PlayerController playerController = FindObjectOfType<PlayerController>(); // Khai báo lại biến cục bộ
         if (playerController != null)
         {
-            // 1. Ngừng script nhận input mới
-            playerController.enabled = false;
+            Animator playerAnimator = playerController.GetComponent<Animator>();
+            if (playerAnimator != null)
+            {
+                playerAnimator.SetInteger("State", 0);
+            }
 
-            // 2. DÒNG MỚI: Lấy Rigidbody2D của Player và dừng ngay lập tức
+            playerController.enabled = false;
             Rigidbody2D playerRb = playerController.GetComponent<Rigidbody2D>();
             if (playerRb != null)
             {
@@ -76,6 +79,7 @@ public class DialogueManager : MonoBehaviour
         if (npcControllerToDisable != null)
         {
             npcControllerToDisable.enabled = false;
+            // Đã xóa dòng gọi FacePlayer
         }
 
         sentences.Clear();
@@ -106,6 +110,7 @@ public class DialogueManager : MonoBehaviour
         dialoguePanel.SetActive(false);
 
         // Kích hoạt lại người chơi
+        PlayerController playerController = FindObjectOfType<PlayerController>(); // Tìm lại để kích hoạt
         if (playerController != null)
         {
             playerController.enabled = true;
