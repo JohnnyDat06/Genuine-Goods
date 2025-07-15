@@ -1,8 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
-using System; // THAY ĐỔI: Thêm thư viện System để sử dụng Action
+using System;
+using System.Collections;
+using System.Collections.Generic;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -22,10 +22,7 @@ public class DialogueManager : MonoBehaviour
     private Coroutine typingCoroutine;
     private bool isTyping = false;
     private string currentFullSentence;
-
     private NPC_Controller npcControllerToDisable;
-
-    // THAY ĐỔI: Thêm một biến để lưu trữ hành động callback
     private Action onDialogueFinishedCallback;
 
     private void Awake()
@@ -67,20 +64,33 @@ public class DialogueManager : MonoBehaviour
                Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow);
     }
 
-    // THAY ĐỔI: Thêm tham số 'Action onDialogueFinished' vào hàm StartDialogue
     public void StartDialogue(DialogueObject dialogue, NPC_Controller npcController, Action onDialogueFinished = null)
     {
         IsDialogueActive = true;
         dialoguePanel.SetActive(true);
-        this.onDialogueFinishedCallback = onDialogueFinished; // Lưu lại callback
+        this.onDialogueFinishedCallback = onDialogueFinished;
 
-        // Vô hiệu hóa người chơi
+        // --- KHÓA NGƯỜI CHƠI VÀ CHUYỂN VỀ IDLE ---
         PlayerController playerController = FindObjectOfType<PlayerController>();
         if (playerController != null)
         {
-            // ... (phần code vô hiệu hóa người chơi giữ nguyên)
+            // 1. Vô hiệu hóa script để không nhận input
             playerController.enabled = false;
-            // ...
+
+            // 2. Triệt tiêu vận tốc còn lại
+            Rigidbody2D playerRb = playerController.GetComponent<Rigidbody2D>();
+            if (playerRb != null)
+            {
+                playerRb.velocity = Vector2.zero;
+            }
+
+            // 3. Ra lệnh cho Animator chuyển về trạng thái Idle
+            Animator playerAnimator = playerController.GetComponent<Animator>();
+            if (playerAnimator != null)
+            {
+                // Dựa theo PlayerController.cs, trạng thái Idle là 0
+                playerAnimator.SetInteger("State", 0);
+            }
         }
 
         // Vô hiệu hóa NPC
@@ -135,14 +145,18 @@ public class DialogueManager : MonoBehaviour
         if (typingCoroutine != null) StopCoroutine(typingCoroutine);
         isTyping = false;
 
-        // Kích hoạt lại người chơi
+        // --- KÍCH HOẠT LẠI NGƯỜI CHƠI ---
         PlayerController playerController = FindObjectOfType<PlayerController>();
-        if (playerController != null) playerController.enabled = true;
+        if (playerController != null)
+        {
+            // Chỉ cần kích hoạt lại script. Script sẽ tự điều khiển Animator
+            playerController.enabled = true;
+        }
 
         // Kích hoạt lại NPC
         if (npcControllerToDisable != null) npcControllerToDisable.enabled = true;
 
-        // THAY ĐỔI: Gọi callback nếu nó tồn tại
+        // Gọi callback nếu nó tồn tại
         onDialogueFinishedCallback?.Invoke();
     }
 }

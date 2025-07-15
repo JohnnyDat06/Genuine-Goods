@@ -22,6 +22,7 @@ public class NPC_Controller : MonoBehaviour
         pointB = new Vector3(transform.position.x + moveDistance, transform.position.y, transform.position.z);
     }
 
+    // Dừng animation khi script bị vô hiệu hóa (lúc hội thoại)
     private void OnDisable()
     {
         if (animator != null)
@@ -30,6 +31,7 @@ public class NPC_Controller : MonoBehaviour
         }
     }
 
+    // Bật lại animation khi script được kích hoạt
     void OnEnable()
     {
         if (animator != null)

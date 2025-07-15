@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 
 // Định nghĩa một cấu trúc để chứa cả tên và lời thoại
-// [System.Serializable] giúp nó hiển thị trong Inspector của Unity
 [System.Serializable]
 public struct DialogueLine
 {
