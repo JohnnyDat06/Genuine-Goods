@@ -13,7 +13,7 @@ public class NPC_Dialogue : MonoBehaviour
     {
         if (playerIsInRange && !DialogueManager.instance.IsDialogueActive && Input.GetKeyDown(interactionKey))
         {
-            // Trả lời gọi hàm về như cũ, không cần truyền transform của Player
+            // Bắt đầu hội thoại và truyền vào NPC controller để vô hiệu hóa nó
             DialogueManager.instance.StartDialogue(dialogue, npcController);
         }
     }
@@ -34,6 +34,7 @@ public class NPC_Dialogue : MonoBehaviour
             playerIsInRange = false;
             if (interactionPrompt != null) interactionPrompt.SetActive(false);
 
+            // Nếu người chơi rời đi khi đang hội thoại, kết thúc hội thoại
             if (DialogueManager.instance != null && DialogueManager.instance.IsDialogueActive)
             {
                 DialogueManager.instance.EndDialogue();
