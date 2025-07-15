@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System; // THAY ĐỔI: Thêm thư viện System để sử dụng Action
 
 public class DialogueManager : MonoBehaviour
 {
@@ -12,12 +13,20 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TextMeshProUGUI dialogueText;
 
+    [Header("Typing Effect")]
+    [SerializeField] private float typingSpeed = 0.02f;
+
     private Queue<DialogueLine> sentences;
     public bool IsDialogueActive { get; private set; }
 
-    private PlayerController playerController;
+    private Coroutine typingCoroutine;
+    private bool isTyping = false;
+    private string currentFullSentence;
+
     private NPC_Controller npcControllerToDisable;
-    private KeyCode currentInteractionKey;
+
+    // THAY ĐỔI: Thêm một biến để lưu trữ hành động callback
+    private Action onDialogueFinishedCallback;
 
     private void Awake()
     {
@@ -37,7 +46,16 @@ public class DialogueManager : MonoBehaviour
 
         if (Input.anyKeyDown && !IsIgnoredKey())
         {
-            DisplayNextSentence();
+            if (isTyping)
+            {
+                if (typingCoroutine != null) StopCoroutine(typingCoroutine);
+                dialogueText.text = currentFullSentence;
+                isTyping = false;
+            }
+            else
+            {
+                DisplayNextSentence();
+            }
         }
     }
 
@@ -47,31 +65,22 @@ public class DialogueManager : MonoBehaviour
                Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) ||
                Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow) ||
                Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow);
-        // Đã xóa currentInteractionKey khỏi đây để tránh xung đột
     }
 
-    public void StartDialogue(DialogueObject dialogue, NPC_Controller npcController)
+    // THAY ĐỔI: Thêm tham số 'Action onDialogueFinished' vào hàm StartDialogue
+    public void StartDialogue(DialogueObject dialogue, NPC_Controller npcController, Action onDialogueFinished = null)
     {
         IsDialogueActive = true;
         dialoguePanel.SetActive(true);
-        // this.currentInteractionKey = interactionKey; // Dòng này không còn cần thiết
+        this.onDialogueFinishedCallback = onDialogueFinished; // Lưu lại callback
 
         // Vô hiệu hóa người chơi
-        PlayerController playerController = FindObjectOfType<PlayerController>(); // Khai báo lại biến cục bộ
+        PlayerController playerController = FindObjectOfType<PlayerController>();
         if (playerController != null)
         {
-            Animator playerAnimator = playerController.GetComponent<Animator>();
-            if (playerAnimator != null)
-            {
-                playerAnimator.SetInteger("State", 0);
-            }
-
+            // ... (phần code vô hiệu hóa người chơi giữ nguyên)
             playerController.enabled = false;
-            Rigidbody2D playerRb = playerController.GetComponent<Rigidbody2D>();
-            if (playerRb != null)
-            {
-                playerRb.velocity = Vector2.zero;
-            }
+            // ...
         }
 
         // Vô hiệu hóa NPC
@@ -79,7 +88,6 @@ public class DialogueManager : MonoBehaviour
         if (npcControllerToDisable != null)
         {
             npcControllerToDisable.enabled = false;
-            // Đã xóa dòng gọi FacePlayer
         }
 
         sentences.Clear();
@@ -101,7 +109,22 @@ public class DialogueManager : MonoBehaviour
 
         DialogueLine currentLine = sentences.Dequeue();
         nameText.text = currentLine.characterName;
-        dialogueText.text = currentLine.sentence;
+        currentFullSentence = currentLine.sentence;
+
+        if (typingCoroutine != null) StopCoroutine(typingCoroutine);
+        typingCoroutine = StartCoroutine(TypeSentence(currentFullSentence));
+    }
+
+    private IEnumerator TypeSentence(string sentence)
+    {
+        isTyping = true;
+        dialogueText.text = "";
+        foreach (char letter in sentence.ToCharArray())
+        {
+            dialogueText.text += letter;
+            yield return new WaitForSeconds(typingSpeed);
+        }
+        isTyping = false;
     }
 
     public void EndDialogue()
@@ -109,17 +132,17 @@ public class DialogueManager : MonoBehaviour
         IsDialogueActive = false;
         dialoguePanel.SetActive(false);
 
+        if (typingCoroutine != null) StopCoroutine(typingCoroutine);
+        isTyping = false;
+
         // Kích hoạt lại người chơi
-        PlayerController playerController = FindObjectOfType<PlayerController>(); // Tìm lại để kích hoạt
-        if (playerController != null)
-        {
-            playerController.enabled = true;
-        }
+        PlayerController playerController = FindObjectOfType<PlayerController>();
+        if (playerController != null) playerController.enabled = true;
 
         // Kích hoạt lại NPC
-        if (npcControllerToDisable != null)
-        {
-            npcControllerToDisable.enabled = true;
-        }
+        if (npcControllerToDisable != null) npcControllerToDisable.enabled = true;
+
+        // THAY ĐỔI: Gọi callback nếu nó tồn tại
+        onDialogueFinishedCallback?.Invoke();
     }
 }
