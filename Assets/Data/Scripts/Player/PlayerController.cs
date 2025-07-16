@@ -225,6 +225,13 @@ public class PlayerController : MonoBehaviour
         }       
     }
 
+    public void TriggerDeathAnimation()
+    {
+        canMove = false;
+        playerAnimator.SetTrigger("IsDeath");
+        playerRigidbody.velocity = Vector2.zero;
+        playerRigidbody.isKinematic = true;
+    }
     private bool IsGrounded()
     {
         return Physics2D.BoxCast(playerCollider.bounds.center, 

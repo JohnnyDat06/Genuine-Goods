@@ -44,6 +44,7 @@ public class EnemyHealth : MonoBehaviour
         {
             Die();
         }
+        
     }
 
     protected virtual void Die()
@@ -53,35 +54,41 @@ public class EnemyHealth : MonoBehaviour
         isDead = true;
         Debug.Log("Enemy chết rồi!");
 
-        if (anim != null) anim.SetBool("IsDeath", isDead);
-
+        if (anim != null) anim.SetTrigger("IsDeath");
+        
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        rb.velocity = Vector2.zero;
+        rb.isKinematic = true;
+        
         StartCoroutine(WaitForKillOrRespawn(5f));
     }
 
     IEnumerator WaitForKillOrRespawn(float delay)
     {
         float timer = 0f;
-
-        // Trong vòng delay giây, chờ người chơi nhấn E
+        
         while (timer < delay)
         {
             if (preventRespawn)
             {
                 Debug.Log("Đã bị khóa còng");
-                Destroy(gameObject, 10f); // Xóa quái vật
-                yield break; // Thoát coroutine, không hồi sinh nữa
+                Destroy(gameObject, 10f);
+                yield break; 
             }
 
             timer += Time.deltaTime;
             yield return null;
         }
-
-        // Nếu hết thời gian mà không bị kết liễu thì hồi sinh
+        
         currentHealth = Mathf.RoundToInt(startingHealth * 0.3f);
         isDead = false;
         Debug.Log("Enemy hồi sinh với máu: " + currentHealth);
-
-        if (anim != null) anim.SetBool("IsDeath", isDead);
+        
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        rb.velocity = Vector2.zero;
+        rb.isKinematic = false;
+        
+        if (anim != null) anim.SetTrigger("IsRevive");
     }
 
 
