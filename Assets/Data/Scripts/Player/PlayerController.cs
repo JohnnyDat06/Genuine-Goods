@@ -234,13 +234,7 @@ public class PlayerController : MonoBehaviour
     }
     private bool IsGrounded()
     {
-        return Physics2D.BoxCast(playerCollider.bounds.center, 
-            playerCollider.bounds.size, 
-            0f, 
-            Vector2.down, 
-            0.1f, 
-            layerGround
-        );
+        return Physics2D.BoxCast(playerCollider.bounds.center, playerCollider.bounds.size, 0f, Vector2.down, 0.1f,layerGround);
     }
 
     private void IsTouchingWall()

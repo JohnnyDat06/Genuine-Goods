@@ -445,6 +445,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 100
+  ninjaController: {fileID: 731275782}
+  enemyObj: {fileID: 1866618443}
+  isDead: 0
 --- !u!61 &731275780
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -532,8 +535,10 @@ MonoBehaviour:
   attackRange: 1
   moveRange: 3
   attackCoolDown: 2
+  reviveCoolDown: 2
   moveSpeed: 2
   startPoint: {fileID: 2071712589}
+  rb: {fileID: 731275781}
 --- !u!1 &983980891
 GameObject:
   m_ObjectHideFlags: 0
@@ -817,9 +822,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af92c2740c8f30e45a3a357aede913fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startHealth: 100
+  startHealth: 1000
   playerMovement: {fileID: 988552653}
-  deathAnimationDuration: 1.5
+  deathAnimationDuration: 1
 --- !u!1 &1381403664
 GameObject:
   m_ObjectHideFlags: 0
