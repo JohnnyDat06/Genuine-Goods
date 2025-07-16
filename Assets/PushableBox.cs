@@ -16,6 +16,12 @@ public class PushableBox : MonoBehaviour
     [SerializeField] private Image progressRingImage;
     [SerializeField] private Vector3 promptOffset = new Vector3(0, 1.5f, 0);
 
+    // --- BIẾN MỚI CHO ÂM THANH ---
+    [Header("Âm thanh")]
+    [SerializeField] private AudioClip draggingSound;
+    private AudioSource audioSource;
+    // ----------------------------
+
     // Các biến private
     private PlayerController playerController;
     private Rigidbody2D playerRigidbody;
@@ -30,13 +36,21 @@ public class PushableBox : MonoBehaviour
     {
         boxRigidbody = GetComponent<Rigidbody2D>();
         boxRigidbody.bodyType = RigidbodyType2D.Static;
+
+        // --- LẤY COMPONENT AUDIOSOURCE ---
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource != null && draggingSound != null)
+        {
+            audioSource.clip = draggingSound;
+        }
+        // -------------------------------
+
         if (interactionPrompt != null) interactionPrompt.SetActive(false);
     }
 
     void Update()
     {
         UpdatePromptPosition();
-
         if (playerIsNearby)
         {
             HandleInput();
@@ -57,7 +71,23 @@ public class PushableBox : MonoBehaviour
     {
         if (isBeingHeld)
         {
+            // Di chuyển người chơi
             playerRigidbody.velocity = new Vector2(horizontalInput * pushPullSpeed, 0f);
+
+            // --- LOGIC ĐIỀU KHIỂN ÂM THANH ---
+            if (audioSource != null)
+            {
+                // Nếu người chơi đang di chuyển và âm thanh chưa phát -> Bật âm thanh
+                if (horizontalInput != 0 && !audioSource.isPlaying)
+                {
+                    audioSource.Play();
+                }
+                // Nếu người chơi đã dừng và âm thanh vẫn đang phát -> Tắt âm thanh
+                else if (horizontalInput == 0 && audioSource.isPlaying)
+                {
+                    audioSource.Stop();
+                }
+            }
         }
     }
 
@@ -96,21 +126,18 @@ public class PushableBox : MonoBehaviour
 
     private void Grab()
     {
+        // ... (Code của Grab giữ nguyên)
         if (interactionPrompt != null) interactionPrompt.SetActive(false);
-
         Transform playerTransform = playerController.transform;
         bool playerIsOnTheLeft = playerTransform.position.x < transform.position.x;
         bool playerIsFacingRight = playerTransform.right.x > 0;
         didFlipPlayer = false;
         if (playerIsOnTheLeft && !playerIsFacingRight) { FlipPlayer(playerTransform); didFlipPlayer = true; }
         else if (!playerIsOnTheLeft && playerIsFacingRight) { FlipPlayer(playerTransform); didFlipPlayer = true; }
-
         isBeingHeld = true;
         boxRigidbody.bodyType = RigidbodyType2D.Kinematic;
         boxRigidbody.velocity = Vector2.zero;
-
         playerController.enabled = false;
-
         float finalFacingDirection = playerTransform.right.x > 0 ? 1 : -1;
         Vector3 targetPosition = playerTransform.position + new Vector3(carryOffset.x * finalFacingDirection, carryOffset.y, 0);
         transform.position = targetPosition;
@@ -119,14 +146,20 @@ public class PushableBox : MonoBehaviour
 
     private void Release()
     {
+        // --- DỪNG ÂM THANH KHI THẢ THÙNG ---
+        if (audioSource != null && audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
+        // ---------------------------------
+
+        // ... (Code còn lại của Release giữ nguyên)
         if (interactionPrompt != null && playerIsNearby) interactionPrompt.SetActive(true);
         if (progressRingImage != null) progressRingImage.fillAmount = 0;
-
         isBeingHeld = false;
         horizontalInput = 0;
         transform.SetParent(null);
         boxRigidbody.bodyType = RigidbodyType2D.Static;
-
         if (didFlipPlayer)
         {
             FlipPlayer(playerController.transform);
@@ -150,12 +183,9 @@ public class PushableBox : MonoBehaviour
             playerIsNearby = true;
             playerController = other.GetComponent<PlayerController>();
             playerRigidbody = other.GetComponent<Rigidbody2D>();
-
             if (interactionPrompt != null)
             {
                 interactionPrompt.SetActive(true);
-                // --- SỬA LỖI TẠI ĐÂY ---
-                // Đảm bảo vòng tròn luôn bắt đầu từ 0 khi hiện ra
                 if (progressRingImage != null) progressRingImage.fillAmount = 0;
             }
         }
@@ -173,7 +203,6 @@ public class PushableBox : MonoBehaviour
             playerController = null;
             playerRigidbody = null;
             holdTimer = 0f;
-
             if (interactionPrompt != null)
             {
                 interactionPrompt.SetActive(false);
