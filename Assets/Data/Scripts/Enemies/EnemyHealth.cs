@@ -5,12 +5,13 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] private float startingHealth = 3f;
-
+    [SerializeField] private NinjaController ninjaController;
+    [SerializeField] private GameObject enemyObj;
     public float currentHealth { get; private set; }
     private Animator anim;
     private Transform player;
 
-    private bool isDead;
+    public bool isDead;
     private bool preventRespawn = false;
     private bool isPlayerNearby = false;
 
@@ -44,9 +45,9 @@ public class EnemyHealth : MonoBehaviour
         {
             Die();
         }
-        
+        ninjaController.BeAttack(0.6f, 0.1f);
     }
-
+    
     protected virtual void Die()
     {
         if (isDead) return;
@@ -72,7 +73,7 @@ public class EnemyHealth : MonoBehaviour
             if (preventRespawn)
             {
                 Debug.Log("Đã bị khóa còng");
-                Destroy(gameObject, 10f);
+                Destroy(enemyObj, 10f);
                 yield break; 
             }
 
@@ -89,6 +90,7 @@ public class EnemyHealth : MonoBehaviour
         rb.isKinematic = false;
         
         if (anim != null) anim.SetTrigger("IsRevive");
+        ninjaController.Revive();
     }
 
 

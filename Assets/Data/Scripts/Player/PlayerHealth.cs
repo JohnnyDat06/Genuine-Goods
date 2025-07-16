@@ -49,5 +49,7 @@ public class PlayerHealth : MonoBehaviour
             }
         }
         yield return new WaitForSeconds(deathAnimationDuration);
+        
+        // Transition to the Death Scene
     }
 }

@@ -11,9 +11,13 @@ public class NinjaController : MonoBehaviour
         [SerializeField] private float attackRange = 10f;
         [SerializeField] private float moveRange = 15f;
         [SerializeField] private float attackCoolDown = 2f;
+        [SerializeField] private float reviveCoolDown = 1.5f;
         [SerializeField] private float moveSpeed = 2f;
         [SerializeField] private Transform startPoint;
+        [SerializeField] private Rigidbody2D rb;
     
+        private bool isFacingRight = true;
+        private bool isReviving = false;
         private Transform player;
         private Animator anim;
         private float cooldownTimer = Mathf.Infinity;
@@ -31,9 +35,10 @@ public class NinjaController : MonoBehaviour
         {
             if (enemyHealth.currentHealth <= 0) return;
             if (player == null) return;
+            if (isReviving) return;
     
             cooldownTimer += Time.deltaTime;
-    
+            
             switch (currentState)
             {
                 case State.Idle:
@@ -97,7 +102,40 @@ public class NinjaController : MonoBehaviour
                     break;
             }
         }
-    
+        public void BeAttack(float distance, float duration)
+        {
+            StartCoroutine(SmoothBeAttackMove(distance, duration));
+        }
+
+        private IEnumerator SmoothBeAttackMove(float distance, float duration)
+        {
+            float elapsed = 0f;
+            Vector2 startPos = rb.position;
+            int direction = isFacingRight ? -1 : 1;
+            Vector2 targetPos = startPos + new Vector2(direction *  distance, 0f);
+
+            while (elapsed < duration)
+            {
+                float t = elapsed / duration;
+                rb.MovePosition(Vector2.Lerp(startPos, targetPos, t));
+                elapsed += Time.deltaTime;
+                yield return null;
+            }
+
+            rb.MovePosition(targetPos); // đảm bảo tới đúng vị trí cuối
+        }
+        public void Revive()
+        {
+            StartCoroutine(ReviveCooldown());
+        }
+
+        private IEnumerator ReviveCooldown()
+        {
+            isReviving = true;
+            yield return new WaitForSeconds(reviveCoolDown);
+            isReviving = false;
+        }
+
         private void Attack()
         {
             anim.SetTrigger("IsAtk");
@@ -110,21 +148,33 @@ public class NinjaController : MonoBehaviour
         private void FacePlayer()
         {
             if (player.position.x > transform.position.x)
+            {
                 transform.localScale = new Vector3(-1, 1, 1);
+                isFacingRight = true;
+            }
             else
+            {
                 transform.localScale = new Vector3(1, 1, 1);
+                isFacingRight = false;
+            }
         }
-    
+
         private void MoveTowards(Vector2 targetPosition)
         {
             transform.position = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
-    
+
             if (targetPosition.x > transform.position.x)
+            {
                 transform.localScale = new Vector3(-1, 1, 1);
+                isFacingRight = true;
+            }
             else
+            {
                 transform.localScale = new Vector3(1, 1, 1);
+                isFacingRight = false;
+            }
         }
-        
+
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red;
