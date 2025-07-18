@@ -53,8 +53,8 @@ public class MatchItem : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoin
 
             // Tạm thời vô hiệu hóa 2 đối tượng đã nối thành công
             // Dùng Destroy(this) sẽ xóa mất script, có thể gây lỗi nếu muốn reset level
-            GetComponent<Image>().color = Color.gray; // Đổi màu để báo hiệu đã nối
-            hoverItem.GetComponent<Image>().color = Color.gray; // Đổi màu cả đối tượng đích
+            //GetComponent<Image>().color = Color.gray; // Đổi màu để báo hiệu đã nối
+            //hoverItem.GetComponent<Image>().color = Color.gray; // Đổi màu cả đối tượng đích
             this.enabled = false;
             hoverItem.enabled = false;
         }
