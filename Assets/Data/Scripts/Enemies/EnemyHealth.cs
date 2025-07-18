@@ -5,20 +5,25 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] private float startingHealth = 3f;
-    [SerializeField] private NinjaController ninjaController;
     [SerializeField] private GameObject enemyObj;
+    [SerializeField] private float reviveCoolDown = 1.5f;
+    public bool isReviving { get; private set; }
     public float currentHealth { get; private set; }
     private Animator anim;
     private Transform player;
+    private Rigidbody2D rb;
 
     public bool isDead;
     private bool preventRespawn = false;
     private bool isPlayerNearby = false;
 
+    private bool isFacingRight = true; // Biến để theo dõi hướng nhìn của enemy
+
     protected virtual void Awake()
     {
         currentHealth = startingHealth;
         anim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
@@ -28,9 +33,11 @@ public class EnemyHealth : MonoBehaviour
         {
             preventRespawn = true;
         }
-        
+
         CheckPlayer();
+        CheckAndUpdateDirection(); // Cập nhật hướng nhìn theo player
     }
+
     public virtual void TakeDamage(float damage)
     {
         if (isDead) return;
@@ -45,9 +52,9 @@ public class EnemyHealth : MonoBehaviour
         {
             Die();
         }
-        ninjaController.BeAttack(0.6f, 0.1f);
+        BeAttack(0.6f, 0.1f);
     }
-    
+
     protected virtual void Die()
     {
         if (isDead) return;
@@ -56,54 +63,101 @@ public class EnemyHealth : MonoBehaviour
         Debug.Log("Enemy chết rồi!");
 
         if (anim != null) anim.SetTrigger("IsDeath");
-        
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
         rb.velocity = Vector2.zero;
         rb.isKinematic = true;
-        
+
         StartCoroutine(WaitForKillOrRespawn(5f));
     }
 
     IEnumerator WaitForKillOrRespawn(float delay)
     {
         float timer = 0f;
-        
+
         while (timer < delay)
         {
             if (preventRespawn)
             {
                 Debug.Log("Đã bị khóa còng");
                 Destroy(enemyObj, 10f);
-                yield break; 
+                yield break;
             }
-
             timer += Time.deltaTime;
             yield return null;
         }
-        
+
         currentHealth = Mathf.RoundToInt(startingHealth * 0.3f);
         isDead = false;
         Debug.Log("Enemy hồi sinh với máu: " + currentHealth);
-        
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
         rb.velocity = Vector2.zero;
         rb.isKinematic = false;
-        
-        if (anim != null) anim.SetTrigger("IsRevive");
-        ninjaController.Revive();
-    }
 
+        if (anim != null) anim.SetTrigger("IsRevive");
+        Revive();
+    }
 
     void CheckPlayer()
     {
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-        if (distanceToPlayer < 1f && isDead)
+        isPlayerNearby = distanceToPlayer < 1f && isDead;
+    }
+
+    public void BeAttack(float distance, float duration)
+    {
+        StartCoroutine(SmoothBeAttackMove(distance, duration));
+    }
+
+    private IEnumerator SmoothBeAttackMove(float distance, float duration)
+    {
+        float elapsed = 0f;
+        Vector2 startPos = rb.position;
+        int direction = isFacingRight ? -1 : 1; // Di chuyển ngược hướng mặt enemy
+        Vector2 targetPos = startPos + new Vector2(direction * distance, 0f);
+
+        while (elapsed < duration)
         {
-            isPlayerNearby = true;
+            float t = elapsed / duration;
+            rb.MovePosition(Vector2.Lerp(startPos, targetPos, t));
+            elapsed += Time.deltaTime;
+            yield return null;
         }
-        else
+
+        rb.MovePosition(targetPos); // Đảm bảo tới đúng vị trí cuối
+    }
+
+    private void CheckAndUpdateDirection()
+    {
+        if (player == null || rb == null) return;
+
+        Vector2 directionToPlayer = player.position - transform.position;
+
+        // Cập nhật hướng nhìn dựa trên vị trí của player
+        if (directionToPlayer.x > 0 && !isFacingRight)
         {
-            isPlayerNearby = false;
+            Flip();
         }
+        else if (directionToPlayer.x < 0 && isFacingRight)
+        {
+            Flip();
+        }
+    }
+
+    private void Flip()
+    {
+        isFacingRight = !isFacingRight;
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
+    }
+    
+    public void Revive()
+    {
+        StartCoroutine(ReviveCooldown());
+    }
+
+    private IEnumerator ReviveCooldown()
+    {
+        isReviving = true;
+        yield return new WaitForSeconds(reviveCoolDown);
+        isReviving = false;
     }
 }
