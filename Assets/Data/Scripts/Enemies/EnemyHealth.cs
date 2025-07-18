@@ -35,7 +35,7 @@ public class EnemyHealth : MonoBehaviour
         }
 
         CheckPlayer();
-        CheckAndUpdateDirection(); // Cập nhật hướng nhìn theo player
+        CheckAndUpdateDirection();
     }
 
     public virtual void TakeDamage(float damage)
