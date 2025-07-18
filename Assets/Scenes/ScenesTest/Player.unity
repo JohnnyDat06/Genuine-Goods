@@ -445,8 +445,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 100
-  ninjaController: {fileID: 731275782}
   enemyObj: {fileID: 1866618443}
+  reviveCoolDown: 2
   isDead: 0
 --- !u!61 &731275780
 BoxCollider2D:
@@ -535,7 +535,6 @@ MonoBehaviour:
   attackRange: 1
   moveRange: 3
   attackCoolDown: 2
-  reviveCoolDown: 2
   moveSpeed: 2
   startPoint: {fileID: 2071712589}
   rb: {fileID: 731275781}
