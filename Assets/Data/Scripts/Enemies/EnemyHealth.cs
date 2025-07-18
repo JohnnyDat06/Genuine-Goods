@@ -143,6 +143,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void Flip()
     {
+        if (isDead || isReviving) return;
         isFacingRight = !isFacingRight;
         Vector3 scale = transform.localScale;
         scale.x *= -1;
