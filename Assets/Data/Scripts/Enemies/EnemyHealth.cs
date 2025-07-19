@@ -35,7 +35,7 @@ public class EnemyHealth : MonoBehaviour
         }
 
         CheckPlayer();
-        CheckAndUpdateDirection(); // Cập nhật hướng nhìn theo player
+        CheckAndUpdateDirection();
     }
 
     public virtual void TakeDamage(float damage)
@@ -143,6 +143,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void Flip()
     {
+        if (isDead || isReviving) return;
         isFacingRight = !isFacingRight;
         Vector3 scale = transform.localScale;
         scale.x *= -1;
