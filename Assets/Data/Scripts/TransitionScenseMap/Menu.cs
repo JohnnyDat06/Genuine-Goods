@@ -28,13 +28,13 @@ public class Menu : MonoBehaviour
     public void Resume()
     {
         GameIsPaused = false;
-        pauseMenuUI.SetActive(false);
+        if(pauseMenuUI != null) pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
     }
     public void Pause()
     {
         GameIsPaused = true;
-        pauseMenuUI.SetActive(true);
+        if(pauseMenuUI != null) pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
     }
     public void LoadMenu()
@@ -51,5 +51,10 @@ public class Menu : MonoBehaviour
     {
         Debug.Log("QUIT!");
         Application.Quit();
+    }
+    
+    public void ReturnMap()
+    {
+        Invoke("Play", 5f);
     }
 }
