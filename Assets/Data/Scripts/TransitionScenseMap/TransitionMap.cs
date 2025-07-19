@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TransitionMap : MonoBehaviour
 {
@@ -23,5 +24,10 @@ public class TransitionMap : MonoBehaviour
                 isOpen = true;
             }
         }
+    }
+
+    public void MapError()
+    {
+        SceneManager.LoadScene("MapError");
     }
 }
