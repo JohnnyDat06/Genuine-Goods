@@ -1733,7 +1733,7 @@ GameObject:
   - component: {fileID: 731275779}
   - component: {fileID: 731275782}
   m_Layer: 6
-  m_Name: Ninja
+  m_Name: Npc3
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1780,12 +1780,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -128530959, guid: fb16016b051d533458bb63c2cdb3c2d6, type: 3}
+  m_Sprite: {fileID: 1473598941, guid: 8703261cff043bf499b56f57ba16000d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 3, y: 2.625}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1800,7 +1800,7 @@ Transform:
   m_GameObject: {fileID: 731275775}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.3874445, y: 0.5613972, z: -0.08703327}
+  m_LocalPosition: {x: 1.55, y: 1.06, z: -0.08703327}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1875,18 +1875,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.038311362, y: 0.058392525}
+  m_Offset: {x: -0.00053972006, y: -0.107803464}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
-    newSize: {x: 2, y: 2}
+    pivot: {x: 0.5, y: 0.3}
+    oldSize: {x: 3, y: 2.625}
+    newSize: {x: 3, y: 2.625}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3655002, y: 1.0142913}
+  m_Size: {x: 0.33024657, y: 1.3466833}
   m_EdgeRadius: 0
 --- !u!50 &731275781
 Rigidbody2D:
@@ -1914,7 +1914,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &731275782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2834,7 +2834,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1275563184
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8012,7 +8012,7 @@ Transform:
   m_GameObject: {fileID: 2071712588}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.38, y: 0.65, z: -0.08703327}
+  m_LocalPosition: {x: 2.38, y: 1, z: -0.08703327}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
