@@ -6934,7 +6934,7 @@ GameObject:
   - component: {fileID: 952384357}
   m_Layer: 0
   m_Name: Bird
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10937,7 +10937,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 1243554986}
   playerController: {fileID: 1243554987}
+  attackMask:
+    serializedVersion: 2
+    m_Bits: 0
+  attackOffset: {x: 0, y: 0}
   isAttacking: 0
+  atk1: 20
+  atk2: 30
+  atk3: 50
+  attackRange: 10
   maxComboDelay: 0.9
 --- !u!1 &1260190075
 GameObject:
