@@ -33,10 +33,8 @@ public class PulsingWarning : MonoBehaviour
     [Tooltip("Nội dung của dòng chữ cảnh báo.")]
     [SerializeField] private string warningMessage = "!!! DANGER ZONE !!!";
 
-    // --- BIẾN MỚI ĐỂ SỬA THỜI GIAN BÊN NGOÀI ---
     [Tooltip("Thời gian (giây) hiệu ứng tiếp tục sau khi người chơi rời khỏi vùng.")]
     [SerializeField] private float fadeOutDelay = 2f;
-    // -----------------------------------------
 
     private AudioSource audioSource;
     private Coroutine activeEffectsCoroutine;
@@ -75,6 +73,8 @@ public class PulsingWarning : MonoBehaviour
 
             if (isPlayerInZone)
             {
+                // Người chơi vừa đi vào
+                // Nếu có coroutine tắt dần đang chạy, hãy hủy nó ngay
                 if (fadeOutCoroutine != null)
                 {
                     StopCoroutine(fadeOutCoroutine);
@@ -84,7 +84,7 @@ public class PulsingWarning : MonoBehaviour
             }
             else
             {
-                // --- SỬ DỤNG BIẾN MỚI THAY VÌ SỐ CỨNG ---
+                // Người chơi vừa đi ra -> Bắt đầu coroutine tắt dần
                 fadeOutCoroutine = StartCoroutine(FadeOutEffectsRoutine(fadeOutDelay));
             }
         }
@@ -95,11 +95,13 @@ public class PulsingWarning : MonoBehaviour
         if (warningTextComponent != null) warningTextComponent.gameObject.SetActive(true);
         if (postProcessingVolume != null) postProcessingVolume.gameObject.SetActive(true);
 
-        if (audioSource != null && warningSound != null)
+        // --- THAY ĐỔI: CHỈ BẬT ÂM THANH NẾU NÓ CHƯA CHẠY ---
+        if (audioSource != null && warningSound != null && !audioSource.isPlaying)
         {
             audioSource.clip = warningSound;
             audioSource.Play();
         }
+        // --------------------------------------------------
 
         if (activeEffectsCoroutine == null)
         {
@@ -179,7 +181,7 @@ public class PulsingWarning : MonoBehaviour
                 scrollTimer = 0;
                 textWidth = warningTextComponent.preferredWidth;
                 startX = (canvasWidth / 2f) + (textWidth / 2f);
-                endX = -(canvasWidth / 1f) - (textWidth / 1f);
+                endX = -(canvasWidth / 2f) - (textWidth / 2f);
                 textRect.anchoredPosition = new Vector2(startX, textRect.anchoredPosition.y);
                 travelDistance = startX - endX;
                 duration = travelDistance / scrollSpeed;
