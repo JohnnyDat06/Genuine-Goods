@@ -8,7 +8,8 @@ public class ComboAttack : MonoBehaviour
 {
     [SerializeField] private Animator anim;
     [SerializeField] private PlayerController playerController;
-    private EnemyHealth enemyHealth;
+    //private EnemyHealth enemyHealth;
+    private List<EnemyHealth> allEnemies = new List<EnemyHealth>();
 
     [SerializeField] private LayerMask attackMask;
     [SerializeField] private Vector2 attackOffset;
@@ -43,7 +44,16 @@ public class ComboAttack : MonoBehaviour
 
     private void Awake()
     {
-        enemyHealth = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyHealth>();
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        foreach (GameObject enemy in enemies)
+        {
+            EnemyHealth eh = enemy.GetComponentInChildren<EnemyHealth>();
+            if (eh != null)
+            {
+                allEnemies.Add(eh);
+            }
+        }
     }
 
     public void Return1()
@@ -94,9 +104,23 @@ public class ComboAttack : MonoBehaviour
         pos += transform.up * attackOffset.y;
 
         Collider2D colInfo = Physics2D.OverlapCircle(pos, attackRange, attackMask);
-        if (colInfo != null && enemyHealth != null)
+        if (colInfo != null)
         {
-            enemyHealth.TakeDamage(atk1);
+            foreach (EnemyHealth eh in allEnemies.ToArray())
+            {
+                if (eh == null)
+                {
+                    allEnemies.Remove(eh); // cleanup nếu enemy đã bị destroy
+                    continue;
+                }
+
+                if (colInfo.transform.IsChildOf(eh.transform) || colInfo.transform == eh.transform)
+                {
+                    eh.TakeDamage(atk1);
+                    break;
+                }
+            }
+
         }
     }
     public void Atk2()
@@ -108,9 +132,23 @@ public class ComboAttack : MonoBehaviour
         pos += transform.up * attackOffset.y;
 
         Collider2D colInfo = Physics2D.OverlapCircle(pos, attackRange, attackMask);
-        if (colInfo != null && enemyHealth != null)
+        if (colInfo != null)
         {
-            enemyHealth.TakeDamage(atk2);
+            foreach (EnemyHealth eh in allEnemies.ToArray())
+            {
+                if (eh == null)
+                {
+                    allEnemies.Remove(eh); // cleanup nếu enemy đã bị destroy
+                    continue;
+                }
+
+                if (colInfo.transform.IsChildOf(eh.transform) || colInfo.transform == eh.transform)
+                {
+                    eh.TakeDamage(atk2);
+                    break;
+                }
+            }
+
         }
     }
     public void Atk3()
@@ -122,9 +160,23 @@ public class ComboAttack : MonoBehaviour
         pos += transform.up * attackOffset.y;
 
         Collider2D colInfo = Physics2D.OverlapCircle(pos, attackRange, attackMask);
-        if (colInfo != null && enemyHealth != null)
+        if (colInfo != null)
         {
-            enemyHealth.TakeDamage(atk3);
+            foreach (EnemyHealth eh in allEnemies.ToArray())
+            {
+                if (eh == null)
+                {
+                    allEnemies.Remove(eh); // cleanup nếu enemy đã bị destroy
+                    continue;
+                }
+
+                if (colInfo.transform.IsChildOf(eh.transform) || colInfo.transform == eh.transform)
+                {
+                    eh.TakeDamage(atk3);
+                    break;
+                }
+            }
+
         }
     }
 
