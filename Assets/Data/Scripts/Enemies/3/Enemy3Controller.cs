@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NinjaController : MonoBehaviour
+public class Enemy3Controller : MonoBehaviour
 {
-    private enum State { Idle, Chasing, Attacking, Returning }
+        private enum State { Idle, Chasing, Attacking, Returning }
         private State currentState;
     
         [Header("Attack Setting")]
