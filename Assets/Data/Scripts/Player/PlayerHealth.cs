@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] public float startHealth;
+    [SerializeField] private GameManagers gameManager;
     public float currentHeath {get; private set;}
 
     [SerializeField] private PlayerController playerMovement;
@@ -50,6 +51,6 @@ public class PlayerHealth : MonoBehaviour
         }
         yield return new WaitForSeconds(deathAnimationDuration);
         
-        // Transition to the Death Scene
+        gameManager.GameOver();
     }
 }
