@@ -2,51 +2,44 @@
 using UnityEngine.Rendering;
 using TMPro;
 using System.Collections;
-using UnityEngine.Rendering.Universal; // Cần thiết để điều khiển Light2D
 
-[RequireComponent(typeof(AudioSource))]
-public class PatrollingWarningCamera : MonoBehaviour
+[RequireComponent(typeof(AudioSource))] // Yêu cầu đối tượng phải có AudioSource
+public class PulsingWarning : MonoBehaviour
 {
-    [Header("Patrol Points")]
-    [Tooltip("Đối tượng Transform định vị điểm bắt đầu (A).")]
-    [SerializeField] private Transform pointA;
-    [Tooltip("Đối tượng Transform định vị điểm kết thúc (B).")]
-    [SerializeField] private Transform pointB;
-
-    [Header("Movement Settings")]
-    [Tooltip("Tốc độ di chuyển của camera.")]
-    [SerializeField] private float moveSpeed = 2f;
-    [Tooltip("Thời gian (giây) camera sẽ tắt ở mỗi điểm.")]
-    [SerializeField] private float waitTime = 3f;
-
     [Header("Detection Setup")]
+    [Tooltip("Kéo đối tượng Player vào đây.")]
     [SerializeField] private Transform playerTransform;
+    [Tooltip("Các đỉnh của vùng tam giác phát hiện. Bạn có thể chỉnh sửa trực tiếp trong Scene View khi chọn Gizmos.")]
     [SerializeField]
     private Vector2[] detectionVertices = new Vector2[3] {
-        new Vector2(0, 0), new Vector2(-2, -4), new Vector2(2, -4)
+        new Vector2(0, 3), new Vector2(-2, -1), new Vector2(2, -1)
     };
-    [Tooltip("Các layer vật thể có thể chặn tầm nhìn của camera (ví dụ: Ground, Obstacles).")]
-    [SerializeField] private LayerMask lineOfSightMask;
 
     [Header("Effects Setup")]
+    [Tooltip("Component TextMeshProUGUI để hiển thị cảnh báo.")]
     [SerializeField] private TextMeshProUGUI warningTextComponent;
+    [Tooltip("GameObject Global Volume chứa hiệu ứng đỏ màn hình.")]
     [SerializeField] private Volume postProcessingVolume;
+    [Tooltip("File âm thanh cảnh báo sẽ phát.")]
     [SerializeField] private AudioClip warningSound;
-    [Tooltip("(Tùy chọn) Ánh sáng 2D để thể hiện camera đang bật/tắt.")]
-    [SerializeField] private Light2D cameraLight;
 
     [Header("Animation Parameters")]
+    [Tooltip("Tốc độ màn hình nhấp nháy.")]
     [SerializeField] private float blinkSpeed = 2f;
+    [Tooltip("Độ đậm tối đa của hiệu ứng đỏ (từ 0 đến 1).")]
     [SerializeField][Range(0, 1)] private float maxBlinkIntensity = 0.5f;
+    [Tooltip("Tốc độ dòng chữ lướt qua màn hình.")]
     [SerializeField] private float scrollSpeed = 100f;
+    [Tooltip("Nội dung của dòng chữ cảnh báo.")]
     [SerializeField] private string warningMessage = "!!! DANGER ZONE !!!";
+
+    [Tooltip("Thời gian (giây) hiệu ứng tiếp tục sau khi người chơi rời khỏi vùng.")]
     [SerializeField] private float fadeOutDelay = 2f;
 
     private AudioSource audioSource;
     private Coroutine activeEffectsCoroutine;
     private Coroutine fadeOutCoroutine;
     private bool isPlayerInZone = false;
-    private bool isCameraActive = false;
 
     void Awake()
     {
@@ -66,38 +59,22 @@ public class PatrollingWarningCamera : MonoBehaviour
         {
             postProcessingVolume.gameObject.SetActive(false);
         }
-
-        StartCoroutine(PatrolRoutine());
     }
 
     void Update()
     {
-        if (!isCameraActive || playerTransform == null) return;
+        if (playerTransform == null) return;
 
-        Vector2 playerLocalPosition = transform.InverseTransformPoint(playerTransform.position);
-        bool isInPolygon = IsPointInPolygon(playerLocalPosition, detectionVertices);
+        bool currentlyInZone = IsPointInPolygon(playerTransform.position, detectionVertices);
 
-        bool hasLineOfSight = false;
-
-        if (isInPolygon)
+        if (currentlyInZone != isPlayerInZone)
         {
-            Vector2 directionToPlayer = playerTransform.position - transform.position;
-            float distanceToPlayer = directionToPlayer.magnitude;
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, directionToPlayer, distanceToPlayer, lineOfSightMask);
+            isPlayerInZone = currentlyInZone;
 
-            if (hit.collider == null)
-            {
-                hasLineOfSight = true;
-            }
-        }
-
-        bool currentlyDetected = isInPolygon && hasLineOfSight;
-
-        if (currentlyDetected != isPlayerInZone)
-        {
-            isPlayerInZone = currentlyDetected;
             if (isPlayerInZone)
             {
+                // Người chơi vừa đi vào
+                // Nếu có coroutine tắt dần đang chạy, hãy hủy nó ngay
                 if (fadeOutCoroutine != null)
                 {
                     StopCoroutine(fadeOutCoroutine);
@@ -107,55 +84,7 @@ public class PatrollingWarningCamera : MonoBehaviour
             }
             else
             {
-                fadeOutCoroutine = StartCoroutine(FadeOutEffectsRoutine(fadeOutDelay));
-            }
-        }
-    }
-
-    private IEnumerator PatrolRoutine()
-    {
-        transform.position = pointA.position;
-
-        while (true)
-        {
-            ToggleCameraState(true);
-            yield return StartCoroutine(MoveToPoint(pointB));
-
-            ToggleCameraState(false);
-            yield return new WaitForSeconds(waitTime);
-
-            ToggleCameraState(true);
-            yield return StartCoroutine(MoveToPoint(pointA));
-
-            ToggleCameraState(false);
-            yield return new WaitForSeconds(waitTime);
-        }
-    }
-
-    private IEnumerator MoveToPoint(Transform target)
-    {
-        while (Vector2.Distance(transform.position, target.position) > 0.01f)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
-            yield return null;
-        }
-        transform.position = target.position;
-    }
-
-    private void ToggleCameraState(bool isActive)
-    {
-        isCameraActive = isActive;
-        if (cameraLight != null)
-        {
-            cameraLight.enabled = isActive;
-        }
-
-        if (!isActive)
-        {
-            if (isPlayerInZone)
-            {
-                isPlayerInZone = false;
-                if (fadeOutCoroutine != null) StopCoroutine(fadeOutCoroutine);
+                // Người chơi vừa đi ra -> Bắt đầu coroutine tắt dần
                 fadeOutCoroutine = StartCoroutine(FadeOutEffectsRoutine(fadeOutDelay));
             }
         }
@@ -165,11 +94,15 @@ public class PatrollingWarningCamera : MonoBehaviour
     {
         if (warningTextComponent != null) warningTextComponent.gameObject.SetActive(true);
         if (postProcessingVolume != null) postProcessingVolume.gameObject.SetActive(true);
+
+        // --- THAY ĐỔI: CHỈ BẬT ÂM THANH NẾU NÓ CHƯA CHẠY ---
         if (audioSource != null && warningSound != null && !audioSource.isPlaying)
         {
             audioSource.clip = warningSound;
             audioSource.Play();
         }
+        // --------------------------------------------------
+
         if (activeEffectsCoroutine == null)
         {
             activeEffectsCoroutine = StartCoroutine(RunWarningAnimations());
@@ -183,10 +116,12 @@ public class PatrollingWarningCamera : MonoBehaviour
             StopCoroutine(activeEffectsCoroutine);
             activeEffectsCoroutine = null;
         }
+
         if (audioSource != null)
         {
             audioSource.Stop();
         }
+
         if (warningTextComponent != null) warningTextComponent.gameObject.SetActive(false);
         if (postProcessingVolume != null)
         {
@@ -213,10 +148,11 @@ public class PatrollingWarningCamera : MonoBehaviour
         int polygonLength = polygon.Length;
         if (polygonLength < 3) return false;
         bool isInside = false;
+        Vector2 worldPos = transform.position;
         for (int i = 0, j = polygonLength - 1; i < polygonLength; j = i++)
         {
-            Vector2 vertexA = polygon[i];
-            Vector2 vertexB = polygon[j];
+            Vector2 vertexA = worldPos + polygon[i];
+            Vector2 vertexB = worldPos + polygon[j];
             if (((vertexA.y > point.y) != (vertexB.y > point.y)) && (point.x < (vertexB.x - vertexA.x) * (point.y - vertexA.y) / (vertexB.y - vertexA.y) + vertexA.x))
             {
                 isInside = !isInside;
@@ -224,7 +160,6 @@ public class PatrollingWarningCamera : MonoBehaviour
         }
         return isInside;
     }
-
     private IEnumerator RunWarningAnimations()
     {
         RectTransform textRect = warningTextComponent.rectTransform;
@@ -256,23 +191,15 @@ public class PatrollingWarningCamera : MonoBehaviour
             yield return null;
         }
     }
-
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
-        if (pointA != null && pointB != null)
-        {
-            Gizmos.color = Color.green;
-            Gizmos.DrawLine(pointA.position, pointB.position);
-            Gizmos.DrawWireSphere(pointA.position, 0.3f);
-            Gizmos.DrawWireSphere(pointB.position, 0.3f);
-        }
-
         if (detectionVertices == null || detectionVertices.Length < 2) return;
-        Gizmos.color = isCameraActive ? Color.red : Color.gray;
+        Gizmos.color = Color.yellow;
+        Vector2 worldPos = transform.position;
         for (int i = 0; i < detectionVertices.Length; i++)
         {
-            Vector2 currentVertex = transform.TransformPoint(detectionVertices[i]);
-            Vector2 nextVertex = transform.TransformPoint(detectionVertices[(i + 1) % detectionVertices.Length]);
+            Vector2 currentVertex = worldPos + detectionVertices[i];
+            Vector2 nextVertex = worldPos + detectionVertices[(i + 1) % detectionVertices.Length];
             Gizmos.DrawLine(currentVertex, nextVertex);
         }
     }
