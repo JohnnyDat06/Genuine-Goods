@@ -889,6 +889,22 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1382657003}
   m_SourcePrefab: {fileID: 100100000, guid: 48b3af96c3934f94692912ad4e79c504, type: 3}
+--- !u!1 &188581830 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 913097674332758151, guid: 48b3af96c3934f94692912ad4e79c504, type: 3}
+  m_PrefabInstance: {fileID: 188581829}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &188581831 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5061699801387306009, guid: 48b3af96c3934f94692912ad4e79c504, type: 3}
+  m_PrefabInstance: {fileID: 188581829}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382657002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5317dc56516ca24b8b23264fb731282, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &197507357
 GameObject:
   m_ObjectHideFlags: 0
@@ -1293,11 +1309,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2b84d3fdb90dc249a772cd902aaa5da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue: {fileID: 11400000, guid: df31fdc99d1c87848945e2ab754e13c4, type: 2}
-  interactionKey: 101
-  interactionPrompt: {fileID: 528521364}
-  npcController: {fileID: 0}
-  playerIsInRange: 0
 --- !u!61 &300922156
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1874,6 +1885,7 @@ GameObject:
   - component: {fileID: 436238339}
   - component: {fileID: 436238341}
   - component: {fileID: 436238342}
+  - component: {fileID: 436238343}
   m_Layer: 0
   m_Name: NPC3
   m_TagString: Untagged
@@ -1986,6 +1998,51 @@ MonoBehaviour:
   interactionKey: 101
   interactionPrompt: {fileID: 0}
   npcController: {fileID: 0}
+--- !u!61 &436238343
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436238338}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.11188412, y: -0.16161013}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.92, y: 1.92}
+    newSize: {x: 1.5, y: 1.5}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.1243792, y: 1.2735596}
+  m_EdgeRadius: 0
 --- !u!1 &443663784
 GameObject:
   m_ObjectHideFlags: 0
@@ -2497,6 +2554,7 @@ GameObject:
   - component: {fileID: 653116623}
   - component: {fileID: 653116622}
   - component: {fileID: 653116621}
+  - component: {fileID: 653116624}
   m_Layer: 0
   m_Name: NPC2_Idle_0
   m_TagString: Untagged
@@ -2588,6 +2646,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 179.386, z: 0}
+--- !u!61 &653116624
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653116620}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.01105091, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.53125, y: 1.03125}
+    newSize: {x: 0.53125, y: 1.03125}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.0616937, y: 1.03125}
+  m_EdgeRadius: 0
 --- !u!1 &665385960
 GameObject:
   m_ObjectHideFlags: 0
@@ -5930,11 +6033,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2b84d3fdb90dc249a772cd902aaa5da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue: {fileID: 11400000, guid: ec7302e66c0c0444cb0eb01535737727, type: 2}
-  interactionKey: 101
-  interactionPrompt: {fileID: 1277297694}
-  npcController: {fileID: 0}
-  playerIsInRange: 0
 --- !u!61 &952384358
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6926,6 +7024,10 @@ PrefabInstance:
     - target: {fileID: 2935791298051870854, guid: 4ce1c76f3ff55e749b09cfbb03b12f31, type: 3}
       propertyPath: m_Offset.y
       value: -0.18876314
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420129266032173526, guid: 4ce1c76f3ff55e749b09cfbb03b12f31, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 6790193024097100661, guid: 4ce1c76f3ff55e749b09cfbb03b12f31, type: 3}
       propertyPath: speed
@@ -8078,11 +8180,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0289a4cae4b4bdc49b6750b344743294, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialDialogue: {fileID: 0}
-  repeatingDialogue: {fileID: 0}
+  initialDialogue: {fileID: 11400000, guid: 21df45f0a0de458409311426da8c5a73, type: 2}
+  repeatingDialogue: {fileID: 11400000, guid: b8e4d721506a91a4ab36babab882099b, type: 2}
   interactionKey: 101
-  interactionPrompt: {fileID: 0}
-  npcController: {fileID: 0}
+  interactionPrompt: {fileID: 188581830}
+  npcController: {fileID: 188581831}
 --- !u!1 &1389857455
 GameObject:
   m_ObjectHideFlags: 0
@@ -8687,6 +8789,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 88070174038693268, guid: 2b1aebf180dd8534086c169b270fce4b, type: 3}
   m_PrefabInstance: {fileID: 170003832}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1687809253 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3772309617609073501, guid: 4ce1c76f3ff55e749b09cfbb03b12f31, type: 3}
+  m_PrefabInstance: {fileID: 1110942528}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1720732358
 GameObject:
   m_ObjectHideFlags: 0
@@ -8997,10 +9104,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialDialogue: {fileID: 11400000, guid: 0bb2bc9f9c9902d4490ac3bb9e32551a, type: 2}
-  repeatingDialogue: {fileID: 0}
+  repeatingDialogue: {fileID: 11400000, guid: f4ffc9cc6350da74e8cf9597a2e18802, type: 2}
   interactionKey: 101
-  interactionPrompt: {fileID: 0}
-  npcController: {fileID: 0}
+  interactionPrompt: {fileID: 1687809253}
+  npcController: {fileID: 1775843260}
+--- !u!114 &1775843260 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6790193024097100661, guid: 4ce1c76f3ff55e749b09cfbb03b12f31, type: 3}
+  m_PrefabInstance: {fileID: 1110942528}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1775843257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5317dc56516ca24b8b23264fb731282, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1831828055
 GameObject:
   m_ObjectHideFlags: 0
