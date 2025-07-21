@@ -7,6 +7,7 @@ public class Menu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     [SerializeField] private GameObject pauseMenuUI;
+    [SerializeField] private PlayerController playerMovement;
 
 
     // Update is called once per frame
@@ -29,12 +30,14 @@ public class Menu : MonoBehaviour
     {
         GameIsPaused = false;
         if(pauseMenuUI != null) pauseMenuUI.SetActive(false);
+        if (playerMovement != null) playerMovement.enabled = true;
         Time.timeScale = 1f;
     }
     public void Pause()
     {
         GameIsPaused = true;
         if(pauseMenuUI != null) pauseMenuUI.SetActive(true);
+        if (playerMovement != null) playerMovement.enabled = false;
         Time.timeScale = 0f;
     }
     public void LoadMenu()

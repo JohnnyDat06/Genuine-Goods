@@ -30,4 +30,14 @@ public class TransitionMap : MonoBehaviour
     {
         SceneManager.LoadScene("MapError");
     }
+
+    public void Map2()
+    {
+        SceneManager.LoadScene("Map2");
+    }
+
+    public void Map1()
+    {
+        SceneManager.LoadScene("Map1");
+    }
 }
