@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement; // Thư viện để chuyển màn
+using UnityEngine.SceneManagement;
 
 public class PuzzleManager : MonoBehaviour
 {
-    public static PuzzleManager instance; // Dùng singleton để các script khác dễ gọi
+    public static PuzzleManager instance;
 
     [Tooltip("Kéo Panel giải đố vào đây")]
     public GameObject puzzlePanel;
@@ -15,10 +15,10 @@ public class PuzzleManager : MonoBehaviour
     public string nextSceneName;
 
     private int connectedPairs = 0;
+    private bool isSolved = false; // Thêm biến cờ để biết câu đố đã giải xong chưa
 
     void Awake()
     {
-        // Thiết lập singleton
         if (instance == null)
         {
             instance = this;
@@ -31,48 +31,65 @@ public class PuzzleManager : MonoBehaviour
 
     void Start()
     {
-        // Mặc định ẩn panel giải đố đi khi bắt đầu game
         if (puzzlePanel != null)
         {
             puzzlePanel.SetActive(false);
         }
     }
 
-    // Hàm này sẽ được gọi từ script MatchItem mỗi khi nối thành công 1 cặp
+    // --- THÊM HÀM UPDATE NÀY VÀO ---
+    void Update()
+    {
+        
+    }
+    // --------------------------------
+
     public void OnPairConnected()
     {
+        if (isSolved) return; // Nếu giải rồi thì không đếm nữa
+
         connectedPairs++;
         Debug.Log("Đã nối thành công " + connectedPairs + "/" + totalPairs + " cặp.");
 
-        // Kiểm tra xem đã thắng chưa
         if (connectedPairs >= totalPairs)
         {
+            isSolved = true; // Đánh dấu đã giải xong
             WinPuzzle();
         }
     }
 
-    // Hàm để bật panel giải đố lên
     public void ShowPuzzle()
     {
-        if (puzzlePanel != null)
+        // Chỉ hiện panel lên nếu câu đố chưa được giải
+        if (puzzlePanel != null && !isSolved)
         {
             puzzlePanel.SetActive(true);
-            // Có thể thêm logic khóa di chuyển của người chơi ở đây nếu muốn
+            // Chỗ này có thể thêm code để khóa di chuyển của Player nếu muốn
         }
     }
 
-    // Xử lý khi thắng
+    // --- THÊM HÀM HIDEPUZZLE NÀY VÀO ---
+    public void HidePuzzle()
+    {
+        if (puzzlePanel != null)
+        {
+            puzzlePanel.SetActive(false);
+            // Chỗ này có thể thêm code để mở khóa di chuyển cho Player
+        }
+    }
+    // -----------------------------------
+
     private void WinPuzzle()
     {
         Debug.Log("Yay! Đã giải xong câu đố!");
 
-        // Ẩn panel đi
-        if (puzzlePanel != null)
-        {
-            puzzlePanel.SetActive(false);
-        }
+        // Chờ một chút rồi mới chuyển màn để người chơi thấy họ đã thắng
+        Invoke("LoadNextScene", 1.5f); // Chờ 1.5 giây
+    }
 
-        // Chuyển sang màn tiếp theo
+    // Hàm để chuyển màn, được gọi bởi Invoke
+    private void LoadNextScene()
+    {
         if (!string.IsNullOrEmpty(nextSceneName))
         {
             SceneManager.LoadScene(nextSceneName);

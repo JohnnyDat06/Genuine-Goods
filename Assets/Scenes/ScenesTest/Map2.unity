@@ -15294,6 +15294,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 286189978}
   puzzleManager: {fileID: 444864514}
+  interactionTextUI: {fileID: 1865544415}
   interactionDistance: 0.5
 --- !u!1 &1027314199
 GameObject:
@@ -16552,8 +16553,8 @@ RectTransform:
   - {fileID: 1963962471}
   - {fileID: 2120321670}
   - {fileID: 539064282}
-  - {fileID: 1354272193}
   - {fileID: 626487629}
+  - {fileID: 1354272193}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -22673,6 +22674,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1865544415 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9113436371474875250, guid: 6c5db896ca2045d459b8465f07fdfb6d, type: 3}
+  m_PrefabInstance: {fileID: 3550071853567269625}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1868628982
 GameObject:
   m_ObjectHideFlags: 0
@@ -24500,6 +24506,10 @@ PrefabInstance:
     - target: {fileID: 6227854670736616053, guid: 6c5db896ca2045d459b8465f07fdfb6d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113436371474875250, guid: 6c5db896ca2045d459b8465f07fdfb6d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9220487025552809297, guid: 6c5db896ca2045d459b8465f07fdfb6d, type: 3}
       propertyPath: m_Pivot.x
