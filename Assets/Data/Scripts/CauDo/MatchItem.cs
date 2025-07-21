@@ -57,6 +57,7 @@ public class MatchItem : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoin
             //hoverItem.GetComponent<Image>().color = Color.gray; // Đổi màu cả đối tượng đích
             this.enabled = false;
             hoverItem.enabled = false;
+            PuzzleManager.instance.OnPairConnected();
         }
         else
         {
