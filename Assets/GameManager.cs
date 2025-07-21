@@ -3,20 +3,23 @@
 public class GameManager : MonoBehaviour
 {
     [Header("Connections")]
-    [Tooltip("Kéo đối tượng GameObject chứa script PulsingWarning vào đây.")]
-    public PulsingWarning warningZone;
+    [Tooltip("Kéo đối tượng GameObject chứa script PatrollingWarningCamera vào đây.")]
+    public PatrollingWarningCamera securityCamera; // Tham chiếu đến script camera
 
     void Update()
     {
+        // Ví dụ: Khi người dùng nhấn phím "T"
         if (Input.GetKeyDown(KeyCode.T))
         {
-            if (warningZone != null)
+            // Kiểm tra xem đã kết nối với camera chưa
+            if (securityCamera != null)
             {
-                warningZone.SetWarningMessage("TÍN HIỆU CẢNH BÁO TỪ GAMEMANAGER!");
+                // Gọi hàm public của script camera để thay đổi nội dung cảnh báo
+                securityCamera.SetWarningMessage("TÍN HIỆU CẢNH BÁO TỪ GAMEMANAGER!");
             }
             else
             {
-                Debug.LogError("Chưa gán đối tượng Warning Zone cho GameManager trong Inspector!");
+                Debug.LogError("Chưa gán đối tượng Security Camera cho GameManager trong Inspector!");
             }
         }
     }

@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 495d568851805ff4187a025664193204, type: 3}
+  m_Name: BoxChat
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - characterName: "C\xF4 Hai "
+    sentence: "N\xE0y b\xE0 nghe c\xE1i v\u1EE5 con H\xE2n ph\u1ED1 b\xEAn \u0103n
+      \u0111\u1ED3 c\u1EE7a c\xF4ng ty Kare g\xEC \u0111\xF3 ,n\xF3 \u0103n v\xE0o
+      \u0111au b\u1EE5ng \u0111\u1EBFn m\u1EE9c ph\u1EA3i \u0111i s\xFAc ru\u1ED9t
+      lu\xF4n m\xE0"
+  - characterName: "B\xE0 T\xE1m"
+    sentence: "C\xE1i g\xEC gh\xEA v\u1EADy m\u1EADy"
+  - characterName: "C\xF4 Hai"
+    sentence: "B\u1EDFi ! B\xE2y gi\u1EDD \u0111\u1ED3 th\u1EADt gi\u1EA3 l\u1EABn
+      l\u1ED9n ri\u1EBFt kh\xF4ng d\xE1m \u0103n g\xEC lu\xF4n qu\xE1"
+  - characterName: "B\xE0 T\xE1m"
+    sentence: "N\u1EEFa c\u1EA9n th\u1EADn tao th\u1EA5y con m\xE0y c\u0169ng hay
+      mua m\u1EA5y \u0111\u1ED3 \u0103n v\u1EB7t \u0111\u1EA5y "
+  - characterName: "C\xF4 Hai"
+    sentence: "T\xF4i bi\u1EBFt r\u1ED3i b\xE0 \u01A1i"

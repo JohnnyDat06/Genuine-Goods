@@ -10,16 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 495d568851805ff4187a025664193204, type: 3}
-  m_Name: NPC1_WelcomeDialogue 1
+  m_Name: Loop
   m_EditorClassIdentifier: 
   dialogueLines:
-  - characterName: "Anh Ch\xEDn Qu\xE8"
-    sentence: Hello
-  - characterName: Player
-    sentence: Hello Nigga
-  - characterName: "Anh Ch\xEDn Qu\xE8"
-    sentence: Ohaiyo
-  - characterName: Player
-    sentence: 123
-  - characterName: "Anh B\u1EA3y Ca S\u0129"
-    sentence: 123
+  - characterName: "H\xF9ng "
+    sentence: "(\u0110ang ng\u1EAFm c\u1EA3nh)\n"
