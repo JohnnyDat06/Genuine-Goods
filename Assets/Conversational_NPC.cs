@@ -13,11 +13,22 @@ public class Conversational_NPC : MonoBehaviour
     [SerializeField] private NPC_Controller npcController;
 
     private bool playerIsInRange = false;
-    private bool hasBeenSpokenTo = false; // Cờ để kiểm tra đã nói chuyện lần nào chưa
+    private bool hasBeenSpokenTo = false;
+    private bool isInteractionDisabled = false; // Cờ để vô hiệu hóa tạm thời
+
+    private void OnEnable()
+    {
+        DialogueManager.RegisterNPC(this);
+    }
+
+    private void OnDisable()
+    {
+        DialogueManager.UnregisterNPC(this);
+    }
 
     private void Update()
     {
-        if (playerIsInRange && !DialogueManager.instance.IsDialogueActive && Input.GetKeyDown(interactionKey))
+        if (playerIsInRange && !isInteractionDisabled && !DialogueManager.instance.IsDialogueActive && Input.GetKeyDown(interactionKey))
         {
             TriggerDialogue();
         }
@@ -25,23 +36,17 @@ public class Conversational_NPC : MonoBehaviour
 
     private void TriggerDialogue()
     {
-        // Nếu chưa nói chuyện lần nào
         if (!hasBeenSpokenTo)
         {
-            // Tạo một hành động (callback) để thực hiện SAU KHI hội thoại kết thúc
             Action onFinish = () =>
             {
-                hasBeenSpokenTo = true; // Đặt cờ thành true
+                hasBeenSpokenTo = true;
             };
-
-            // Bắt đầu hội thoại lần đầu và truyền callback vào
-            DialogueManager.instance.StartDialogue(initialDialogue, npcController, onFinish);
+            DialogueManager.instance.StartDialogue(initialDialogue, npcController, this, onFinish);
         }
-        // Nếu đã nói chuyện rồi
         else
         {
-            // Bắt đầu hội thoại lặp lại (không cần callback)
-            DialogueManager.instance.StartDialogue(repeatingDialogue, npcController);
+            DialogueManager.instance.StartDialogue(repeatingDialogue, npcController, this);
         }
     }
 
@@ -50,10 +55,14 @@ public class Conversational_NPC : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerIsInRange = true;
-            if (interactionPrompt != null) interactionPrompt.SetActive(true);
+            if (!isInteractionDisabled && interactionPrompt != null)
+            {
+                interactionPrompt.SetActive(true);
+            }
         }
     }
 
+    // --- HÀM ONTRIGGEREXIT2D ĐÃ ĐƯỢC CẬP NHẬT ---
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -61,9 +70,33 @@ public class Conversational_NPC : MonoBehaviour
             playerIsInRange = false;
             if (interactionPrompt != null) interactionPrompt.SetActive(false);
 
-            if (DialogueManager.instance != null && DialogueManager.instance.IsDialogueActive)
+            // THÊM ĐIỀU KIỆN MỚI: Chỉ kết thúc hội thoại nếu người chơi đang nói chuyện VỚI CHÍNH NPC NÀY.
+            if (DialogueManager.instance != null && DialogueManager.instance.IsDialogueActive && DialogueManager.instance.SpeakingNPCController == this.npcController)
             {
                 DialogueManager.instance.EndDialogue();
+            }
+        }
+    }
+    // -------------------------------------------
+
+    public void DeactivateForDialogue()
+    {
+        isInteractionDisabled = true;
+        if (interactionPrompt != null)
+        {
+            interactionPrompt.SetActive(false);
+        }
+        // Giữ nguyên logic này: các NPC khác vẫn di chuyển
+    }
+
+    public void ActivateAfterDialogue()
+    {
+        isInteractionDisabled = false;
+        if (playerIsInRange)
+        {
+            if (interactionPrompt != null)
+            {
+                interactionPrompt.SetActive(true);
             }
         }
     }

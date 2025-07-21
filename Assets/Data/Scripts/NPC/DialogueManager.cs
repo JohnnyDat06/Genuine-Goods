@@ -25,6 +25,12 @@ public class DialogueManager : MonoBehaviour
     private NPC_Controller npcControllerToDisable;
     private Action onDialogueFinishedCallback;
 
+    // --- THAY ĐỔI: Thêm biến để biết NPC nào đang nói chuyện ---
+    public NPC_Controller SpeakingNPCController { get; private set; }
+    // --------------------------------------------------------
+
+    private static List<Conversational_NPC> allNpcs = new List<Conversational_NPC>();
+
     private void Awake()
     {
         if (instance == null) instance = this;
@@ -59,42 +65,53 @@ public class DialogueManager : MonoBehaviour
     private bool IsIgnoredKey()
     {
         return Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) ||
-               Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) ||
-               Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow) ||
-               Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow);
+               Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D);
     }
 
-    public void StartDialogue(DialogueObject dialogue, NPC_Controller npcController, Action onDialogueFinished = null)
+    public static void RegisterNPC(Conversational_NPC npc)
+    {
+        if (!allNpcs.Contains(npc))
+        {
+            allNpcs.Add(npc);
+        }
+    }
+
+    public static void UnregisterNPC(Conversational_NPC npc)
+    {
+        if (allNpcs.Contains(npc))
+        {
+            allNpcs.Remove(npc);
+        }
+    }
+
+    public void StartDialogue(DialogueObject dialogue, NPC_Controller npcController, Conversational_NPC currentSpeaker, Action onDialogueFinished = null)
     {
         IsDialogueActive = true;
         dialoguePanel.SetActive(true);
         this.onDialogueFinishedCallback = onDialogueFinished;
 
-        // --- KHÓA NGƯỜI CHƠI VÀ CHUYỂN VỀ IDLE ---
-        PlayerController playerController = FindObjectOfType<PlayerController>();
-        if (playerController != null)
+        foreach (var npc in allNpcs)
         {
-            // 1. Vô hiệu hóa script để không nhận input
-            playerController.enabled = false;
-
-            // 2. Triệt tiêu vận tốc còn lại
-            Rigidbody2D playerRb = playerController.GetComponent<Rigidbody2D>();
-            if (playerRb != null)
+            if (npc != currentSpeaker)
             {
-                playerRb.velocity = Vector2.zero;
-            }
-
-            // 3. Ra lệnh cho Animator chuyển về trạng thái Idle
-            Animator playerAnimator = playerController.GetComponent<Animator>();
-            if (playerAnimator != null)
-            {
-                // Dựa theo PlayerController.cs, trạng thái Idle là 0
-                playerAnimator.SetInteger("State", 0);
+                npc.DeactivateForDialogue();
             }
         }
 
-        // Vô hiệu hóa NPC
+        PlayerController playerController = FindObjectOfType<PlayerController>();
+        if (playerController != null)
+        {
+            playerController.enabled = false;
+            Rigidbody2D playerRb = playerController.GetComponent<Rigidbody2D>();
+            if (playerRb != null) playerRb.velocity = Vector2.zero;
+            Animator playerAnimator = playerController.GetComponent<Animator>();
+            if (playerAnimator != null) playerAnimator.SetInteger("State", 0);
+        }
+
         npcControllerToDisable = npcController;
+        // --- THAY ĐỔI: Lưu lại NPC đang nói chuyện ---
+        SpeakingNPCController = npcControllerToDisable;
+        // ------------------------------------------
         if (npcControllerToDisable != null)
         {
             npcControllerToDisable.enabled = false;
@@ -145,18 +162,24 @@ public class DialogueManager : MonoBehaviour
         if (typingCoroutine != null) StopCoroutine(typingCoroutine);
         isTyping = false;
 
-        // --- KÍCH HOẠT LẠI NGƯỜI CHƠI ---
         PlayerController playerController = FindObjectOfType<PlayerController>();
         if (playerController != null)
         {
-            // Chỉ cần kích hoạt lại script. Script sẽ tự điều khiển Animator
             playerController.enabled = true;
         }
 
-        // Kích hoạt lại NPC
         if (npcControllerToDisable != null) npcControllerToDisable.enabled = true;
 
-        // Gọi callback nếu nó tồn tại
+        // --- THAY ĐỔI: Reset lại NPC đang nói chuyện ---
+        SpeakingNPCController = null;
+        // -------------------------------------------
+
+        foreach (var npc in allNpcs)
+        {
+            npc.ActivateAfterDialogue();
+        }
+
         onDialogueFinishedCallback?.Invoke();
+        onDialogueFinishedCallback = null;
     }
 }
