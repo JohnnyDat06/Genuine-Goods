@@ -7,8 +7,7 @@ public class NPC_Controller : MonoBehaviour
 
     private Vector3 pointA;
     private Vector3 pointB;
-    private int direction = 1; // 1 là đi sang phải, -1 là đi sang trái
-
+    private int direction = 1;
     private Animator animator;
 
     void Awake()
@@ -22,33 +21,20 @@ public class NPC_Controller : MonoBehaviour
         pointB = new Vector3(transform.position.x + moveDistance, transform.position.y, transform.position.z);
     }
 
-    // Dừng animation khi script bị vô hiệu hóa (lúc hội thoại)
     private void OnDisable()
     {
-        if (animator != null)
-        {
-            animator.SetBool("isWalking", false);
-        }
+        if (animator != null) animator.SetBool("isWalking", false);
     }
 
-    // Bật lại animation khi script được kích hoạt
     void OnEnable()
     {
-        if (animator != null)
-        {
-            animator.SetBool("isWalking", true);
-        }
+        if (animator != null) animator.SetBool("isWalking", true);
     }
 
     void Update()
     {
         transform.Translate(Vector2.right * direction * speed * Time.deltaTime);
-
-        if (direction == 1 && transform.position.x >= pointB.x)
-        {
-            Flip();
-        }
-        else if (direction == -1 && transform.position.x <= pointA.x)
+        if ((direction == 1 && transform.position.x >= pointB.x) || (direction == -1 && transform.position.x <= pointA.x))
         {
             Flip();
         }

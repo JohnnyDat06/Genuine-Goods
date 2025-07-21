@@ -17,7 +17,7 @@ MonoBehaviour:
     sentence: "Tr\u1EDDi ban \xE1nh s\xE1ng n\u0103m th\xE1ng t\u01B0 b\u1EC1 ...\u1EE6a
       th\u1EB1ng cu ki\u1EBFm anh c\xF3 chuy\u1EC7n g\xEC"
   - characterName: Player
-    sentence: "Qua nhi\u1EC1u chuy\u1EC7n t\xED ,, c\xF3 chuy\u1EC7n g\xEC k\u1EC3
+    sentence: "Qua nhi\u1EC1u chuy\u1EC7n t\xED ...c\xF3 chuy\u1EC7n g\xEC k\u1EC3
       nghe ch\u01A1i "
   - characterName: "Anh B\u1EA3y Ca S\u0129"
     sentence: "Chuy\u1EC7n h\u1EA3? \xC0 \u0111\xFAng r\u1ED3i h\xF4m qua anh c\xF3
@@ -27,6 +27,5 @@ MonoBehaviour:
   - characterName: Player
     sentence: "Gh\xEA v\u1EADy!"
   - characterName: "Anh B\u1EA3y Ca S\u0129"
-    sentence: "N\u1EEFa mua g\xEC nh\u1EDB c\u1EA9n th\u1EADn \u0111\xF3 nghe , ch\xFAc
-      ch\xFA em mua may b\xE1n \u0111\u1EAFt ...H\u1ED3ng tr\u1EA7n tr\xEAn \u0111\xF4i
-      c\xE1nh tay "
+    sentence: "N\u1EEFa mua g\xEC nh\u1EDB c\u1EA9n th\u1EADn \u0111\xF3 nghe , anh
+      \u0111i l\xE0m ti\u1EBFp \u0111\xE2y"
