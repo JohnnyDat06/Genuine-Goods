@@ -146,13 +146,13 @@ public class PlayerController : MonoBehaviour
         {
             playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, jumpForce);
         }
-        else if (isWallSliding && movementInputDerection == 0) // Wall hop
-        {
-            isWallJump = true;
-            isWallSliding = false;
-            Vector2 forceToAdd = new Vector2(wallHopDirection.x * wallHopForce * -facingDirection, wallHopDirection.y * wallHopForce);
-            playerRigidbody.AddForce(forceToAdd, ForceMode2D.Impulse);
-        }
+        // else if (isWallSliding && movementInputDerection == 0) // Wall hop
+        // {
+        //     isWallJump = true;
+        //     isWallSliding = false;
+        //     Vector2 forceToAdd = new Vector2(wallHopDirection.x * wallHopForce * -facingDirection, wallHopDirection.y * wallHopForce);
+        //     playerRigidbody.AddForce(forceToAdd, ForceMode2D.Impulse);
+        // }
         else if ((isWallSliding || isTouchingWall) && movementInputDerection != 0) // Wall jump
         {
             isWallJump = true;

@@ -78,6 +78,7 @@ public class EnemyHealth : MonoBehaviour
             if (preventRespawn)
             {
                 Debug.Log("Đã bị khóa còng");
+                anim.SetTrigger("IsBlock");
                 Destroy(enemyObj, 10f);
                 yield break;
             }
