@@ -13,13 +13,29 @@ MonoBehaviour:
   m_Name: NPC1_WelcomeDialogue 1
   m_EditorClassIdentifier: 
   dialogueLines:
+  - characterName: "H\xF9ng"
+    sentence: "Anh Ch\xEDn \u0111ang l\xE0m g\xEC \u1EDF \u0111\xE2y v\u1EADy ?"
   - characterName: "Anh Ch\xEDn Qu\xE8"
-    sentence: Hello
-  - characterName: Player
-    sentence: Hello Nigga
+    sentence: "\u0110ang d\u1EA1o ch\u01A1i th\xF4i ,ph\u1EA3i r\u1ED3i d\u1EA1o
+      n\xE0y kh\xF4ng th\u1EA5y ch\xFA m\xE0y m\u1EDF qu\xE1n anh t\u01B0\u1EDFng
+      ch\xFA m\xE0y d\u1ECDn ch\u1ED7 kh\xE1c r\u1ED3i"
+  - characterName: "H\xF9ng"
+    sentence: "Do h\xE0nh em c\xF3 chuy\u1EC7n n\xEAn em v\u1EC1 \u0111\u1EC3 gi\u1EA3i
+      quy\u1EBFt th\xF4i (Th\u1EADt ra l\xE0 l\xE0m m\u1ED9t s\u1ED1 tr\u1ECDng \xE1n)"
   - characterName: "Anh Ch\xEDn Qu\xE8"
-    sentence: Ohaiyo
-  - characterName: Player
-    sentence: 123
-  - characterName: "Anh B\u1EA3y Ca S\u0129"
-    sentence: 123
+    sentence: "M\u1EA5y nay m\xE0y \u0111i th\xEC ,c\xE1i c\xF4ng ty Kera b\xEAn
+      kia xu\u1EA5t hi\u1EC7n ,kh\xF4ng bi\u1EBFt sao m\xE0 con H\xE2n \u0103n \u0111\u1ED3
+      c\xF4ng ty \u0111\xF3 th\xEC n\xF3 b\u1ECB \u0111au b\u1EE5ng r\u1ED3i ph\u1EA3i
+      v\xE0o b\u1EC7nh vi\u1EC7n"
+  - characterName: "H\xF9ng"
+    sentence: "G\xEC gh\xEA th\u1EBF ,th\u1EBF \u0111\xE3 b\xE1o c\xF4ng an ch\u01B0a
+      \u0111\u1EA5y"
+  - characterName: "Anh Ch\xEDn Qu\xE8"
+    sentence: "Th\xEC c\xF3 nh\u01B0ng m\xE0 khi ng\u01B0\u1EDDi ta \u0111\u1EBFn
+      ki\u1EC3m tra th\xEC kh\xF4ng th\u1EA5y b\u1EA5t k\u1EF3 b\u1EB1ng ch\u1EE9ng
+      n\xE0o n\xEAn t\u1EA1m th\u1EDDi \u0111\xE3 b\u1ECF qua chuy\u1EC7n \u0111\xF3
+      r\u1ED3i"
+  - characterName: "H\xF9ng"
+    sentence: "(C\xF3 v\u1EBB b\u1ECDn n\xE0y kh\xE1c l\xE0 tinh vi t\u1ED1i nay
+      ch\u1EAFc m\xECnh s\u1EBD \u0111\u1EBFn n\u01A1i \u0111\xF3 \u0111i\u1EC1u
+      tra th\u1EED)"
