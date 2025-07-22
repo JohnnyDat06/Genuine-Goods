@@ -9,6 +9,7 @@ public class Enemy3Controller : MonoBehaviour
     
         [Header("Attack Setting")]
         [SerializeField] private float attackRange = 10f;
+        [SerializeField] private float attackDamage = 30f;
         [SerializeField] private float moveRange = 15f;
         [SerializeField] private float attackCoolDown = 2f;
         [SerializeField] private float moveSpeed = 2f;
@@ -108,7 +109,7 @@ public class Enemy3Controller : MonoBehaviour
 
         public void AttackDamage()
         {
-            player.GetComponent<PlayerHealth>().TakeDamage(30);
+            player.GetComponent<PlayerHealth>().TakeDamage(attackDamage);
         }
         private void FacePlayer()
         {
