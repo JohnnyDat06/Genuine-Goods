@@ -112,7 +112,7 @@ SpriteRenderer:
   m_SortingLayerID: -564610189
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fbdef373188f55d43bb4adc6c55c4231, type: 3}
+  m_Sprite: {fileID: 433980207, guid: 567f3e02dd6ea984e9b86f256a031154, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -155,18 +155,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0018086433, y: 0.6125152}
+  m_Offset: {x: -0.0018086433, y: 0.09957039}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 3.6923077, y: 3.2307692}
+    pivot: {x: 0.5, y: 0.2}
+    oldSize: {x: 3, y: 2.625}
     newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.40202236, y: 1.2730594}
+  m_Size: {x: 0.40202236, y: 1.2730596}
   m_EdgeRadius: 0
 --- !u!50 &7653302912006073305
 Rigidbody2D:
@@ -265,7 +265,7 @@ MonoBehaviour:
   attackMask:
     serializedVersion: 2
     m_Bits: 64
-  attackOffset: {x: 0.6, y: 0.65}
+  attackOffset: {x: 0.59, y: 0.07}
   isAttacking: 0
   atk1: 20
   atk2: 30
