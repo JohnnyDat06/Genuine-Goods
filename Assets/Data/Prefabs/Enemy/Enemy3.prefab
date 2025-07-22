@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2581213630285247658}
   - component: {fileID: 6125901016828627954}
   - component: {fileID: 298838344440066798}
+  - component: {fileID: 4375617143366371869}
   m_Layer: 6
   m_Name: Enemy3Obj
   m_TagString: Enemy
@@ -216,6 +217,24 @@ MonoBehaviour:
   moveSpeed: 2
   startPoint: {fileID: 8227675036582696115}
   rb: {fileID: 5363128202502895264}
+--- !u!114 &4375617143366371869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2451587243170752047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74cd909579e9e7246bb858a19e7f5fad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionPrompt: {fileID: 0}
+  progressRingImage: {fileID: 0}
+  promptOffset: {x: 0, y: 0.5, z: 0}
+  interactKey: 101
+  holdDuration: 0.5
+  interactionDistance: 2
 --- !u!1 &6648321765411740874
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,7 +290,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7111923300911377319}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.6514444, y: 0.28928208, z: 0.09719981}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

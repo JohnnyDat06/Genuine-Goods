@@ -96,8 +96,8 @@ GameObject:
   - component: {fileID: 8217940260033099575}
   - component: {fileID: 8934350535980599173}
   - component: {fileID: 5061699801387306009}
-  - component: {fileID: 3438389684133149359}
   - component: {fileID: 8806878402874614181}
+  - component: {fileID: 848804791709664381}
   m_Layer: 0
   m_Name: NPC2
   m_TagString: Untagged
@@ -161,7 +161,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 127232846, guid: 06a39b97c52509f4fb7a7d32506e792a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -208,22 +208,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   moveDistance: 3
---- !u!114 &3438389684133149359
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7299103990985030220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2b84d3fdb90dc249a772cd902aaa5da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue: {fileID: 11400000, guid: 21df45f0a0de458409311426da8c5a73, type: 2}
-  interactionKey: 101
-  interactionPrompt: {fileID: 913097674332758151}
-  npcController: {fileID: 5061699801387306009}
 --- !u!61 &8806878402874614181
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -256,16 +240,33 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.18117118, y: -0.30677104}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.5, y: 1.5}
+    oldSize: {x: 1.92, y: 1.92}
     newSize: {x: 1.5, y: 1.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 1.5}
+  m_Size: {x: 1.9431996, y: 1.330895}
   m_EdgeRadius: 0
+--- !u!114 &848804791709664381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7299103990985030220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0289a4cae4b4bdc49b6750b344743294, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialDialogue: {fileID: 11400000, guid: 21df45f0a0de458409311426da8c5a73, type: 2}
+  repeatingDialogue: {fileID: 11400000, guid: b8e4d721506a91a4ab36babab882099b, type: 2}
+  interactionKey: 101
+  interactionPrompt: {fileID: 913097674332758151}
+  npcController: {fileID: 5061699801387306009}

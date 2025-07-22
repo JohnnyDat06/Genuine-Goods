@@ -150,12 +150,16 @@ public class EnemyHealth : MonoBehaviour
         scale.x *= -1;
         transform.localScale = scale;
     }
-    
+
     public void Revive()
     {
         StartCoroutine(ReviveCooldown());
     }
-
+    //Rito
+    public void ConfirmFinisher()
+    {
+        preventRespawn = true;
+    }
     private IEnumerator ReviveCooldown()
     {
         isReviving = true;
