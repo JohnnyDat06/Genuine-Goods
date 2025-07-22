@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 495d568851805ff4187a025664193204, type: 3}
+  m_Name: Chat
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - characterName: "H\xF9ng"
+    sentence: "Ch\xFA N\u0103m h\xF4m nay kh\xF4ng c\xF3 s\u1EEDa \u0111i\u1EC7n
+      m\xE0 \u1EDF \u0111\xE2y th\u1EA3nh th\u01A1i qu\xE1 v\u1EADy "
+  - characterName: "Ch\xFA N\u0103m Th\u1EE3 \u0110i\u1EC7n"
+    sentence: "H\xF4m nay ch\xFA \u0111\u01B0\u1EE3c ngh\u1EC9 ,d\u1EA1o n\xE0y ch\xFA
+      h\u01A1i lu bu n\xEAn \u0111\u01B0\u1EE3c ngh\u1EC9 "
+  - characterName: "Ch\xFA N\u0103m Th\u1EE3 \u0110i\u1EC7n"
+    sentence: "H\xF4m qua c\u1EA3 x\xF3m m\u1EA5t \u0111i\u1EC7n l\xE0m ch\xFA ph\u1EA3i
+      th\u1EE9c c\u1EA3 bu\u1ED5i t\xF4i \u0111\u1EBFn th\xEC m\u1EDBi bi\u1EBFt
+      d\xE2y \u0111i\u1EC7n b\u1ECB \u0111\u1EE9t , m\xE0 c\u0169ng c\u1EF1c l\u1EAFm
+      m\xE0y \u01A1i "
+  - characterName: "H\xF9ng"
+    sentence: "Sau c\u1EF1c v\u1EADy ch\xFA ?"
+  - characterName: "Ch\xFA N\u0103m Th\u1EE3 \u0110i\u1EC7n"
+    sentence: "H\xF4m qua l\xE0 d\xE2y \u0111i\u1EC7n \u0111\u1EDDi c\u0169 kh\xF3
+      s\u1EEDa ,\u0110\u1ECE TR\xC1I th\xEC ph\u1EA3i n\u1ED1i v\u1EDBi V\xC0NG PH\u1EA2I
+      ,V\xC0NG TR\xC1I th\xEC n\u1ED1i v\u1EDBi XANH L\xC1 PH\u1EA2I ,N\xC2U TR\xC1I
+      th\xEC ph\u1EA3i n\u1ED1i v\u1EDBi \u0110\u1ECE PH\u1EA2I ,c\xF2n XANH L\xC1
+      TR\xC1I n\u1ED1i v\u1EDBi N\xC2U PH\u1EA2I"
+  - characterName: "H\xF9ng"
+    sentence: "C\xE1i g\xEC l\u1EB1ng nh\u1EB1ng d\u1EEF v\u1EADy"
+  - characterName: "Ch\xFA N\u0103m Th\u1EE3 \u0110i\u1EC7n"
+    sentence: "B\u1EDFi ! h\xF4m qua ph\u1EA3i m\u01B0\u1EDDi m\u1EA5y ti\u1EBFng
+      ch\xFA m\u1EDBi s\u1EEDa xong s\u1EBFp th\u1EA5y v\u1EADy cho ch\xFA ngh\u1EC9
+      m\u1ED9t ng\xE0y"
