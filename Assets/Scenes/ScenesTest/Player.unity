@@ -5103,6 +5103,38 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 585965212}
+    - target: {fileID: 985928331690890858, guid: 69486438bf6d12747904d49daa0f994a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 433980207, guid: 567f3e02dd6ea984e9b86f256a031154, type: 3}
+    - target: {fileID: 2271036388393086679, guid: 69486438bf6d12747904d49daa0f994a, type: 3}
+      propertyPath: m_Size.y
+      value: 1.2730596
+      objectReference: {fileID: 0}
+    - target: {fileID: 2271036388393086679, guid: 69486438bf6d12747904d49daa0f994a, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.09957039
+      objectReference: {fileID: 0}
+    - target: {fileID: 2271036388393086679, guid: 69486438bf6d12747904d49daa0f994a, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2271036388393086679, guid: 69486438bf6d12747904d49daa0f994a, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2271036388393086679, guid: 69486438bf6d12747904d49daa0f994a, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 2.625
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987075598520525416, guid: 69486438bf6d12747904d49daa0f994a, type: 3}
+      propertyPath: attackOffset.x
+      value: 0.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987075598520525416, guid: 69486438bf6d12747904d49daa0f994a, type: 3}
+      propertyPath: attackOffset.y
+      value: 0.07
+      objectReference: {fileID: 0}
     - target: {fileID: 8716760619009368076, guid: 69486438bf6d12747904d49daa0f994a, type: 3}
       propertyPath: slider
       value: 
@@ -5438,6 +5470,10 @@ PrefabInstance:
     - target: {fileID: 2004299855236020792, guid: 0e343d7002c676d43881f0d288188087, type: 3}
       propertyPath: m_Name
       value: GameOverPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 2004299855236020792, guid: 0e343d7002c676d43881f0d288188087, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4896746964999022942, guid: 0e343d7002c676d43881f0d288188087, type: 3}
       propertyPath: m_Pivot.x
