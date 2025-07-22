@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 4621469747489426235}
   - component: {fileID: 3912965601408809324}
   - component: {fileID: 4912972136195875341}
+  - component: {fileID: 3500510776611374825}
   m_Layer: 6
   m_Name: Enemy1Obj
   m_TagString: Enemy
@@ -249,6 +250,24 @@ MonoBehaviour:
   firePoint: {fileID: 2063830874424795693}
   startPoint: {fileID: 6554748403102856712}
   brickBullet: {fileID: 605772187254173616, guid: 448a6a362473b524586ce3e2381b2695, type: 3}
+--- !u!114 &3500510776611374825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5541551612266764278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74cd909579e9e7246bb858a19e7f5fad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionPrompt: {fileID: 0}
+  progressRingImage: {fileID: 0}
+  promptOffset: {x: 0, y: 1.5, z: 0}
+  interactKey: 101
+  holdDuration: 1.5
+  interactionDistance: 2
 --- !u!1 &6371181770283651294
 GameObject:
   m_ObjectHideFlags: 0

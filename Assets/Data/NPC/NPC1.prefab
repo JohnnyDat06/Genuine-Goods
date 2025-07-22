@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 3772309617609073501}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.4597, y: 0.3809, z: 0}
+  m_LocalPosition: {x: -0.4597, y: 0.6, z: 0}
   m_LocalScale: {x: 0.28812, y: 0.4136, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -97,8 +97,8 @@ GameObject:
   - component: {fileID: 2935791298051870854}
   - component: {fileID: 3848689104932309494}
   - component: {fileID: 6790193024097100661}
-  - component: {fileID: 3053458253032823577}
   - component: {fileID: 7988388626294889604}
+  - component: {fileID: 1840080983382127609}
   m_Layer: 0
   m_Name: NPC1
   m_TagString: NPC
@@ -162,8 +162,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -1047717818, guid: 2617d2ead5e5fc54b8d909501ea0519d, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: -1182973811, guid: da26c76487d3e3241a935e3774bc1937, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -206,18 +206,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.44966733, y: -0.18876314}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.5, y: 1.5}
+    oldSize: {x: 1.92, y: 1.92}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.9706349, y: 0.8228617}
   m_EdgeRadius: 0
 --- !u!50 &3848689104932309494
 Rigidbody2D:
@@ -258,24 +258,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5317dc56516ca24b8b23264fb731282, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  moveDistance: 3
---- !u!114 &3053458253032823577
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7945619156506790827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2b84d3fdb90dc249a772cd902aaa5da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue: {fileID: 11400000, guid: 0bb2bc9f9c9902d4490ac3bb9e32551a, type: 2}
-  interactionKey: 101
-  interactionPrompt: {fileID: 3772309617609073501}
-  npcController: {fileID: 6790193024097100661}
+  speed: 1.5
+  moveDistance: 2
 --- !u!95 &7988388626294889604
 Animator:
   serializedVersion: 5
@@ -297,3 +281,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1840080983382127609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7945619156506790827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0289a4cae4b4bdc49b6750b344743294, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialDialogue: {fileID: 11400000, guid: 0bb2bc9f9c9902d4490ac3bb9e32551a, type: 2}
+  repeatingDialogue: {fileID: 11400000, guid: f4ffc9cc6350da74e8cf9597a2e18802, type: 2}
+  interactionKey: 101
+  interactionPrompt: {fileID: 3772309617609073501}
+  npcController: {fileID: 6790193024097100661}
