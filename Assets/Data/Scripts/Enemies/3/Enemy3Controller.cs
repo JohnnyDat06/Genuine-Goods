@@ -19,6 +19,7 @@ public class Enemy3Controller : MonoBehaviour
         private Transform player;
         private Animator anim;
         private float cooldownTimer = Mathf.Infinity;
+        private float chaseTimer;
         private EnemyHealth enemyHealth;
     
         private void Awake()
@@ -68,16 +69,23 @@ public class Enemy3Controller : MonoBehaviour
                 case State.Attacking:
                     anim.SetBool("IsMove", false);
                     FacePlayer();
-    
+
                     if (cooldownTimer >= attackCoolDown)
                     {
                         cooldownTimer = 0;
                         Attack();
                     }
-    
                     if (Vector2.Distance(player.position, transform.position) > attackRange)
                     {
-                        currentState = State.Chasing;
+                        chaseTimer += Time.deltaTime;
+                        if (chaseTimer > 1f)
+                        {
+                            currentState = State.Chasing;
+                        }
+                    }
+                    else
+                    {
+                        chaseTimer = 0;
                     }
                     break;
     
@@ -109,6 +117,18 @@ public class Enemy3Controller : MonoBehaviour
 
         public void AttackDamage()
         {
+            PlayerController pc = player.GetComponent<PlayerController>();
+            if (pc != null && pc.isParrying)
+            {
+                // Bị đỡ đòn: enemy bị đẩy lùi và dính "IsHit"
+                GetComponent<EnemyHealth>().BeAttack(0.5f, 0.1f); // đẩy nhẹ
+                anim.SetTrigger("IsHit");
+
+                // Delay tấn công
+                cooldownTimer = -0.5f; // reset cooldown sớm hơn tí để thử lại
+                return;
+            }
+
             player.GetComponent<PlayerHealth>().TakeDamage(attackDamage);
         }
         private void FacePlayer()
