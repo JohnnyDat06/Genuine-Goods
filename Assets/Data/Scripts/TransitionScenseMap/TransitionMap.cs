@@ -33,7 +33,6 @@ public class TransitionMap : MonoBehaviour
             case 0:
                 if (locationName == "Map1")
                 {
-                    MissionManager.Instance.CorrectLocation();
                     SceneManager.LoadScene("Map1");
                 }
                 else ShowError();
@@ -42,7 +41,6 @@ public class TransitionMap : MonoBehaviour
             case 1:
                 if (locationName == "Map2")
                 {
-                    MissionManager.Instance.CorrectLocation();
                     SceneManager.LoadScene("Map2");
                 }
                 else ShowError();
@@ -51,7 +49,6 @@ public class TransitionMap : MonoBehaviour
             case 2:
                 if (locationName == "Map3")
                 {
-                    MissionManager.Instance.CorrectLocation();
                     SceneManager.LoadScene("Map3");
                 }
                 else ShowError();
@@ -59,7 +56,7 @@ public class TransitionMap : MonoBehaviour
         }
     }
 
-    public void ShowError()
+    private void ShowError()
     {
         MissionManager.Instance.WrongLocation();
         SceneManager.LoadScene("MapError");

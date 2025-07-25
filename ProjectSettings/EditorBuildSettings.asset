@@ -6,10 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/ScenesTest/Map1.unity
+    path: Assets/Scenes/ScenesTest/TraDa.unity
     guid: 20d1ad6cddfbee24fbd60f2e20070e32
   - enabled: 1
-    path: Assets/Scenes/ScenesTest/Map2.unity
+    path: Assets/Scenes/ScenesTest/Map1.unity
     guid: 7db2149ed146f7e4f8af65e06164125d
   - enabled: 1
     path: Assets/Scenes/ScenesTest/Start.unity
@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ScenesTest/MapError.unity
     guid: 40be012ec34ae6443bf4e556c34bdea5
+  - enabled: 1
+    path: Assets/Scenes/ScenesTest/MiniBoss1.unity
+    guid: 8f2d15d954c873c4387ef0e1a1af705e
   m_configObjects: {}

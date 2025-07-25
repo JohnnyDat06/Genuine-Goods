@@ -14,7 +14,7 @@ public class EnemyHealth : MonoBehaviour
     private Rigidbody2D rb;
 
     public bool isDead;
-    private bool preventRespawn = false;
+    public bool preventRespawn = false;
     private bool isPlayerNearby = false;
 
     private bool isFacingRight = true; // Biến để theo dõi hướng nhìn của enemy
