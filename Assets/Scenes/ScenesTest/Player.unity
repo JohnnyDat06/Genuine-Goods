@@ -5590,6 +5590,10 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 585965212}
+    - target: {fileID: 813382023633947433, guid: 69486438bf6d12747904d49daa0f994a, type: 3}
+      propertyPath: numberOfHearts
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 985928331690890858, guid: 69486438bf6d12747904d49daa0f994a, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -5955,7 +5959,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7454648442923109096, guid: 8b25736cf2bfd104e9feb23743a5b3a4, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -87
+      value: -112.9
       objectReference: {fileID: 0}
     - target: {fileID: 7454648442923109096, guid: 8b25736cf2bfd104e9feb23743a5b3a4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
