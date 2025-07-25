@@ -48,7 +48,8 @@ public class Menu : MonoBehaviour
     }
     public void Play()
     {
-        SceneManager.LoadScene("Map1");
+        SceneManager.LoadScene("TraDa");
+        Time.timeScale = 1f;
     }
     public void QuitGame()
     {
