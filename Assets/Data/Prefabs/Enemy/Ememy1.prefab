@@ -264,7 +264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionPrompt: {fileID: 0}
   progressRingImage: {fileID: 0}
-  promptOffset: {x: 0, y: 1.5, z: 0}
+  promptOffset: {x: 0, y: 0.5, z: 0}
   interactKey: 101
   holdDuration: 1.5
   interactionDistance: 2

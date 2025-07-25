@@ -1,23 +1,17 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(EnemyHealth))] // Đảm bảo đối tượng luôn có script EnemyHealth
+[RequireComponent(typeof(EnemyHealth))]
 public class EnemyFinisher : MonoBehaviour
 {
     [Header("UI Tương tác")]
-    [Tooltip("Đối tượng GameObject chứa chữ E và vòng tròn.")]
     [SerializeField] private GameObject interactionPrompt;
-    [Tooltip("Image của vòng tròn tiến trình.")]
     [SerializeField] private Image progressRingImage;
-    [Tooltip("Vị trí của UI so với đầu của kẻ địch.")]
     [SerializeField] private Vector3 promptOffset = new Vector3(0, 1.5f, 0);
 
     [Header("Thiết lập Tương tác")]
-    [Tooltip("Phím để thực hiện hành động.")]
     [SerializeField] private KeyCode interactKey = KeyCode.E;
-    [Tooltip("Thời gian cần giữ phím để hoàn tất.")]
     [SerializeField] private float holdDuration = 1.5f;
-    [Tooltip("Khoảng cách tối đa để có thể tương tác.")]
     [SerializeField] private float interactionDistance = 2f;
 
     // Các biến private
@@ -25,6 +19,7 @@ public class EnemyFinisher : MonoBehaviour
     private Transform playerTransform;
     private float holdTimer = 0f;
     private bool canInteract = false;
+    private bool isHoldingKey = false; // Biến trạng thái mới để theo dõi việc giữ phím
 
     void Awake()
     {
@@ -34,9 +29,86 @@ public class EnemyFinisher : MonoBehaviour
 
     void Start()
     {
+        // Luôn đảm bảo UI được tắt và reset khi bắt đầu
+        DeactivateAndResetUI();
+    }
+
+    void Update()
+    {
+        // Bước 1: Kiểm tra xem có thể tương tác được không
+        bool isPossible = enemyHealth.isDead && Vector2.Distance(transform.position, playerTransform.position) < interactionDistance;
+
+        // Nếu trạng thái "có thể tương tác" thay đổi
+        if (isPossible != canInteract)
+        {
+            canInteract = isPossible;
+            if (canInteract)
+            {
+                // Khi vừa có thể tương tác, bật UI và reset mọi thứ
+                ActivateUI();
+            }
+            else
+            {
+                // Khi không thể tương tác nữa, tắt UI
+                DeactivateAndResetUI();
+            }
+        }
+
+        // Bước 2: Nếu có thể tương tác, xử lý input và vị trí UI
+        if (canInteract)
+        {
+            UpdatePromptPosition();
+            HandlePlayerInput();
+        }
+    }
+
+    private void HandlePlayerInput()
+    {
+        // Khi người chơi BẮT ĐẦU nhấn phím
+        if (Input.GetKeyDown(interactKey))
+        {
+            isHoldingKey = true;
+            holdTimer = 0f; // Reset timer ngay khi bắt đầu giữ
+        }
+        // Khi người chơi THẢ phím ra
+        else if (Input.GetKeyUp(interactKey))
+        {
+            isHoldingKey = false;
+            holdTimer = 0f; // Reset timer khi thả phím
+        }
+
+        // CHỈ khi người chơi đang thực sự giữ phím, chúng ta mới tăng timer
+        if (isHoldingKey)
+        {
+            holdTimer += Time.deltaTime;
+            if (holdTimer >= holdDuration)
+            {
+                PerformFinisher();
+            }
+        }
+
+        // Luôn cập nhật vòng tròn để hiển thị tiến trình
+        if (progressRingImage != null)
+        {
+            progressRingImage.fillAmount = holdTimer / holdDuration;
+        }
+    }
+
+    private void PerformFinisher()
+    {
+        Debug.Log("Thực hiện khóa tay thành công!");
+        enemyHealth.ConfirmFinisher();
+        DeactivateAndResetUI();
+        this.enabled = false; // Vô hiệu hóa script này trên kẻ địch đã bị khóa
+    }
+
+    private void ActivateUI()
+    {
+        holdTimer = 0f;
+        isHoldingKey = false;
         if (interactionPrompt != null)
         {
-            interactionPrompt.SetActive(false);
+            interactionPrompt.SetActive(true);
         }
         if (progressRingImage != null)
         {
@@ -44,14 +116,17 @@ public class EnemyFinisher : MonoBehaviour
         }
     }
 
-    void Update()
+    private void DeactivateAndResetUI()
     {
-        CheckInteractionPossibility();
-
-        if (canInteract)
+        holdTimer = 0f;
+        isHoldingKey = false;
+        if (interactionPrompt != null)
         {
-            UpdatePromptPosition();
-            HandlePlayerInput();
+            interactionPrompt.SetActive(false);
+        }
+        if (progressRingImage != null)
+        {
+            progressRingImage.fillAmount = 0;
         }
     }
 
@@ -63,85 +138,5 @@ public class EnemyFinisher : MonoBehaviour
             Vector3 screenPosition = Camera.main.WorldToScreenPoint(worldPosition);
             interactionPrompt.transform.position = screenPosition;
         }
-    }
-
-    private void CheckInteractionPossibility()
-    {
-        if (enemyHealth.isDead && Vector2.Distance(transform.position, playerTransform.position) < interactionDistance)
-        {
-            if (!canInteract)
-            {
-                canInteract = true;
-                if (interactionPrompt != null)
-                {
-                    interactionPrompt.SetActive(true);
-                }
-            }
-        }
-        else
-        {
-            if (canInteract)
-            {
-                canInteract = false;
-                holdTimer = 0f;
-                if (interactionPrompt != null)
-                {
-                    interactionPrompt.SetActive(false);
-                }
-                if (progressRingImage != null)
-                {
-                    progressRingImage.fillAmount = 0;
-                }
-            }
-        }
-    }
-
-    private void HandlePlayerInput()
-    {
-        if (Input.GetKey(interactKey))
-        {
-            holdTimer += Time.deltaTime;
-
-            if (progressRingImage != null)
-            {
-                progressRingImage.fillAmount = holdTimer / holdDuration;
-            }
-
-            if (holdTimer >= holdDuration)
-            {
-                PerformFinisher();
-            }
-        }
-
-        if (Input.GetKeyUp(interactKey))
-        {
-            holdTimer = 0f;
-            if (progressRingImage != null)
-            {
-                progressRingImage.fillAmount = 0;
-            }
-        }
-    }
-
-    // --- HÀM NÀY ĐÃ ĐƯỢC CẬP NHẬT ---
-    private void PerformFinisher()
-    {
-        Debug.Log("Thực hiện khóa tay thành công!");
-
-        // Tắt UI và reset vòng tròn
-        if (interactionPrompt != null)
-        {
-            interactionPrompt.SetActive(false);
-        }
-        if (progressRingImage != null)
-        {
-            progressRingImage.fillAmount = 0; // <-- THÊM DÒNG NÀY ĐỂ RESET
-        }
-
-        // Ra lệnh cho script EnemyHealth "khóa" kẻ địch lại
-        enemyHealth.ConfirmFinisher();
-
-        // Vô hiệu hóa script này để không thể tương tác được nữa
-        this.enabled = false;
     }
 }

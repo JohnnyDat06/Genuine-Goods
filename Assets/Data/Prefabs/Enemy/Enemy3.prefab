@@ -212,6 +212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 1
+  attackDamage: 30
   moveRange: 3
   attackCoolDown: 2
   moveSpeed: 2
@@ -233,7 +234,7 @@ MonoBehaviour:
   progressRingImage: {fileID: 0}
   promptOffset: {x: 0, y: 0.5, z: 0}
   interactKey: 101
-  holdDuration: 0.5
+  holdDuration: 1.5
   interactionDistance: 2
 --- !u!1 &6648321765411740874
 GameObject:
