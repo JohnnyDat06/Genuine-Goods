@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] public float startHealth;
+    [SerializeField] private float numberOfHearts;
     [SerializeField] private GameManagers gameManager;
     public float currentHeath {get; private set;}
 
@@ -23,7 +24,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q) && !isDead)
         {
-            TakeDamage(10);
+            TakeHealth(100);
         }
     }
 
@@ -34,6 +35,17 @@ public class PlayerHealth : MonoBehaviour
         if (currentHeath <= 0 && !isDead)
         {
             StartCoroutine(HandleDeathSequence());
+        }
+        Debug.Log(currentHeath);
+    }
+    
+    private void TakeHealth(float _health)
+    {
+        if(isDead) return;
+        if (numberOfHearts > 0)
+        {
+            currentHeath = Mathf.Clamp(currentHeath + _health, 0, startHealth);
+            numberOfHearts--;
         }
         Debug.Log(currentHeath);
     }

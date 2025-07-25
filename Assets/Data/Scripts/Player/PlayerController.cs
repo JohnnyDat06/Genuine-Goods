@@ -56,6 +56,7 @@ public class PlayerController : MonoBehaviour
         UpdateAnimation();
         CheckIfWallSliding();
         CheckAttack();
+        CheckIfParrying();
     }
 
     void FixedUpdate()
@@ -66,12 +67,19 @@ public class PlayerController : MonoBehaviour
     private IEnumerator ParryCoroutine()
     {
         isParrying = true;
-        canMove = false;
-        playerRigidbody.velocity = new Vector2(0f, playerRigidbody.velocity.y);
         playerAnimator.SetTrigger("IsParry");
         yield return new WaitForSeconds(parryDuration);
         isParrying = false;
-        canMove = true;
+    }
+
+    private void CheckIfParrying()
+    {
+        if (isParrying)
+        {
+            canMove = false;
+            playerRigidbody.velocity = new Vector2(0f, playerRigidbody.velocity.y);
+        }
+        else canMove = true;
     }
 
     
