@@ -26,7 +26,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Vector2 wallHopDirection;
     [SerializeField] private Vector2 wallJumpDirection;
 
+    [Header("Combat setting")]
     [SerializeField] private ComboAttack comboAttack;
+    [SerializeField] private float parryDuration = 0.5f;
+    public bool isParrying { get; private set; }
 
     private int facingDirection = 1;
     private float movementInputDerection;
@@ -60,7 +63,18 @@ public class PlayerController : MonoBehaviour
         ApplyMovement();
         IsTouchingWall();
     }
+    private IEnumerator ParryCoroutine()
+    {
+        isParrying = true;
+        canMove = false;
+        playerRigidbody.velocity = new Vector2(0f, playerRigidbody.velocity.y);
+        playerAnimator.SetTrigger("IsParry");
+        yield return new WaitForSeconds(parryDuration);
+        isParrying = false;
+        canMove = true;
+    }
 
+    
     private void CheckIfWallSliding()
     {
         if(isTouchingWall && !IsGrounded() && playerRigidbody.velocity.y < 0)
@@ -138,6 +152,12 @@ public class PlayerController : MonoBehaviour
             isRunning = false;
             movementSpeed = 3f; 
         }
+        
+        if (Input.GetKeyDown(KeyCode.K) && !isParrying)
+        {
+            StartCoroutine(ParryCoroutine());
+        }
+
     }
 
     private void Jump()
@@ -146,13 +166,6 @@ public class PlayerController : MonoBehaviour
         {
             playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, jumpForce);
         }
-        // else if (isWallSliding && movementInputDerection == 0) // Wall hop
-        // {
-        //     isWallJump = true;
-        //     isWallSliding = false;
-        //     Vector2 forceToAdd = new Vector2(wallHopDirection.x * wallHopForce * -facingDirection, wallHopDirection.y * wallHopForce);
-        //     playerRigidbody.AddForce(forceToAdd, ForceMode2D.Impulse);
-        // }
         else if ((isWallSliding || isTouchingWall) && movementInputDerection != 0) // Wall jump
         {
             isWallJump = true;
@@ -256,5 +269,12 @@ public class PlayerController : MonoBehaviour
     {
         Gizmos.color = Color.yellow;      
         Gizmos.DrawLine(wallCheck.position, new Vector2(wallCheck.position.x + wallCheckDistance, wallCheck.position.y));
+        
+        if (isParrying)
+        {
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawWireCube(transform.position, new Vector3(1f, 1.5f, 0.1f));
+        }
+
     }
 }
