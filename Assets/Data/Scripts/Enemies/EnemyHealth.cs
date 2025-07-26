@@ -21,6 +21,19 @@ public class EnemyHealth : MonoBehaviour
 
     protected virtual void Awake()
     {
+        float multiplier = 1f;
+
+        if (MissionManager.Instance != null)
+        {
+            multiplier += 0.5f * MissionManager.Instance.failCount;
+        }
+        else
+        {
+            Debug.LogWarning("MissionManager chưa được tạo khi EnemyHealth chạy Awake!");
+        }
+
+        startingHealth *= multiplier;
+        Debug.Log("Máu bắt đầu: " + startingHealth);
         currentHealth = startingHealth;
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();

@@ -56,7 +56,6 @@ public class PlayerController : MonoBehaviour
         UpdateAnimation();
         CheckIfWallSliding();
         CheckAttack();
-        CheckIfParrying();
     }
 
     void FixedUpdate()
@@ -71,17 +70,6 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(parryDuration);
         isParrying = false;
     }
-
-    private void CheckIfParrying()
-    {
-        if (isParrying)
-        {
-            canMove = false;
-            playerRigidbody.velocity = new Vector2(0f, playerRigidbody.velocity.y);
-        }
-        else canMove = true;
-    }
-
     
     private void CheckIfWallSliding()
     {
@@ -185,7 +173,7 @@ public class PlayerController : MonoBehaviour
 
     private void CheckAttack()
     {
-        if (comboAttack.isAttacking && comboAttack != null)
+        if (comboAttack.isAttacking || isParrying && comboAttack != null)
         {
             canMove = false;
             playerRigidbody.velocity = new Vector2(0f, playerRigidbody.velocity.y);
