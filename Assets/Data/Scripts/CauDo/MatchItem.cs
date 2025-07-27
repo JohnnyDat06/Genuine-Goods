@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI; // Nhớ thêm dòng này để dùng Image
+using UnityEngine.UI; 
 using UnityEngine.EventSystems;
 
 public class MatchItem : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerEnterHandler, IPointerUpHandler, IPointerExitHandler
@@ -15,8 +15,8 @@ public class MatchItem : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoin
     public WireColor wireColor; // Biến này sẽ tạo ra dropdown để chọn màu
 
     private GameObject line;
-    private RectTransform lineRectTransform; // Dùng RectTransform để scale chính xác hơn
-    private Canvas parentCanvas; // Cache cái canvas lại để dùng
+    private RectTransform lineRectTransform; 
+    private Canvas parentCanvas; 
 
     void Start()
     {
@@ -24,33 +24,23 @@ public class MatchItem : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoin
         parentCanvas = GetComponentInParent<Canvas>();
     }
 
-    //public void OnPointerDown(PointerEventData eventData)
-    //{
-    //    if (this.enabled == false) return; // Nếu đã nối rồi thì không làm gì cả
-
-    //    // Tạo line và lấy RectTransform của nó
-    //    line = Instantiate(linePrefab, transform.parent);
-    //    lineRectTransform = line.GetComponent<RectTransform>();
-
-    //    // Gọi hàm UpdateLine với eventData
-    //    UpdateLine(eventData);
-    //}
+    
     public void OnPointerDown(PointerEventData eventData)
     {
         if (this.enabled == false) return;
 
-        // Dòng này của bro giữ nguyên
+        
         line = Instantiate(linePrefab, transform.parent);
 
-        // <<< THÊM ĐOẠN CODE NÀY VÀO ĐÂY >>>
+        
         // Lấy component Image của dây và đổi màu dựa trên itemName
         Image lineImage = line.GetComponent<Image>();
         if (lineImage != null)
         {
-            // THAY THẾ KHỐI SWITCH CŨ BẰNG KHỐI NÀY
-            switch (wireColor) // << Sửa: Dùng wireColor
+           
+            switch (wireColor) 
             {
-                case WireColor.Red: // << Sửa: Dùng Enum
+                case WireColor.Red: 
                     lineImage.color = Color.red;
                     break;
                 case WireColor.Yellow:
@@ -70,9 +60,9 @@ public class MatchItem : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoin
                     break;
             }
         }
-        // <<< KẾT THÚC ĐOẠN CODE MỚI >>>
+        
 
-        // Các dòng này của bro giữ nguyên
+        
         lineRectTransform = line.GetComponent<RectTransform>();
         UpdateLine(eventData);
     }
@@ -95,10 +85,7 @@ public class MatchItem : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoin
             // Nối đường line tới vị trí của đối tượng đích
             UpdateLineToTarget(hoverItem.transform.position);
 
-            // Tạm thời vô hiệu hóa 2 đối tượng đã nối thành công
-            // Dùng Destroy(this) sẽ xóa mất script, có thể gây lỗi nếu muốn reset level
-            //GetComponent<Image>().color = Color.gray; // Đổi màu để báo hiệu đã nối
-            //hoverItem.GetComponent<Image>().color = Color.gray; // Đổi màu cả đối tượng đích
+            
             this.enabled = false;
             hoverItem.enabled = false;
             PuzzleManager.instance.OnPairConnected();
@@ -116,15 +103,13 @@ public class MatchItem : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoin
         hoverItem = this;
     }
 
-    // Hàm này sẽ được gọi khi không có chuột đi vào nữa, nên thêm vào cho chắc
+    
     public void OnPointerExit(PointerEventData eventData)
     {
         hoverItem = null;
     }
 
-    // --- CÁC HÀM UPDATE LINE ĐÃ SỬA ---
-
-    // Hàm này nhận vào eventData để chuyển đổi tọa độ chuột
+    
     void UpdateLine(PointerEventData eventData)
     {
         // Chuyển tọa độ chuột (screen space) sang tọa độ local trong canvas (world space)
