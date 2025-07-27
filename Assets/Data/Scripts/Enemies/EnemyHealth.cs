@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField] private float startingHealth = 3f;
+    [SerializeField] public float startingHealth = 3f;
     [SerializeField] private GameObject enemyObj;
     [SerializeField] private float reviveCoolDown = 1.5f;
     public bool isReviving { get; private set; }
