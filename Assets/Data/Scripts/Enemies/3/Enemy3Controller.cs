@@ -32,9 +32,7 @@ public class Enemy3Controller : MonoBehaviour
     
         private void Update()
         {
-            if (enemyHealth.currentHealth <= 0) return;
-            if (player == null) return;
-            if (enemyHealth.isReviving) return;
+            if (enemyHealth.currentHealth <= 0 || enemyHealth.isReviving || player == null) return;
     
             cooldownTimer += Time.deltaTime;
             
