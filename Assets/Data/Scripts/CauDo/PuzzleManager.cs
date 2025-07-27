@@ -99,4 +99,51 @@ public class PuzzleManager : MonoBehaviour
             Debug.LogWarning("Chưa set tên cho màn kế tiếp kìa bro!");
         }
     }
+    //public void ResetPuzzle()
+    //{
+    //    Debug.Log("Sai rồi! Nối lại từ đầu nhé.");
+
+    //    // 1. Reset lại bộ đếm
+    //    connectedPairs = 0;
+
+    //    // 2. Tìm và PHÁ HỦY hết tất cả các dây đã vẽ
+    //    GameObject[] lines = GameObject.FindGameObjectsWithTag("PuzzleLine");
+    //    foreach (GameObject line in lines)
+    //    {
+    //        Destroy(line); // << QUAY LẠI DÙNG DESTROY
+    //    }
+
+    //    // 3. Tìm và bật lại tất cả các điểm nối (giữ nguyên)
+    //    MatchItem[] items = GetComponentsInChildren<MatchItem>(true);
+    //    foreach (MatchItem item in items)
+    //    {
+    //        item.enabled = true;
+    //    }
+    //}
+    public void ResetPuzzle()
+    {
+        Debug.Log("--- BẮT ĐẦU RESET ---");
+
+        // 1. Reset lại bộ đếm
+        connectedPairs = 0;
+
+        // 2. Tìm và PHÁ HỦY hết tất cả các dây đã vẽ
+        GameObject[] lines = GameObject.FindGameObjectsWithTag("PuzzleLine");
+        Debug.Log("Đang phá hủy " + lines.Length + " dây nối.");
+        foreach (GameObject line in lines)
+        {
+            Destroy(line);
+        }
+
+        // 3. Tìm và bật lại tất cả các điểm nối
+        MatchItem[] items = GetComponentsInChildren<MatchItem>(true);
+        Debug.Log("Tìm thấy " + items.Length + " điểm nối để reset.");
+        foreach (MatchItem item in items)
+        {
+            Debug.Log("Đang bật lại điểm nối: " + item.gameObject.name);
+            item.enabled = true;
+        }
+        Debug.Log("--- RESET HOÀN TẤT ---");
+    }
+
 }

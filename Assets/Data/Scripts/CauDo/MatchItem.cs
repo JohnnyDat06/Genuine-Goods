@@ -6,10 +6,13 @@ using UnityEngine.EventSystems;
 
 public class MatchItem : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerEnterHandler, IPointerUpHandler, IPointerExitHandler
 {
+    public enum WireColor { White, Red, Yellow, Orange, Green, Blue }
     public static MatchItem hoverItem;
 
     public GameObject linePrefab;
     public string itemName;
+    [Tooltip("Màu của sợi dây sẽ được vẽ ra từ điểm này.")]
+    public WireColor wireColor; // Biến này sẽ tạo ra dropdown để chọn màu
 
     private GameObject line;
     private RectTransform lineRectTransform; // Dùng RectTransform để scale chính xác hơn
@@ -21,15 +24,56 @@ public class MatchItem : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoin
         parentCanvas = GetComponentInParent<Canvas>();
     }
 
+    //public void OnPointerDown(PointerEventData eventData)
+    //{
+    //    if (this.enabled == false) return; // Nếu đã nối rồi thì không làm gì cả
+
+    //    // Tạo line và lấy RectTransform của nó
+    //    line = Instantiate(linePrefab, transform.parent);
+    //    lineRectTransform = line.GetComponent<RectTransform>();
+
+    //    // Gọi hàm UpdateLine với eventData
+    //    UpdateLine(eventData);
+    //}
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (this.enabled == false) return; // Nếu đã nối rồi thì không làm gì cả
+        if (this.enabled == false) return;
 
-        // Tạo line và lấy RectTransform của nó
+        // Dòng này của bro giữ nguyên
         line = Instantiate(linePrefab, transform.parent);
-        lineRectTransform = line.GetComponent<RectTransform>();
 
-        // Gọi hàm UpdateLine với eventData
+        // <<< THÊM ĐOẠN CODE NÀY VÀO ĐÂY >>>
+        // Lấy component Image của dây và đổi màu dựa trên itemName
+        Image lineImage = line.GetComponent<Image>();
+        if (lineImage != null)
+        {
+            // THAY THẾ KHỐI SWITCH CŨ BẰNG KHỐI NÀY
+            switch (wireColor) // << Sửa: Dùng wireColor
+            {
+                case WireColor.Red: // << Sửa: Dùng Enum
+                    lineImage.color = Color.red;
+                    break;
+                case WireColor.Yellow:
+                    lineImage.color = Color.yellow;
+                    break;
+                case WireColor.Orange:
+                    lineImage.color = new Color(1f, 0.5f, 0f);
+                    break;
+                case WireColor.Green:
+                    lineImage.color = Color.green;
+                    break;
+                case WireColor.Blue:
+                    lineImage.color = Color.blue;
+                    break;
+                default:
+                    lineImage.color = Color.white;
+                    break;
+            }
+        }
+        // <<< KẾT THÚC ĐOẠN CODE MỚI >>>
+
+        // Các dòng này của bro giữ nguyên
+        lineRectTransform = line.GetComponent<RectTransform>();
         UpdateLine(eventData);
     }
 
@@ -63,6 +107,7 @@ public class MatchItem : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoin
         {
             // Nếu thả ra ngoài hoặc sai đối tượng thì xóa line
             Destroy(line);
+            PuzzleManager.instance.ResetPuzzle();
         }
     }
 
