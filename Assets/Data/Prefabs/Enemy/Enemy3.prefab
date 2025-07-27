@@ -214,7 +214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRange: 1
   attackDamage: 30
-  moveRange: 3
+  moveRange: 5
   attackCoolDown: 2
   moveSpeed: 2
   startPoint: {fileID: 8227675036582696115}

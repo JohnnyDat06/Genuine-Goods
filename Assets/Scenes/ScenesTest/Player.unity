@@ -308,6 +308,7 @@ MonoBehaviour:
   - {fileID: 1560865756}
   startPoint: {fileID: 354941167}
   rb: {fileID: 7064304}
+  enemyHealth: {fileID: 7064310}
 --- !u!95 &7064308
 Animator:
   serializedVersion: 5
@@ -6063,6 +6064,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1398199873}
     m_Modifications:
+    - target: {fileID: 298838344440066798, guid: ac454d9457d3015439e54c77bd6fce36, type: 3}
+      propertyPath: moveRange
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4375617143366371869, guid: ac454d9457d3015439e54c77bd6fce36, type: 3}
       propertyPath: interactionPrompt
       value: 
@@ -6114,14 +6119,6 @@ PrefabInstance:
     - target: {fileID: 7111923300911377319, guid: ac454d9457d3015439e54c77bd6fce36, type: 3}
       propertyPath: m_Name
       value: Enemy3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7111923300911377319, guid: ac454d9457d3015439e54c77bd6fce36, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9181083129836142434, guid: ac454d9457d3015439e54c77bd6fce36, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.38
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

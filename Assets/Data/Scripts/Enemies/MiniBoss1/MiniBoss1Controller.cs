@@ -30,14 +30,13 @@ public class MiniBoss1Controller : MonoBehaviour
     private float skill2Timer = Mathf.Infinity;
     private float chaseTimer;
 
-    private EnemyHealth enemyHealth;
+    [SerializeField] private EnemyHealth enemyHealth;
     private bool skill2UsedAt50 = false;
     private bool skill2UsedAt25 = false;
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
-        enemyHealth = GetComponent<EnemyHealth>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         currentState = State.Idle;
     }
@@ -54,10 +53,12 @@ public class MiniBoss1Controller : MonoBehaviour
             {
                 isWaitingForMinions = false;
                 currentState = State.Chasing;
+                transform.tag = "Enemy";
             }
             else
             {
                 anim.SetBool("IsMove", false); // đứng yên
+                transform.tag = "Untagged";
                 return;
             }
         }
