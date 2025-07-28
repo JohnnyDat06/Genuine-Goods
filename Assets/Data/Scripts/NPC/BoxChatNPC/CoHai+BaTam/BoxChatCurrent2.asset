@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 495d568851805ff4187a025664193204, type: 3}
+  m_Name: BoxChatCurrent2
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - characterName: "B\xE0 T\xE1m"
+    sentence: "M\xE0 n\xE0y, tuy c\xE1i ti\u1EC7m kia d\u1EB9p r\u1ED3i nh\u01B0ng
+      t\xF4i v\u1EABn th\u1EA5y lo lo. C\u1EA3 tu\u1EA7n nay kh\xF4ng \u0111\xEAm
+      n\xE0o ng\u1EE7 y\xEAn \u0111\u01B0\u1EE3c.\r\n"
+  - characterName: "C\xF4 Hai"
+    sentence: " L\u1EA1i chuy\u1EC7n m\u1EA5y c\xE1i xe t\u1EA3i hay sao h\u1EA3
+      b\xE0?"
+  - characterName: "B\xE0 T\xE1m"
+    sentence: "Ch\u1EE9 c\xF2n g\xEC n\u1EEFa! C\u1EE9 t\u1EA7m n\u1EEDa \u0111\xEAm
+      v\u1EC1 s\xE1ng l\xE0 n\xF3 ch\u1EA1y \u1EA7m \u1EA7m ngo\xE0i con h\u1EBBm
+      cu\u1ED1i ph\u1ED1 \u0111\xF3. Ch\u1EDF c\xE1i g\xEC m\xE0 n\u1EB7ng tr\xECnh
+      tr\u1ECBch, \u0111\u01B0\u1EDDng s\xE1 mu\u1ED1n s\u1EADp lu\xF4n.\r\n"
+  - characterName: "C\xF4 Hai"
+    sentence: "Nh\xE0 t\xF4i c\xF2n kh\u1ED5 h\u01A1n. H\xF4m b\u1EEFa ham r\u1EBB
+      mua c\xE1i \u1EA5m si\xEAu t\u1ED1c ngo\xE0i ch\u1EE3 tr\u1EDDi, ch\u1EAFc
+      l\u1EA1i \u0111\u1ED3 c\u1EE7a t\u1EE5i n\xF3 tu\u1ED3n ra. V\u1EC1 c\u1EAFm
+      \u0111i\u1EC7n n\xF3 ch\u1EADp c\xE1i b\u1EE5p, kh\xF3i \u0111en k\u1ECBt,
+      h\xFA h\u1ED3n. May m\xE0 r\xFAt \u0111i\u1EC7n k\u1ECBp.\r\n"
+  - characterName: "H\xF9ng"
+    sentence: "Xin l\u1ED7i l\xE0m phi\u1EC1n hai c\xF4. Ch\xE1u nghe hai c\xF4 n\xF3i
+      chuy\u1EC7n xe c\u1ED9, kh\xF4ng bi\u1EBFt l\xE0 xe c\u1EE7a c\xF4ng ty n\xE0o
+      m\xE0 ch\u1EA1y \u0111\xEAm h\xF4m l\xE0m phi\u1EC1n b\xE0 con l\u1ED1i x\xF3m
+      v\u1EADy \u1EA1?\r\n"
+  - characterName: "B\xE0 T\xE1m"
+    sentence: "Ai m\xE0 bi\u1EBFt \u0111\u01B0\u1EE3c h\u1EA3 con. Xe n\xF3 c\xF3
+      d\xE1n nh\xE3n hi\u1EC7u g\xEC \u0111\xE2u, c\u1EE9 tr\u01A1n tu\u1ED3n tu\u1ED9t
+      \xE0. M\xE0 to\xE0n l\u1EF1a l\xFAc v\u1EAFng ng\u01B0\u1EDDi n\xF3 m\u1EDBi
+      ch\u1EA1y, m\u1EDD \xE1m l\u1EAFm.\r\n"
+  - characterName: "C\xF4 Hai"
+    sentence: "\u0110\xFAng \u0111\xF3 con, nh\xECn m\u1EA5y c\xE1i th\xF9ng h\xE0ng
+      n\xF3 ch\u1EDF xu\u1ED1ng c\u0169ng ch\u1EB3ng c\xF3 t\xEAn tu\u1ED5i g\xEC
+      s\u1EA5t. Th\xF4i t\u1ED1t nh\u1EA5t l\xE0 m\xECnh tr\xE1nh xa cho l\xE0nh.\r\n"

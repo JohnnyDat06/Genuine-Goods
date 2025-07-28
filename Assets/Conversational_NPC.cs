@@ -3,13 +3,8 @@ using System;
 
 public class Conversational_NPC : MonoBehaviour
 {
-    // --- THAY ĐỔI: Sử dụng mảng để chứa hội thoại theo tiến trình ---
-    [Header("Hội thoại theo tiến trình")]
-    [SerializeField] private DialogueObject[] progressionDialogues;
-
-    [Header("Hội thoại lặp lại")]
-    [SerializeField] private DialogueObject repeatingDialogue;
-    // -----------------------------------------------------------------
+    [Header("CÁC GIAI ĐOẠN HỘI THOẠI")]
+    [SerializeField] private RaidDialogueStage[] dialogueStages; // Mảng chứa toàn bộ hội thoại cho từng Hồi/Raid
 
     [Header("Components & Settings")]
     [SerializeField] private KeyCode interactionKey = KeyCode.E;
@@ -19,9 +14,9 @@ public class Conversational_NPC : MonoBehaviour
     private bool playerIsInRange = false;
     private bool isInteractionDisabled = false;
 
-    // --- THAY ĐỔI: Lưu lại cấp raid đã nói chuyện ---
-    private int lastSpokenRaid = -1;
-    // ---------------------------------------------
+    // Các biến để lưu trạng thái hội thoại đã nói
+    private int lastAcknowledgmentRaid = -1;
+    private int lastMainDialogueRaid = -1;
 
     private void OnEnable()
     {
@@ -41,35 +36,47 @@ public class Conversational_NPC : MonoBehaviour
         }
     }
 
-    // --- THAY ĐỔI: Logic chọn hội thoại dựa trên MissionManager.Instance.currentRaid ---
     private void TriggerDialogue()
     {
-        // Lấy tiến trình raid hiện tại từ MissionManager
         int currentRaid = MissionManager.Instance.currentRaid;
 
-        // Kiểm tra xem có hội thoại tiến trình MỚI cho raid hiện tại không
-        if (lastSpokenRaid < currentRaid && currentRaid < progressionDialogues.Length)
+        // Thoát nếu currentRaid vượt quá số lượng giai đoạn hội thoại đã thiết lập
+        if (currentRaid >= dialogueStages.Length)
         {
-            // Lấy đúng đoạn hội thoại cho raid này
-            DialogueObject dialogueForThisRaid = progressionDialogues[currentRaid];
-
-            // Tạo một hành động (Action) sẽ được thực thi sau khi hội thoại kết thúc
-            Action onFinish = () =>
-            {
-                // Đánh dấu rằng người chơi đã nói chuyện ở cấp raid này rồi
-                lastSpokenRaid = currentRaid;
-            };
-
-            // Bắt đầu hội thoại tiến trình, và truyền vào hành động onFinish
-            DialogueManager.instance.StartDialogue(dialogueForThisRaid, npcController, this, onFinish);
+            return; // Dòng Debug.LogWarning đã được xóa ở đây
         }
-        else
+
+        // Lấy dữ liệu hội thoại cho giai đoạn (Hồi) hiện tại
+        RaidDialogueStage currentStage = dialogueStages[currentRaid];
+
+        // ƯU TIÊN 1: Chạy hội thoại "CẢM ƠN / GHI NHẬN" nếu có và chưa nói
+        if (lastAcknowledgmentRaid < currentRaid && currentStage.AcknowledgmentDialogue != null)
         {
-            // Nếu không có hội thoại tiến trình mới, sử dụng hội thoại lặp lại
-            DialogueManager.instance.StartDialogue(repeatingDialogue, npcController, this);
+            Action onFinish = () => {
+                lastAcknowledgmentRaid = currentRaid; // Đánh dấu đã nói
+            };
+            DialogueManager.instance.StartDialogue(currentStage.AcknowledgmentDialogue, npcController, this, onFinish);
+            return;
+        }
+
+        // ƯU TIÊN 2: Chạy hội thoại "CHÍNH / ĐIỀU TRA" nếu có và chưa nói
+        if (lastMainDialogueRaid < currentRaid && currentStage.MainDialogue != null)
+        {
+            Action onFinish = () => {
+                lastMainDialogueRaid = currentRaid; // Đánh dấu đã nói
+                // Đồng thời cũng đánh dấu đã qua giai đoạn cảm ơn
+                lastAcknowledgmentRaid = currentRaid;
+            };
+            DialogueManager.instance.StartDialogue(currentStage.MainDialogue, npcController, this, onFinish);
+            return;
+        }
+
+        // ƯU TIÊN 3: Nếu đã nói hết các thoại trên, chạy hội thoại "LẶP LẠI"
+        if (currentStage.RepeatingDialogue != null)
+        {
+            DialogueManager.instance.StartDialogue(currentStage.RepeatingDialogue, npcController, this);
         }
     }
-    // -------------------------------------------------------------------------------------
 
     private void OnTriggerEnter2D(Collider2D other)
     {

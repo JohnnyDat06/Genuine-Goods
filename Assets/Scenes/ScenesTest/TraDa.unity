@@ -1101,6 +1101,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 12226279}
     m_Modifications:
+    - target: {fileID: 848804791709664381, guid: 48b3af96c3934f94692912ad4e79c504, type: 3}
+      propertyPath: dialogueStages.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 848804791709664381, guid: 48b3af96c3934f94692912ad4e79c504, type: 3}
+      propertyPath: dialogueStages.Array.data[0].MainDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: 21df45f0a0de458409311426da8c5a73, type: 2}
+    - target: {fileID: 848804791709664381, guid: 48b3af96c3934f94692912ad4e79c504, type: 3}
+      propertyPath: dialogueStages.Array.data[1].MainDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: 5d8d718bcd02f4048aef6a7daf564797, type: 2}
+    - target: {fileID: 848804791709664381, guid: 48b3af96c3934f94692912ad4e79c504, type: 3}
+      propertyPath: dialogueStages.Array.data[2].MainDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: 9e7b990174cdfad48883170d971d7392, type: 2}
+    - target: {fileID: 848804791709664381, guid: 48b3af96c3934f94692912ad4e79c504, type: 3}
+      propertyPath: dialogueStages.Array.data[0].RepeatingDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: b8e4d721506a91a4ab36babab882099b, type: 2}
+    - target: {fileID: 848804791709664381, guid: 48b3af96c3934f94692912ad4e79c504, type: 3}
+      propertyPath: dialogueStages.Array.data[1].RepeatingDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: b8e4d721506a91a4ab36babab882099b, type: 2}
+    - target: {fileID: 848804791709664381, guid: 48b3af96c3934f94692912ad4e79c504, type: 3}
+      propertyPath: dialogueStages.Array.data[2].RepeatingDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: b8e4d721506a91a4ab36babab882099b, type: 2}
+    - target: {fileID: 848804791709664381, guid: 48b3af96c3934f94692912ad4e79c504, type: 3}
+      propertyPath: dialogueStages.Array.data[2].AcknowledgmentDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: bb5330135b0b9fe43a0cdda0c481ebbf, type: 2}
     - target: {fileID: 3391930099480354023, guid: 48b3af96c3934f94692912ad4e79c504, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.688647
@@ -2488,8 +2520,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0289a4cae4b4bdc49b6750b344743294, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  progressionDialogues: []
-  repeatingDialogue: {fileID: 11400000, guid: c53d5b807c414c64fbd26520a505d345, type: 2}
+  dialogueStages:
+  - AcknowledgmentDialogue: {fileID: 0}
+    MainDialogue: {fileID: 11400000, guid: 8050065bcfe39934dafd54db6b454ad2, type: 2}
+    RepeatingDialogue: {fileID: 11400000, guid: c53d5b807c414c64fbd26520a505d345, type: 2}
+  - AcknowledgmentDialogue: {fileID: 11400000, guid: 79c1e5ab1b0488745aedd86b1e5894c2, type: 2}
+    MainDialogue: {fileID: 11400000, guid: 517e9e4a0219fa54a8c15ea720825529, type: 2}
+    RepeatingDialogue: {fileID: 11400000, guid: c53d5b807c414c64fbd26520a505d345, type: 2}
+  - AcknowledgmentDialogue: {fileID: 0}
+    MainDialogue: {fileID: 11400000, guid: 6b6de0724d82f9f479e89d5ab62fea64, type: 2}
+    RepeatingDialogue: {fileID: 11400000, guid: c53d5b807c414c64fbd26520a505d345, type: 2}
   interactionKey: 101
   interactionPrompt: {fileID: 632410525}
   npcController: {fileID: 0}
@@ -2715,8 +2755,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0289a4cae4b4bdc49b6750b344743294, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  progressionDialogues: []
-  repeatingDialogue: {fileID: 11400000, guid: 75b690f91bf6bf14d95f99e0197c6914, type: 2}
+  dialogueStages:
+  - AcknowledgmentDialogue: {fileID: 0}
+    MainDialogue: {fileID: 11400000, guid: ebb5ae74d81290b48a56b0a0dc91b3fd, type: 2}
+    RepeatingDialogue: {fileID: 11400000, guid: 75b690f91bf6bf14d95f99e0197c6914, type: 2}
   interactionKey: 101
   interactionPrompt: {fileID: 1904771358}
   npcController: {fileID: 0}
@@ -3922,8 +3964,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0289a4cae4b4bdc49b6750b344743294, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  progressionDialogues: []
-  repeatingDialogue: {fileID: 11400000, guid: 897cd727a2fc1d149b75e5397acbd13f, type: 2}
+  dialogueStages:
+  - AcknowledgmentDialogue: {fileID: 0}
+    MainDialogue: {fileID: 0}
+    RepeatingDialogue: {fileID: 0}
+  - AcknowledgmentDialogue: {fileID: 0}
+    MainDialogue: {fileID: 0}
+    RepeatingDialogue: {fileID: 0}
+  - AcknowledgmentDialogue: {fileID: 0}
+    MainDialogue: {fileID: 0}
+    RepeatingDialogue: {fileID: 0}
   interactionKey: 101
   interactionPrompt: {fileID: 0}
   npcController: {fileID: 0}
@@ -8139,6 +8189,38 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1840080983382127609, guid: 4ce1c76f3ff55e749b09cfbb03b12f31, type: 3}
+      propertyPath: dialogueStages.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1840080983382127609, guid: 4ce1c76f3ff55e749b09cfbb03b12f31, type: 3}
+      propertyPath: dialogueStages.Array.data[0].MainDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: 0bb2bc9f9c9902d4490ac3bb9e32551a, type: 2}
+    - target: {fileID: 1840080983382127609, guid: 4ce1c76f3ff55e749b09cfbb03b12f31, type: 3}
+      propertyPath: dialogueStages.Array.data[1].MainDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: 412a6423b179b274d9f710c47c491171, type: 2}
+    - target: {fileID: 1840080983382127609, guid: 4ce1c76f3ff55e749b09cfbb03b12f31, type: 3}
+      propertyPath: dialogueStages.Array.data[2].MainDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: 9dc2a965ee2b9b74aa656be013b9cb54, type: 2}
+    - target: {fileID: 1840080983382127609, guid: 4ce1c76f3ff55e749b09cfbb03b12f31, type: 3}
+      propertyPath: dialogueStages.Array.data[0].RepeatingDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: f4ffc9cc6350da74e8cf9597a2e18802, type: 2}
+    - target: {fileID: 1840080983382127609, guid: 4ce1c76f3ff55e749b09cfbb03b12f31, type: 3}
+      propertyPath: dialogueStages.Array.data[1].RepeatingDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: f4ffc9cc6350da74e8cf9597a2e18802, type: 2}
+    - target: {fileID: 1840080983382127609, guid: 4ce1c76f3ff55e749b09cfbb03b12f31, type: 3}
+      propertyPath: dialogueStages.Array.data[2].RepeatingDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: f4ffc9cc6350da74e8cf9597a2e18802, type: 2}
+    - target: {fileID: 1840080983382127609, guid: 4ce1c76f3ff55e749b09cfbb03b12f31, type: 3}
+      propertyPath: dialogueStages.Array.data[2].AcknowledgmentDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: ce97912b0b460384897c66cf48d4761e, type: 2}
     - target: {fileID: 2935791298051870854, guid: 4ce1c76f3ff55e749b09cfbb03b12f31, type: 3}
       propertyPath: m_Size.x
       value: 1.9706349
