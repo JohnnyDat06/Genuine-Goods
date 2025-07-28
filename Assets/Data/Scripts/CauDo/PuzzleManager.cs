@@ -15,7 +15,7 @@ public class PuzzleManager : MonoBehaviour
     public string nextSceneName;
 
     private int connectedPairs = 0;
-    private bool isSolved = false; // Thêm biến cờ để biết câu đố đã giải xong chưa
+    private bool isSolved = false; //  biết câu đố đã giải xong chưa
 
     void Awake()
     {
@@ -37,12 +37,12 @@ public class PuzzleManager : MonoBehaviour
         }
     }
 
-    // --- THÊM HÀM UPDATE NÀY VÀO ---
+    
     void Update()
     {
         
     }
-    // --------------------------------
+   
 
     public void OnPairConnected()
     {
@@ -64,30 +64,30 @@ public class PuzzleManager : MonoBehaviour
         if (puzzlePanel != null && !isSolved)
         {
             puzzlePanel.SetActive(true);
-            // Chỗ này có thể thêm code để khóa di chuyển của Player nếu muốn
+            
         }
     }
 
-    // --- THÊM HÀM HIDEPUZZLE NÀY VÀO ---
+    
     public void HidePuzzle()
     {
         if (puzzlePanel != null)
         {
             puzzlePanel.SetActive(false);
-            // Chỗ này có thể thêm code để mở khóa di chuyển cho Player
+           
         }
     }
-    // -----------------------------------
+    
 
     private void WinPuzzle()
     {
         Debug.Log("Yay! Đã giải xong câu đố!");
 
-        // Chờ một chút rồi mới chuyển màn để người chơi thấy họ đã thắng
-        Invoke("LoadNextScene", 1.5f); // Chờ 1.5 giây
+       
+        Invoke("LoadNextScene", 1.5f); 
     }
 
-    // Hàm để chuyển màn, được gọi bởi Invoke
+    
     private void LoadNextScene()
     {
         if (!string.IsNullOrEmpty(nextSceneName))
@@ -124,7 +124,7 @@ public class PuzzleManager : MonoBehaviour
     {
         Debug.Log("--- BẮT ĐẦU RESET ---");
 
-        // 1. Reset lại bộ đếm
+        
         connectedPairs = 0;
 
         // 2. Tìm và PHÁ HỦY hết tất cả các dây đã vẽ
