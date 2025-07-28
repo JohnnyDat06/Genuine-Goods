@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 1
-  attackDamage: 30
+  attackDamage: 100
   moveRange: 5
   attackCoolDown: 2
   moveSpeed: 2

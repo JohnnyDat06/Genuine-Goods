@@ -17,7 +17,7 @@ public class CheckBossDie : MonoBehaviour
     
     IEnumerator NextScene()
     {
-        MissionManager.Instance.CorrectLocation();
+        if (MissionManager.Instance != null) MissionManager.Instance.CorrectLocation();
         yield return null;
     }
 }
