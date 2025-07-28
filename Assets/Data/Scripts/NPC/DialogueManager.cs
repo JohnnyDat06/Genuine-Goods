@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
+[RequireComponent(typeof(AudioSource))]
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager instance;
@@ -25,16 +26,17 @@ public class DialogueManager : MonoBehaviour
     private NPC_Controller npcControllerToDisable;
     private Action onDialogueFinishedCallback;
 
-    // --- THAY ĐỔI: Thêm biến để biết NPC nào đang nói chuyện ---
     public NPC_Controller SpeakingNPCController { get; private set; }
-    // --------------------------------------------------------
-
     private static List<Conversational_NPC> allNpcs = new List<Conversational_NPC>();
+
+    private AudioSource audioSource;
 
     private void Awake()
     {
         if (instance == null) instance = this;
         else Destroy(gameObject);
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Start()
@@ -51,9 +53,16 @@ public class DialogueManager : MonoBehaviour
         {
             if (isTyping)
             {
+                // Dừng coroutine đang chạy
                 if (typingCoroutine != null) StopCoroutine(typingCoroutine);
+
+                // Hiển thị đầy đủ câu thoại
                 dialogueText.text = currentFullSentence;
                 isTyping = false;
+
+                // DỪNG ÂM THANH KHI SKIP
+                audioSource.Stop();
+                audioSource.loop = false;
             }
             else
             {
@@ -109,9 +118,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         npcControllerToDisable = npcController;
-        // --- THAY ĐỔI: Lưu lại NPC đang nói chuyện ---
         SpeakingNPCController = npcControllerToDisable;
-        // ------------------------------------------
         if (npcControllerToDisable != null)
         {
             npcControllerToDisable.enabled = false;
@@ -138,21 +145,43 @@ public class DialogueManager : MonoBehaviour
         nameText.text = currentLine.characterName;
         currentFullSentence = currentLine.sentence;
 
+        AudioClip voiceClip = currentLine.voiceClip;
+
         if (typingCoroutine != null) StopCoroutine(typingCoroutine);
-        typingCoroutine = StartCoroutine(TypeSentence(currentFullSentence));
+        typingCoroutine = StartCoroutine(TypeSentence(currentFullSentence, voiceClip));
     }
 
-    private IEnumerator TypeSentence(string sentence)
+    // --- HÀM TYPESENTENCE ĐÃ ĐƯỢC THAY ĐỔI HOÀN TOÀN LOGIC ÂM THANH ---
+    private IEnumerator TypeSentence(string sentence, AudioClip voiceClip)
     {
         isTyping = true;
         dialogueText.text = "";
+
+        // Bật lặp lại và phát âm thanh nếu có
+        if (voiceClip != null)
+        {
+            audioSource.clip = voiceClip;
+            audioSource.loop = true;
+            audioSource.Play();
+        }
+
+        // Vòng lặp chạy chữ
         foreach (char letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
             yield return new WaitForSeconds(typingSpeed);
         }
+
+        // Dừng âm thanh khi chạy chữ xong
+        if (voiceClip != null)
+        {
+            audioSource.Stop();
+            audioSource.loop = false;
+        }
+
         isTyping = false;
     }
+    // -------------------------------------------------------------------
 
     public void EndDialogue()
     {
@@ -162,6 +191,10 @@ public class DialogueManager : MonoBehaviour
         if (typingCoroutine != null) StopCoroutine(typingCoroutine);
         isTyping = false;
 
+        // Đảm bảo âm thanh luôn dừng khi hội thoại kết thúc
+        audioSource.Stop();
+        audioSource.loop = false;
+
         PlayerController playerController = FindObjectOfType<PlayerController>();
         if (playerController != null)
         {
@@ -170,9 +203,7 @@ public class DialogueManager : MonoBehaviour
 
         if (npcControllerToDisable != null) npcControllerToDisable.enabled = true;
 
-        // --- THAY ĐỔI: Reset lại NPC đang nói chuyện ---
         SpeakingNPCController = null;
-        // -------------------------------------------
 
         foreach (var npc in allNpcs)
         {

@@ -16,3 +16,4 @@ MonoBehaviour:
   - characterName: "C\xF4 Hai"
     sentence: "(C\xF4 Hai \u0111ang t\xE1m chuy\u1EC7n phi\u1EBFn v\u1EDBi b\xE0
       T\xE1m)\n"
+    voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}

@@ -16,21 +16,27 @@ MonoBehaviour:
   - characterName: 
     sentence: "Giai \u0111i\u1EC7u m\u1EDBi h\u1EA3 anh B\u1EA3y? Nghe b\u1EAFt tai
       qu\xE1.\r\n"
+    voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
   - characterName: 
     sentence: "\u1EEA, \u0111ang t\xEDnh ph\u1ED1i l\u1EA1i b\xE0i c\u0169 cho n\xF3
       h\u1EE3p th\u1EDDi. M\xE0 d\u1EA1o n\xE0y ch\u1EB3ng c\xF3 t\xE2m tr\u1EA1ng
       n\xE0o m\xE0 h\xE1t h\xF2 n\u1EEFa m\xE0y \u01A1i.\r\n"
+    voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
   - characterName: "H\xF9ng"
     sentence: "Sao v\u1EADy anh? C\xF3 chuy\u1EC7n g\xEC kh\xF4ng vui \xE0?\r\n"
+    voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
   - characterName: "Anh B\u1EA3y Ca S\u0129"
     sentence: "Th\xEC c\u0169ng l\xE0 chuy\u1EC7n trong x\xF3m m\xECnh th\xF4i. M\u1EA5y
       th\u1EB1ng em \u0111i giao h\xE0ng v\u1EC1 k\u1EC3, c\xE1i b\u1ECDn v\u1EC7
       s\u0129 \u1EDF kho h\xE0ng cu\u1ED1i ph\u1ED1 \u0111\xF3, kh\xF4ng ph\u1EA3i
       d\u1EA1ng th\u01B0\u1EDDng \u0111\xE2u.\r\n"
+    voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
   - characterName: "H\xF9ng"
     sentence: "Kh\xF4ng ph\u1EA3i d\u1EA1ng th\u01B0\u1EDDng l\xE0 sao \u1EA1?\r\n"
+    voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
   - characterName: "Anh B\u1EA3y Ca S\u0129"
     sentence: "N\xF3 n\xF3i t\xE1c phong chuy\xEAn nghi\u1EC7p l\u1EAFm, \u0111i
       \u0111\u1EE9ng r\u0103m r\u1EAFp, thay ca \u0111\u1ED5i g\xE1c \u0111\xFAng
       gi\u1EDD, kh\xF4ng kh\xE1c g\xEC qu\xE2n \u0111\u1ED9i. M\xE0 \u0111\u1EE9a
       n\xE0o c\u0169ng c\xF3 s\xFAng trong ng\u01B0\u1EDDi \u0111\xF3 m\xE0y.\r\n"
+    voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}

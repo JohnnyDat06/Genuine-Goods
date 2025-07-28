@@ -16,14 +16,18 @@ MonoBehaviour:
   - characterName: "Anh B\u1EA3y Ca S\u0129"
     sentence: "Ch\xFA em, anh nghe \u0111\u01B0\u1EE3c tin n\xE0y \u0111\u1ED9ng
       tr\u1EDDi l\u1EAFm.\r\n"
+    voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
   - characterName: "H\xF9ng"
     sentence: "Tin g\xEC m\xE0 gh\xEA v\u1EADy anh?\r\n"
+    voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
   - characterName: "Anh B\u1EA3y Ca S\u0129"
     sentence: " \u0110\xE1m giang h\u1ED3 n\xF3 r\u1EC9 tai nhau l\xE0 th\u1EB1ng
       cha gi\xE1m \u0111\u1ED1c Tr\u1EA7n L\u1EF1c t\xEDnh chu\u1ED3n r\u1ED3i. Nghe
       \u0111\xE2u l\xE0 c\xF3 c\u1EA3 chuy\xEAn c\u01A1 ri\xEAng, bay ngay trong
       \u0111\xEAm nay \u0111\xF3! Phen n\xE0y m\xE0 \u0111\u1EC3 n\xF3 tho\xE1t th\xEC
       \u0111\xFAng l\xE0 tr\u1EDDi kh\xF4ng c\xF3 m\u1EAFt.\r\n"
+    voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
   - characterName: "H\xF9ng"
     sentence: "(Tr\u1ED1n trong \u0111\xEAm nay sao? V\u1EADy l\xE0 kh\xF4ng c\xF2n
       nhi\u1EC1u th\u1EDDi gian n\u1EEFa).\r\n"
+    voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
