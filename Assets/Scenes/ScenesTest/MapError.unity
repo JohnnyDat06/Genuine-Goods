@@ -203,8 +203,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "B\u1EA1n \u0111\xE3 ch\u1ECDn sai khu v\u1EF1c mu\u1ED1n \u0111\u1EBFn
-    c\xF4ng ty \u1EDF \u0111\xE2y l\xE0m \u0103n h\u1EE3p ph\xE1p!"
+  m_text: "                      B\u1EA1n \u0111\xE3 ch\u1ECDn sai khu v\u1EF1c \u0111i\u1EC1u
+    tra!\n\nH\xE0nh \u0111\u1ED9ng c\u1EE7a b\u1EA1n r\xFAt d\xE2y \u0111\u1ED9ng
+    r\u1EEBng, k\u1EBB \u0111\u1ECBch s\u1EBD c\u1EA3nh gi\xE1c h\u01A1n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 40716f3d8e581304aa33b5dbfe4b50ae, type: 2}
   m_sharedMaterial: {fileID: 6687655643744752007, guid: 40716f3d8e581304aa33b5dbfe4b50ae, type: 2}
@@ -294,6 +295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 0}
+  playerMovement: {fileID: 0}
 --- !u!1 &261879238
 GameObject:
   m_ObjectHideFlags: 0
