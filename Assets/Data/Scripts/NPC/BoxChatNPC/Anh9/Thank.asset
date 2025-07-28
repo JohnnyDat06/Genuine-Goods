@@ -10,9 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 495d568851805ff4187a025664193204, type: 3}
-  m_Name: Loop
+  m_Name: Thank
   m_EditorClassIdentifier: 
   dialogueLines:
-  - characterName: "C\xF4 Hai"
-    sentence: "(C\xF4 Hai \u0111ang t\xE1m chuy\u1EC7n phi\u1EBFn v\u1EDBi b\xE0
-      T\xE1m)\n"
+  - characterName: "Anh Ch\xEDn Qu\xE8 (G\u1EADt g\xF9)"
+    sentence: "L\u1EA7n n\xE0y th\xEC b\u1ECDn ch\xFAng h\u1EBFt \u0111\u01B0\u1EDDng
+      l\xE0m b\u1EADy. Nh\xECn th\u1EA5y c\xF4ng l\xFD \u0111\u01B0\u1EE3c th\u1EF1c
+      thi, c\xE1i ch\xE2n qu\xE8 n\xE0y c\u1EE7a t\xF4i c\u0169ng th\u1EA5y nh\u1EB9
+      nh\xF5m h\u1EB3n."

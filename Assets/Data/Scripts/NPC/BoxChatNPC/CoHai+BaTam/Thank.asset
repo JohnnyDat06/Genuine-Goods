@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 495d568851805ff4187a025664193204, type: 3}
+  m_Name: Thank
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - characterName: "C\xF4 Hai"
+    sentence: "B\xE0 nghe tin g\xEC ch\u01B0a? C\xE1i ti\u1EC7m t\u1EA1p h\xF3a \u1EDF
+      \u0111\u1EA7u h\u1EBBm hay b\xE1n \u0111\u1ED3 v\u1EDB v\u1EA9n \u0111\xF3
+      b\u1ECB c\xF4ng an d\u1EB9p r\u1ED3i!\r\n"
+  - characterName: "B\xE0 T\xE1m"
+    sentence: "Th\u1EADt h\u1EA3 b\xE0? H\xE8n g\xEC m\u1EA5y h\xF4m nay kh\xF4ng
+      th\u1EA5y n\xF3 m\u1EDF c\u1EEDa. M\u1EA5y anh c\xF4ng an m\xECnh l\xE0m vi\u1EC7c
+      nhanh g\u1ECDn th\u1EADt \u0111\u1EA5y! Nh\u1EDD c\xF3 m\u1EA5y \u1EA3nh m\xE0
+      d\xE2n m\xECnh c\u0169ng th\u1EA5y y\xEAn t\xE2m h\u01A1n.\r\n"
+  - characterName: "C\xF4 Hai"
+    sentence: "\u0110\xFAng v\u1EADy! C\u1EE9 \u0111\xE0 n\xE0y th\xEC ch\u1EB3ng
+      m\u1EA5y ch\u1ED1c b\u1ECDn l\xE0m \u0103n gian d\u1ED1i h\u1EBFt \u0111\u1EA5t
+      s\u1ED1ng.\r\n"

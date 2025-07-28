@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 495d568851805ff4187a025664193204, type: 3}
-  m_Name: Loop 1
+  m_Name: LoopBaHai
   m_EditorClassIdentifier: 
   dialogueLines:
-  - characterName: "B\xE0 T\xE1m"
-    sentence: "(B\xE0 t\xE1m \u0111ang t\xE1m chuy\u1EC7n phi\u1EBFn v\u1EDBi b\xE0
-      Hai)\n"
+  - characterName: "C\xF4 Hai"
+    sentence: "(C\xF4 Hai \u0111ang t\xE1m chuy\u1EC7n phi\u1EBFn v\u1EDBi b\xE0
+      T\xE1m)\n"
