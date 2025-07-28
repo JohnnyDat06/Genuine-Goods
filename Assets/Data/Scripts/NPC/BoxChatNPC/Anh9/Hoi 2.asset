@@ -16,22 +16,28 @@ MonoBehaviour:
   - characterName: "H\xF9ng"
     sentence: "Em m\u1EDDi anh ly tr\xE0. D\u1EA1o n\xE0y tr\xF4ng anh c\xF3 v\u1EBB
       tr\u1EA7m ng\xE2m qu\xE1.\r\n"
+    voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
   - characterName: "Anh Ch\xEDn Qu\xE8"
     sentence: "C\u1EA3m \u01A1n ch\xFA m\xE0y. \u1EEA th\xEC c\u0169ng c\xF3 ch\xFAt
       chuy\u1EC7n kh\xF4ng \u0111\xE1ng \u0111\u1EC3 trong l\xF2ng.\r\n"
+    voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
   - characterName: "H\xF9ng"
     sentence: "C\xF3 chuy\u1EC7n g\xEC anh c\u1EE9 chia s\u1EBB, bi\u1EBFt \u0111\xE2u
       em l\u1EA1i gi\xFAp \u0111\u01B0\u1EE3c g\xEC th\xEC sao.\r\n"
+    voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
   - characterName: "Anh Ch\xEDn Qu\xE8"
     sentence: "Chuy\u1EC7n ng\u01B0\u1EDDi l\u1EDBn th\xF4i. Ch\u1EC9 l\xE0 anh th\u1EA5y
       l\u1EA1 c\xE1i kho b\u1ECF hoang cu\u1ED1i h\u1EBBm d\u1EA1o n\xE0y c\xF3 ng\u01B0\u1EDDi
       canh gi\u1EEF.\r\n"
+    voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
   - characterName: "H\xF9ng"
     sentence: "Kho b\u1ECF hoang m\xE0 c\xF3 ng\u01B0\u1EDDi canh sao anh? Em t\u01B0\u1EDFng
       ch\u1ED7 \u0111\xF3 \u0111\u1EC3 cho chu\u1ED9t \u1EDF th\xF4i ch\u1EE9.\r\n"
+    voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
   - characterName: "Anh Ch\xEDn Qu\xE8 (h\u1EA1 gi\u1ECDng, nh\xECn quanh)"
     sentence: "Chu\u1ED9t g\xEC m\xE0 to con v\u1EA1m v\u1EE1 th\u1EBF. To\xE0n m\u1EA5y
       th\u1EB1ng m\u1EB7t m\xE0y l\u1EA1 ho\u1EAFc, im im l\u1EA7m l\u1EF3, \u0111i
       qua \u0111i l\u1EA1i su\u1ED1t \u0111\xEAm. Anh \u0111i d\u1EA1o bu\u1ED5i
       t\u1ED1i, ch\u1EC9 d\xE1m nh\xECn t\u1EEB xa th\xF4i m\xE0 \u0111\xE3 th\u1EA5y
       l\u1EA1nh g\xE1y r\u1ED3i.\r\n"
+    voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
