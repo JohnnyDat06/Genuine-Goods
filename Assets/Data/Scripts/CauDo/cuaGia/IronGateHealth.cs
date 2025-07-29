@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections; // Cần dùng thư viện này cho Coroutine
+using UnityEngine;
 
 public class IronGateHealth : MonoBehaviour
 {
@@ -6,11 +7,19 @@ public class IronGateHealth : MonoBehaviour
     [Tooltip("Máu tối đa của cửa sắt")]
     public int maxHealth = 200;
 
+    [Header("Shake Effect Settings")]
+    [Tooltip("Độ rung mạnh hay yếu")]
+    public float shakeMagnitude = 0.05f;
+
+    [Tooltip("Rung trong bao lâu")]
+    public float shakeDuration = 0.15f;
+
     // Các biến private để script tự quản lý
     private int currentHealth;
     private Animator animator;
     private BoxCollider2D boxCollider;
-    private bool isDestroyed = false; // Cờ để đánh dấu cửa đã bị phá
+    private bool isDestroyed = false;
+    private Vector3 originalPosition; // Để lưu vị trí gốc của cửa
 
     void Start()
     {
@@ -18,9 +27,10 @@ public class IronGateHealth : MonoBehaviour
         currentHealth = maxHealth;
         animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
+        originalPosition = transform.position; // Lưu vị trí gốc
     }
 
-    // Hàm public để các object khác (như đòn đánh của player) có thể gọi
+    // Hàm public để các object khác có thể gọi
     public void TakeDamage(int damage)
     {
         // Nếu cửa đã bị phá thì không làm gì nữa
@@ -29,8 +39,8 @@ public class IronGateHealth : MonoBehaviour
         currentHealth -= damage;
         Debug.Log("Cửa nhận sát thương, máu còn lại: " + currentHealth);
 
-        // Optional: Nếu bro có animation bị đánh, hãy kích hoạt nó ở đây
-        // animator.SetTrigger("Hit"); 
+        // Kích hoạt hiệu ứng rung lắc
+        StartCoroutine(Shake());
 
         if (currentHealth <= 0)
         {
@@ -42,11 +52,30 @@ public class IronGateHealth : MonoBehaviour
     void OpenGate()
     {
         Debug.Log("Cửa sắt đã hết máu và đang mở...");
-
-        // Nhiệm vụ duy nhất của code là kích hoạt trigger trong Animator
-        // Mọi thứ còn lại (đổi sprite, co collider) Animator sẽ lo hết
+        // Kích hoạt trigger trong Animator, mọi thứ còn lại Animator sẽ lo
         animator.SetTrigger("Open");
+    }
 
-        // Note: Mình không cần tắt collider ở đây nữa, vì animation đã lo việc đó rồi!
+    // Coroutine để tạo hiệu ứng rung lắc
+    IEnumerator Shake()
+    {
+        float elapsed = 0.0f;
+
+        while (elapsed < shakeDuration)
+        {
+            // Tạo ra một vị trí ngẫu nhiên nho nhỏ xung quanh vị trí gốc
+            float x = Random.Range(-1f, 1f) * shakeMagnitude;
+            float y = Random.Range(-1f, 1f) * shakeMagnitude;
+
+            transform.position = originalPosition + new Vector3(x, y, 0f);
+
+            elapsed += Time.deltaTime;
+
+            // Đợi đến frame tiếp theo rồi mới chạy tiếp
+            yield return null;
+        }
+
+        // Hết thời gian rung, trả cửa về vị trí ban đầu cho nó "ngoan"
+        transform.position = originalPosition;
     }
 }
