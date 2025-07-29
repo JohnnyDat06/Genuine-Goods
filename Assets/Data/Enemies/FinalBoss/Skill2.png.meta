@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f9e34fc26c5605d46841253cea48b470
+guid: 039c3f94561ebc14f8e9c6b563a38ce2
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 25
+  spritePixelsToUnits: 20
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,64 +110,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Hit01_0
+      name: Skill3_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 84
+        y: 252
         width: 96
         height: 84
       alignment: 9
-      pivot: {x: 0.5, y: 0.2}
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad5c02fd85abf74438279e6f6b662f9f
-      internalID: 316797819
+      spriteID: d92ac9555cdd90d4b89c6e61edd73acb
+      internalID: -620650235
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hit01_1
+      name: Skill3_1
       rect:
         serializedVersion: 2
         x: 96
-        y: 84
+        y: 252
         width: 96
         height: 84
       alignment: 9
-      pivot: {x: 0.5, y: 0.2}
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a09dca712612d124da42bf1ba519d76d
-      internalID: 606524595
+      spriteID: 5ce3c5530ac4bb14399b7852f64ea48f
+      internalID: 1978118601
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hit01_2
+      name: Skill3_2
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 168
         width: 96
         height: 84
       alignment: 9
-      pivot: {x: 0.5, y: 0.2}
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aca1ac6f026f53443a96ad1ed24788ce
-      internalID: -1948697816
+      spriteID: db87346f5c85b2e4fb5c212a86923c80
+      internalID: 2072826783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill3_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 168
+        width: 96
+        height: 84
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df233fac02b94e241b17800e0b2f9632
+      internalID: 775298740
       vertices: []
       indices: 
       edges: []
@@ -183,9 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Hit01_0: 316797819
-      Hit01_1: 606524595
-      Hit01_2: -1948697816
+      Skill3_0: -620650235
+      Skill3_1: 1978118601
+      Skill3_2: 2072826783
+      Skill3_3: 775298740
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
