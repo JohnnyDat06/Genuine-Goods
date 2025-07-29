@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - PuzzleLine
   - PuzzleLineInactive
+  - IronGate
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - Enemy
   - PushableBox
   - Player
-  - 
+  - Destructible
   - 
   - 
   - 
