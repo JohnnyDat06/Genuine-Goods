@@ -288,6 +288,7 @@ MonoBehaviour:
   startHealth: 1000
   numberOfHearts: 2
   gameManager: {fileID: 0}
+  anim: {fileID: 4715238263917200544}
   playerMovement: {fileID: 2958941974757659823}
   deathAnimationDuration: 1
 --- !u!114 &8716760619009368076

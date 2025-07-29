@@ -24549,6 +24549,10 @@ PrefabInstance:
       value: -0.16156125
       objectReference: {fileID: 0}
     - target: {fileID: 5716045719061049570, guid: ec1d9ae08e2a27648a6ef84a38b8c914, type: 3}
+      propertyPath: lungeSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5716045719061049570, guid: ec1d9ae08e2a27648a6ef84a38b8c914, type: 3}
       propertyPath: attackRange
       value: 1.8
       objectReference: {fileID: 0}
