@@ -163,7 +163,7 @@ public class ComboAttack : MonoBehaviour
 
     public void Atk3()
     {
-        if (playerController != null) playerController.AttackMoveForward(0.6f, 0.1f);
+        if (playerController != null) playerController.AttackMoveForward(0.8f, 0.1f);
         Attack(atk3);
     }
 

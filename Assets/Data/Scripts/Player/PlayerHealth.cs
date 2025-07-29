@@ -9,7 +9,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private float numberOfHearts;
     [SerializeField] private GameManagers gameManager;
     public float currentHeath {get; private set;}
-
+    [SerializeField] private Animator anim;
     [SerializeField] private PlayerController playerMovement;
     
     [SerializeField] private float deathAnimationDuration = 1.5f;
@@ -36,6 +36,7 @@ public class PlayerHealth : MonoBehaviour
         {
             StartCoroutine(HandleDeathSequence());
         }
+        anim.SetTrigger("IsHit");
         Debug.Log(currentHeath);
     }
     
