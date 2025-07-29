@@ -42,7 +42,7 @@ public class EnemyHealth : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (isDead && isPlayerNearby && Input.GetKeyDown(KeyCode.E))
+        if (isDead && isPlayerNearby && Input.GetKeyDown(KeyCode.F))
         {
             preventRespawn = true;
         }
