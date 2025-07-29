@@ -94,28 +94,57 @@ public class ComboAttack : MonoBehaviour
         isAttacking = false;
     }
 
+    //private void Attack(int damage)
+    //{
+    //    UpdateEnemyList();
+
+    //    Vector3 pos = transform.position + transform.right * attackOffset.x + transform.up * attackOffset.y;
+    //    Collider2D colInfo = Physics2D.OverlapCircle(pos, attackRange, attackMask);
+
+    //    if (colInfo != null)
+    //    {
+    //        foreach (EnemyHealth eh in allEnemies.ToArray())
+    //        {
+    //            if (eh == null)
+    //            {
+    //                allEnemies.Remove(eh);
+    //                continue;
+    //            }
+
+    //            if (colInfo.transform.IsChildOf(eh.transform) || colInfo.transform == eh.transform)
+    //            {
+    //                eh.TakeDamage(damage);
+    //                break;
+    //            }
+    //        }
+    //    }
+    //}
     private void Attack(int damage)
     {
-        UpdateEnemyList();
+        // Lấy vị trí của vòng tròn tấn công, sử dụng transform.right để nó lật theo player
+        Vector3 pos = transform.position + (transform.right * attackOffset.x) + (transform.up * attackOffset.y);
 
-        Vector3 pos = transform.position + transform.right * attackOffset.x + transform.up * attackOffset.y;
-        Collider2D colInfo = Physics2D.OverlapCircle(pos, attackRange, attackMask);
+        // Dùng OverlapCircleAll để lấy TẤT CẢ các đối tượng trong vùng tấn công
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(pos, attackRange, attackMask);
 
-        if (colInfo != null)
+        // Duyệt qua từng đối tượng va chạm
+        foreach (Collider2D hit in colliders)
         {
-            foreach (EnemyHealth eh in allEnemies.ToArray())
+            // 1. Kiểm tra xem có phải là Enemy không?
+            EnemyHealth enemy = hit.GetComponent<EnemyHealth>();
+            if (enemy != null)
             {
-                if (eh == null)
-                {
-                    allEnemies.Remove(eh);
-                    continue;
-                }
+                enemy.TakeDamage(damage);
+                // Thêm 'continue' để không gây sát thương 2 lần lên cùng 1 mục tiêu
+                continue;
+            }
 
-                if (colInfo.transform.IsChildOf(eh.transform) || colInfo.transform == eh.transform)
-                {
-                    eh.TakeDamage(damage);
-                    break;
-                }
+            // 2. Kiểm tra xem có phải là Cửa Sắt không?
+            IronGateHealth gate = hit.GetComponent<IronGateHealth>();
+            if (gate != null)
+            {
+                gate.TakeDamage(damage);
+                continue;
             }
         }
     }
