@@ -78,4 +78,28 @@ public class IronGateHealth : MonoBehaviour
         // Hết thời gian rung, trả cửa về vị trí ban đầu cho nó "ngoan"
         transform.position = originalPosition;
     }
+   
+
+    // Hàm này sẽ được gọi bởi con Ally
+    public void OpenForAlly()
+    {
+        Debug.Log("Cửa mở cho đồng minh!");
+
+        // Mở cửa bằng cách kích hoạt trigger "Open"
+        animator.SetTrigger("Open");
+
+        // Bắt đầu đếm ngược để đóng cửa lại
+        StartCoroutine(CloseGateAfterDelay(1.0f)); // Sẽ đóng lại sau 3 giây
+    }
+
+    private IEnumerator CloseGateAfterDelay(float delay)
+    {
+        // Đợi một khoảng thời gian
+        yield return new WaitForSeconds(delay);
+
+        Debug.Log("Cửa đóng lại!");
+        // Đóng cửa bằng cách kích hoạt trigger "Close"
+        animator.SetTrigger("Close");
+    }
+    
 }
