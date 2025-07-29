@@ -2,7 +2,7 @@
 using UnityEngine.Rendering;
 using TMPro;
 using System.Collections;
-using UnityEngine.Rendering.Universal; // Cần thiết để điều khiển Light2D
+using UnityEngine.Rendering.Universal;
 
 [RequireComponent(typeof(AudioSource))]
 public class PatrollingWarningCamera : MonoBehaviour
@@ -25,14 +25,22 @@ public class PatrollingWarningCamera : MonoBehaviour
     private Vector2[] detectionVertices = new Vector2[3] {
         new Vector2(0, 0), new Vector2(-2, -4), new Vector2(2, -4)
     };
-    [Tooltip("Các layer vật thể có thể chặn tầm nhìn của camera (ví dụ: Ground, Obstacles).")]
     [SerializeField] private LayerMask lineOfSightMask;
+
+    [Header("Enemy Spawning")]
+    [SerializeField] private GameObject enemyPrefabToSpawn;
+    [SerializeField] private int enemiesPerWave = 5;
+    [SerializeField] private float delayBetweenSpawns = 3f;
+    [SerializeField] private float cooldownBetweenWaves = 60f;
+    [SerializeField] private Transform spawnPoint;
+    [SerializeField] private Transform rallyPoint;
+
+    private Coroutine spawningCoroutine;
 
     [Header("Effects Setup")]
     [SerializeField] private TextMeshProUGUI warningTextComponent;
     [SerializeField] private Volume postProcessingVolume;
     [SerializeField] private AudioClip warningSound;
-    [Tooltip("(Tùy chọn) Ánh sáng 2D để thể hiện camera đang bật/tắt.")]
     [SerializeField] private Light2D cameraLight;
 
     [Header("Animation Parameters")]
@@ -66,7 +74,6 @@ public class PatrollingWarningCamera : MonoBehaviour
         {
             postProcessingVolume.gameObject.SetActive(false);
         }
-
         StartCoroutine(PatrolRoutine());
     }
 
@@ -76,7 +83,6 @@ public class PatrollingWarningCamera : MonoBehaviour
 
         Vector2 playerLocalPosition = transform.InverseTransformPoint(playerTransform.position);
         bool isInPolygon = IsPointInPolygon(playerLocalPosition, detectionVertices);
-
         bool hasLineOfSight = false;
 
         if (isInPolygon)
@@ -112,21 +118,101 @@ public class PatrollingWarningCamera : MonoBehaviour
         }
     }
 
+    public void SetWarningMessage(string newMessage)
+    {
+        warningMessage = newMessage;
+        if (warningTextComponent != null) { warningTextComponent.text = newMessage; }
+    }
+
+    private void StartWarningEffects()
+    {
+        if (warningTextComponent != null) warningTextComponent.gameObject.SetActive(true);
+        if (postProcessingVolume != null) postProcessingVolume.gameObject.SetActive(true);
+        if (audioSource != null && warningSound != null && !audioSource.isPlaying)
+        {
+            audioSource.clip = warningSound;
+            audioSource.Play();
+        }
+
+        if (spawningCoroutine == null)
+        {
+            spawningCoroutine = StartCoroutine(InfiniteSpawnRoutine());
+        }
+
+        if (activeEffectsCoroutine == null)
+        {
+            activeEffectsCoroutine = StartCoroutine(RunWarningAnimations());
+        }
+    }
+
+    private IEnumerator InfiniteSpawnRoutine()
+    {
+        if (enemyPrefabToSpawn == null || rallyPoint == null)
+        {
+            Debug.LogError("Chưa thiết lập Enemy Prefab hoặc Rally Point! Dừng triệu hồi.");
+            yield break;
+        }
+
+        int spawnedEnemyLayer = LayerMask.NameToLayer("SpawnedEnemy");
+        if (spawnedEnemyLayer == -1)
+        {
+            Debug.LogError("Không tìm thấy Layer 'SpawnedEnemy'. Vui lòng tạo nó trong Project Settings -> Tags and Layers.");
+            yield break;
+        }
+
+        while (true)
+        {
+            for (int i = 0; i < enemiesPerWave; i++)
+            {
+                Vector3 positionToSpawn = (spawnPoint != null) ? spawnPoint.position : transform.position;
+
+                GameObject newEnemy = Instantiate(enemyPrefabToSpawn, positionToSpawn, Quaternion.identity);
+
+                // ================================================================
+                // == DÒNG CODE DUY NHẤT THỰC HIỆN CÔNG VIỆC GÁN LAYER ==
+                // ================================================================
+                SetLayerRecursively(newEnemy, spawnedEnemyLayer);
+
+                Transform startPointChild = newEnemy.transform.Find("StartPoint");
+                if (startPointChild != null)
+                {
+                    startPointChild.position = rallyPoint.position;
+                }
+
+                if (i < enemiesPerWave - 1)
+                {
+                    yield return new WaitForSeconds(delayBetweenSpawns);
+                }
+            }
+
+            yield return new WaitForSeconds(cooldownBetweenWaves);
+        }
+    }
+
+    private void SetLayerRecursively(GameObject obj, int layer)
+    {
+        obj.layer = layer;
+        foreach (Transform child in obj.transform)
+        {
+            SetLayerRecursively(child.gameObject, layer);
+        }
+    }
+
     private IEnumerator PatrolRoutine()
     {
+        if (pointA == null || pointB == null)
+        {
+            yield break;
+        }
         transform.position = pointA.position;
-
         while (true)
         {
             ToggleCameraState(true);
             yield return StartCoroutine(MoveToPoint(pointB));
-
             ToggleCameraState(false);
             yield return new WaitForSeconds(waitTime);
-
             ToggleCameraState(true);
             yield return StartCoroutine(MoveToPoint(pointA));
-
             ToggleCameraState(false);
             yield return new WaitForSeconds(waitTime);
         }
@@ -149,7 +235,6 @@ public class PatrollingWarningCamera : MonoBehaviour
         {
             cameraLight.enabled = isActive;
         }
-
         if (!isActive)
         {
             if (isPlayerInZone)
@@ -158,21 +243,6 @@ public class PatrollingWarningCamera : MonoBehaviour
                 if (fadeOutCoroutine != null) StopCoroutine(fadeOutCoroutine);
                 fadeOutCoroutine = StartCoroutine(FadeOutEffectsRoutine(fadeOutDelay));
             }
-        }
-    }
-
-    private void StartWarningEffects()
-    {
-        if (warningTextComponent != null) warningTextComponent.gameObject.SetActive(true);
-        if (postProcessingVolume != null) postProcessingVolume.gameObject.SetActive(true);
-        if (audioSource != null && warningSound != null && !audioSource.isPlaying)
-        {
-            audioSource.clip = warningSound;
-            audioSource.Play();
-        }
-        if (activeEffectsCoroutine == null)
-        {
-            activeEffectsCoroutine = StartCoroutine(RunWarningAnimations());
         }
     }
 
@@ -202,12 +272,6 @@ public class PatrollingWarningCamera : MonoBehaviour
         fadeOutCoroutine = null;
     }
 
-    public void SetWarningMessage(string newMessage)
-    {
-        warningMessage = newMessage;
-        if (warningTextComponent != null) { warningTextComponent.text = newMessage; }
-    }
-
     private bool IsPointInPolygon(Vector2 point, Vector2[] polygon)
     {
         int polygonLength = polygon.Length;
@@ -227,8 +291,10 @@ public class PatrollingWarningCamera : MonoBehaviour
 
     private IEnumerator RunWarningAnimations()
     {
+        if (warningTextComponent == null) yield break;
         RectTransform textRect = warningTextComponent.rectTransform;
         Canvas canvas = warningTextComponent.canvas;
+        if (canvas == null) yield break;
         float canvasWidth = canvas.GetComponent<RectTransform>().rect.width;
         textRect.pivot = new Vector2(0.5f, 0.5f);
         float textWidth, startX = 0, endX = 0, travelDistance, duration = 0;

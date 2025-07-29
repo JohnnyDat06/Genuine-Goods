@@ -155,18 +155,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0018086433, y: 0.09957039}
+  m_Offset: {x: -0.0018086433, y: 0.116303265}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.2}
-    oldSize: {x: 3, y: 2.625}
+    oldSize: {x: 3.84, y: 3.36}
     newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.40202236, y: 1.2730596}
+  m_Size: {x: 0.4020224, y: 1.5770208}
   m_EdgeRadius: 0
 --- !u!50 &7653302912006073305
 Rigidbody2D:
@@ -226,6 +226,7 @@ MonoBehaviour:
   wallHopDirection: {x: 0.1, y: 0.5}
   wallJumpDirection: {x: 1, y: 2}
   comboAttack: {fileID: 5987075598520525416}
+  parryDuration: 0.5
   canMove: 1
 --- !u!95 &4715238263917200544
 Animator:
@@ -285,6 +286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startHealth: 1000
+  numberOfHearts: 2
   gameManager: {fileID: 0}
   playerMovement: {fileID: 2958941974757659823}
   deathAnimationDuration: 1
