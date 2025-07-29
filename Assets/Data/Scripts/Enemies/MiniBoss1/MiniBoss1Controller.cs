@@ -197,7 +197,7 @@ public class MiniBoss1Controller : MonoBehaviour
     
     public void SpawnMinions()
     {
-        spawnedMinions.Clear(); // xoá mấy con cũ nếu có
+        spawnedMinions.Clear();
 
         foreach (Transform spawnPoint in spawnPoints)
         {
