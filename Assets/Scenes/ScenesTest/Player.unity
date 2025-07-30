@@ -483,7 +483,7 @@ MonoBehaviour:
   startingHealth: 200
   enemyObj: {fileID: 2052161348}
   reviveCoolDown: 1.5
-  isDead: 0
+  destroyDelayForNormalEnemy: 3
   preventRespawn: 0
 --- !u!95 &345610707
 Animator:
@@ -6097,6 +6097,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 684819916}
     m_Modifications:
+    - target: {fileID: 769574403583249123, guid: b7be9057909dac14086d6507b0d3aca2, type: 3}
+      propertyPath: m_Colors.m_NormalColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 769574403583249123, guid: b7be9057909dac14086d6507b0d3aca2, type: 3}
+      propertyPath: m_Colors.m_NormalColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 769574403583249123, guid: b7be9057909dac14086d6507b0d3aca2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 684819917}
     - target: {fileID: 1632111068524965908, guid: b7be9057909dac14086d6507b0d3aca2, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6177,14 +6189,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1750850715979260990, guid: b7be9057909dac14086d6507b0d3aca2, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1750850715979260990, guid: b7be9057909dac14086d6507b0d3aca2, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 192b443a27958574095727f81a821494, type: 3}
+    - target: {fileID: 2237684024830739093, guid: b7be9057909dac14086d6507b0d3aca2, type: 3}
+      propertyPath: m_Colors.m_NormalColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2237684024830739093, guid: b7be9057909dac14086d6507b0d3aca2, type: 3}
+      propertyPath: m_Colors.m_NormalColor.g
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2237684024830739093, guid: b7be9057909dac14086d6507b0d3aca2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 684819917}
     - target: {fileID: 4495692926155364665, guid: b7be9057909dac14086d6507b0d3aca2, type: 3}
+      propertyPath: m_Colors.m_NormalColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4495692926155364665, guid: b7be9057909dac14086d6507b0d3aca2, type: 3}
+      propertyPath: m_Colors.m_NormalColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4495692926155364665, guid: b7be9057909dac14086d6507b0d3aca2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 684819917}
+    - target: {fileID: 4721316862942174680, guid: b7be9057909dac14086d6507b0d3aca2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 58
+      objectReference: {fileID: 0}
+    - target: {fileID: 5117664369607824118, guid: b7be9057909dac14086d6507b0d3aca2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -86
+      objectReference: {fileID: 0}
     - target: {fileID: 5433166794718980919, guid: b7be9057909dac14086d6507b0d3aca2, type: 3}
       propertyPath: m_Name
       value: Pause
@@ -6193,6 +6237,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8561267033168018552, guid: b7be9057909dac14086d6507b0d3aca2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -234
+      objectReference: {fileID: 0}
+    - target: {fileID: 8868368247515747144, guid: b7be9057909dac14086d6507b0d3aca2, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8868368247515747144, guid: b7be9057909dac14086d6507b0d3aca2, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 192b443a27958574095727f81a821494, type: 3}
+    - target: {fileID: 8921409969429801204, guid: b7be9057909dac14086d6507b0d3aca2, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8921409969429801204, guid: b7be9057909dac14086d6507b0d3aca2, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 192b443a27958574095727f81a821494, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
