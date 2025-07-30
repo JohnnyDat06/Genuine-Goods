@@ -4,51 +4,62 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
+    //Rito added
+    [Header("Health Settings")]
     [SerializeField] public float startingHealth = 3f;
+
+    //Rito added
+    [Header("Revive & Destroy Settings")]
     [SerializeField] private GameObject enemyObj;
     [SerializeField] private float reviveCoolDown = 1.5f;
-    public bool isReviving { get; private set; }
+    [SerializeField] private float destroyDelayForNormalEnemy = 3f; //Rito added
+
+    // --- State Variables ---
     public float currentHealth { get; private set; }
+    public bool isDead { get; private set; }
+    public bool isReviving { get; private set; }
+    public bool preventRespawn = false;
+    public bool isFinishedAndTalkable { get; private set; } = false; //Rito added
+
+    // --- Components ---
     private Animator anim;
     private Transform player;
     private Rigidbody2D rb;
 
-    public bool isDead;
-    public bool preventRespawn = false;
     private bool isPlayerNearby = false;
-
-    private bool isFacingRight = true; // Biến để theo dõi hướng nhìn của enemy
+    private bool isFacingRight = true;
 
     protected virtual void Awake()
     {
         float multiplier = 1f;
-
         if (MissionManager.Instance != null)
         {
             multiplier += 0.5f * MissionManager.Instance.failCount;
         }
-        else
-        {
-            Debug.LogWarning("MissionManager chưa được tạo khi EnemyHealth chạy Awake!");
-        }
 
         startingHealth *= multiplier;
-        Debug.Log("Máu bắt đầu: " + startingHealth);
         currentHealth = startingHealth;
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
+    //Rito edited
     protected virtual void Update()
     {
-        if (isDead && isPlayerNearby && Input.GetKeyDown(KeyCode.F))
+        if (isDead)
         {
-            preventRespawn = true;
-        }
+            CheckPlayer();
 
-        CheckPlayer();
-        CheckAndUpdateDirection();
+            if (isPlayerNearby && Input.GetKeyDown(KeyCode.F))
+            {
+                preventRespawn = true;
+            }
+        }
+        else
+        {
+            CheckAndUpdateDirection();
+        }
     }
 
     public virtual void TakeDamage(float damage)
@@ -56,10 +67,9 @@ public class EnemyHealth : MonoBehaviour
         if (isDead) return;
 
         currentHealth = Mathf.Clamp(currentHealth - damage, 0f, startingHealth);
-        Debug.Log(currentHealth);
         if (currentHealth > 0)
         {
-            if (anim != null) anim.SetTrigger("IsHit");
+            if (anim != null) anim.SetTrigger("IsHit"); //Rito edited
         }
         else
         {
@@ -71,28 +81,36 @@ public class EnemyHealth : MonoBehaviour
     protected virtual void Die()
     {
         if (isDead) return;
-
         isDead = true;
-        Debug.Log("Enemy chết rồi!");
 
-        if (anim != null) anim.SetTrigger("IsDeath");
+        if (anim != null) anim.SetTrigger("IsDeath"); //Rito edited
         rb.velocity = Vector2.zero;
         rb.isKinematic = true;
 
         StartCoroutine(WaitForKillOrRespawn(5f));
     }
 
+    //Rito edited
     IEnumerator WaitForKillOrRespawn(float delay)
     {
         float timer = 0f;
-
         while (timer < delay)
         {
             if (preventRespawn)
             {
-                Debug.Log("Đã bị khóa còng");
-                anim.SetTrigger("IsBlock");
-                Destroy(enemyObj, 10f);
+                if (anim != null) anim.SetTrigger("IsBlock");
+
+                NPCInteractionController chatController = GetComponent<NPCInteractionController>();
+
+                if (chatController != null)
+                {
+                    isFinishedAndTalkable = true;
+                }
+                else
+                {
+                    Destroy(enemyObj, destroyDelayForNormalEnemy);
+                }
+
                 yield break;
             }
             timer += Time.deltaTime;
@@ -101,16 +119,15 @@ public class EnemyHealth : MonoBehaviour
 
         currentHealth = Mathf.RoundToInt(startingHealth * 0.3f);
         isDead = false;
-        Debug.Log("Enemy hồi sinh với máu: " + currentHealth);
         rb.velocity = Vector2.zero;
         rb.isKinematic = false;
-
         if (anim != null) anim.SetTrigger("IsRevive");
         Revive();
     }
 
     void CheckPlayer()
     {
+        if (player == null) return; //Rito added
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
         isPlayerNearby = distanceToPlayer < 1f && isDead;
     }
@@ -124,7 +141,7 @@ public class EnemyHealth : MonoBehaviour
     {
         float elapsed = 0f;
         Vector2 startPos = rb.position;
-        int direction = isFacingRight ? -1 : 1; // Di chuyển ngược hướng mặt enemy
+        int direction = isFacingRight ? -1 : 1;
         Vector2 targetPos = startPos + new Vector2(direction * distance, 0f);
 
         while (elapsed < duration)
@@ -134,17 +151,14 @@ public class EnemyHealth : MonoBehaviour
             elapsed += Time.deltaTime;
             yield return null;
         }
-
-        rb.MovePosition(targetPos); // Đảm bảo tới đúng vị trí cuối
+        rb.MovePosition(targetPos);
     }
 
     private void CheckAndUpdateDirection()
     {
-        if (player == null || rb == null) return;
+        if (player == null || rb == null || isDead || isReviving) return; //Rito edited
 
         Vector2 directionToPlayer = player.position - transform.position;
-
-        // Cập nhật hướng nhìn dựa trên vị trí của player
         if (directionToPlayer.x > 0 && !isFacingRight)
         {
             Flip();
@@ -157,7 +171,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void Flip()
     {
-        if (isDead || isReviving) return;
+        if (isDead || isReviving) return; //Rito added
         isFacingRight = !isFacingRight;
         Vector3 scale = transform.localScale;
         scale.x *= -1;
@@ -168,7 +182,7 @@ public class EnemyHealth : MonoBehaviour
     {
         StartCoroutine(ReviveCooldown());
     }
-    //Rito
+
     public void ConfirmFinisher()
     {
         preventRespawn = true;
