@@ -9,6 +9,7 @@ TagManager:
   - PuzzleLine
   - PuzzleLineInactive
   - IronGate
+  - Conveyor
   layers:
   - Default
   - TransparentFX

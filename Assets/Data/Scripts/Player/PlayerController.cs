@@ -208,11 +208,60 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    private void ApplyMovement()
+    //private void ApplyMovement()
+    //{
+    //    // Move the player
+    //    if(IsGrounded() && canMove)
+    //        playerRigidbody.velocity = new Vector2(movementInputDerection * movementSpeed, playerRigidbody.velocity.y);
+    //    else if (!IsGrounded() && !isWallSliding && movementInputDerection != 0)
+    //    {
+    //        Vector2 forceToAdd = new Vector2(movementInputDerection * movementForceInAir, 0f);
+    //        playerRigidbody.AddForce(forceToAdd, ForceMode2D.Force);
+
+    //        if (Mathf.Abs(playerRigidbody.velocity.x) > movementSpeed)
+    //        {
+    //            playerRigidbody.velocity = new Vector2(movementInputDerection * movementSpeed, playerRigidbody.velocity.y);
+    //        }
+    //    }
+
+    //    // Apply wall sliding
+    //    if (isWallSliding)
+    //    {
+    //        if (playerRigidbody.velocity.y < -wallSlideSpeed)
+    //        {
+    //            playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, -wallSlideSpeed);
+    //        }
+    //    }       
+    //}
+    private void ApplyMovement() // hieu sua lai
     {
         // Move the player
-        if(IsGrounded() && canMove)
-            playerRigidbody.velocity = new Vector2(movementInputDerection * movementSpeed, playerRigidbody.velocity.y);
+        if (IsGrounded() && canMove)
+        {
+
+            // Bắn một tia BoxCast xuống dưới để xem mình đang đứng trên cái gì
+            RaycastHit2D groundHit = Physics2D.BoxCast(playerCollider.bounds.center, playerCollider.bounds.size, 0f, Vector2.down, 0.1f, layerGround);
+
+            // Mặc định là không đứng trên băng chuyền
+            bool onConveyor = false;
+            if (groundHit.collider != null)
+            {
+                // Nếu vật mình đứng lên có tag là "Conveyor" thì xác nhận
+                if (groundHit.collider.CompareTag("Conveyor"))
+                {
+                    onConveyor = true;
+                }
+            }
+
+            // CHỈ áp dụng di chuyển kiểu cũ KHI KHÔNG ĐỨNG trên băng chuyền
+            if (!onConveyor)
+            {
+                playerRigidbody.velocity = new Vector2(movementInputDerection * movementSpeed, playerRigidbody.velocity.y);
+            }
+            // Nếu onConveyor là true, dòng code trên sẽ được bỏ qua,
+            // cho phép Surface Effector toàn quyền điều khiển vận tốc của Player.
+
+        }
         else if (!IsGrounded() && !isWallSliding && movementInputDerection != 0)
         {
             Vector2 forceToAdd = new Vector2(movementInputDerection * movementForceInAir, 0f);
@@ -231,7 +280,7 @@ public class PlayerController : MonoBehaviour
             {
                 playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, -wallSlideSpeed);
             }
-        }       
+        }
     }
 
     public void TriggerDeathAnimation()
