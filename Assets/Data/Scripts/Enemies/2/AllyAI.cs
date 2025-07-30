@@ -1,209 +1,208 @@
 ﻿using System.Collections;
 using UnityEngine;
 using Cinemachine;
+
 public class AllyAI : MonoBehaviour
 {
     [Header("AI Settings")]
+    [Tooltip("Khoảng cách để Ally phát hiện Player và bắt đầu chạy")]
+    public float detectionRange = 10f;
     [Tooltip("Tốc độ bỏ chạy của Ally")]
     public float runSpeed = 8f;
+    [Tooltip("Ban đầu, Ally sẽ quay mặt sang phải?")]
+    public bool startFacingRight = false;
+    [Tooltip("Thời gian Ally nhìn Player trước khi bỏ chạy")]
+    public float turnDelay = 1f;
 
+    [Header("Effects")]
+    [Tooltip("Kéo object dấu chấm hỏi vào đây")]
+    public GameObject questionMarkObject;
+
+    [Header("Sequence Points")]
     [Tooltip("Điểm mà Ally sẽ chạy tới và dừng lại")]
     public Transform stopPoint;
-
     [Tooltip("Cửa sắt mà Ally cần chạy qua")]
     public IronGateHealth ironGate;
-    [Header("Cinemachine Settings")]
+    [Tooltip("Vị trí cuối cùng Ally sẽ dịch chuyển tới sau khi xong việc")]
+    public Transform finalTeleportPoint;
+
+    [Header("Animation & Camera")]
+    [Tooltip("Thời lượng của animation sợ hãi (tính bằng giây)")]
+    public float scareAnimationDuration = 1.5f;
     [Tooltip("Kéo Camera ảo của Đồng Minh vào đây")]
     public CinemachineVirtualCamera vcamAlly;
 
-    // Các biến private để quản lý trạng thái
+    // Các biến private để quản lý
     private Animator anim;
     private Rigidbody2D rb;
-    private bool hasBeenTriggered = false;
-    private bool isFacingRight = true;
     private Transform player;
+    private bool sequenceStarted = false;
+    private bool isFacingRight = true;
 
     void Start()
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
 
-        // --- PHẦN CODE "TỰ SỬA LỖI" QUAN TRỌNG NHẤT ---
+        // --- BẮT ĐẦU PHẦN NÂNG CẤP ---
 
-        // 1. Tự tìm Player bằng Tag
-        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
-        if (playerObject != null)
-        {
-            player = playerObject.transform;
-        }
-        else
-        {
-            Debug.LogError("LỖI: Không tìm thấy object có tag 'Player'!", this.gameObject);
-        }
+        // 1. Đồng bộ trạng thái logic 'isFacingRight' với cài đặt trong Inspector
+        isFacingRight = startFacingRight;
 
-        // 2. Kiểm tra và tự tìm Stop Point nếu trong Inspector bị rỗng
-        if (stopPoint == null)
-        {
-            Debug.LogWarning("Stop Point chưa được gán, đang tự động tìm bằng tên 'AllyStopPoint'...", this.gameObject);
-            GameObject stopPointObject = GameObject.Find("AllyStopPoint");
-            if (stopPointObject != null)
-            {
-                stopPoint = stopPointObject.transform;
-            }
-            else
-            {
-                Debug.LogError("LỖI: Không tìm thấy object tên là 'AllyStopPoint' trong Scene!", this.gameObject);
-            }
-        }
+        // 2. Dựa vào 'isFacingRight' để set hướng nhìn ban đầu một cách chính xác
+        float initialDirection = isFacingRight ? 1f : -1f;
+        transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * initialDirection, transform.localScale.y, transform.localScale.z);
 
-        // 3. Kiểm tra và tự tìm Cửa Sắt nếu trong Inspector bị rỗng
-        if (ironGate == null)
-        {
-            Debug.LogWarning("Iron Gate chưa được gán, đang tự động tìm bằng script 'IronGateHealth'...", this.gameObject);
-            ironGate = FindObjectOfType<IronGateHealth>();
-            if (ironGate == null)
-            {
-                Debug.LogError("LỖI: Không tìm thấy object nào có script 'IronGateHealth' trong Scene!", this.gameObject);
-            }
-        }
-        // --- KẾT THÚC PHẦN CODE TỰ SỬA LỖI ---
+        // --- KẾT THÚC PHẦN NÂNG CẤP ---
+
+        // Tự động tìm các đối tượng cần thiết
+        FindRequiredObjects();
     }
 
     void Update()
     {
-        if (hasBeenTriggered)
+        // Nếu chuỗi hành động chưa bắt đầu và đã tìm thấy người chơi
+        if (!sequenceStarted && player != null)
         {
-            Flee();
-        }
-        else if (player != null) // Chỉ nhìn player nếu đã tìm thấy
-        {
-            FacePlayer();
-        }
-    }
-
-    // Va chạm với Player để kích hoạt
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (!hasBeenTriggered && collision.gameObject.CompareTag("Player"))
-        {
-            Debug.Log("Ally sợ hãi và bắt đầu bỏ chạy! Kích hoạt camera cinematic.");
-            hasBeenTriggered = true;
-            anim.SetTrigger("Scared");
-
-            // --- THÊM DÒNG NÀY ĐỂ CHUYỂN CAMERA ---
-            if (vcamAlly != null)
+            // Chỉ kiểm tra khoảng cách tới người chơi
+            if (Vector2.Distance(transform.position, player.position) < detectionRange)
             {
-                vcamAlly.Priority = 11; // Tăng lên 11, cao hơn 10 của VCam_Player
+                // Bắt đầu chuỗi hành động
+                sequenceStarted = true;
+                StartCoroutine(AllySequence());
             }
         }
     }
 
-    // Hàm xử lý logic bỏ chạy
-    //private void Flee()
+    // Coroutine chứa toàn bộ kịch bản của Ally
+    //private IEnumerator AllySequence()
     //{
-    //    // Thêm kiểm tra null ở đây để tuyệt đối an toàn
-    //    if (stopPoint == null)
-    //    {
-    //        Debug.LogError("Vẫn không có Stop Point để chạy tới! Vô hiệu hóa AI.", this.gameObject);
-    //        this.enabled = false;
-    //        return;
-    //    }
+    //    Debug.Log("Phát hiện Player! Bắt đầu chạy...");
+    //    // 1. BẮT ĐẦU CHẠY VÀ CHUYỂN CAMERA
+    //    anim.SetTrigger("Run");
+    //    if (vcamAlly != null) vcamAlly.Priority = 11;
 
-    //    if (Vector2.Distance(transform.position, stopPoint.position) > 1.5f)
+    //    // Vòng lặp di chuyển tới điểm dừng
+    //    while (Vector2.Distance(transform.position, stopPoint.position) > 1.5f)
     //    {
     //        Vector2 direction = (stopPoint.position - transform.position).normalized;
     //        rb.velocity = new Vector2(direction.x * runSpeed, rb.velocity.y);
+    //        FaceDirection(direction.x);
 
-    //        if (direction.x > 0 && !isFacingRight) Flip();
-    //        else if (direction.x < 0 && isFacingRight) Flip();
-
-    //        // Chỉ thực hiện khi ironGate đã được gán VÀ khoảng cách đủ gần
+    //        // Mở cửa khi đến gần
     //        if (ironGate != null && Vector2.Distance(transform.position, ironGate.transform.position) < 4f)
     //        {
     //            ironGate.OpenForAlly();
-    //            ironGate = null; // Đảm bảo chỉ gọi 1 lần
+    //            ironGate = null; // Chỉ gọi 1 lần
     //        }
+    //        yield return null; // Đợi đến frame tiếp theo
     //    }
-    //    else
+
+    //    Debug.Log("Đã đến điểm dừng. Bắt đầu sợ hãi.");
+    //    // 2. DỪNG LẠI VÀ THỰC HIỆN ANIMATION SỢ HÃI
+    //    rb.velocity = Vector2.zero;
+    //    anim.SetTrigger("Scared");
+
+    //    // 3. ĐỢI ANIMATION SỢ HÃI CHẠY XONG
+    //    yield return new WaitForSeconds(scareAnimationDuration);
+
+    //    Debug.Log("Sợ hãi xong. Trả camera về Player.");
+    //    // 4. TRẢ CAMERA VỀ PLAYER
+    //    if (vcamAlly != null) vcamAlly.Priority = 9;
+    //    vcamAlly.Follow = null;
+
+    //    // Đợi một chút cho camera chuyển cảnh mượt mà
+    //    yield return new WaitForSeconds(1f);
+
+    //    Debug.Log("Dịch chuyển đến vị trí cuối cùng.");
+    //    // 5. DỊCH CHUYỂN (TELEPORT)
+    //    if (finalTeleportPoint != null)
     //    {
-    //        Debug.Log("Ally đã đến nơi an toàn và dừng lại.");
-    //        rb.velocity = Vector2.zero;
-    //        anim.SetTrigger("Idle");
-    //        this.enabled = false;
+    //        transform.position = finalTeleportPoint.position;
     //    }
+
+    //    // Chuyển về trạng thái Idle và vô hiệu hóa
+    //    anim.SetTrigger("Idle");
+    //    this.enabled = false;
     //}
-    // Hàm xử lý logic bỏ chạy
-    private void Flee()
+    private IEnumerator AllySequence()
     {
-        // --- BẮT ĐẦU PHẦN NÂNG CẤP ---
+        Debug.Log("Phát hiện Player! Đang quay lại nhìn...");
+        // 1. QUAY MẶT VỀ PHÍA PLAYER
+        FaceDirection(player.position.x - transform.position.x);
+        if (questionMarkObject != null) questionMarkObject.SetActive(true);
 
-        // Lấy thông tin về trạng thái animation hiện tại trên layer 0
-        AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
+        // 2. ĐỢI MỘT CHÚT (TẠO CĂNG THẲNG)
+        yield return new WaitForSeconds(turnDelay);
 
-        // Chỉ thực hiện logic di chuyển NẾU animation hiện tại là "Run"
-        if (stateInfo.IsName("Run")) // <-- Tên "Run" phải khớp với tên state trong Animator
+        Debug.Log("Bắt đầu chạy!");
+        // 3. BẮT ĐẦU CHẠY VÀ CHUYỂN CAMERA
+        if (questionMarkObject != null) questionMarkObject.SetActive(false);
+        anim.SetTrigger("Run");
+        if (vcamAlly != null) vcamAlly.Priority = 11;
+
+        // Vòng lặp di chuyển tới điểm dừng (logic này không đổi)
+        while (Vector2.Distance(transform.position, stopPoint.position) > 1.5f)
         {
-            // --- Toàn bộ code di chuyển cũ sẽ nằm trong cái if này ---
+            Vector2 direction = (stopPoint.position - transform.position).normalized;
+            rb.velocity = new Vector2(direction.x * runSpeed, rb.velocity.y);
+            FaceDirection(direction.x);
 
-            if (stopPoint == null)
+            if (ironGate != null && Vector2.Distance(transform.position, ironGate.transform.position) < 4f)
             {
-                Debug.LogError("Vẫn không có Stop Point để chạy tới! Vô hiệu hóa AI.", this.gameObject);
-                this.enabled = false;
-                return;
+                ironGate.OpenForAlly();
+                ironGate = null;
             }
-
-            if (Vector2.Distance(transform.position, stopPoint.position) > 1.5f)
-            {
-                Vector2 direction = (stopPoint.position - transform.position).normalized;
-                rb.velocity = new Vector2(direction.x * runSpeed, rb.velocity.y);
-
-                if (direction.x > 0 && !isFacingRight) Flip();
-                else if (direction.x < 0 && isFacingRight) Flip();
-
-                if (ironGate != null && Vector2.Distance(transform.position, ironGate.transform.position) < 4f)
-                {
-                    ironGate.OpenForAlly();
-                    ironGate = null;
-                }
-            }
-            else
-            {
-                Debug.Log("Ally đã đến nơi an toàn và dừng lại. Trả camera về bình thường.");
-                rb.velocity = Vector2.zero;
-                anim.SetTrigger("Idle");
-
-                // --- THÊM DÒNG NÀY ĐỂ TRẢ CAMERA LẠI ---
-                if (vcamAlly != null)
-                {
-                    vcamAlly.Priority = 9; // Hạ xuống 9, thấp hơn 10 của VCam_Player
-                }
-
-                this.enabled = false;
-            }
-            // --- Kết thúc phần code di chuyển ---
-        }
-        else
-        {
-            // Nếu không phải animation "Run" (tức là đang "Scare"), thì bắt nó đứng im
-            rb.velocity = Vector2.zero;
+            yield return null;
         }
 
-        // --- KẾT THÚC PHẦN NÂNG CẤP ---
+        // Các bước còn lại từ 4 đến 6 không có gì thay đổi
+        Debug.Log("Đã đến điểm dừng. Bắt đầu sợ hãi.");
+        // 4. DỪNG LẠI VÀ THỰC HIỆN ANIMATION SỢ HÃI
+        rb.velocity = Vector2.zero;
+        anim.SetTrigger("Scared");
+
+        // 5. ĐỢI ANIMATION SỢ HÃI CHẠY XONG
+        yield return new WaitForSeconds(scareAnimationDuration);
+
+        Debug.Log("Sợ hãi xong. Trả camera về Player.");
+        // 6. TRẢ CAMERA, "THẢ" MỤC TIÊU VÀ DỊCH CHUYỂN
+        if (vcamAlly != null)
+        {
+            vcamAlly.Priority = 9;
+            vcamAlly.Follow = null;
+        }
+
+        yield return new WaitForSeconds(1f);
+
+        if (finalTeleportPoint != null)
+        {
+            transform.position = finalTeleportPoint.position;
+        }
+
+        anim.SetTrigger("Idle");
+        this.enabled = false;
     }
 
-    // Hàm để Ally luôn nhìn về phía người chơi
-    private void FacePlayer()
+    // Hàm lật mặt theo hướng di chuyển
+    private void FaceDirection(float moveDirection)
     {
-        if (player.position.x > transform.position.x && !isFacingRight) Flip();
-        else if (player.position.x < transform.position.x && isFacingRight) Flip();
+        if (moveDirection > 0 && transform.localScale.x < 0)
+        {
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
+        else if (moveDirection < 0 && transform.localScale.x > 0)
+        {
+            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
     }
 
-    // Hàm lật mặt nhân vật
-    private void Flip()
+    // Hàm tự tìm kiếm để tránh lỗi
+    private void FindRequiredObjects()
     {
-        isFacingRight = !isFacingRight;
-        Vector3 scale = transform.localScale;
-        scale.x *= -1;
-        transform.localScale = scale;
+        if (player == null) player = GameObject.FindGameObjectWithTag("Player")?.transform;
+        if (stopPoint == null) stopPoint = GameObject.Find("AllyStopPoint")?.transform;
+        if (ironGate == null) ironGate = FindObjectOfType<IronGateHealth>();
+        // Biến vcamAlly và finalTeleportPoint cần phải gán thủ công trong Inspector
     }
 }
