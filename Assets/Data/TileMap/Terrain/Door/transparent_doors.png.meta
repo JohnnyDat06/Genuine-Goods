@@ -1,0 +1,1149 @@
+fileFormatVersion: 2
+guid: 42c84d786f6f6a545bfb8eeb91903b37
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 90
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: transparent_doors_0
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 960
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6917e48b74699a440a655c8b4235efce
+      internalID: 587261253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent_doors_1
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 960
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a6390ecefba52c44aaff335f1c08fb8
+      internalID: 1636053883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent_doors_2
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 960
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e4ac548dcecd624d9410e231d9e826c
+      internalID: 1356885064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent_doors_3
+      rect:
+        serializedVersion: 2
+        x: 488
+        y: 960
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ab31b38b8b85104f9db12008afa3109
+      internalID: 1878030452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent_doors_4
+      rect:
+        serializedVersion: 2
+        x: 616
+        y: 960
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8376a9e56d7cb384e8b6388c4d6000ea
+      internalID: 43190284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent_doors_5
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 960
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe4e2f8e4db9de742afa084804a0db32
+      internalID: 883183573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent_doors_6
+      rect:
+        serializedVersion: 2
+        x: 936
+        y: 960
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e725020d7ab98374dac0980ec027635b
+      internalID: -1818571156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent_doors_7
+      rect:
+        serializedVersion: 2
+        x: 1064
+        y: 960
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 541be4a866ab0f44e97f8e4a799427b8
+      internalID: 1872828150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent_doors_8
+      rect:
+        serializedVersion: 2
+        x: 1192
+        y: 960
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc730f6ecbd22e944b4052f8adab8839
+      internalID: -461679487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent_doors_9
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 960
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c42d39bf16059e54fb2060002575c256
+      internalID: -230558660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent_doors_10
+      rect:
+        serializedVersion: 2
+        x: 1448
+        y: 960
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3aba7137078819746a68fc86ad6ef8ed
+      internalID: -1246864429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent_doors_11
+      rect:
+        serializedVersion: 2
+        x: 1576
+        y: 960
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93b86d89e9cee2243a4509e52ff724c8
+      internalID: 1918225950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent_doors_12
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 664
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba0365d4f43703c4b9df917e7e13820e
+      internalID: -681501608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent_doors_13
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 664
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03c10ff805cfc804fa1572e612e600e5
+      internalID: -1666367646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent_doors_14
+      rect:
+        serializedVersion: 2
+        x: 488
+        y: 664
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ceb80d6aa0882246a5479552a52c492
+      internalID: 738549949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent_doors_15
+      rect:
+        serializedVersion: 2
+        x: 616
+        y: 664
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2a61d0a6a523134598e56c7b5f9a70f
+      internalID: 2043047135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent_doors_16
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 664
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd51654d0b765b442b7770229d020b6d
+      internalID: 169317700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent_doors_17
+      rect:
+        serializedVersion: 2
+        x: 936
+        y: 664
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3155c8beb4e3a24e822adeb43dc64cb
+      internalID: -1090041403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent_doors_18
+      rect:
+        serializedVersion: 2
+        x: 1064
+        y: 664
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f400c6f0c3ce3e64592ebc590da5339c
+      internalID: -1020227650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent_doors_19
+      rect:
+        serializedVersion: 2
+        x: 1192
+        y: 664
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b495ad61de5766f449292b8d2d21aad5
+      internalID: -1824924668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent_doors_20
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 664
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c40be140d5d2e26459b0f88528f2d868
+      internalID: -866351814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent_doors_21
+      rect:
+        serializedVersion: 2
+        x: 1448
+        y: 664
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aff983b8070c5bd49831aded8ff5b058
+      internalID: -1077929393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent_doors_22
+      rect:
+        serializedVersion: 2
+        x: 1576
+        y: 664
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 486073b39dde8904799005b0f5d16485
+      internalID: 666375001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent_doors_23
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 368
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12fdfa0fcc4e7a64db99c7725e9aee42
+      internalID: 705676024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent_doors_24
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 368
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffe63bc5d6050ca459ae669a542fc3cd
+      internalID: -728751127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent_doors_25
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 368
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 574417e8a6fcdda4eae7cb0a73a3c6b7
+      internalID: 1277728642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent_doors_26
+      rect:
+        serializedVersion: 2
+        x: 488
+        y: 368
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a98307a85fc079408de1b432c22ec44
+      internalID: -495618618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent_doors_27
+      rect:
+        serializedVersion: 2
+        x: 616
+        y: 368
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2edd2ec4e4735434e90660d3b9f0e782
+      internalID: -1467953301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent_doors_28
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 368
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 922c9bb7290056b478eab9e49edd6acd
+      internalID: 697434169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent_doors_29
+      rect:
+        serializedVersion: 2
+        x: 936
+        y: 368
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ebd58c0459eae04baf5d426572b32c3
+      internalID: 1121836976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent_doors_30
+      rect:
+        serializedVersion: 2
+        x: 1064
+        y: 368
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1212d43ea98beb742a358efd39ac61a3
+      internalID: -921789591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent_doors_31
+      rect:
+        serializedVersion: 2
+        x: 1192
+        y: 368
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee77b8547fe26f14cb1b59190291fd7a
+      internalID: 1625946349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent_doors_32
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 368
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31a922290f1f88246ab96ea0de0c3856
+      internalID: -1827011062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent_doors_33
+      rect:
+        serializedVersion: 2
+        x: 1448
+        y: 368
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6dd6c666b26b72b4cbfdd57243e5593e
+      internalID: -1224115883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent_doors_34
+      rect:
+        serializedVersion: 2
+        x: 1576
+        y: 368
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9f445b389e542a4f8c2cca7239f61aa
+      internalID: -572028612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent_doors_35
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 72
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 047fec7190aaae544a4ce1cd83f90301
+      internalID: -833121414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent_doors_36
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 72
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbde17ab73bb6be46945886257e3fb00
+      internalID: 973640579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent_doors_37
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 71
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dab1f1d17244d9149b99febef64ccc3a
+      internalID: 2108963981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent_doors_38
+      rect:
+        serializedVersion: 2
+        x: 488
+        y: 72
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22086b0bc3a9dfc41ba2efdb886f974a
+      internalID: -1390416262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent_doors_39
+      rect:
+        serializedVersion: 2
+        x: 616
+        y: 72
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 958cd2498f475b74191843b1d6e9f945
+      internalID: 1236445624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent_doors_40
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 72
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6a4b8c6679ee3f44b93ff6f610b95dd
+      internalID: -2116236428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent_doors_41
+      rect:
+        serializedVersion: 2
+        x: 936
+        y: 72
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7587ce10a0adc1749ba1693704bcd249
+      internalID: 1432939603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent_doors_42
+      rect:
+        serializedVersion: 2
+        x: 1064
+        y: 72
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 062e554681391f74da795f0c5d1b74ae
+      internalID: -2017977526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent_doors_43
+      rect:
+        serializedVersion: 2
+        x: 1192
+        y: 72
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 439bcd8e9707d7244b881e64c2eefdcf
+      internalID: -323580300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent_doors_44
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 72
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e28e5f0415404c408a3762d46668d61
+      internalID: -661738627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent_doors_45
+      rect:
+        serializedVersion: 2
+        x: 1448
+        y: 72
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92729f60240f2754bad4130ead641e24
+      internalID: 1413567492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent_doors_46
+      rect:
+        serializedVersion: 2
+        x: 1576
+        y: 72
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d476223f5e60ce34b86687d381556e44
+      internalID: -1307148489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      transparent_doors_0: 587261253
+      transparent_doors_1: 1636053883
+      transparent_doors_10: -1246864429
+      transparent_doors_11: 1918225950
+      transparent_doors_12: -681501608
+      transparent_doors_13: -1666367646
+      transparent_doors_14: 738549949
+      transparent_doors_15: 2043047135
+      transparent_doors_16: 169317700
+      transparent_doors_17: -1090041403
+      transparent_doors_18: -1020227650
+      transparent_doors_19: -1824924668
+      transparent_doors_2: 1356885064
+      transparent_doors_20: -866351814
+      transparent_doors_21: -1077929393
+      transparent_doors_22: 666375001
+      transparent_doors_23: 705676024
+      transparent_doors_24: -728751127
+      transparent_doors_25: 1277728642
+      transparent_doors_26: -495618618
+      transparent_doors_27: -1467953301
+      transparent_doors_28: 697434169
+      transparent_doors_29: 1121836976
+      transparent_doors_3: 1878030452
+      transparent_doors_30: -921789591
+      transparent_doors_31: 1625946349
+      transparent_doors_32: -1827011062
+      transparent_doors_33: -1224115883
+      transparent_doors_34: -572028612
+      transparent_doors_35: -833121414
+      transparent_doors_36: 973640579
+      transparent_doors_37: 2108963981
+      transparent_doors_38: -1390416262
+      transparent_doors_39: 1236445624
+      transparent_doors_4: 43190284
+      transparent_doors_40: -2116236428
+      transparent_doors_41: 1432939603
+      transparent_doors_42: -2017977526
+      transparent_doors_43: -323580300
+      transparent_doors_44: -661738627
+      transparent_doors_45: 1413567492
+      transparent_doors_46: -1307148489
+      transparent_doors_47: -1344306490
+      transparent_doors_5: 883183573
+      transparent_doors_6: -1818571156
+      transparent_doors_7: 1872828150
+      transparent_doors_8: -461679487
+      transparent_doors_9: -230558660
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
