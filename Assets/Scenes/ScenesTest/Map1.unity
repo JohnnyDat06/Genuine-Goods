@@ -11816,11 +11816,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6533892446282366308, guid: ac454d9457d3015439e54c77bd6fce36, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -757.64
+      value: -764.69
       objectReference: {fileID: 0}
     - target: {fileID: 6533892446282366308, guid: ac454d9457d3015439e54c77bd6fce36, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -528.37
+      value: -529.96
       objectReference: {fileID: 0}
     - target: {fileID: 6533892446282366308, guid: ac454d9457d3015439e54c77bd6fce36, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13018,6 +13018,11 @@ RectTransform:
 --- !u!4 &634608451 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7488103937768260435, guid: 0901870ee7275bd48ab8a26ec553ac34, type: 3}
+  m_PrefabInstance: {fileID: 3197749488978949906}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &643800964 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3412840254389020595, guid: 0901870ee7275bd48ab8a26ec553ac34, type: 3}
   m_PrefabInstance: {fileID: 3197749488978949906}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &668919150
@@ -22247,6 +22252,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1751037317 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6374723122244266775, guid: 0901870ee7275bd48ab8a26ec553ac34, type: 3}
+  m_PrefabInstance: {fileID: 3197749488978949906}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1751796321
 GameObject:
   m_ObjectHideFlags: 0
@@ -22734,11 +22744,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6077354653834700228, guid: 391563b76fb114b40999489c84579bb6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -756.84
+      value: -766.3
       objectReference: {fileID: 0}
     - target: {fileID: 6077354653834700228, guid: 391563b76fb114b40999489c84579bb6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -528.46
+      value: -529.92
       objectReference: {fileID: 0}
     - target: {fileID: 6077354653834700228, guid: 391563b76fb114b40999489c84579bb6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -24721,11 +24731,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5133661519501985342, guid: ec1d9ae08e2a27648a6ef84a38b8c914, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -751.3
+      value: -733.46
       objectReference: {fileID: 0}
     - target: {fileID: 5133661519501985342, guid: ec1d9ae08e2a27648a6ef84a38b8c914, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -528.42
+      value: -528.93
       objectReference: {fileID: 0}
     - target: {fileID: 5133661519501985342, guid: ec1d9ae08e2a27648a6ef84a38b8c914, type: 3}
       propertyPath: m_LocalPosition.z
@@ -24820,6 +24830,26 @@ PrefabInstance:
       propertyPath: vcamAlly
       value: 
       objectReference: {fileID: 383014197}
+    - target: {fileID: 1344956051965026341, guid: 0901870ee7275bd48ab8a26ec553ac34, type: 3}
+      propertyPath: detectionRange
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1344956051965026341, guid: 0901870ee7275bd48ab8a26ec553ac34, type: 3}
+      propertyPath: startFacingRight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1344956051965026341, guid: 0901870ee7275bd48ab8a26ec553ac34, type: 3}
+      propertyPath: finalTeleportPoint
+      value: 
+      objectReference: {fileID: 643800964}
+    - target: {fileID: 1344956051965026341, guid: 0901870ee7275bd48ab8a26ec553ac34, type: 3}
+      propertyPath: questionMarkObject
+      value: 
+      objectReference: {fileID: 1751037317}
+    - target: {fileID: 1344956051965026341, guid: 0901870ee7275bd48ab8a26ec553ac34, type: 3}
+      propertyPath: scareAnimationDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2222854924442789424, guid: 0901870ee7275bd48ab8a26ec553ac34, type: 3}
       propertyPath: m_Name
       value: Enemy2
