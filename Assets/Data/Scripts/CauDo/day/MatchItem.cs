@@ -93,7 +93,7 @@ public class MatchItem : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoin
         else
         {
             // Nếu thả ra ngoài hoặc sai đối tượng thì xóa line
-            Destroy(line);
+            
             PuzzleManager.instance.ResetPuzzle();
         }
     }
