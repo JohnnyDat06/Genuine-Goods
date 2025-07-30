@@ -6,7 +6,7 @@ using System.Text;
 using TMPro;
 using UnityEngine.UI;
 
-// --- Cấu trúc dữ liệu để giao tiếp với Server ---
+// --- Cấu trúc dữ liệu để giao tiếp với Server (Giữ nguyên) ---
 
 [System.Serializable]
 public class ChatMessage
@@ -28,29 +28,57 @@ public class ChatResponse
     public string answer;
 }
 
-
+[RequireComponent(typeof(EnemyHealth))] // Đảm bảo luôn có component EnemyHealth
 public class NPCInteractionController : MonoBehaviour
 {
     [Header("Interaction Settings")]
-    public Transform playerTransform;
+    [Tooltip("Khoảng cách tối đa để người chơi có thể bắt đầu cuộc trò chuyện.")]
     public float interactionDistance = 3.0f;
+    [Tooltip("Phím để bắt đầu/gửi tin nhắn.")]
     public KeyCode interactionKey = KeyCode.E;
+    [Tooltip("Phím để kết thúc cuộc trò chuyện.")]
     public KeyCode exitKey = KeyCode.Escape;
 
     [Header("UI Elements")]
+    [Tooltip("Panel chứa toàn bộ giao diện chat.")]
     public GameObject chatPanel;
+    [Tooltip("Vùng hiển thị nội dung chat.")]
     public TextMeshProUGUI chatLogText;
+    [Tooltip("Ô để người chơi nhập tin nhắn.")]
     public TMP_InputField playerInputField;
-    public ScrollRect chatScrollRect; // Biến cho thanh cuộn
+    [Tooltip("Thanh cuộn của vùng chat để tự động cuộn xuống.")]
+    public ScrollRect chatScrollRect;
 
     [Header("Backend Settings")]
+    [Tooltip("Địa chỉ URL của server chat backend.")]
     public string serverUrl = "http://localhost:3000/api/chat";
 
-    [Header("Player Components")]
-    public MonoBehaviour playerMovementScript;
+    // --- Biến nội bộ ---
+    private Transform playerTransform;
+    private MonoBehaviour playerMovementScript;
+    private EnemyHealth enemyHealth;
 
     private bool isChatting = false;
     private List<ChatMessage> chatHistory = new List<ChatMessage>();
+
+    void Awake()
+    {
+        // Tự động lấy các component cần thiết
+        enemyHealth = GetComponent<EnemyHealth>();
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+
+        if (playerObj != null)
+        {
+            playerTransform = playerObj.transform;
+            // Giả sử script di chuyển của bạn tên là "PlayerController" hoặc tương tự
+            // Hãy thay đổi "PlayerController" thành tên script di chuyển chính xác của bạn
+            playerMovementScript = playerObj.GetComponent<PlayerController>() as MonoBehaviour;
+        }
+        else
+        {
+            Debug.LogError("Không tìm thấy đối tượng có tag 'Player'. Vui lòng kiểm tra lại scene.", this);
+        }
+    }
 
     void Start()
     {
@@ -58,76 +86,110 @@ public class NPCInteractionController : MonoBehaviour
         {
             chatPanel.SetActive(false);
         }
+        else
+        {
+            Debug.LogError("Chưa gán Chat Panel vào Inspector!", this);
+        }
     }
 
     void Update()
     {
-        if (playerTransform == null) return;
-
-        float distance = Vector3.Distance(transform.position, playerTransform.position);
-        bool isPlayerInRange = (distance <= interactionDistance);
-
-        if (isPlayerInRange && Input.GetKeyDown(interactionKey) && !isChatting)
+        if (isChatting)
         {
-            StartChat();
+            // Nếu đang chat, chỉ lắng nghe phím thoát
+            if (Input.GetKeyDown(exitKey))
+            {
+                EndChat();
+            }
         }
-        else if (isChatting && Input.GetKeyDown(exitKey))
+        else
         {
-            EndChat();
+            // Nếu chưa chat, kiểm tra điều kiện để bắt đầu
+            if (CanStartChat())
+            {
+                // Có thể thêm một icon nhỏ để báo hiệu cho người chơi biết họ có thể tương tác
+                if (Input.GetKeyDown(interactionKey))
+                {
+                    StartChat();
+                }
+            }
         }
+    }
+
+    private bool CanStartChat()
+    {
+        if (playerTransform == null || enemyHealth == null) return false;
+
+        // Điều kiện để bắt đầu chat: Boss đã bị kết liễu VÀ người chơi ở trong tầm tương tác
+        bool isBossDefeatedAndReady = enemyHealth.isFinishedAndTalkable;
+        float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
+        bool isPlayerInRange = (distanceToPlayer <= interactionDistance);
+
+        return isBossDefeatedAndReady && isPlayerInRange;
     }
 
     public void StartChat()
     {
         isChatting = true;
-        chatPanel.SetActive(true);
+        Debug.Log("Bắt đầu cuộc trò chuyện với Quản lý đã gục ngã...");
 
+        // Vô hiệu hóa điều khiển của người chơi
         if (playerMovementScript != null)
         {
             playerMovementScript.enabled = false;
         }
 
-        // Thiết lập lại cuộc trò chuyện
-        chatLogText.text = ""; // Xóa trắng trước
+        // Hiển thị và thiết lập lại UI
+        chatPanel.SetActive(true);
+        chatLogText.text = "";
         chatHistory.Clear();
-        StartCoroutine(AddMessageToLog("<b>NPC:</b> Xin chào! Tôi có thể giúp gì cho bạn?"));
+        // DÒNG THOẠI KHỞI ĐẦU ĐÃ ĐƯỢC CẬP NHẬT
+        StartCoroutine(AddMessageToLog("<b>Quản lý:</b> Hah... hah... là cậu..."));
 
+        playerInputField.text = "";
         playerInputField.ActivateInputField();
         playerInputField.Select();
+        playerInputField.onEndEdit.RemoveAllListeners(); // Xóa listener cũ để tránh trùng lặp
         playerInputField.onEndEdit.AddListener(OnPlayerSendMessage);
     }
 
     public void EndChat()
     {
         isChatting = false;
-        chatPanel.SetActive(false);
+        Debug.Log("Cuộc trò chuyện kết thúc. Quản lý đã bị bắt giữ...");
 
+        // Kích hoạt lại điều khiển của người chơi
         if (playerMovementScript != null)
         {
             playerMovementScript.enabled = true;
         }
-        playerInputField.onEndEdit.RemoveListener(OnPlayerSendMessage);
+
+        // Ẩn UI và hủy đối tượng Boss
+        chatPanel.SetActive(false);
+        Destroy(gameObject, 0.5f); // Hủy boss sau khi nói chuyện xong
     }
 
     private void OnPlayerSendMessage(string message)
     {
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+        // Chỉ gửi khi nhấn Enter và tin nhắn không rỗng
+        if ((Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter)) && !string.IsNullOrWhiteSpace(message))
         {
-            if (!string.IsNullOrEmpty(message))
-            {
-                StartCoroutine(AddMessageToLog("<b>You:</b> " + message));
-                chatHistory.Add(new ChatMessage { type = "player", message = message });
-                StartCoroutine(SendRequestToServer(message));
+            // Thêm tin nhắn của người chơi vào log và lịch sử
+            StartCoroutine(AddMessageToLog("<b>Cảnh sát:</b> " + message)); // Đổi tên người nói thành "Cảnh sát"
+            chatHistory.Add(new ChatMessage { type = "player", message = message });
 
-                playerInputField.text = "";
-                playerInputField.ActivateInputField();
-            }
+            // Gửi yêu cầu tới server
+            StartCoroutine(SendRequestToServer(message));
+
+            // Xóa và kích hoạt lại ô nhập liệu
+            playerInputField.text = "";
+            playerInputField.ActivateInputField();
         }
     }
 
     private IEnumerator SendRequestToServer(string playerInput)
     {
-        StartCoroutine(AddMessageToLog("<b>NPC:</b> <i>...đang suy nghĩ...</i>"));
+        StartCoroutine(AddMessageToLog("<b>Quản lý:</b> <i>...thở dốc...</i>"));
 
         ChatPayload payload = new ChatPayload
         {
@@ -146,7 +208,7 @@ public class NPCInteractionController : MonoBehaviour
 
             yield return request.SendWebRequest();
 
-            RemoveLastLineFromLog();
+            RemoveLastLineFromLog(); // Xóa dòng "...thở dốc..."
 
             if (request.result == UnityWebRequest.Result.Success)
             {
@@ -154,20 +216,27 @@ public class NPCInteractionController : MonoBehaviour
                 ChatResponse response = JsonUtility.FromJson<ChatResponse>(jsonResponse);
                 string npcMessage = response.answer;
 
-                StartCoroutine(AddMessageToLog("<b>NPC:</b> " + npcMessage));
+                StartCoroutine(AddMessageToLog("<b>Quản lý:</b> " + npcMessage));
                 chatHistory.Add(new ChatMessage { type = "npc", message = npcMessage });
             }
             else
             {
                 Debug.LogError("Error from server: " + request.error + " | " + request.downloadHandler.text);
-                StartCoroutine(AddMessageToLog("<b>NPC:</b> <i>(Xin lỗi, tôi đang gặp sự cố kết nối.)</i>"));
+                StartCoroutine(AddMessageToLog("<b>Quản lý:</b> <i>(Hắn ta lịm đi vì kiệt sức.)</i>"));
             }
         }
     }
 
     private IEnumerator AddMessageToLog(string message)
     {
-        chatLogText.text += message + "\n";
+        if (string.IsNullOrEmpty(chatLogText.text))
+        {
+            chatLogText.text = message;
+        }
+        else
+        {
+            chatLogText.text += "\n" + message;
+        }
 
         // Chờ đến cuối frame để UI cập nhật xong kích thước
         yield return new WaitForEndOfFrame();
@@ -184,18 +253,13 @@ public class NPCInteractionController : MonoBehaviour
         if (string.IsNullOrEmpty(chatLogText.text)) return;
 
         int lastNewLine = chatLogText.text.LastIndexOf("\n");
-        if (lastNewLine == chatLogText.text.Length - 1)
+        if (lastNewLine > 0)
         {
-            int secondToLastNewLine = chatLogText.text.LastIndexOf("\n", lastNewLine - 1);
-            if (secondToLastNewLine != -1)
-            {
-                chatLogText.text = chatLogText.text.Substring(0, secondToLastNewLine + 1);
-            }
-            else
-            {
-                // Nếu chỉ có một dòng
-                chatLogText.text = "";
-            }
+            chatLogText.text = chatLogText.text.Substring(0, lastNewLine);
+        }
+        else
+        {
+            chatLogText.text = ""; // Nếu chỉ có một dòng
         }
     }
 }
