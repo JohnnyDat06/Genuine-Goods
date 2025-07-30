@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 495d568851805ff4187a025664193204, type: 3}
+  m_Name: Hoi2_DoiThoai_CoHaiBaTam_Branch_AmSieuToc
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - characterName: "H\xF9ng"
+    sentence: "C\xE1i \u1EA5m c\u1EE7a c\xF4 Hai mua \u1EDF \u0111\xE2u m\xE0 nguy
+      hi\u1EC3m v\u1EADy \u1EA1? \u0110\u1EC3 m\u1ECDi ng\u01B0\u1EDDi c\xF2n bi\u1EBFt
+      m\xE0 tr\xE1nh.\n"
+    voiceClip: {fileID: 0}
+    choiceData:
+      choices: []
+  - characterName: "C\xF4 Hai\t"
+    sentence: "C\xF4 mua \u1EDF c\xE1i ch\u1EE3 tr\u1EDDi ngo\xE0i \u0111\u1EA7u
+      h\u1EBBm \u0111\xF3 con. Th\u1EA5y n\xF3 r\u1EBB n\xEAn ham. Ch\u1EAFc l\u1EA1i
+      l\xE0 \u0111\u1ED3 c\u1EE7a b\u1ECDn gian th\u01B0\u01A1ng n\xE0o tu\u1ED3n
+      ra b\xE1n.\n"
+    voiceClip: {fileID: 0}
+    choiceData:
+      choices: []
+  - characterName: "H\xF9ng (N\u1ED9i t\xE2m)\t"
+    sentence: "(H\xE0ng tu\u1ED3n ra t\u1EEB m\u1ED9t ngu\u1ED3n l\u1EDBn... R\u1EA5t
+      c\xF3 th\u1EC3 ch\xFAng xu\u1EA5t ph\xE1t t\u1EEB m\u1ED9t nh\xE0 kho b\xED
+      m\u1EADt)."
+    voiceClip: {fileID: 0}
+    choiceData:
+      choices: []

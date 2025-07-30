@@ -1,23 +1,48 @@
-﻿using UnityEngine;
+﻿// File: DialogueObject.cs
+using UnityEngine;
 
-// Định nghĩa một cấu trúc để chứa cả tên, lời thoại và âm thanh
+[System.Serializable]
+public struct DialogueChoice
+{
+    [Tooltip("Nội dung sẽ hiển thị trên nút lựa chọn.")]
+    public string choiceText;
+
+    [Tooltip("Đoạn hội thoại sẽ bắt đầu nếu người chơi chọn lựa chọn này.")]
+    public DialogueObject nextDialogue;
+}
+
+[System.Serializable]
+public class ChoiceData
+{
+    [Tooltip("Danh sách các lựa chọn cho người chơi.")]
+    public DialogueChoice[] choices;
+}
+
 [System.Serializable]
 public struct DialogueLine
 {
     public string characterName;
     [TextArea(3, 10)]
     public string sentence;
-
-    // DÒNG MỚI: Thêm trường để chứa âm thanh giọng nói
     public AudioClip voiceClip;
+
+    [Tooltip("Thêm lựa chọn vào cuối dòng thoại này. Bỏ trống nếu không có.")]
+    public ChoiceData choiceData;
+
+    public bool HasChoices => choiceData != null && choiceData.choices.Length > 0;
 }
 
 [CreateAssetMenu(fileName = "New Dialogue", menuName = "Dialogue/New Dialogue")]
 public class DialogueObject : ScriptableObject
 {
-    // Sử dụng một mảng các DialogueLine để chứa toàn bộ hội thoại
     [SerializeField] private DialogueLine[] dialogueLines;
 
-    // Property để các script khác có thể truy cập vào mảng hội thoại
+    // --- TRƯỜNG MỚI ---
+    [Header("Follow-Up")]
+    [Tooltip("Đoạn hội thoại này sẽ tự động chạy sau khi các nhánh lựa chọn ở trên kết thúc.")]
+    [SerializeField] private DialogueObject followUpDialogue;
+    // -----------------
+
     public DialogueLine[] DialogueLines => dialogueLines;
+    public DialogueObject FollowUpDialogue => followUpDialogue; // Thêm property
 }
