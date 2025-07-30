@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 495d568851805ff4187a025664193204, type: 3}
+  m_Name: Hoi1_DoiThoai_AnhBay_Branch_DiaDiem
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - characterName: "Anh B\u1EA3y Ca S\u0129\t"
+    sentence: "N\xF3 m\u1EDBi thu\xEA l\u1EA1i c\xE1i m\u1EB7t b\u1EB1ng \u1EDF cu\u1ED1i
+      ph\u1ED1, treo c\xE1i bi\u1EC3n to ch\xE0 b\xE1. Nh\xECn sang ch\u1EA3nh l\u1EAFm."
+    voiceClip: {fileID: 0}
+    choiceData:
+      choices: []
+  - characterName: "H\xF9ng (n\u1ED9i t\xE2m)"
+    sentence: "(Cu\u1ED1i ph\u1ED1 sao? R\u1EA5t g\u1EA7n \u0111\xE2y. Ph\u1EA3i
+      \u0111\u1EC3 m\u1EAFt t\u1EDBi m\u1EDBi \u0111\u01B0\u1EE3c).\n"
+    voiceClip: {fileID: 0}
+    choiceData:
+      choices: []
+  - characterName: "Anh B\u1EA3y Ca S\u0129\t"
+    sentence: "Th\xF4i, m\xE0y mua g\xEC c\u0169ng nh\u1EDB c\u1EA9n th\u1EADn \u0111\xF3
+      nghe, anh \u0111i l\xE0m ti\u1EBFp \u0111\xE2y."
+    voiceClip: {fileID: 0}
+    choiceData:
+      choices: []

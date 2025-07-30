@@ -19,17 +19,31 @@ MonoBehaviour:
       \u0111au b\u1EE5ng \u0111\u1EBFn m\u1EE9c ph\u1EA3i \u0111i s\xFAc ru\u1ED9t
       lu\xF4n m\xE0"
     voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
+    choiceData:
+      choices:
+      - choiceText: "Hello c\xF4 Hai B\xE0 T\xE1m"
+        nextDialogue: {fileID: 0}
+      - choiceText: "(Nghe ng\xF3ng)"
+        nextDialogue: {fileID: 0}
   - characterName: "B\xE0 T\xE1m"
     sentence: "C\xE1i g\xEC gh\xEA v\u1EADy m\u1EADy"
     voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
+    choiceData:
+      choices: []
   - characterName: "C\xF4 Hai"
     sentence: "B\u1EDFi ! B\xE2y gi\u1EDD \u0111\u1ED3 th\u1EADt gi\u1EA3 l\u1EABn
       l\u1ED9n ri\u1EBFt kh\xF4ng d\xE1m \u0103n g\xEC lu\xF4n qu\xE1"
     voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
+    choiceData:
+      choices: []
   - characterName: "B\xE0 T\xE1m"
     sentence: "N\u1EEFa c\u1EA9n th\u1EADn tao th\u1EA5y con m\xE0y c\u0169ng hay
       mua m\u1EA5y \u0111\u1ED3 \u0103n v\u1EB7t \u0111\u1EA5y "
     voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
+    choiceData:
+      choices: []
   - characterName: "C\xF4 Hai"
     sentence: "T\xF4i bi\u1EBFt r\u1ED3i b\xE0 \u01A1i"
     voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
+    choiceData:
+      choices: []
