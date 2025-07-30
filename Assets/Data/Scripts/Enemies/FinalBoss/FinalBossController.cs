@@ -204,7 +204,7 @@ public class FinalBossController : MonoBehaviour
         anim.SetTrigger("IsAtk2");
 
         yield return new WaitForSeconds(1.5f);
-        SpawnMinions();
+        //SpawnMinions();
         currentState = State.Chasing;
     }
 
