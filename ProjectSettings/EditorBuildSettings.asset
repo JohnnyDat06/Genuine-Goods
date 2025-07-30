@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/ScenesTest/TraDa.unity
     guid: 20d1ad6cddfbee24fbd60f2e20070e32
   - enabled: 1
-    path: Assets/Scenes/ScenesTest/Map1.unity
+    path: Assets/Scenes/ScenesTest/MapTest.unity
     guid: 7db2149ed146f7e4f8af65e06164125d
   - enabled: 1
     path: Assets/Scenes/ScenesTest/Start.unity
