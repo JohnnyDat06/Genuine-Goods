@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f6066abdace5dc46a994d2556b4c02f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 200
+  maxHealth: 300
   hitSound: {fileID: 8300000, guid: 9d17072d2f071b648ad40c9aa05bd5b4, type: 3}
   openSound: {fileID: 8300000, guid: c5b4c3b1f5e89b44c82ab68422bb2df3, type: 3}
   closeSound: {fileID: 8300000, guid: c5b4c3b1f5e89b44c82ab68422bb2df3, type: 3}

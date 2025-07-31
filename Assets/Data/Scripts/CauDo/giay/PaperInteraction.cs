@@ -11,7 +11,12 @@ public class PaperInteraction : MonoBehaviour
     [Header("Player Settings")]
     [Tooltip("Kéo GameObject của Player vào đây")]
     [SerializeField] private GameObject playerObject;
-
+    [Header("Sound Effects")]
+    [Tooltip("Âm thanh khi mở tờ giấy")]
+    [SerializeField] private AudioClip openSound;
+    [Tooltip("Âm thanh khi đóng tờ giấy (tùy chọn)")]
+    [SerializeField] private AudioClip closeSound;
+    private AudioSource paperAudioSource;
     // Tên script điều khiển di chuyển của Player. Bro hãy đổi "PlayerMovement"
     // thành tên script thực tế của mình ở dòng 40 nhé.
     private MonoBehaviour playerMovementScript;
@@ -21,6 +26,10 @@ public class PaperInteraction : MonoBehaviour
 
     void Start()
     {
+        if (paperAnimator != null)
+        {
+            paperAudioSource = paperAnimator.GetComponent<AudioSource>();
+        }
         if (interactionPrompt != null)
         {
             interactionPrompt.SetActive(false);
@@ -61,6 +70,11 @@ public class PaperInteraction : MonoBehaviour
     void OpenPaper()
     {
         isPaperOpen = true;
+        if (paperAudioSource != null && openSound != null)
+        {
+            paperAudioSource.PlayOneShot(openSound);
+        }
+        
 
         // Vô hiệu hóa di chuyển của người chơi
         if (playerMovementScript != null)
@@ -76,6 +90,11 @@ public class PaperInteraction : MonoBehaviour
     void ClosePaper()
     {
         isPaperOpen = false;
+        if (paperAudioSource != null && closeSound != null)
+        {
+            paperAudioSource.PlayOneShot(closeSound);
+        }
+        
 
         // Kích hoạt lại di chuyển của người chơi
         if (playerMovementScript != null)
