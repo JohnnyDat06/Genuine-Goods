@@ -12,8 +12,7 @@ public class PaperInteraction : MonoBehaviour
     [Tooltip("Kéo GameObject của Player vào đây")]
     [SerializeField] private GameObject playerObject;
 
-    // Tên script điều khiển di chuyển của Player. Bro hãy đổi "PlayerMovement"
-    // thành tên script thực tế của mình ở dòng 40 nhé.
+    
     private MonoBehaviour playerMovementScript;
 
     private bool playerInRange = false;
@@ -29,7 +28,7 @@ public class PaperInteraction : MonoBehaviour
         // Tự động tìm script di chuyển trên Player
         if (playerObject != null)
         {
-            // !!! THAY "PlayerMovement" BẰNG TÊN SCRIPT DI CHUYỂN CỦA BRO !!!
+            
             playerMovementScript = playerObject.GetComponent("PlayerController") as MonoBehaviour;
             if (playerMovementScript == null)
             {
