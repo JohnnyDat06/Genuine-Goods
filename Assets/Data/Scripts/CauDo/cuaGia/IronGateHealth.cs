@@ -8,6 +8,15 @@ public class IronGateHealth : MonoBehaviour
     public int maxHealth = 200;
 
     [Header("Shake Effect Settings")]
+    [Header("Sound Effects")]
+    [Tooltip("Âm thanh khi cửa bị đánh")]
+    public AudioClip hitSound;
+    [Tooltip("Âm thanh khi cửa mở")]
+    public AudioClip openSound;
+    [Tooltip("Âm thanh khi cửa đóng")]
+    public AudioClip closeSound;
+
+    private AudioSource audioSource; // Biến để chứa component "loa"
     [Tooltip("Độ rung mạnh hay yếu")]
     public float shakeMagnitude = 0.05f;
 
@@ -28,6 +37,7 @@ public class IronGateHealth : MonoBehaviour
         animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
         originalPosition = transform.position; // Lưu vị trí gốc
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Hàm public để các object khác có thể gọi
@@ -35,7 +45,7 @@ public class IronGateHealth : MonoBehaviour
     {
         // Nếu cửa đã bị phá thì không làm gì nữa
         if (isDestroyed) return;
-
+        if (hitSound != null) audioSource.PlayOneShot(hitSound);
         currentHealth -= damage;
         Debug.Log("Cửa nhận sát thương, máu còn lại: " + currentHealth);
 
@@ -101,5 +111,14 @@ public class IronGateHealth : MonoBehaviour
         // Đóng cửa bằng cách kích hoạt trigger "Close"
         animator.SetTrigger("Close");
     }
-    
+    public void PlayOpenSound()
+    {
+        if (openSound != null) audioSource.PlayOneShot(openSound);
+    }
+
+    public void PlayCloseSound()
+    {
+        if (closeSound != null) audioSource.PlayOneShot(closeSound);
+    }
+
 }
