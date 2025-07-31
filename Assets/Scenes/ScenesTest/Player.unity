@@ -5202,6 +5202,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MiniBoss2
       objectReference: {fileID: 0}
+    - target: {fileID: 2104590714400585949, guid: 5ceb1c1c605a78941ae776b966cd2360, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4856675494365638846, guid: 5ceb1c1c605a78941ae776b966cd2360, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.64
@@ -6264,10 +6268,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MiniBoss1
       objectReference: {fileID: 0}
-    - target: {fileID: 1044422776829740324, guid: e0643eedee634464a8f0cf151f622f25, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3292539987817526303, guid: e0643eedee634464a8f0cf151f622f25, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.93
@@ -6307,10 +6307,6 @@ PrefabInstance:
     - target: {fileID: 3292539987817526303, guid: e0643eedee634464a8f0cf151f622f25, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6395506219699175244, guid: e0643eedee634464a8f0cf151f622f25, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

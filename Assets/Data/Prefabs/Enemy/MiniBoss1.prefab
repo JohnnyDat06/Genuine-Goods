@@ -305,7 +305,7 @@ MonoBehaviour:
   startingHealth: 100
   enemyObj: {fileID: 1044422776829740324}
   reviveCoolDown: 1.5
-  isDead: 0
+  destroyDelayForNormalEnemy: 3
   preventRespawn: 0
 --- !u!114 &7571966786954987449
 MonoBehaviour:
