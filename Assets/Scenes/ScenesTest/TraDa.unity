@@ -4124,6 +4124,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1682129982}
     - target: {fileID: 6002134766685076363, guid: 5a8d0969114e3cc449b3873f6997f3e0, type: 3}
+      propertyPath: playerControlScript
+      value: 
+      objectReference: {fileID: 326679051}
+    - target: {fileID: 6002134766685076363, guid: 5a8d0969114e3cc449b3873f6997f3e0, type: 3}
       propertyPath: choiceButtons.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -4549,7 +4553,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueStages:
   - AcknowledgmentDialogue: {fileID: 0}
-    MainDialogue: {fileID: 0}
+    MainDialogue: {fileID: 11400000, guid: 84f0cc4fc7f81fe49b29e6768cef45fe, type: 2}
     RepeatingDialogue: {fileID: 11400000, guid: 897cd727a2fc1d149b75e5397acbd13f, type: 2}
   - AcknowledgmentDialogue: {fileID: 0}
     MainDialogue: {fileID: 0}
@@ -4558,7 +4562,7 @@ MonoBehaviour:
     MainDialogue: {fileID: 0}
     RepeatingDialogue: {fileID: 11400000, guid: 897cd727a2fc1d149b75e5397acbd13f, type: 2}
   interactionKey: 101
-  interactionPrompt: {fileID: 0}
+  interactionPrompt: {fileID: 1904356730}
   npcController: {fileID: 0}
 --- !u!212 &653116622
 SpriteRenderer:
@@ -4624,7 +4628,8 @@ Transform:
   m_LocalPosition: {x: -0.56477356, y: -3.5844154, z: -0.0119981915}
   m_LocalScale: {x: 1.125, y: 1.1375, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1904356731}
   m_Father: {fileID: 12226279}
   m_LocalEulerAnglesHint: {x: 0, y: 179.386, z: 0}
 --- !u!61 &653116624
@@ -8679,7 +8684,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d53a34d6c54bd0468a7f65b0f0c862f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentRaid: 1
+  currentRaid: 0
   failCount: 0
 --- !u!4 &1107671853
 Transform:
@@ -12084,6 +12089,90 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxFactor: 0.4
+--- !u!1 &1904356730
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1904356731}
+  - component: {fileID: 1904356732}
+  m_Layer: 0
+  m_Name: Chat (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1904356731
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904356730}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.9999857, z: -0, w: 0.0053591123}
+  m_LocalPosition: {x: -0.06, y: 0.7246893, z: 0}
+  m_LocalScale: {x: 0.2561098, y: 0.36360437, z: 0.9999853}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 653116623}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1904356732
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904356730}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 530033353, guid: 55f6057d39aab44479d03bdbefa3d967, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1.625, y: 0.78125}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1904771358
 GameObject:
   m_ObjectHideFlags: 0
