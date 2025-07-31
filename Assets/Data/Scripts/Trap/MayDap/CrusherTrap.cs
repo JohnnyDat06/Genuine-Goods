@@ -56,6 +56,7 @@ public class CrusherTrap : MonoBehaviour
             if (playerHealth != null)
             {
                 playerHealth.TakeDamage(damage);
+                DamageFlashEffect.instance.FlashScreen();
             }
 
             // Gây hiệu ứng đẩy lùi
