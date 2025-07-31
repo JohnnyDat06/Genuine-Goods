@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 495d568851805ff4187a025664193204, type: 3}
+  m_Name: Hoi3_DoiThoai_AnhBay_Branch_XacThuc
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - characterName: "Anh B\u1EA3y Ca S\u0129\t"
+    sentence: "B\u1ECDn giang h\u1ED3 l\xE0m \u0103n v\u1EDBi n\xF3 b\u1ECB n\xF3
+      qu\u1EF5t ti\u1EC1n n\xEAn m\u1EDBi bung tin ra \u0111\xF3. Tin n\xE0y 99%
+      l\xE0 th\u1EADt!\n"
+    voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
+    choiceData:
+      choices: []
+  - characterName: "H\xF9ng (N\u1ED9i t\xE2m)\t"
+    sentence: "(Thanh tr\u1EEBng n\u1ED9i b\u1ED9 sao? T\xECnh h\xECnh \u0111ang
+      h\u1ED7n lo\u1EA1n. \u0110\xE2y l\xE0 th\u1EDDi c\u01A1 t\u1ED1t nh\u1EA5t
+      \u0111\u1EC3 h\xE0nh \u0111\u1ED9ng)."
+    voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
+    choiceData:
+      choices: []
+  followUpDialogue: {fileID: 0}

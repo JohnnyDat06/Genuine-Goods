@@ -1,5 +1,5 @@
 ﻿// File: DialogueManager.cs
-// Phiên bản cuối cùng, hỗ trợ hội thoại tiếp nối sau khi chọn nhánh
+// Phiên bản đầy đủ, hoàn chỉnh, linh hoạt và đã sửa lỗi
 
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,7 +11,6 @@ using System.Collections.Generic;
 [RequireComponent(typeof(AudioSource))]
 public class DialogueManager : MonoBehaviour
 {
-    // ... (Các biếnSerializeField và public static instance giữ nguyên) ...
     public static DialogueManager instance;
 
     [Header("UI Components")]
@@ -42,10 +41,7 @@ public class DialogueManager : MonoBehaviour
     private static List<Conversational_NPC> allNpcs = new List<Conversational_NPC>();
     private AudioSource audioSource;
     private DialogueLine currentLine;
-
-    // --- BIẾN MỚI: LƯU LẠI DIALOGUE OBJECT ĐANG CHẠY ---
     private DialogueObject currentDialogue;
-    // --------------------------------------------------
 
     private void Awake()
     {
@@ -54,8 +50,6 @@ public class DialogueManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    // ... (Start, Update, IsIgnoredKey, Register/Unregister NPC không thay đổi) ...
-    #region Unchanged Methods
     void Start()
     {
         sentences = new Queue<DialogueLine>();
@@ -63,6 +57,120 @@ public class DialogueManager : MonoBehaviour
         if (choicePanel != null) choicePanel.SetActive(false);
     }
 
+    public void StartDialogue(DialogueObject dialogue, NPC_Controller npcController, Conversational_NPC currentSpeaker, Action onDialogueFinished = null)
+    {
+        IsDialogueActive = true;
+        dialoguePanel.SetActive(true);
+        if (choicePanel != null) choicePanel.SetActive(false);
+        this.onDialogueFinishedCallback = onDialogueFinished;
+        this.currentDialogue = dialogue;
+
+        // Vô hiệu hóa các NPC khác
+        foreach (var npc in new List<Conversational_NPC>(allNpcs))
+        {
+            if (npc != null && npc != currentSpeaker)
+            {
+                npc.DeactivateForDialogue();
+            }
+        }
+
+        // --- LOGIC VÔ HIỆU HÓA PLAYER ĐÃ ĐƯỢC NÂNG CẤP ---
+        if (playerControlScript != null)
+        {
+            // Tắt script điều khiển
+            playerControlScript.enabled = false;
+
+            // Dùng GetComponentInChildren để tìm component ở cả object con
+            Rigidbody2D playerRb = playerControlScript.GetComponentInChildren<Rigidbody2D>();
+            if (playerRb != null)
+            {
+                playerRb.velocity = Vector2.zero;
+            }
+
+            Animator playerAnimator = playerControlScript.GetComponentInChildren<Animator>();
+            if (playerAnimator != null)
+            {
+                playerAnimator.SetInteger("State", 0); // Giả sử State 0 là Idle
+            }
+        }
+        // ----------------------------------------------------
+
+        npcControllerToDisable = npcController;
+        SpeakingNPCController = npcControllerToDisable;
+        if (npcControllerToDisable != null) npcControllerToDisable.enabled = false;
+
+        sentences.Clear();
+        foreach (DialogueLine line in dialogue.DialogueLines)
+        {
+            sentences.Enqueue(line);
+        }
+        DisplayNextSentence();
+    }
+
+    public void EndDialogue()
+    {
+        IsDialogueActive = false;
+        dialoguePanel.SetActive(false);
+        if (choicePanel != null) choicePanel.SetActive(false);
+
+        if (typingCoroutine != null) StopCoroutine(typingCoroutine);
+        isTyping = false;
+        audioSource.Stop();
+        audioSource.loop = false;
+
+        if (playerControlScript != null)
+        {
+            playerControlScript.enabled = true;
+        }
+
+        if (npcControllerToDisable != null) npcControllerToDisable.enabled = true;
+        SpeakingNPCController = null;
+
+        // Kích hoạt lại các NPC khác
+        foreach (var npc in new List<Conversational_NPC>(allNpcs))
+        {
+            if (npc != null)
+            {
+                npc.ActivateAfterDialogue();
+            }
+        }
+
+        onDialogueFinishedCallback?.Invoke();
+        onDialogueFinishedCallback = null;
+    }
+
+    public void SelectChoice(DialogueChoice choice)
+    {
+        if (choicePanel != null) choicePanel.SetActive(false);
+        sentences.Clear();
+
+        if (choice.nextDialogue != null)
+        {
+            foreach (DialogueLine line in choice.nextDialogue.DialogueLines)
+            {
+                sentences.Enqueue(line);
+            }
+        }
+
+        if (currentDialogue != null && currentDialogue.FollowUpDialogue != null)
+        {
+            foreach (DialogueLine line in currentDialogue.FollowUpDialogue.DialogueLines)
+            {
+                sentences.Enqueue(line);
+            }
+        }
+
+        if (sentences.Count > 0)
+        {
+            DisplayNextSentence();
+        }
+        else
+        {
+            EndDialogue();
+        }
+    }
+
+    #region Unchanged Code (Các hàm không thay đổi)
     void Update()
     {
         if (!IsDialogueActive) return;
@@ -88,86 +196,7 @@ public class DialogueManager : MonoBehaviour
             }
         }
     }
-    private bool IsIgnoredKey() { return Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D); }
-    public static void RegisterNPC(Conversational_NPC npc) { if (!allNpcs.Contains(npc)) allNpcs.Add(npc); }
-    public static void UnregisterNPC(Conversational_NPC npc) { if (allNpcs.Contains(npc)) allNpcs.Remove(npc); }
-    #endregion
 
-    public void StartDialogue(DialogueObject dialogue, NPC_Controller npcController, Conversational_NPC currentSpeaker, Action onDialogueFinished = null)
-    {
-        IsDialogueActive = true;
-        dialoguePanel.SetActive(true);
-        if (choicePanel != null) choicePanel.SetActive(false);
-        this.onDialogueFinishedCallback = onDialogueFinished;
-
-        // --- THAY ĐỔI NHỎ: LƯU LẠI DIALOGUE HIỆN TẠI ---
-        this.currentDialogue = dialogue;
-        // ---------------------------------------------
-
-        // Vô hiệu hóa player
-        if (playerControlScript != null)
-        {
-            playerControlScript.enabled = false;
-            Rigidbody2D playerRb = playerControlScript.GetComponent<Rigidbody2D>();
-            if (playerRb != null) playerRb.velocity = Vector2.zero;
-            Animator playerAnimator = playerControlScript.GetComponent<Animator>();
-            if (playerAnimator != null) playerAnimator.SetInteger("State", 0);
-        }
-
-        // ... (phần còn lại của StartDialogue không đổi) ...
-        foreach (var npc in allNpcs) { if (npc != currentSpeaker) npc.DeactivateForDialogue(); }
-        npcControllerToDisable = npcController;
-        SpeakingNPCController = npcControllerToDisable;
-        if (npcControllerToDisable != null) npcControllerToDisable.enabled = false;
-
-        sentences.Clear();
-        foreach (DialogueLine line in dialogue.DialogueLines)
-        {
-            sentences.Enqueue(line);
-        }
-        DisplayNextSentence();
-    }
-
-    // --- HÀM QUAN TRỌNG ĐÃ THAY ĐỔI ---
-    public void SelectChoice(DialogueChoice choice)
-    {
-        if (choicePanel != null) choicePanel.SetActive(false);
-
-        // 1. Xóa hàng đợi hiện tại
-        sentences.Clear();
-
-        // 2. Thêm các dòng thoại của NHÁNH ĐƯỢC CHỌN vào hàng đợi
-        if (choice.nextDialogue != null)
-        {
-            foreach (DialogueLine line in choice.nextDialogue.DialogueLines)
-            {
-                sentences.Enqueue(line);
-            }
-        }
-
-        // 3. Thêm các dòng thoại của HỘI THOẠI TIẾP NỐI (nếu có) vào hàng đợi
-        if (currentDialogue != null && currentDialogue.FollowUpDialogue != null)
-        {
-            foreach (DialogueLine line in currentDialogue.FollowUpDialogue.DialogueLines)
-            {
-                sentences.Enqueue(line);
-            }
-        }
-
-        // 4. Tiếp tục chạy hội thoại từ hàng đợi đã được gộp
-        if (sentences.Count > 0)
-        {
-            DisplayNextSentence();
-        }
-        else
-        {
-            EndDialogue();
-        }
-    }
-    // ------------------------------------
-
-    // ... (Các hàm còn lại không có thay đổi lớn) ...
-    #region Unchanged Dialogue Handling
     public void DisplayNextSentence()
     {
         if (sentences.Count == 0)
@@ -211,21 +240,12 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void EndDialogue()
+    private bool IsIgnoredKey()
     {
-        IsDialogueActive = false;
-        dialoguePanel.SetActive(false);
-        if (choicePanel != null) choicePanel.SetActive(false);
-        if (typingCoroutine != null) StopCoroutine(typingCoroutine);
-        isTyping = false;
-        audioSource.Stop();
-        audioSource.loop = false;
-        if (playerControlScript != null) { playerControlScript.enabled = true; }
-        if (npcControllerToDisable != null) npcControllerToDisable.enabled = true;
-        SpeakingNPCController = null;
-        foreach (var npc in allNpcs) { npc.ActivateAfterDialogue(); }
-        onDialogueFinishedCallback?.Invoke();
-        onDialogueFinishedCallback = null;
+        return Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) ||
+               Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D);
     }
+    public static void RegisterNPC(Conversational_NPC npc) { if (!allNpcs.Contains(npc)) allNpcs.Add(npc); }
+    public static void UnregisterNPC(Conversational_NPC npc) { if (allNpcs.Contains(npc)) allNpcs.Remove(npc); }
     #endregion
 }

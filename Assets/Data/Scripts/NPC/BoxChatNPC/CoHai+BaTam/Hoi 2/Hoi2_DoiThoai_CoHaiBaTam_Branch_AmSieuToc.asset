@@ -25,13 +25,14 @@ MonoBehaviour:
       h\u1EBBm \u0111\xF3 con. Th\u1EA5y n\xF3 r\u1EBB n\xEAn ham. Ch\u1EAFc l\u1EA1i
       l\xE0 \u0111\u1ED3 c\u1EE7a b\u1ECDn gian th\u01B0\u01A1ng n\xE0o tu\u1ED3n
       ra b\xE1n.\n"
-    voiceClip: {fileID: 0}
+    voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
     choiceData:
       choices: []
   - characterName: "H\xF9ng (N\u1ED9i t\xE2m)\t"
     sentence: "(H\xE0ng tu\u1ED3n ra t\u1EEB m\u1ED9t ngu\u1ED3n l\u1EDBn... R\u1EA5t
       c\xF3 th\u1EC3 ch\xFAng xu\u1EA5t ph\xE1t t\u1EEB m\u1ED9t nh\xE0 kho b\xED
       m\u1EADt)."
-    voiceClip: {fileID: 0}
+    voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
     choiceData:
       choices: []
+  followUpDialogue: {fileID: 0}

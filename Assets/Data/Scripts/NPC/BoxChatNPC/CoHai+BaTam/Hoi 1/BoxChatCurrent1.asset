@@ -20,11 +20,7 @@ MonoBehaviour:
       lu\xF4n m\xE0"
     voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
     choiceData:
-      choices:
-      - choiceText: "Hello c\xF4 Hai B\xE0 T\xE1m"
-        nextDialogue: {fileID: 0}
-      - choiceText: "(Nghe ng\xF3ng)"
-        nextDialogue: {fileID: 0}
+      choices: []
   - characterName: "B\xE0 T\xE1m"
     sentence: "C\xE1i g\xEC gh\xEA v\u1EADy m\u1EADy"
     voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
@@ -47,3 +43,4 @@ MonoBehaviour:
     voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
     choiceData:
       choices: []
+  followUpDialogue: {fileID: 0}
