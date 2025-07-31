@@ -53,12 +53,12 @@ public class MiniBoss1Controller : MonoBehaviour
             {
                 isWaitingForMinions = false;
                 currentState = State.Chasing;
-                transform.tag = "Enemy";
+                gameObject.layer = LayerMask.NameToLayer("Enemy");
             }
             else
             {
                 anim.SetBool("IsMove", false); // đứng yên
-                transform.tag = "Untagged";
+                gameObject.layer = LayerMask.NameToLayer("Default");
                 return;
             }
         }
