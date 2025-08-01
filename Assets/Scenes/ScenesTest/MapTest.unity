@@ -18371,6 +18371,11 @@ Transform:
   - {fileID: 806318140}
   m_Father: {fileID: 1813732950}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1594449758 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5360987855058873230, guid: 010932bf131d56c42b0d9d4c6a2c1675, type: 3}
+  m_PrefabInstance: {fileID: 7978896848027184825}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1600612064 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6213643200688061274, guid: 010932bf131d56c42b0d9d4c6a2c1675, type: 3}
@@ -25589,14 +25594,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1021166114220644710, guid: c2146c8422432a341969e2933a3ae2f7, type: 3}
-      propertyPath: m_Size.x
-      value: 1.7400951
-      objectReference: {fileID: 0}
-    - target: {fileID: 1021166114220644710, guid: c2146c8422432a341969e2933a3ae2f7, type: 3}
-      propertyPath: m_Offset.x
-      value: -0.37004757
-      objectReference: {fileID: 0}
     - target: {fileID: 1330228885502890058, guid: c2146c8422432a341969e2933a3ae2f7, type: 3}
       propertyPath: m_Name
       value: PasswordDoor
@@ -25654,6 +25651,10 @@ PrefabInstance:
       value: j97
       objectReference: {fileID: 0}
     - target: {fileID: 4502359584711072419, guid: c2146c8422432a341969e2933a3ae2f7, type: 3}
+      propertyPath: inputFieldAnimator
+      value: 
+      objectReference: {fileID: 1594449758}
+    - target: {fileID: 4502359584711072419, guid: c2146c8422432a341969e2933a3ae2f7, type: 3}
       propertyPath: passwordInputField
       value: 
       objectReference: {fileID: 534823242}
@@ -25673,6 +25674,10 @@ PrefabInstance:
     - target: {fileID: 385037707927390040, guid: 010932bf131d56c42b0d9d4c6a2c1675, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2244369927687240976, guid: 010932bf131d56c42b0d9d4c6a2c1675, type: 3}
+      propertyPath: m_text
+      value: "\u200B"
       objectReference: {fileID: 0}
     - target: {fileID: 2999724899957026314, guid: 010932bf131d56c42b0d9d4c6a2c1675, type: 3}
       propertyPath: onAnimationEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target

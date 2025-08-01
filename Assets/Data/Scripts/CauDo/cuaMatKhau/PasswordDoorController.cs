@@ -15,6 +15,8 @@ public class PasswordDoorController : MonoBehaviour
     [SerializeField] private TMP_InputField passwordInputField;
     [Tooltip("Kéo nút bấm xác nhận vào đây")]
     [SerializeField] private Button submitButton;
+    [Tooltip("Kéo Animator của Input Field vào đây")] 
+    [SerializeField] private Animator inputFieldAnimator;
 
     // Các biến private để tự quản lý
     private Animator doorAnimator;
@@ -82,8 +84,8 @@ public class PasswordDoorController : MonoBehaviour
         {
             Debug.Log("Mật khẩu sai!");
             // Thêm hiệu ứng báo sai ở đây, ví dụ:
-            passwordInputField.text = ""; // Xóa chữ đã nhập
-            // Có thể làm animation rung lắc cho InputField
+            passwordInputField.text = "";
+            if (inputFieldAnimator != null) { inputFieldAnimator.SetTrigger("DoShake"); } // Có thể làm animation rung lắc cho InputField }
         }
     }
 
