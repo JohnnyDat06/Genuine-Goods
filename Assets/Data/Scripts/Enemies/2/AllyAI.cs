@@ -131,7 +131,11 @@ public class AllyAI : MonoBehaviour
         // 1. QUAY MẶT VỀ PHÍA PLAYER
         FaceDirection(player.position.x - transform.position.x);
         if (questionMarkObject != null) questionMarkObject.SetActive(true);
-
+        
+        player.GetComponent<PlayerController>().enabled = false;
+        player.GetComponent<Animator>().enabled = false;
+        player.GetComponent<PlayerController>().playerRigidbody.velocity = new Vector2(0f, 0f);
+        
         // 2. ĐỢI MỘT CHÚT (TẠO CĂNG THẲNG)
         yield return new WaitForSeconds(turnDelay);
 
@@ -172,7 +176,10 @@ public class AllyAI : MonoBehaviour
             vcamAlly.Priority = 9;
             vcamAlly.Follow = null;
         }
-
+        
+        player.GetComponent<PlayerController>().enabled = true;
+        player.GetComponent<Animator>().enabled = true;
+        
         yield return new WaitForSeconds(1f);
 
         if (finalTeleportPoint != null)

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private Rigidbody2D playerRigidbody;
+    [SerializeField] public Rigidbody2D playerRigidbody;
     [SerializeField] private Animator playerAnimator;
     [SerializeField] private BoxCollider2D playerCollider;
     [SerializeField] private LayerMask layerGround;

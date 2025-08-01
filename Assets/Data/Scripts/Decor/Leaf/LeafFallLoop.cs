@@ -8,8 +8,8 @@ public class LeafFallLoop : MonoBehaviour
     private float animationDuration = 0.5f; // Thời gian thật của anim (tính tự động)
 
     // Thời gian ngẫu nhiên giữa các lần xuất hiện lại
-    public float minDelay = 3f;
-    public float maxDelay = 7f;
+    [SerializeField] private float minDelay = 3f;
+    [SerializeField] private float maxDelay = 7f;
 
     void Start()
     {
