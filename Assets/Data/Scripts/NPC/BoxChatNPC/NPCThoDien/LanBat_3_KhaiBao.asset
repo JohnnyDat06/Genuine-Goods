@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 495d568851805ff4187a025664193204, type: 3}
+  m_Name: LanBat_3_KhaiBao
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - characterName: "H\xF9ng"
+    sentence: "H\u1EBFt \u0111\u01B0\u1EDDng ch\u1EA1y r\u1ED3i. \u0110\xEAm nay
+      s\u1EBD k\u1EBFt th\xFAc \u1EDF \u0111\xE2y. N\xF3i h\u1EBFt \u0111i.\n"
+    voiceClip: {fileID: 0}
+    choiceData:
+      choices: []
+  - characterName: "Ch\xFA S\xE1u"
+    sentence: "(Th\u1EDF d\u1ED1c) Ph\u1EA3i... k\u1EBFt th\xFAc th\xF4i. Tui tr\u1ED1n
+      c\u1EA3 ng\xE0y r\u1ED3i, m\u1EC7t m\u1ECFi qu\xE1. \u0110\xEAm xu\u1ED1ng,
+      tui m\u1EDBi d\xE1m m\xF2 ra... C\u1EADu mu\u1ED1n bi\u1EBFt quy t\u1EAFc c\u1EE7a
+      l\xE3o \u0110\u1EA1i ch\u1EE9 g\xEC? L\xE3o g\u1ECDi n\xF3 l\xE0 'B\xE0n Tay
+      B\xF3ng T\u1ED1i', ch\u1EC9 th\u1EF1c hi\u1EC7n v\xE0o ban \u0111\xEAm...\n"
+    voiceClip: {fileID: 0}
+    choiceData:
+      choices: []
+  - characterName: "H\xF9ng"
+    sentence: "Quy t\u1EAFc \u0111\xF3 l\xE0 g\xEC?\n"
+    voiceClip: {fileID: 0}
+    choiceData:
+      choices: []
+  - characterName: "Ch\xFA S\xE1u"
+    sentence: "\u0110\u1EC3 m\u1EDF kho, tay tr\xE1i c\u1EA7m d\xE2y \u0111\u1ECF
+      ph\u1EA3i n\u1ED1i v\u1EDBi ch\u1ED1t v\xE0ng b\xEAn ph\u1EA3i. Tay tr\xE1i
+      c\u1EA7m d\xE2y v\xE0ng, th\xEC ph\u1EA3i n\u1ED1i v\u1EDBi ch\u1ED1t \u0111\u1ECF
+      b\xEAn ph\u1EA3i. L\xE3o n\xF3i hai m\xE0u \u0111\xF3 l\xE0 'm\xE1u v\xE0 ti\u1EC1n',
+      trong b\xF3ng t\u1ED1i ph\u1EA3i lu\xF4n \u0111i \u0111\xF4i v\u1EDBi nhau...\n"
+    voiceClip: {fileID: 0}
+    choiceData:
+      choices: []
+  - characterName: "H\xF9ng"
+    sentence: "C\xF2n l\u1EA1i th\xEC sao?\n"
+    voiceClip: {fileID: 0}
+    choiceData:
+      choices: []
+  - characterName: "Ch\xFA S\xE1u"
+    sentence: "Tay tr\xE1i c\u1EA7m d\xE2y xanh l\u1EE5c... th\xEC n\u1ED1i v\u1EDBi
+      ch\u1ED1t cam b\xEAn ph\u1EA3i. V\xE0 ng\u01B0\u1EE3c l\u1EA1i... tay c\u1EA7m
+      d\xE2y cam, th\xEC n\u1ED1i v\xE0o ch\u1ED1t xanh. L\xE3o n\xF3i \u0111\xF3
+      l\xE0 m\xE0u c\u1EE7a 'c\u1EA3nh b\xE1o' v\xE0 'r\u1EEBng r\u1EADm', n\u01A1i
+      l\xE3o c\u1EA5t h\xE0ng... \u0110\xF3, l\xE0 t\u1EA5t c\u1EA3... Kho h\xE0ng
+      \u1EDF cu\u1ED1i h\u1EBBm 9, trong b\xF3ng t\u1ED1i..."
+    voiceClip: {fileID: 0}
+    choiceData:
+      choices: []
+  followUpDialogue: {fileID: 0}

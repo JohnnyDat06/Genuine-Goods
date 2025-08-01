@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 495d568851805ff4187a025664193204, type: 3}
+  m_Name: LanBat_1_HemToi
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - characterName: "H\xF9ng"
+    sentence: "\u0110\xEAm h\xF4m th\u1EBF n\xE0y, anh l\xE9n l\xFAt \u1EDF \u0111\xE2y
+      l\xE0m g\xEC? Th\u1EA5y t\xF4i li\u1EC1n b\u1ECF ch\u1EA1y l\xE0 c\xF3 t\u1EADt
+      gi\u1EADt m\xECnh \xE0?\n"
+    voiceClip: {fileID: 0}
+    choiceData:
+      choices: []
+  - characterName: "Ch\xFA S\xE1u"
+    sentence: "Tr\u1EDDi \u01A1i c\u1EADu \u01A1i! \u0110\xEAm h\xF4m v\u1EAFng v\u1EBB,
+      tui s\u1EE3 ch\u1EE9! Tui \u0111i s\u1EEDa \u0111i\u1EC7n v\u1EC1 khuya, v\u1EEBa
+      \u0111i qua con h\u1EBBm t\u1ED1i n\xE0y th\xEC th\u1EA5y m\u1ED9t chuy\u1EC7n
+      kh\xF4ng n\xEAn th\u1EA5y... D\u01B0\u1EDBi \xE1nh \u0111\xE8n \u0111\u01B0\u1EDDng
+      m\u1EDD m\u1EDD, tui th\u1EA5y m\u1ED9t \xF4ng m\u1EB7c \xE1o kho\xE1c \u0111\u1ECF
+      \u0111ang gi\u1EB1ng co v\u1EDBi m\u1ED9t ng\u01B0\u1EDDi m\u1EB7c \xE1o cam.\n"
+    voiceClip: {fileID: 0}
+    choiceData:
+      choices: []
+  - characterName: "H\xF9ng"
+    sentence: "Gi\u1EB1ng co? Anh c\xF3 th\u1EA5y r\xF5 h\u1ECD l\xE0m g\xEC kh\xF4ng?\n"
+    voiceClip: {fileID: 0}
+    choiceData:
+      choices: []
+  - characterName: "Ch\xFA S\xE1u"
+    sentence: "Tui kh\xF4ng d\xE1m l\u1EA1i g\u1EA7n! Ch\u1EC9 th\u1EA5y lo\xE1ng
+      tho\xE1ng c\xF3 m\u1ED9t c\xE1i t\xFAi m\xE0u v\xE0ng r\u01A1i xu\u1ED1ng c\u1EA1nh
+      m\u1EA5y b\u1EE5i c\xE2y xanh um t\xF9m trong b\xF3ng t\u1ED1i. Sau \u0111\xF3
+      ng\u01B0\u1EDDi \xE1o cam b\u1ECF ch\u1EA1y, c\xF2n c\xE1i b\xF3ng \xE1o \u0111\u1ECF
+      th\xEC l\u1EA9n v\xE0o m\u1EA5y b\u1EE5i c\xE2y xanh \u0111\xF3... M\u1ECDi
+      th\u1EE9 m\u1EDD \u1EA3o l\u1EAFm, tui s\u1EE3 b\u1ECB hi\u1EC3u l\u1EA7m l\xE0
+      \u0111\u1ED3ng b\u1ECDn n\xEAn m\u1EDBi ch\u1EA1y \u0111\xF3 c\u1EADu!"
+    voiceClip: {fileID: 0}
+    choiceData:
+      choices: []
+  followUpDialogue: {fileID: 0}
