@@ -1491,7 +1491,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &54068891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2378,7 +2378,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3102241887175275647, guid: 5b732ac3d8050564186132a4ab58ce29, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6967797768027798896, guid: 5b732ac3d8050564186132a4ab58ce29, type: 3}
       propertyPath: m_LocalPosition.x
@@ -69225,8 +69225,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.027500004, y: -0.55355, z: 0}
-    m_Extent: {x: 0.7427, y: 1.32215, z: 0}
+    m_Center: {x: 0.29694998, y: -0.66035, z: 0}
+    m_Extent: {x: 0.96665, y: 1.0876501, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -69234,13 +69234,13 @@ MonoBehaviour:
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
-  m_ShapeLightFalloffSize: 0.34
+  m_ShapeLightFalloffSize: 0.31
   m_ShapeLightFalloffOffset: {x: 0, y: 0}
   m_ShapePath:
-  - {x: 0.4253235, y: -1.534853, z: -0.000000048428774}
-  - {x: 0.43003845, y: 0.42159653, z: -0.000000048428774}
-  - {x: -0.33493042, y: 0.42788506, z: -0.000000048428774}
-  - {x: -0.3746643, y: -1.519741, z: -0.000000048428774}
+  - {x: 0.88648987, y: -1.437149, z: -0.000000048428774}
+  - {x: 0.95373535, y: 0.11676216, z: -0.000000048428774}
+  - {x: -0.34664917, y: 0.072244644, z: -0.000000048428774}
+  - {x: -0.35902405, y: -1.4142208, z: -0.000000048428774}
 --- !u!1 &1407930546
 GameObject:
   m_ObjectHideFlags: 0
@@ -72943,7 +72943,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1643643855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77620,11 +77620,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2626627996444618368, guid: 8b25736cf2bfd104e9feb23743a5b3a4, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2626627996444618368, guid: 8b25736cf2bfd104e9feb23743a5b3a4, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4438687181713320257, guid: 8b25736cf2bfd104e9feb23743a5b3a4, type: 3}
       propertyPath: m_Name
@@ -84276,7 +84276,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &2082966538
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -84338,7 +84338,7 @@ Transform:
   m_GameObject: {fileID: 2082966537}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 138.18, y: 18.91, z: 0}
+  m_LocalPosition: {x: 138.657, y: 18.829, z: 0}
   m_LocalScale: {x: 1, y: 1.1010683, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
