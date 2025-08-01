@@ -15850,6 +15850,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1079400351 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4502359584711072419, guid: c2146c8422432a341969e2933a3ae2f7, type: 3}
+  m_PrefabInstance: {fileID: 7209073264067283077}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f34857dc60a16b4baca8ab167ec0c70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1113770543
 GameObject:
   m_ObjectHideFlags: 0
@@ -25578,6 +25589,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1021166114220644710, guid: c2146c8422432a341969e2933a3ae2f7, type: 3}
+      propertyPath: m_Size.x
+      value: 1.7400951
+      objectReference: {fileID: 0}
+    - target: {fileID: 1021166114220644710, guid: c2146c8422432a341969e2933a3ae2f7, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.37004757
+      objectReference: {fileID: 0}
     - target: {fileID: 1330228885502890058, guid: c2146c8422432a341969e2933a3ae2f7, type: 3}
       propertyPath: m_Name
       value: PasswordDoor
@@ -25647,6 +25666,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1387857399}
     m_Modifications:
+    - target: {fileID: 2999724899957026314, guid: 010932bf131d56c42b0d9d4c6a2c1675, type: 3}
+      propertyPath: onAnimationEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1079400351}
     - target: {fileID: 7656993024238337588, guid: 010932bf131d56c42b0d9d4c6a2c1675, type: 3}
       propertyPath: m_Name
       value: cuaMatKhauUI

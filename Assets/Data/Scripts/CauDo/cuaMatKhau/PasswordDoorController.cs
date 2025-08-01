@@ -42,21 +42,22 @@ public class PasswordDoorController : MonoBehaviour
     // Hàm được gọi bởi TriggerZone khi có vật thể đi vào
     public void OnPlayerEnterTrigger()
     {
-        // Nếu cửa chưa mở, thì hiện bảng mật khẩu
         if (!isDoorOpen)
         {
+            // Luôn SetActive(true) trước khi chạy animation
             passwordPanel.SetActive(true);
-            panelAnimator.SetTrigger("Open");
+            // Dùng SetBool thay cho SetTrigger
+            panelAnimator.SetBool("isOpen", true);
         }
     }
 
     // Hàm được gọi bởi TriggerZone khi có vật thể đi ra
     public void OnPlayerExitTrigger()
     {
-        // Nếu cửa chưa mở, thì đóng bảng mật khẩu
-        if (!isDoorOpen)
+        if (!isDoorOpen && passwordPanel.activeSelf) // Thêm kiểm tra panel có đang bật ko
         {
-            panelAnimator.SetTrigger("Close");
+            // Dùng SetBool thay cho SetTrigger
+            panelAnimator.SetBool("isOpen", false);
         }
     }
 
@@ -70,7 +71,7 @@ public class PasswordDoorController : MonoBehaviour
 
             // Ra lệnh cho cửa và panel chạy animation
             doorAnimator.SetTrigger("OpenDoor");
-            panelAnimator.SetTrigger("Close");
+            panelAnimator.SetBool("isOpen", false);
 
             // Không cho phép tương tác với nút bấm và vùng trigger nữa
             submitButton.interactable = false;
@@ -92,6 +93,13 @@ public class PasswordDoorController : MonoBehaviour
         if (doorCollider != null)
         {
             doorCollider.enabled = false;
+        }
+    }
+    public void DeactivatePasswordPanel()
+    {
+        if (passwordPanel != null)
+        {
+            passwordPanel.SetActive(false);
         }
     }
 }
