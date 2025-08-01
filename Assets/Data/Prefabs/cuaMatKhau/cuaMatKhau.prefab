@@ -609,6 +609,7 @@ GameObject:
   - component: {fileID: 5746734376325360815}
   - component: {fileID: 1478384546888865729}
   - component: {fileID: 6175630644194402836}
+  - component: {fileID: 2999724899957026314}
   m_Layer: 5
   m_Name: cuaMatKhau
   m_TagString: Untagged
@@ -708,6 +709,33 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &2999724899957026314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7656993024238337588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29b49c96a2d3ac43bcb8be568e0b2ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onAnimationEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PasswordDoorController, Assembly-CSharp
+        m_MethodName: DeactivatePasswordPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7871382389027902509
 GameObject:
   m_ObjectHideFlags: 0
