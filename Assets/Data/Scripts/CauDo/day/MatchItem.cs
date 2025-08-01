@@ -22,6 +22,10 @@ public class MatchItem : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoin
     {
         // Lấy canvas cha để tính toán tọa độ cho đúng
         parentCanvas = GetComponentInParent<Canvas>();
+        if (parentCanvas == null)
+        {
+            Debug.LogError("LỖI TRÊN " + gameObject.name + ": MatchItem không thể tìm thấy Canvas cha!");
+        }
     }
 
     
