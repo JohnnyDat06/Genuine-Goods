@@ -17,9 +17,13 @@ MonoBehaviour:
     sentence: "Ch\xFA em, anh nghe \u0111\u01B0\u1EE3c tin n\xE0y \u0111\u1ED9ng
       tr\u1EDDi l\u1EAFm.\r\n"
     voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
+    choiceData:
+      choices: []
   - characterName: "H\xF9ng"
     sentence: "Tin g\xEC m\xE0 gh\xEA v\u1EADy anh?\r\n"
     voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
+    choiceData:
+      choices: []
   - characterName: "Anh B\u1EA3y Ca S\u0129"
     sentence: " \u0110\xE1m giang h\u1ED3 n\xF3 r\u1EC9 tai nhau l\xE0 th\u1EB1ng
       cha gi\xE1m \u0111\u1ED1c Tr\u1EA7n L\u1EF1c t\xEDnh chu\u1ED3n r\u1ED3i. Nghe
@@ -27,7 +31,16 @@ MonoBehaviour:
       \u0111\xEAm nay \u0111\xF3! Phen n\xE0y m\xE0 \u0111\u1EC3 n\xF3 tho\xE1t th\xEC
       \u0111\xFAng l\xE0 tr\u1EDDi kh\xF4ng c\xF3 m\u1EAFt.\r\n"
     voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
+    choiceData:
+      choices: []
   - characterName: "H\xF9ng"
     sentence: "(Tr\u1ED1n trong \u0111\xEAm nay sao? V\u1EADy l\xE0 kh\xF4ng c\xF2n
       nhi\u1EC1u th\u1EDDi gian n\u1EEFa).\r\n"
     voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
+    choiceData:
+      choices:
+      - choiceText: "Chuy\u1EC7n \xFD \u0111\u1ECBnh b\u1ECF tr\u1ED1n?"
+        nextDialogue: {fileID: 11400000, guid: 4a67062f1211298418036006d7c2edc4, type: 2}
+      - choiceText: "Th\xF4ng tin x\xE1c th\u1EADt th\u1EADt kh\xF4ng anh?"
+        nextDialogue: {fileID: 11400000, guid: f53309313e3889948a512b52340cf08d, type: 2}
+  followUpDialogue: {fileID: 0}
