@@ -152,8 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 526c80966e683184fab0b479c18e14db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathPanel: {fileID: 0}
-  playerMovement: {fileID: 0}
+  deathPanel: {fileID: 1047222834}
+  playerMovement: {fileID: 1709915443}
 --- !u!4 &28657149
 Transform:
   m_ObjectHideFlags: 0
@@ -692,6 +692,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e343d7002c676d43881f0d288188087, type: 3}
+--- !u!1 &1047222834 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2004299855236020792, guid: 0e343d7002c676d43881f0d288188087, type: 3}
+  m_PrefabInstance: {fileID: 1047222833}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1178219526
 PrefabInstance:
   m_ObjectHideFlags: 0
