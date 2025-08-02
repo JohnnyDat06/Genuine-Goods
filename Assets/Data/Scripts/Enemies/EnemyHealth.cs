@@ -53,6 +53,7 @@ public class EnemyHealth : MonoBehaviour
 
             if (isPlayerNearby && Input.GetKeyDown(KeyCode.F))
             {
+                AudioManager.Instance.PlaySound(AudioManager.Instance.handCuffClip);
                 preventRespawn = true;
             }
         }

@@ -205,7 +205,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "                      B\u1EA1n \u0111\xE3 ch\u1ECDn sai khu v\u1EF1c \u0111i\u1EC1u
     tra!\n\nH\xE0nh \u0111\u1ED9ng c\u1EE7a b\u1EA1n r\xFAt d\xE2y \u0111\u1ED9ng
-    r\u1EEBng, k\u1EBB \u0111\u1ECBch s\u1EBD c\u1EA3nh gi\xE1c h\u01A1n"
+    r\u1EEBng, k\u1EBB \u0111\u1ECBch s\u1EBD c\u1EA3nh gi\xE1c h\u01A1n\n\n\t\t(K\u1EBB
+    \u0111\u1ECBch s\u1EBD t\u0103ng s\xE1t th\u01B0\u01A1ng v\xE0 m\xE1u)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 40716f3d8e581304aa33b5dbfe4b50ae, type: 2}
   m_sharedMaterial: {fileID: 6687655643744752007, guid: 40716f3d8e581304aa33b5dbfe4b50ae, type: 2}

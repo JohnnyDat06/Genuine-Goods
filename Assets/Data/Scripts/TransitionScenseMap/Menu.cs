@@ -59,6 +59,6 @@ public class Menu : MonoBehaviour
     
     public void ReturnMap()
     {
-        Invoke("Play", 5f);
+        Invoke("Play", 3f);
     }
 }

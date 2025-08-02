@@ -121,25 +121,20 @@ public class ComboAttack : MonoBehaviour
     //}
     private void Attack(int damage)
     {
-        // Lấy vị trí của vòng tròn tấn công, sử dụng transform.right để nó lật theo player
         Vector3 pos = transform.position + (transform.right * attackOffset.x) + (transform.up * attackOffset.y);
-
-        // Dùng OverlapCircleAll để lấy TẤT CẢ các đối tượng trong vùng tấn công
+        
         Collider2D[] colliders = Physics2D.OverlapCircleAll(pos, attackRange, attackMask);
-
-        // Duyệt qua từng đối tượng va chạm
+        
         foreach (Collider2D hit in colliders)
         {
-            // 1. Kiểm tra xem có phải là Enemy không?
             EnemyHealth enemy = hit.GetComponent<EnemyHealth>();
             if (enemy != null)
             {
                 enemy.TakeDamage(damage);
-                // Thêm 'continue' để không gây sát thương 2 lần lên cùng 1 mục tiêu
+                AudioManager.Instance.PlaySound(AudioManager.Instance.attack1Clip);
                 continue;
             }
-
-            // 2. Kiểm tra xem có phải là Cửa Sắt không?
+            
             IronGateHealth gate = hit.GetComponent<IronGateHealth>();
             if (gate != null)
             {
