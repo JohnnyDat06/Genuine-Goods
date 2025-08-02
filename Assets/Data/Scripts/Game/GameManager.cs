@@ -54,6 +54,7 @@ public class GameManagers : MonoBehaviour
     {
         if (isGameOver) return;
         isGameOver = true;
+        AudioManager.Instance.PlaySound(AudioManager.Instance.deathClip);
         Time.timeScale = 0f;
         if (deathPanel != null) deathPanel.SetActive(true);
         if (playerMovement != null) playerMovement.enabled = false;

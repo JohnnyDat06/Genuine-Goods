@@ -149,6 +149,7 @@ public class MiniBoss1Controller : MonoBehaviour
         if (pc != null && pc.isParrying)
         {
             enemyHealth.BeAttack(0.5f, 0.1f);
+            AudioManager.Instance.PlaySound(AudioManager.Instance.parryMetalClip);
             anim.SetTrigger("IsHit");
             cooldownTimer = -0.5f;
             return;
