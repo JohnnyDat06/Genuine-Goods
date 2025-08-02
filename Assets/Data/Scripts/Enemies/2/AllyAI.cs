@@ -132,6 +132,12 @@ public class AllyAI : MonoBehaviour
 
         // Rito has edited
         Debug.Log("Sequence finished. Handing over to conversational script.");
+        // >>> BÁO CÁO CHO GAME MANAGER RẰNG ĐÃ GẶP NPC
+        if (GameManagers.instance != null)
+        {
+            GameManagers.instance.hasMetElectrician = true;
+            Debug.Log("GameManager updated: hasMetElectrician = true");
+        }
 
         // Get the Conversational_NPC component on the same GameObject
         Conversational_NPC conversationScript = GetComponent<Conversational_NPC>();
