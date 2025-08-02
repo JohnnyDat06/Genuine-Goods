@@ -17,6 +17,17 @@ public class PasswordDoorController : MonoBehaviour
     [SerializeField] private Button submitButton;
     [Tooltip("Kéo Animator của Input Field vào đây")] 
     [SerializeField] private Animator inputFieldAnimator;
+    [Header("Sound Effects")]
+    [Tooltip("Âm thanh khi nhập đúng mật khẩu")]
+    public AudioClip correctSound;
+    [Tooltip("Âm thanh khi nhập sai mật khẩu")]
+    public AudioClip wrongSound;
+    [Tooltip("Âm thanh khi cửa mở")]
+    public AudioClip doorOpenSound;
+
+    // Các biến private để chứa component "loa"
+    private AudioSource doorAudioSource;
+    private AudioSource panelAudioSource;
 
     // Các biến private để tự quản lý
     private Animator doorAnimator;
@@ -29,9 +40,12 @@ public class PasswordDoorController : MonoBehaviour
         // Lấy các component cần thiết lúc bắt đầu
         doorAnimator = GetComponent<Animator>();
         doorCollider = GetComponent<BoxCollider2D>();
+        doorAudioSource = GetComponent<AudioSource>();
+
 
         if (passwordPanel != null)
         {
+            panelAudioSource = passwordPanel.GetComponent<AudioSource>();
             panelAnimator = passwordPanel.GetComponent<Animator>();
         }
 
@@ -69,10 +83,12 @@ public class PasswordDoorController : MonoBehaviour
         if (passwordInputField.text == correctPassword)
         {
             Debug.Log("Mật khẩu chính xác! Mở cửa.");
+            if (correctSound != null) panelAudioSource.PlayOneShot(correctSound);
             isDoorOpen = true; // Đánh dấu cửa đã mở
 
             // Ra lệnh cho cửa và panel chạy animation
             doorAnimator.SetTrigger("OpenDoor");
+            if (doorOpenSound != null) doorAudioSource.PlayOneShot(doorOpenSound);
             panelAnimator.SetBool("isOpen", false);
 
             // Không cho phép tương tác với nút bấm và vùng trigger nữa
@@ -83,6 +99,7 @@ public class PasswordDoorController : MonoBehaviour
         else
         {
             Debug.Log("Mật khẩu sai!");
+            if (wrongSound != null) panelAudioSource.PlayOneShot(wrongSound);
             // Thêm hiệu ứng báo sai ở đây, ví dụ:
             passwordInputField.text = "";
             if (inputFieldAnimator != null) { inputFieldAnimator.SetTrigger("DoShake"); } // Có thể làm animation rung lắc cho InputField }
