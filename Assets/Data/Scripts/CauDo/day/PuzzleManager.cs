@@ -180,6 +180,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using System.Collections;
 
+[RequireComponent(typeof(Animator))]
 public class PuzzleManager : MonoBehaviour
 {
     public static PuzzleManager instance;
@@ -190,6 +191,7 @@ public class PuzzleManager : MonoBehaviour
 
     [Header("Cài Đặt Khung Gợi Ý")]
     public TMP_InputField hintInputField;
+    public AudioClip typingSound;
     [SerializeField] private float typingSpeed = 0.05f;
     [SerializeField] private float popupAnimDuration = 0.3f;
 
@@ -203,6 +205,7 @@ public class PuzzleManager : MonoBehaviour
     private Animator puzzleAnimator;
     private Animator hintAnimator;
     private Coroutine typingCoroutine;
+    private AudioSource hintAudioSource;
     private int connectedPairs = 0;
     private bool isSolved = false;
     private int wrongAttempts = 0;
@@ -213,13 +216,27 @@ public class PuzzleManager : MonoBehaviour
         if (instance == null) { instance = this; }
         else { Destroy(gameObject); }
         puzzleAnimator = GetComponent<Animator>();
-        if (hintInputField != null) { hintAnimator = hintInputField.GetComponent<Animator>(); }
+        if (hintInputField != null) { hintAnimator = hintInputField.GetComponent<Animator>();
+            hintAudioSource = hintInputField.GetComponent<AudioSource>();
+        }
     }
 
     void Start()
     {
         if (hintInputField != null) { hintInputField.gameObject.SetActive(false); }
         ResetIdleTimer();
+        if (hintInputField != null && hintInputField.textComponent != null)
+        {
+            
+            hintInputField.textComponent.enableWordWrapping = true;
+
+           
+            Debug.Log("Đã bật chế độ xuống dòng cho Hint bằng code!");
+        }
+        if (hintAudioSource != null && typingSound != null)
+        {
+            hintAudioSource.clip = typingSound;
+        }
     }
 
     void Update()
@@ -235,10 +252,13 @@ public class PuzzleManager : MonoBehaviour
         }
     }
 
-    // --- HÀM MỚI ĐỂ ANIMATION GỌI ---
-    // Hàm này sẽ được gọi ở frame cuối của animation Close
+    
     public void DeactivateHintObject()
     {
+        if (hintAudioSource != null && hintAudioSource.isPlaying)
+        {
+            hintAudioSource.Stop();
+        }
         if (typingCoroutine != null)
         {
             StopCoroutine(typingCoroutine);
@@ -262,11 +282,19 @@ public class PuzzleManager : MonoBehaviour
     private IEnumerator TypeHint(string textToType)
     {
         yield return new WaitForSeconds(popupAnimDuration);
+        if (hintAudioSource != null && hintAudioSource.clip != null)
+        {
+            hintAudioSource.Play();
+        }
         hintInputField.text = "";
         foreach (char letter in textToType.ToCharArray())
         {
             hintInputField.text += letter;
             yield return new WaitForSeconds(typingSpeed);
+        }
+        if (hintAudioSource != null)
+        {
+            hintAudioSource.Stop();
         }
         yield return new WaitForSeconds(5f);
         HideHint();
@@ -292,7 +320,7 @@ public class PuzzleManager : MonoBehaviour
         if (connectedPairs >= totalPairs) { isSolved = true; WinPuzzle(); }
     }
 
-    // --- HÀM RESETPUZZLE ĐƯỢC SỬA LẠI HOÀN TOÀN ---
+   
     public void ResetPuzzle()
     {
         // 1. Dọn dẹp các dây cũ
