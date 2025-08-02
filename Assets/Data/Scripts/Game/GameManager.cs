@@ -8,7 +8,9 @@ using UnityEngine.SceneManagement;
 public class GameManagers : MonoBehaviour
 {
     public static GameManagers instance;
-    
+
+    public bool hasMetElectrician = false; //hieu
+
     [SerializeField] private GameObject deathPanel;
     [SerializeField] private PlayerController playerMovement;
     
