@@ -25639,17 +25639,25 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4502359584711072419, guid: c2146c8422432a341969e2933a3ae2f7, type: 3}
+      propertyPath: wrongSound
+      value: 
+      objectReference: {fileID: 8300000, guid: d81d057eebd645940b9f0b9efdd1135b, type: 3}
+    - target: {fileID: 4502359584711072419, guid: c2146c8422432a341969e2933a3ae2f7, type: 3}
+      propertyPath: correctSound
+      value: 
+      objectReference: {fileID: 8300000, guid: a20caa6d0dd4dcc4d9bd8762ab3da9e8, type: 3}
+    - target: {fileID: 4502359584711072419, guid: c2146c8422432a341969e2933a3ae2f7, type: 3}
       propertyPath: submitButton
       value: 
       objectReference: {fileID: 1600612064}
     - target: {fileID: 4502359584711072419, guid: c2146c8422432a341969e2933a3ae2f7, type: 3}
+      propertyPath: doorOpenSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c5b4c3b1f5e89b44c82ab68422bb2df3, type: 3}
+    - target: {fileID: 4502359584711072419, guid: c2146c8422432a341969e2933a3ae2f7, type: 3}
       propertyPath: passwordPanel
       value: 
       objectReference: {fileID: 829343291}
-    - target: {fileID: 4502359584711072419, guid: c2146c8422432a341969e2933a3ae2f7, type: 3}
-      propertyPath: correctPassword
-      value: j97
-      objectReference: {fileID: 0}
     - target: {fileID: 4502359584711072419, guid: c2146c8422432a341969e2933a3ae2f7, type: 3}
       propertyPath: inputFieldAnimator
       value: 
@@ -25671,22 +25679,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1387857399}
     m_Modifications:
-    - target: {fileID: 385037707927390040, guid: 010932bf131d56c42b0d9d4c6a2c1675, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2244369927687240976, guid: 010932bf131d56c42b0d9d4c6a2c1675, type: 3}
-      propertyPath: m_text
-      value: "\u200B"
-      objectReference: {fileID: 0}
     - target: {fileID: 2999724899957026314, guid: 010932bf131d56c42b0d9d4c6a2c1675, type: 3}
       propertyPath: onAnimationEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1079400351}
-    - target: {fileID: 5440466747912003817, guid: 010932bf131d56c42b0d9d4c6a2c1675, type: 3}
-      propertyPath: m_Text
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 7656993024238337588, guid: 010932bf131d56c42b0d9d4c6a2c1675, type: 3}
       propertyPath: m_Name
       value: cuaMatKhauUI
