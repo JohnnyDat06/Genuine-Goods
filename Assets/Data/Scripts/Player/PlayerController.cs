@@ -203,6 +203,7 @@ public class PlayerController : MonoBehaviour
         if (comboAttack.isAttacking || isParrying)
         {
             canMove = false;
+            playerRigidbody.velocity = new Vector2(0f, playerRigidbody.velocity.y);
         }
         else
         {
