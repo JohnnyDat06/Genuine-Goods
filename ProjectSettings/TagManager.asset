@@ -21,7 +21,7 @@ TagManager:
   - PushableBox
   - Player
   - Destructible
-  - 
+  - SpawnedEnemy
   - 
   - 
   - 
