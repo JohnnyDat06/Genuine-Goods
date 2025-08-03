@@ -254,9 +254,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueStages:
-  - AcknowledgmentDialogue: {fileID: 11400000, guid: 8050065bcfe39934dafd54db6b454ad2, type: 2}
-    MainDialogue: {fileID: 11400000, guid: 517e9e4a0219fa54a8c15ea720825529, type: 2}
-    RepeatingDialogue: {fileID: 11400000, guid: 6b6de0724d82f9f479e89d5ab62fea64, type: 2}
+  - AcknowledgmentDialogue: {fileID: 0}
+    MainDialogue: {fileID: 0}
+    RepeatingDialogue: {fileID: 11400000, guid: a42c6dcbde73d8946b66b931bffae7b8, type: 2}
   interactionKey: 101
   interactionPrompt: {fileID: 6104891597284228586}
   npcController: {fileID: 0}
@@ -534,7 +534,7 @@ Transform:
   m_GameObject: {fileID: 7572717447679565798}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.33, y: -2.3, z: 0}
+  m_LocalPosition: {x: -0.32, y: -21.86, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
