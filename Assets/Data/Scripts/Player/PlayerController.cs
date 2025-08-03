@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
     private bool isWallSliding;
     private bool isWallJump = false;
     public bool canMove = true;
+    private bool cinematicLock = false; //hieu
 
 
     private enum MovementState { Idle, Walk, JumpStart, JumpEnd, Run}
@@ -50,10 +51,23 @@ public class PlayerController : MonoBehaviour
         wallJumpDirection.Normalize();
     }
 
-    void Update()
+    //void Update()
+    //{
+    //    CheckInput();
+    //    UpdateAnimation();
+    //    CheckIfWallSliding();
+    //    CheckAttack();
+    //}
+    void Update() // hieu
     {
-        CheckInput();
-        UpdateAnimation();
+        // Chỉ cho phép kiểm tra input và cập nhật animation khi canMove = true
+        if (canMove)
+        {
+            CheckInput();
+            UpdateAnimation();
+        }
+
+        // Các hàm kiểm tra trạng thái khác vẫn có thể chạy
         CheckIfWallSliding();
         CheckAttack();
     }
@@ -171,16 +185,32 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void CheckAttack()
+    //private void CheckAttack()
+    //{
+    //    if (comboAttack.isAttacking || isParrying && comboAttack != null)
+    //    {
+    //        canMove = false;
+    //        playerRigidbody.velocity = new Vector2(0f, playerRigidbody.velocity.y);
+    //    }
+    //    else
+    //    {
+    //        canMove = true;
+    //    }
+    //}
+    // Thay thế hàm CheckAttack cũ bằng hàm đã sửa này
+    private void CheckAttack() //hieu
     {
-        if (comboAttack.isAttacking || isParrying && comboAttack != null)
+        if (comboAttack.isAttacking || isParrying)
         {
             canMove = false;
-            playerRigidbody.velocity = new Vector2(0f, playerRigidbody.velocity.y);
         }
         else
         {
-            canMove = true;
+            // Chỉ trả lại quyền di chuyển NẾU không bị khóa bởi cinematic
+            if (!cinematicLock)
+            {
+                canMove = true;
+            }
         }
     }
 
@@ -321,5 +351,18 @@ public class PlayerController : MonoBehaviour
             Gizmos.DrawWireCube(transform.position, new Vector3(1f, 1.5f, 0.1f));
         }
 
+    }
+    //hieu ( cai nay để khóa di chuyển khi gặp con enemy2)
+    public void SetControlEnabled(bool isEnabled)
+    {
+        canMove = isEnabled;
+        // Khi tắt điều khiển, bật khóa cinematic lên và ngược lại
+        cinematicLock = !isEnabled;
+
+        if (!isEnabled)
+        {
+            playerRigidbody.velocity = Vector2.zero;
+            playerAnimator.SetInteger("State", 0);
+        }
     }
 }
