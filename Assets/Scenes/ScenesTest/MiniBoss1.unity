@@ -451,7 +451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f453f694addf4275988fac205bc91968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BoundingShape2D: {fileID: 0}
+  m_BoundingShape2D: {fileID: 789174640}
   m_Damping: 0.5
   m_MaxWindowSize: -1
   m_Padding: 0
@@ -1695,37 +1695,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &507419116
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 507419117}
-  m_Layer: 0
-  m_Name: LimitCamera
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &507419117
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 507419116}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.8322285, y: -0.57584774, z: -0.095605545}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &536056865
 GameObject:
   m_ObjectHideFlags: 0
@@ -2825,8 +2794,8 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: -20.18008, y: 14.976321}
-      - {x: -20.196024, y: 0.43579197}
-      - {x: 39.236015, y: 0.49932384}
+      - {x: -20.059793, y: -6.307663}
+      - {x: 39.099785, y: -6.5847106}
       - {x: 39.302658, y: 14.854334}
   m_UseDelaunayMesh: 0
 --- !u!4 &789174641
@@ -13384,6 +13353,5 @@ SceneRoots:
   - {fileID: 2208954809346965839}
   - {fileID: 2161858962555401073}
   - {fileID: 3962896839456568923}
-  - {fileID: 507419117}
   - {fileID: 727956350}
   - {fileID: 824010601}

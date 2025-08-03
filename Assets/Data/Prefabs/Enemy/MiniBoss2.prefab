@@ -331,7 +331,6 @@ MonoBehaviour:
   enemyPrefab: {fileID: 7111923300911377319, guid: ac454d9457d3015439e54c77bd6fce36, type: 3}
   spawnPoints:
   - {fileID: 3776149054761350036}
-  - {fileID: 5924396852546064589}
   startPoint: {fileID: 2221007290641263722}
   rb: {fileID: 1954584531352255096}
   enemyHealth: {fileID: 5843719034326668641}

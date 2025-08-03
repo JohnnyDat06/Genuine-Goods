@@ -283,7 +283,6 @@ MonoBehaviour:
   enemyPrefab: {fileID: 7111923300911377319, guid: ac454d9457d3015439e54c77bd6fce36, type: 3}
   spawnPoints:
   - {fileID: 6656682335967183673}
-  - {fileID: 3035365152856665655}
   chargeDistance: 5
   chargeSpeed: 15
   startPoint: {fileID: 6147275718809957401}

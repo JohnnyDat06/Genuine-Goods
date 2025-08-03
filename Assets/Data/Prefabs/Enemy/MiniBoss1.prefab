@@ -358,10 +358,9 @@ MonoBehaviour:
   moveRange: 7
   attackCoolDown: 2
   moveSpeed: 2.5
-  enemyPrefab: {fileID: 7111923300911377319, guid: ac454d9457d3015439e54c77bd6fce36, type: 3}
+  enemyPrefab: {fileID: 562166446473307939, guid: fa6bca7914be7b94cbd4692ff8c4c88e, type: 3}
   spawnPoints:
   - {fileID: 6527894439330952631}
-  - {fileID: 5248548642899668878}
   startPoint: {fileID: 6017437299518330065}
   rb: {fileID: 2888985779109750075}
   enemyHealth: {fileID: 8227791094627240747}
