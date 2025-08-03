@@ -63,32 +63,125 @@ public class AllyAI : MonoBehaviour
         }
     }
 
+    //private IEnumerator AllySequence()
+    //{
+    //    Debug.Log("Phát hiện Player! Đang quay lại nhìn...");
+    //    // 1. DỪNG PLAYER, QUAY MẶT LẠI
+    //    FaceDirection(player.position.x - transform.position.x);
+    //    if (questionMarkObject != null) questionMarkObject.SetActive(true);
+
+    //    // Tạm thời vô hiệu hóa điều khiển của người chơi
+    //    var playerController = player.GetComponent<PlayerController>();
+    //    if (playerController != null)
+    //    {
+    //        //playerController.enabled = false;
+    //        //playerController.GetComponent<Animator>().enabled = false;
+    //        playerController.playerRigidbody.velocity = Vector2.zero;
+
+    //    }
+
+    //    // 2. ĐỢI MỘT CHÚT
+    //    yield return new WaitForSeconds(turnDelay);
+
+    //    Debug.Log("Bắt đầu chạy!");
+    //    // 3. BẮT ĐẦU CHẠY VÀ CHUYỂN CAMERA
+    //    if (questionMarkObject != null) questionMarkObject.SetActive(false);
+    //    anim.SetTrigger("Run");
+    //    if (vcamAlly != null) vcamAlly.Priority = 11;
+
+    //    // 4. VÒNG LẶP DI CHUYỂN TỚI ĐIỂM DỪNG
+    //    while (Vector2.Distance(transform.position, stopPoint.position) > 1.5f)
+    //    {
+    //        Vector2 direction = (stopPoint.position - transform.position).normalized;
+    //        rb.velocity = new Vector2(direction.x * runSpeed, rb.velocity.y);
+    //        FaceDirection(direction.x);
+
+    //        if (ironGate != null && Vector2.Distance(transform.position, ironGate.transform.position) < 4f)
+    //        {
+    //            ironGate.OpenForAlly();
+    //            ironGate = null;
+    //        }
+    //        yield return null;
+    //    }
+
+    //    // 5. DỪNG LẠI VÀ SỢ HÃI
+    //    Debug.Log("Đã đến điểm dừng. Bắt đầu sợ hãi.");
+    //    rb.velocity = Vector2.zero;
+    //    anim.SetTrigger("Scared");
+    //    yield return new WaitForSeconds(scareAnimationDuration);
+
+    //    // 6. TRẢ CAMERA VÀ ĐIỀU KHIỂN CHO PLAYER
+    //    Debug.Log("Sợ hãi xong. Trả camera về Player.");
+    //    if (vcamAlly != null)
+    //    {
+    //        vcamAlly.Priority = 9;
+    //        vcamAlly.Follow = null;
+    //    }
+    //    if (playerController != null)
+    //    {
+    //        playerController.enabled = true;
+    //        playerController.GetComponent<Animator>().enabled = true;
+    //    }
+    //    yield return new WaitForSeconds(1f);
+
+    //    // 7. DỊCH CHUYỂN ĐẾN VỊ TRÍ CUỐI CÙNG
+    //    if (finalTeleportPoint != null)
+    //    {
+    //        transform.position = finalTeleportPoint.position;
+    //    }
+    //    anim.SetTrigger("Idle");
+
+    //    // Rito has edited
+    //    Debug.Log("Sequence finished. Handing over to conversational script.");
+    //    // >>> BÁO CÁO CHO GAME MANAGER RẰNG ĐÃ GẶP NPC
+    //    if (GameManagers.instance != null)
+    //    {
+    //        GameManagers.instance.hasMetElectrician = true;
+    //        Debug.Log("GameManager updated: hasMetElectrician = true");
+    //    }
+
+    //    // Get the Conversational_NPC component on the same GameObject
+    //    Conversational_NPC conversationScript = GetComponent<Conversational_NPC>();
+    //    if (conversationScript != null)
+    //    {
+    //        // Enable the conversation script so it can start working
+    //        conversationScript.enabled = true;
+    //        Debug.Log("Conversational_NPC script has been enabled.");
+    //    }
+    //    else
+    //    {
+    //        Debug.LogWarning("Could not find the Conversational_NPC script on this NPC.");
+    //    }
+
+    //    // Disable this script (AllyAI) so it stops running
+    //    this.enabled = false;
+    //    // Rito has finished editing
+    //}
     private IEnumerator AllySequence()
     {
         Debug.Log("Phát hiện Player! Đang quay lại nhìn...");
-        // 1. DỪNG PLAYER, QUAY MẶT LẠI
-        FaceDirection(player.position.x - transform.position.x);
-        if (questionMarkObject != null) questionMarkObject.SetActive(true);
 
-        // Tạm thời vô hiệu hóa điều khiển của người chơi
+        // --- BƯỚC 1: "ĐÓNG BĂNG" PLAYER ---
         var playerController = player.GetComponent<PlayerController>();
         if (playerController != null)
         {
-            playerController.enabled = false;
-            playerController.GetComponent<Animator>().enabled = false;
-            playerController.playerRigidbody.velocity = Vector2.zero;
+            playerController.SetControlEnabled(false); // Gọi hàm công tắc để TẮT điều khiển
         }
 
-        // 2. ĐỢI MỘT CHÚT
+        // Quay mặt lại và hiện dấu "?"
+        FaceDirection(player.position.x - transform.position.x);
+        if (questionMarkObject != null) questionMarkObject.SetActive(true);
+
+        // Đợi một chút
         yield return new WaitForSeconds(turnDelay);
 
+        // --- CÁC BƯỚC CÒN LẠI ---
         Debug.Log("Bắt đầu chạy!");
-        // 3. BẮT ĐẦU CHẠY VÀ CHUYỂN CAMERA
         if (questionMarkObject != null) questionMarkObject.SetActive(false);
         anim.SetTrigger("Run");
         if (vcamAlly != null) vcamAlly.Priority = 11;
 
-        // 4. VÒNG LẶP DI CHUYỂN TỚI ĐIỂM DỪNG
+        // Vòng lặp di chuyển
         while (Vector2.Distance(transform.position, stopPoint.position) > 1.5f)
         {
             Vector2 direction = (stopPoint.position - transform.position).normalized;
@@ -103,14 +196,14 @@ public class AllyAI : MonoBehaviour
             yield return null;
         }
 
-        // 5. DỪNG LẠI VÀ SỢ HÃI
+        // Dừng lại và sợ hãi
         Debug.Log("Đã đến điểm dừng. Bắt đầu sợ hãi.");
         rb.velocity = Vector2.zero;
         anim.SetTrigger("Scared");
         yield return new WaitForSeconds(scareAnimationDuration);
 
-        // 6. TRẢ CAMERA VÀ ĐIỀU KHIỂN CHO PLAYER
-        Debug.Log("Sợ hãi xong. Trả camera về Player.");
+        // --- BƯỚC CUỐI: "RÃ ĐÔNG" PLAYER ---
+        Debug.Log("Sợ hãi xong. Trả camera và điều khiển về Player.");
         if (vcamAlly != null)
         {
             vcamAlly.Priority = 9;
@@ -118,32 +211,27 @@ public class AllyAI : MonoBehaviour
         }
         if (playerController != null)
         {
-            playerController.enabled = true;
-            playerController.GetComponent<Animator>().enabled = true;
+            playerController.SetControlEnabled(true); // Gọi hàm công tắc để BẬT lại điều khiển
         }
         yield return new WaitForSeconds(1f);
 
-        // 7. DỊCH CHUYỂN ĐẾN VỊ TRÍ CUỐI CÙNG
+        // Dịch chuyển đến vị trí cuối cùng và kết thúc
         if (finalTeleportPoint != null)
         {
             transform.position = finalTeleportPoint.position;
         }
         anim.SetTrigger("Idle");
 
-        // Rito has edited
-        Debug.Log("Sequence finished. Handing over to conversational script.");
-        // >>> BÁO CÁO CHO GAME MANAGER RẰNG ĐÃ GẶP NPC
+        // Phần code gọi GameManagers và Conversational_NPC của bro
         if (GameManagers.instance != null)
         {
             GameManagers.instance.hasMetElectrician = true;
             Debug.Log("GameManager updated: hasMetElectrician = true");
         }
 
-        // Get the Conversational_NPC component on the same GameObject
         Conversational_NPC conversationScript = GetComponent<Conversational_NPC>();
         if (conversationScript != null)
         {
-            // Enable the conversation script so it can start working
             conversationScript.enabled = true;
             Debug.Log("Conversational_NPC script has been enabled.");
         }
@@ -152,9 +240,8 @@ public class AllyAI : MonoBehaviour
             Debug.LogWarning("Could not find the Conversational_NPC script on this NPC.");
         }
 
-        // Disable this script (AllyAI) so it stops running
+        // Vô hiệu hóa script này
         this.enabled = false;
-        // Rito has finished editing
     }
 
     // Hàm lật mặt theo hướng di chuyển
