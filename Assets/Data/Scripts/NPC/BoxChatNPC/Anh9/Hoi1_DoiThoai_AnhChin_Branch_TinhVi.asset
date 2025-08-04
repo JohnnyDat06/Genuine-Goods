@@ -16,13 +16,14 @@ MonoBehaviour:
   - characterName: "Anh Ch\xEDn Qu\xE8"
     sentence: "Anh c\u0169ng ngh\u0129 v\u1EADy. B\u1ECDn ch\xFAng l\xE0m \u0103n
       m\u1EDD \xE1m l\u1EAFm, k\xEDn nh\u01B0 b\u01B0ng.\n"
-    voiceClip: {fileID: 0}
+    voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
     choiceData:
       choices: []
   - characterName: "H\xF9ng (N\u1ED9i t\xE2m)\t"
     sentence: "(Che gi\u1EA5u gi\u1ECFi \u0111\u1EBFn m\u1EE9c qua m\u1EB7t \u0111\u01B0\u1EE3c
       c\u1EA3 \u0111\u1EE3t ki\u1EC3m tra \u0111\u1EA7u ti\xEAn. T\u1ED1i nay m\xECnh
       ph\u1EA3i t\u1EF1 m\xECnh h\xE0nh \u0111\u1ED9ng).\n"
-    voiceClip: {fileID: 0}
+    voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
     choiceData:
       choices: []
+  followUpDialogue: {fileID: 0}

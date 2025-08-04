@@ -32,7 +32,7 @@ MonoBehaviour:
       choices: []
   - characterName: "H\xF9ng"
     sentence: "V\xEC m\u1EA5y chuy\u1EC7n \u0111\xF3 m\xE0 anh l\xE0m li\u1EC1u?\n"
-    voiceClip: {fileID: 0}
+    voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
     choiceData:
       choices: []
   - characterName: "Ch\xFA S\xE1u"
@@ -45,7 +45,7 @@ MonoBehaviour:
       s\u1EEDa l\u1EA1i cho n\xF3 m\u1EB7c \u0111\u1EE1... \u0110\xEAm n\xE0o tui
       c\u0169ng d\u1EB1n v\u1EB7t, th\u1EA5y m\xECnh v\xF4 d\u1EE5ng qu\xE1 c\u1EADu
       \u01A1i..."
-    voiceClip: {fileID: 0}
+    voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
     choiceData:
       choices: []
   followUpDialogue: {fileID: 0}
