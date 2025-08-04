@@ -29,7 +29,7 @@ public class Conversational_NPC : MonoBehaviour
     {
         DialogueManager.RegisterNPC(this);
         // Khi được bật, chủ động tìm player
-        if (playerTransform == null && playerLayer.value != 0)
+        if (playerTransform == null)
         {
             GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
             if (playerObject != null)
@@ -51,7 +51,7 @@ public class Conversational_NPC : MonoBehaviour
             CheckPlayerProximity();
         }
 
-        if (playerIsInRange && !isInteractionDisabled && !DialogueManager.instance.IsDialogueActive && Input.GetKeyDown(interactionKey))
+        if (playerIsInRange && !isInteractionDisabled && DialogueManager.instance != null && !DialogueManager.instance.IsDialogueActive && Input.GetKeyDown(interactionKey))
         {
             TriggerDialogue();
         }
@@ -79,7 +79,21 @@ public class Conversational_NPC : MonoBehaviour
 
     private void TriggerDialogue()
     {
-        int currentRaid = 0; // Thay thế bằng MissionManager.Instance.currentRaid nếu có
+        // --- ĐOẠN CODE ĐÃ SỬA LỖI ---
+        int currentRaid = 0; // Mặc định là 0
+
+        // Kiểm tra xem MissionManager có tồn tại không
+        if (MissionManager.Instance != null)
+        {
+            // Nếu có, lấy giá trị đúng từ nó
+            currentRaid = MissionManager.Instance.currentRaid;
+        }
+        else
+        {
+
+        }
+        // -----------------------------
+
         if (currentRaid >= dialogueStages.Length) return;
 
         RaidDialogueStage currentStage = dialogueStages[currentRaid];
@@ -158,7 +172,11 @@ public class Conversational_NPC : MonoBehaviour
         isInteractionDisabled = false;
         if (usePhysicsCheck)
         {
-            CheckPlayerProximity();
+            // Cập nhật lại trạng thái prompt sau khi nói chuyện xong
+            if (playerIsInRange && interactionPrompt != null)
+            {
+                interactionPrompt.SetActive(true);
+            }
         }
         else if (playerIsInRange && interactionPrompt != null)
         {
