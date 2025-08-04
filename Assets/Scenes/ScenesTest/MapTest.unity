@@ -12224,6 +12224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 526c80966e683184fab0b479c18e14db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasMetElectrician: 0
   deathPanel: {fileID: 539064281}
   playerMovement: {fileID: 286189976}
 --- !u!4 &444864513
@@ -25533,10 +25534,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 238792986}
     m_Modifications:
-    - target: {fileID: 2031013195716000133, guid: 5b732ac3d8050564186132a4ab58ce29, type: 3}
-      propertyPath: maxHealth
-      value: 300
-      objectReference: {fileID: 0}
     - target: {fileID: 3102241887175275647, guid: 5b732ac3d8050564186132a4ab58ce29, type: 3}
       propertyPath: m_Name
       value: canhCuaSat
