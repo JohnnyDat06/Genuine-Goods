@@ -198,7 +198,7 @@ MonoBehaviour:
   startingHealth: 100
   enemyObj: {fileID: 7111923300911377319}
   reviveCoolDown: 2
-  isDead: 0
+  destroyDelayForNormalEnemy: 3
   preventRespawn: 0
 --- !u!114 &298838344440066798
 MonoBehaviour:
@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 1
-  attackDamage: 100
+  attackDamage: 60
   moveRange: 5
   attackCoolDown: 2
   moveSpeed: 2

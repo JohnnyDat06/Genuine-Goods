@@ -121,9 +121,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8513b8f1d73937141b363c52d7e72412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  launchAngle: 70
+  speed: 10
   lifeTime: 3
-  damage: 100
+  damage: 50
 --- !u!50 &3493026425274446661
 Rigidbody2D:
   serializedVersion: 4
