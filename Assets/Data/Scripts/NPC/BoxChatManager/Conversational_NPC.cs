@@ -90,7 +90,8 @@ public class Conversational_NPC : MonoBehaviour
         }
         else
         {
-
+            // Nếu không, cảnh báo để bạn biết
+            Debug.LogWarning("Không tìm thấy MissionManager.Instance! Tạm thời sử dụng currentRaid = 0.", this);
         }
         // -----------------------------
 
