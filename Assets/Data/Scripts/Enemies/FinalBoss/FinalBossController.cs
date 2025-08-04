@@ -179,6 +179,7 @@ public class FinalBossController : MonoBehaviour
         PlayerController pc = player.GetComponent<PlayerController>();
         if (pc != null && pc.isParrying)
         {
+            AudioManager.Instance.PlaySound(AudioManager.Instance.parryClip);
             enemyHealth.BeAttack(0.5f, 0.1f);
             anim.SetTrigger("IsHit");
             cooldownTimer = -0.5f;

@@ -129,7 +129,7 @@ public class Enemy3Controller : MonoBehaviour
                 // Bị đỡ đòn: enemy bị đẩy lùi và dính "IsHit"
                 GetComponent<EnemyHealth>().BeAttack(0.5f, 0.1f); // đẩy nhẹ
                 anim.SetTrigger("IsHit");
-                AudioManager.Instance.PlaySound(AudioManager.Instance.parryClip);
+                if (AudioManager.Instance != null) AudioManager.Instance.PlaySound(AudioManager.Instance.parryClip);
                 // Delay tấn công
                 cooldownTimer = -0.5f; // reset cooldown sớm hơn tí để thử lại
                 return;
