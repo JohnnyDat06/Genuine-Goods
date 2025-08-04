@@ -16,38 +16,39 @@ MonoBehaviour:
   - characterName: "Ch\xFA Ba\t"
     sentence: "V\xE9 s\u1ED1 chi\u1EC1u \u0111\xE2y! C\u1EADu trai tr\u1EBB, mua
       gi\xFAp ch\xFA t\u1EDD cu\u1ED1i c\xF9ng l\u1EA5y may \u0111i con.\n"
-    voiceClip: {fileID: 0}
+    voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
     choiceData:
       choices: []
   - characterName: "H\xF9ng"
     sentence: "(T\u1EDD v\xE9 s\u1ED1... Con s\u1ED1 n\xE0y l\xE0... 2100. Ch\xEDn
       gi\u1EDD t\u1ED1i sao?)\n"
-    voiceClip: {fileID: 0}
+    voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
     choiceData:
       choices: []
   - characterName: "Ch\xFA Ba\t"
     sentence: "T\u1EDD n\xE0y \u0111\u1EB7c bi\u1EC7t l\u1EAFm. L\xE0 t\u1EDD \u0111\u1ED9c
       \u0111\u1EAFc c\u1EE7a ng\xE0y h\xF4m nay \u0111\xF3. B\u1EA1n hi\u1EC1n t\u1EEB
-      xa g\u1EEDi g\u1EAFm, b\u1EA3o l\xE0 gi\u1EDD l\xE0nh \u0111\xE3 \u0111i\u1EC3m.\n"
-    voiceClip: {fileID: 0}
+      xa g\u1EEDi g\u1EAFm, b\u1EA3o l\xE0 gi\u1EDD l\xE0nh \u0111\xE3 \u0111i\u1EC3m.
+      \u1EDE \u0111\xE0i 104 nh\u1EDB m\xE0 d\xF2\n"
+    voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
     choiceData:
       choices: []
   - characterName: "Ch\xFA Ba\t"
     sentence: "M\u1ECDi ng\u01B0\u1EDDi... \u0111\xE3 s\u1EB5n s\xE0ng c\u1EA3 r\u1ED3i.
       Ch\u1EC9 ch\u1EDD ng\u01B0\u1EDDi c\xF3 duy\xEAn tr\xFAng gi\u1EA3i th\xF4i.\n"
-    voiceClip: {fileID: 0}
+    voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
     choiceData:
       choices: []
   - characterName: "H\xF9ng"
     sentence: "(C\u1EA7m t\u1EDD v\xE9 s\u1ED1, \xE1nh m\u1EAFt s\u1EAFc l\u1EA1i)
       R\xF5.\n"
-    voiceClip: {fileID: 0}
+    voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
     choiceData:
       choices: []
   - characterName: "H\xF9ng"
     sentence: "C\u1EA7u tr\u1EDDi... \u0111\xEAm nay s\u1EBD l\xE0 \u0111\xEAm cu\u1ED1i
       c\xF9ng c\u1EE7a ch\xFAng."
-    voiceClip: {fileID: 0}
+    voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
     choiceData:
       choices: []
   followUpDialogue: {fileID: 0}

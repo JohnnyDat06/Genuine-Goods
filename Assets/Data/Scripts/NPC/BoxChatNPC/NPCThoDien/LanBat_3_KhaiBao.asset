@@ -30,7 +30,7 @@ MonoBehaviour:
       choices: []
   - characterName: "H\xF9ng"
     sentence: "Quy t\u1EAFc \u0111\xF3 l\xE0 g\xEC?\n"
-    voiceClip: {fileID: 0}
+    voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
     choiceData:
       choices: []
   - characterName: "Ch\xFA S\xE1u"
@@ -39,12 +39,12 @@ MonoBehaviour:
       c\u1EA7m d\xE2y v\xE0ng, th\xEC ph\u1EA3i n\u1ED1i v\u1EDBi ch\u1ED1t \u0111\u1ECF
       b\xEAn ph\u1EA3i. L\xE3o n\xF3i hai m\xE0u \u0111\xF3 l\xE0 'm\xE1u v\xE0 ti\u1EC1n',
       trong b\xF3ng t\u1ED1i ph\u1EA3i lu\xF4n \u0111i \u0111\xF4i v\u1EDBi nhau...\n"
-    voiceClip: {fileID: 0}
+    voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
     choiceData:
       choices: []
   - characterName: "H\xF9ng"
     sentence: "C\xF2n l\u1EA1i th\xEC sao?\n"
-    voiceClip: {fileID: 0}
+    voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
     choiceData:
       choices: []
   - characterName: "Ch\xFA S\xE1u"
@@ -54,7 +54,7 @@ MonoBehaviour:
       l\xE0 m\xE0u c\u1EE7a 'c\u1EA3nh b\xE1o' v\xE0 'r\u1EEBng r\u1EADm', n\u01A1i
       l\xE3o c\u1EA5t h\xE0ng... \u0110\xF3, l\xE0 t\u1EA5t c\u1EA3... Kho h\xE0ng
       \u1EDF cu\u1ED1i h\u1EBBm 9, trong b\xF3ng t\u1ED1i..."
-    voiceClip: {fileID: 0}
+    voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
     choiceData:
       choices: []
   followUpDialogue: {fileID: 0}
