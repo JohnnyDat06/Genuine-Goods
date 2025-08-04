@@ -100,10 +100,13 @@ public class DocumentManager : MonoBehaviour
         }
 
         currentlyViewingPaper = paper;
-        // --- PHẦN MỚI: PHÁT ÂM THANH KHI MỞ ---
-        paper.PlayOpenSound();
-        // -------------------------------------
+
+        // --- ĐÂY LÀ PHẦN SỬA LỖI QUAN TRỌNG ---
+        // 1. HIỆN tờ giấy lên trước để kích hoạt GameObject và AudioSource.
         paper.ShowFromManager();
+        // 2. Sau đó MỚI phát âm thanh mở.
+        paper.PlayOpenSound();
+        // ------------------------------------
     }
 }
 
