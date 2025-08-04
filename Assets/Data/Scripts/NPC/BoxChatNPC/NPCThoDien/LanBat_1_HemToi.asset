@@ -25,8 +25,9 @@ MonoBehaviour:
       tui s\u1EE3 ch\u1EE9! Tui \u0111i s\u1EEDa \u0111i\u1EC7n v\u1EC1 khuya, v\u1EEBa
       \u0111i qua con h\u1EBBm t\u1ED1i n\xE0y th\xEC th\u1EA5y m\u1ED9t chuy\u1EC7n
       kh\xF4ng n\xEAn th\u1EA5y... D\u01B0\u1EDBi \xE1nh \u0111\xE8n \u0111\u01B0\u1EDDng
-      m\u1EDD m\u1EDD, tui th\u1EA5y m\u1ED9t \xF4ng m\u1EB7c \xE1o kho\xE1c \u0111\u1ECF
-      \u0111ang gi\u1EB1ng co v\u1EDBi m\u1ED9t ng\u01B0\u1EDDi m\u1EB7c \xE1o cam.\n"
+      m\u1EDD m\u1EDD, tui th\u1EA5y m\u1ED9t \xF4ng m\u1EB7c \xE1o kho\xE1c (\u0111\u1ECF)
+      \u0111ang gi\u1EB1ng co v\u1EDBi m\u1ED9t ng\u01B0\u1EDDi m\u1EB7c \xE1o thun
+      (\u0111\u1ECF).\n"
     voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
     choiceData:
       choices: []
@@ -36,13 +37,11 @@ MonoBehaviour:
     choiceData:
       choices: []
   - characterName: "Ch\xFA S\xE1u"
-    sentence: "Tui kh\xF4ng d\xE1m l\u1EA1i g\u1EA7n! Ch\u1EC9 th\u1EA5y lo\xE1ng
-      tho\xE1ng c\xF3 m\u1ED9t c\xE1i t\xFAi m\xE0u v\xE0ng r\u01A1i xu\u1ED1ng c\u1EA1nh
-      m\u1EA5y b\u1EE5i c\xE2y xanh um t\xF9m trong b\xF3ng t\u1ED1i. Sau \u0111\xF3
-      ng\u01B0\u1EDDi \xE1o cam b\u1ECF ch\u1EA1y, c\xF2n c\xE1i b\xF3ng \xE1o \u0111\u1ECF
-      th\xEC l\u1EA9n v\xE0o m\u1EA5y b\u1EE5i c\xE2y xanh \u0111\xF3... M\u1ECDi
-      th\u1EE9 m\u1EDD \u1EA3o l\u1EAFm, tui s\u1EE3 b\u1ECB hi\u1EC3u l\u1EA7m l\xE0
-      \u0111\u1ED3ng b\u1ECDn n\xEAn m\u1EDBi ch\u1EA1y \u0111\xF3 c\u1EADu!"
+    sentence: "M\u1ED9t \xF4ng m\u1EB7c qu\u1EA7n Jean (v\xE0ng) \u0111ang gi\u1EB1ng
+      co v\u1EDBi m\u1ED9t \xF4ng qu\u1EA7n thun (v\xE0ng). Sau \u0111\xF3 c\xF3
+      2 \xF4ng t\xF3c (cam v\xE0 xanh) \u0111ang ch\u1EEDi nhau qua l\u1EA1i... Tui
+      s\u1EE3 b\u1ECB hi\u1EC3u l\u1EA7m l\xE0 \u0111\u1ED3ng b\u1ECDn n\xEAn m\u1EDBi
+      ch\u1EA1y \u0111\xF3 c\u1EADu!"
     voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
     choiceData:
       choices: []
