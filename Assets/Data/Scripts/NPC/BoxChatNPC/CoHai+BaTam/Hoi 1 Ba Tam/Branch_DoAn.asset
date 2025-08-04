@@ -21,21 +21,21 @@ MonoBehaviour:
       v\u1ED1n b\u1ECB d\u1ECB \u1EE9ng v\u1EDBi \u0111\u1EADu ph\u1ED9ng, \u0103n
       ph\u1EA3i n\xEAn m\u1EDBi ph\xE1t b\u1EC7nh. Ch\u1EB3ng bi\u1EBFt \u0111\u01B0\u1EDDng
       n\xE0o m\xE0 l\u1EA7n.\n"
-    voiceClip: {fileID: 0}
+    voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
     choiceData:
       choices: []
   - characterName: "H\xF9ng (N\u1ED9i t\xE2m)"
     sentence: "(Th\xF4ng tin m\xE2u thu\u1EABn. D\u1ECB \u1EE9ng hay th\u1EF1c ph\u1EA9m
       b\u1EA9n? D\xF9 sao c\u0169ng ph\u1EA3i ki\u1EC3m tra ti\u1EC7m B\u1EBFp Nh\xE0
       An).\n"
-    voiceClip: {fileID: 0}
+    voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
     choiceData:
       choices: []
   - characterName: "B\xE0 T\xE1m\t"
     sentence: "Th\xF4i, con \u0111i \u0111\xE2u th\xEC c\u0169ng c\u1EA9n th\u1EADn
       \u0103n u\u1ED1ng nh\xE9. Gi\u1EDD c\xF4 ph\u1EA3i \u0111i d\u1EB7n d\xF2 m\u1EA5y
       \u0111\u1EE9a nh\u1ECF trong nh\xE0 m\u1EDBi \u0111\u01B0\u1EE3c. S\u1EE3 qu\xE1!"
-    voiceClip: {fileID: 0}
+    voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
     choiceData:
       choices: []
   followUpDialogue: {fileID: 0}

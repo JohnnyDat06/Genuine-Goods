@@ -17,7 +17,7 @@ MonoBehaviour:
     sentence: "C\xE1i \u1EA5m c\u1EE7a c\xF4 Hai mua \u1EDF \u0111\xE2u m\xE0 nguy
       hi\u1EC3m v\u1EADy \u1EA1? \u0110\u1EC3 m\u1ECDi ng\u01B0\u1EDDi c\xF2n bi\u1EBFt
       m\xE0 tr\xE1nh.\n"
-    voiceClip: {fileID: 0}
+    voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
     choiceData:
       choices: []
   - characterName: "C\xF4 Hai\t"

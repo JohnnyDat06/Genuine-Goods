@@ -17,7 +17,7 @@ MonoBehaviour:
     sentence: "M\u1EA5y chi\u1EBFc xe t\u1EA3i \u0111\xF3 c\xF3 \u0111\u1EB7c \u0111i\u1EC3m
       g\xEC kh\xF4ng \u1EA1? \u0110\u1EC3 ch\xE1u c\xF2n bi\u1EBFt \u0111\u01B0\u1EDDng
       m\xE0 tr\xE1nh.\n"
-    voiceClip: {fileID: 0}
+    voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
     choiceData:
       choices: []
   - characterName: "B\xE0 T\xE1m\t"
