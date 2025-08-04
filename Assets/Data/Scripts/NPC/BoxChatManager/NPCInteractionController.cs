@@ -6,260 +6,236 @@ using System.Text;
 using TMPro;
 using UnityEngine.UI;
 
-// --- Cấu trúc dữ liệu để giao tiếp với Server (Giữ nguyên) ---
+[System.Serializable] public class ChatMessage { public string type; public string message; }
+[System.Serializable] public class ChatPayload { public string input; public List<ChatMessage> history; }
+[System.Serializable] public class ChatResponse { public string answer; }
 
-[System.Serializable]
-public class ChatMessage
-{
-    public string type;
-    public string message;
-}
-
-[System.Serializable]
-public class ChatPayload
-{
-    public string input;
-    public List<ChatMessage> history;
-}
-
-[System.Serializable]
-public class ChatResponse
-{
-    public string answer;
-}
-
-[RequireComponent(typeof(EnemyHealth))] // Đảm bảo luôn có component EnemyHealth
+[RequireComponent(typeof(EnemyHealth))]
 public class NPCInteractionController : MonoBehaviour
 {
     [Header("Interaction Settings")]
-    [Tooltip("Khoảng cách tối đa để người chơi có thể bắt đầu cuộc trò chuyện.")]
     public float interactionDistance = 3.0f;
-    [Tooltip("Phím để bắt đầu/gửi tin nhắn.")]
     public KeyCode interactionKey = KeyCode.E;
-    [Tooltip("Phím để kết thúc cuộc trò chuyện.")]
     public KeyCode exitKey = KeyCode.Escape;
-
-    [Header("UI Elements")]
-    [Tooltip("Panel chứa toàn bộ giao diện chat.")]
+    [Header("Main Chat UI")]
     public GameObject chatPanel;
-    [Tooltip("Vùng hiển thị nội dung chat.")]
     public TextMeshProUGUI chatLogText;
-    [Tooltip("Ô để người chơi nhập tin nhắn.")]
     public TMP_InputField playerInputField;
-    [Tooltip("Thanh cuộn của vùng chat để tự động cuộn xuống.")]
     public ScrollRect chatScrollRect;
-
+    [Header("Ally Communication UI")]
+    public Button allyCommunicateButton;
+    public GameObject allyChatPanel;
+    public TextMeshProUGUI allyChatLogText;
+    [Header("UI Effects")]
+    public float fadeDuration = 0.3f;
+    public float typewriterSpeed = 0.03f;
     [Header("Backend Settings")]
-    [Tooltip("Địa chỉ URL của server chat backend.")]
     public string serverUrl = "http://localhost:3000/api/chat";
 
-    // --- Biến nội bộ ---
     private Transform playerTransform;
     private MonoBehaviour playerMovementScript;
     private EnemyHealth enemyHealth;
-
     private bool isChatting = false;
     private List<ChatMessage> chatHistory = new List<ChatMessage>();
+    private Coroutine allyMessageCoroutine;
+    private Coroutine allyPanelFadeCoroutine;
+    private CanvasGroup allyPanelCanvasGroup;
+    private bool isAllyPanelVisible = false;
+    private List<string> masterAllyDialogues = new List<string>
+    {
+        "Tín hiệu tốt, Hùng, nghe rõ không?",
+        "Làm tốt lắm! Hắn đã bị vô hiệu hóa. Toàn đội đang vào vị trí.",
+        "Hắn là một kẻ gian xảo. Cẩn thận đừng để bị hắn thao túng tâm lý.",
+        "Chúng tôi đang rà soát hệ thống máy tính. Cố gắng câu giờ, hỏi hắn về kẻ chủ mưu thật sự.",
+        "Thông tin hắn tiết lộ có thể là một cái bẫy. Hãy đối chiếu với những gì chúng ta tìm thấy.",
+        "Hắn đang cố gắng phi tang dữ liệu từ xa! Ngăn hắn lại!",
+        "Đội B đã an toàn. Chúng tôi đang tiến vào."
+    };
+    private int currentDialogueIndex;
 
     void Awake()
     {
-        // Tự động lấy các component cần thiết
         enemyHealth = GetComponent<EnemyHealth>();
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
-
         if (playerObj != null)
         {
             playerTransform = playerObj.transform;
-            // Giả sử script di chuyển của bạn tên là "PlayerController" hoặc tương tự
-            // Hãy thay đổi "PlayerController" thành tên script di chuyển chính xác của bạn
+            // Quan trọng: Thay "PlayerController" bằng tên script di chuyển của bạn
             playerMovementScript = playerObj.GetComponent<PlayerController>() as MonoBehaviour;
         }
-        else
-        {
-            Debug.LogError("Không tìm thấy đối tượng có tag 'Player'. Vui lòng kiểm tra lại scene.", this);
-        }
+        else { Debug.LogError("Không tìm thấy đối tượng có tag 'Player'.", this); }
     }
-
     void Start()
     {
-        if (chatPanel != null)
+        if (chatPanel != null) chatPanel.SetActive(false);
+        if (allyCommunicateButton != null)
         {
-            chatPanel.SetActive(false);
+            allyCommunicateButton.gameObject.SetActive(false);
+            allyCommunicateButton.onClick.AddListener(ToggleAllyChat);
         }
-        else
+        if (allyChatPanel != null)
         {
-            Debug.LogError("Chưa gán Chat Panel vào Inspector!", this);
+            allyPanelCanvasGroup = allyChatPanel.GetComponent<CanvasGroup>();
+            allyPanelCanvasGroup.alpha = 0f;
+            allyPanelCanvasGroup.interactable = false;
+            allyPanelCanvasGroup.blocksRaycasts = false;
+            allyChatPanel.SetActive(true);
         }
     }
-
     void Update()
     {
-        if (isChatting)
-        {
-            // Nếu đang chat, chỉ lắng nghe phím thoát
-            if (Input.GetKeyDown(exitKey))
-            {
-                EndChat();
-            }
-        }
-        else
-        {
-            // Nếu chưa chat, kiểm tra điều kiện để bắt đầu
-            if (CanStartChat())
-            {
-                // Có thể thêm một icon nhỏ để báo hiệu cho người chơi biết họ có thể tương tác
-                if (Input.GetKeyDown(interactionKey))
-                {
-                    StartChat();
-                }
-            }
-        }
+        if (isChatting) { if (Input.GetKeyDown(exitKey)) { EndChat(); } }
+        else { if (CanStartChat() && Input.GetKeyDown(interactionKey)) { StartChat(); } }
     }
 
     private bool CanStartChat()
     {
         if (playerTransform == null || enemyHealth == null) return false;
-
-        // Điều kiện để bắt đầu chat: Boss đã bị kết liễu VÀ người chơi ở trong tầm tương tác
-        bool isBossDefeatedAndReady = enemyHealth.isFinishedAndTalkable;
-        float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
-        bool isPlayerInRange = (distanceToPlayer <= interactionDistance);
-
-        return isBossDefeatedAndReady && isPlayerInRange;
+        return enemyHealth.isFinishedAndTalkable && (Vector3.Distance(transform.position, playerTransform.position) <= interactionDistance);
     }
-
     public void StartChat()
     {
         isChatting = true;
-        Debug.Log("Bắt đầu cuộc trò chuyện với Quản lý đã gục ngã...");
-
-        // Vô hiệu hóa điều khiển của người chơi
-        if (playerMovementScript != null)
-        {
-            playerMovementScript.enabled = false;
-        }
-
-        // Hiển thị và thiết lập lại UI
+        if (playerMovementScript != null) playerMovementScript.enabled = false;
         chatPanel.SetActive(true);
         chatLogText.text = "";
         chatHistory.Clear();
-        // DÒNG THOẠI KHỞI ĐẦU ĐÃ ĐƯỢC CẬP NHẬT
-        StartCoroutine(AddMessageToLog("<b>Quản lý:</b> Hah... hah... là cậu..."));
-
+        StartCoroutine(AddMessageToLog("<b>Trần Lực:</b> Khá lắm... *khụ*... Cậu cảnh sát. Cuối cùng cũng tìm được đến đây."));
         playerInputField.text = "";
         playerInputField.ActivateInputField();
         playerInputField.Select();
-        playerInputField.onEndEdit.RemoveAllListeners(); // Xóa listener cũ để tránh trùng lặp
+        playerInputField.onEndEdit.RemoveAllListeners();
         playerInputField.onEndEdit.AddListener(OnPlayerSendMessage);
+        if (allyCommunicateButton != null) allyCommunicateButton.gameObject.SetActive(true);
+        currentDialogueIndex = 0;
+        allyChatLogText.text = "";
+        isAllyPanelVisible = false;
     }
-
     public void EndChat()
     {
         isChatting = false;
-        Debug.Log("Cuộc trò chuyện kết thúc. Quản lý đã bị bắt giữ...");
-
-        // Kích hoạt lại điều khiển của người chơi
-        if (playerMovementScript != null)
-        {
-            playerMovementScript.enabled = true;
-        }
-
-        // Ẩn UI và hủy đối tượng Boss
+        if (playerMovementScript != null) playerMovementScript.enabled = true;
         chatPanel.SetActive(false);
-        Destroy(gameObject, 0.5f); // Hủy boss sau khi nói chuyện xong
+        if (allyCommunicateButton != null) allyCommunicateButton.gameObject.SetActive(false);
+        if (allyPanelFadeCoroutine != null) StopCoroutine(allyPanelFadeCoroutine);
+        if (allyMessageCoroutine != null) StopCoroutine(allyMessageCoroutine);
+        if (allyPanelCanvasGroup != null) allyPanelCanvasGroup.alpha = 0f;
+        Destroy(gameObject, 0.5f);
+    }
+
+    private void ToggleAllyChat()
+    {
+        isAllyPanelVisible = !isAllyPanelVisible;
+        if (allyPanelFadeCoroutine != null) StopCoroutine(allyPanelFadeCoroutine);
+        if (isAllyPanelVisible)
+        {
+            if (allyChatLogText.text == "") { allyChatLogText.text = "<i>[Kênh liên lạc mở]</i>"; }
+            if (allyMessageCoroutine == null) { allyMessageCoroutine = StartCoroutine(ShowAllyMessagesRoutine()); }
+        }
+        else
+        {
+            if (allyMessageCoroutine != null) { StopCoroutine(allyMessageCoroutine); allyMessageCoroutine = null; }
+        }
+        allyPanelFadeCoroutine = StartCoroutine(FadeAllyPanel(isAllyPanelVisible));
+    }
+    private IEnumerator FadeAllyPanel(bool fadeIn)
+    {
+        float startAlpha = allyPanelCanvasGroup.alpha;
+        float endAlpha = fadeIn ? 1f : 0f;
+        float time = 0f;
+        allyPanelCanvasGroup.interactable = fadeIn;
+        allyPanelCanvasGroup.blocksRaycasts = fadeIn;
+        while (time < fadeDuration)
+        {
+            allyPanelCanvasGroup.alpha = Mathf.Lerp(startAlpha, endAlpha, time / fadeDuration);
+            time += Time.deltaTime;
+            yield return null;
+        }
+        allyPanelCanvasGroup.alpha = endAlpha;
+    }
+    private IEnumerator ShowAllyMessagesRoutine()
+    {
+        if (currentDialogueIndex < masterAllyDialogues.Count) { yield return new WaitForSeconds(1.0f); }
+        while (true)
+        {
+            if (currentDialogueIndex >= masterAllyDialogues.Count)
+            {
+                yield return StartCoroutine(AddAllyMessageToLog("<i>[Hết thông tin.]</i>"));
+                break;
+            }
+            string nextMessage = masterAllyDialogues[currentDialogueIndex];
+            currentDialogueIndex++;
+            yield return StartCoroutine(AddAllyMessageToLog(nextMessage));
+            yield return new WaitForSeconds(4.0f);
+        }
+    }
+    private IEnumerator AddAllyMessageToLog(string message)
+    {
+        if (allyChatLogText != null)
+        {
+            allyChatLogText.text += "\n";
+            yield return StartCoroutine(TypewriterEffect(message));
+        }
+    }
+    private IEnumerator TypewriterEffect(string message)
+    {
+        if (message.StartsWith("<i>")) { allyChatLogText.text += message; yield break; }
+        string prefix = "<b>Đồng đội:</b> ";
+        allyChatLogText.text += prefix;
+        foreach (char letter in message.ToCharArray())
+        {
+            allyChatLogText.text += letter;
+            yield return new WaitForSeconds(typewriterSpeed);
+        }
     }
 
     private void OnPlayerSendMessage(string message)
     {
-        // Chỉ gửi khi nhấn Enter và tin nhắn không rỗng
         if ((Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter)) && !string.IsNullOrWhiteSpace(message))
         {
-            // Thêm tin nhắn của người chơi vào log và lịch sử
-            StartCoroutine(AddMessageToLog("<b>Cảnh sát:</b> " + message)); // Đổi tên người nói thành "Cảnh sát"
+            StartCoroutine(AddMessageToLog("<b>Hùng:</b> " + message));
             chatHistory.Add(new ChatMessage { type = "player", message = message });
-
-            // Gửi yêu cầu tới server
             StartCoroutine(SendRequestToServer(message));
-
-            // Xóa và kích hoạt lại ô nhập liệu
             playerInputField.text = "";
             playerInputField.ActivateInputField();
         }
     }
-
     private IEnumerator SendRequestToServer(string playerInput)
     {
-        StartCoroutine(AddMessageToLog("<b>Quản lý:</b> <i>...thở dốc...</i>"));
-
-        ChatPayload payload = new ChatPayload
-        {
-            input = playerInput,
-            history = this.chatHistory
-        };
-
+        StartCoroutine(AddMessageToLog("<b>Trần Lực:</b> <i>...suy nghĩ...</i>"));
+        ChatPayload payload = new ChatPayload { input = playerInput, history = this.chatHistory };
         string jsonPayload = JsonUtility.ToJson(payload);
         byte[] bodyRaw = Encoding.UTF8.GetBytes(jsonPayload);
-
         using (UnityWebRequest request = new UnityWebRequest(serverUrl, "POST"))
         {
             request.uploadHandler = new UploadHandlerRaw(bodyRaw);
             request.downloadHandler = new DownloadHandlerBuffer();
             request.SetRequestHeader("Content-Type", "application/json");
-
             yield return request.SendWebRequest();
-
-            RemoveLastLineFromLog(); // Xóa dòng "...thở dốc..."
-
+            RemoveLastLineFromLog();
             if (request.result == UnityWebRequest.Result.Success)
             {
-                string jsonResponse = request.downloadHandler.text;
-                ChatResponse response = JsonUtility.FromJson<ChatResponse>(jsonResponse);
-                string npcMessage = response.answer;
-
-                StartCoroutine(AddMessageToLog("<b>Quản lý:</b> " + npcMessage));
-                chatHistory.Add(new ChatMessage { type = "npc", message = npcMessage });
+                ChatResponse response = JsonUtility.FromJson<ChatResponse>(request.downloadHandler.text);
+                StartCoroutine(AddMessageToLog("<b>Trần Lực:</b> " + response.answer));
+                chatHistory.Add(new ChatMessage { type = "npc", message = response.answer });
             }
             else
             {
                 Debug.LogError("Error from server: " + request.error + " | " + request.downloadHandler.text);
-                StartCoroutine(AddMessageToLog("<b>Quản lý:</b> <i>(Hắn ta lịm đi vì kiệt sức.)</i>"));
+                StartCoroutine(AddMessageToLog("<b>Trần Lực:</b> <i>(Hắn ta gục xuống, kiệt sức.)</i>"));
             }
         }
     }
-
     private IEnumerator AddMessageToLog(string message)
     {
-        if (string.IsNullOrEmpty(chatLogText.text))
-        {
-            chatLogText.text = message;
-        }
-        else
-        {
-            chatLogText.text += "\n" + message;
-        }
-
-        // Chờ đến cuối frame để UI cập nhật xong kích thước
+        chatLogText.text += (string.IsNullOrEmpty(chatLogText.text) ? "" : "\n") + message;
         yield return new WaitForEndOfFrame();
-
-        // Buộc thanh cuộn di chuyển xuống dưới cùng
-        if (chatScrollRect != null)
-        {
-            chatScrollRect.verticalNormalizedPosition = 0f;
-        }
+        if (chatScrollRect != null) chatScrollRect.verticalNormalizedPosition = 0f;
     }
-
     private void RemoveLastLineFromLog()
     {
         if (string.IsNullOrEmpty(chatLogText.text)) return;
-
         int lastNewLine = chatLogText.text.LastIndexOf("\n");
-        if (lastNewLine > 0)
-        {
-            chatLogText.text = chatLogText.text.Substring(0, lastNewLine);
-        }
-        else
-        {
-            chatLogText.text = ""; // Nếu chỉ có một dòng
-        }
+        chatLogText.text = (lastNewLine > 0) ? chatLogText.text.Substring(0, lastNewLine) : "";
     }
 }
