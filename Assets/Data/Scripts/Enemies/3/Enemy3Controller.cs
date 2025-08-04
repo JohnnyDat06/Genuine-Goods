@@ -24,6 +24,14 @@ public class Enemy3Controller : MonoBehaviour
     
         private void Awake()
         {
+            float multiplier = 1f;
+            if (MissionManager.Instance != null)
+            {
+                multiplier += 0.5f * MissionManager.Instance.failCount;
+            }
+
+            attackDamage *= multiplier;
+            
             anim = GetComponent<Animator>();
             enemyHealth = GetComponent<EnemyHealth>();
             player = GameObject.FindGameObjectWithTag("Player").transform;
