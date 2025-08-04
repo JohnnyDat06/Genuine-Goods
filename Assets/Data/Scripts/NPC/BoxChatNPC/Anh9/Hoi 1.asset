@@ -33,9 +33,10 @@ MonoBehaviour:
       choices: []
   - characterName: "Anh Ch\xEDn Qu\xE8"
     sentence: "M\u1EA5y nay m\xE0y \u0111i th\xEC ,c\xE1i c\xF4ng ty Kera b\xEAn
-      kia xu\u1EA5t hi\u1EC7n ,kh\xF4ng bi\u1EBFt sao m\xE0 con H\xE2n \u0103n \u0111\u1ED3
-      c\xF4ng ty \u0111\xF3 th\xEC n\xF3 b\u1ECB \u0111au b\u1EE5ng r\u1ED3i ph\u1EA3i
-      v\xE0o b\u1EC7nh vi\u1EC7n"
+      kia xu\u1EA5t hi\u1EC7n nh\xE0 m\xE1y n\xF3 nghe \u0111\xE2u \u1EDF D\u01AF\u1EDAI
+      khu ph\u1ED1 may m\u1EAFn ,kh\xF4ng bi\u1EBFt sao m\xE0 con H\xE2n \u0103n
+      \u0111\u1ED3 c\xF4ng ty \u0111\xF3 th\xEC n\xF3 b\u1ECB \u0111au b\u1EE5ng
+      r\u1ED3i ph\u1EA3i v\xE0o b\u1EC7nh vi\u1EC7n"
     voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
     choiceData:
       choices: []
@@ -65,3 +66,4 @@ MonoBehaviour:
     voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
     choiceData:
       choices: []
+  followUpDialogue: {fileID: 0}

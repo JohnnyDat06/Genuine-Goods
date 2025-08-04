@@ -16,13 +16,13 @@ MonoBehaviour:
   - characterName: "B\xE0 T\xE1m"
     sentence: "M\xE0 n\xE0y, tuy c\xE1i ti\u1EC7m kia d\u1EB9p r\u1ED3i nh\u01B0ng
       t\xF4i v\u1EABn th\u1EA5y lo lo. C\u1EA3 tu\u1EA7n nay kh\xF4ng \u0111\xEAm
-      n\xE0o ng\u1EE7 y\xEAn \u0111\u01B0\u1EE3c.\r\n"
+      n\xE0o ng\u1EE7 y\xEAn \u0111\u01B0\u1EE3c. \r\n"
     voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
     choiceData:
       choices: []
   - characterName: "C\xF4 Hai"
-    sentence: " L\u1EA1i chuy\u1EC7n m\u1EA5y c\xE1i xe t\u1EA3i hay sao h\u1EA3
-      b\xE0?"
+    sentence: " L\u1EA1i chuy\u1EC7n m\u1EA5y c\xE1i xe t\u1EA3i c\u1EE9 loanh quanh
+      \u1EDF ph\u1ED1 H\u1EA1nh Ph\xFAc ch\u1EE9 g\xEC?"
     voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
     choiceData:
       choices: []
@@ -68,3 +68,4 @@ MonoBehaviour:
     voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
     choiceData:
       choices: []
+  followUpDialogue: {fileID: 0}

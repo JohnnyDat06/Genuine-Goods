@@ -26,10 +26,10 @@ MonoBehaviour:
       choices: []
   - characterName: "Anh B\u1EA3y Ca S\u0129"
     sentence: " \u0110\xE1m giang h\u1ED3 n\xF3 r\u1EC9 tai nhau l\xE0 th\u1EB1ng
-      cha gi\xE1m \u0111\u1ED1c Tr\u1EA7n L\u1EF1c t\xEDnh chu\u1ED3n r\u1ED3i. Nghe
-      \u0111\xE2u l\xE0 c\xF3 c\u1EA3 chuy\xEAn c\u01A1 ri\xEAng, bay ngay trong
-      \u0111\xEAm nay \u0111\xF3! Phen n\xE0y m\xE0 \u0111\u1EC3 n\xF3 tho\xE1t th\xEC
-      \u0111\xFAng l\xE0 tr\u1EDDi kh\xF4ng c\xF3 m\u1EAFt.\r\n"
+      cha gi\xE1m \u0111\u1ED1c Tr\u1EA7n L\u1EF1c t\xEDnh l\xE0m g\xEC \u0111\xF3
+      \u1EDF h\u1EBBm 104. Nghe \u0111\xE2u l\xE0 c\xF3 c\u1EA3 chuy\xEAn c\u01A1
+      ri\xEAng, bay ngay trong \u0111\xEAm nay \u0111\xF3! Phen n\xE0y m\xE0 \u0111\u1EC3
+      n\xF3 tho\xE1t th\xEC \u0111\xFAng l\xE0 tr\u1EDDi kh\xF4ng c\xF3 m\u1EAFt.\r\n"
     voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
     choiceData:
       choices: []
