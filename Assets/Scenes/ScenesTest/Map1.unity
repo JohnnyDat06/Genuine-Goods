@@ -63662,12 +63662,20 @@ PrefabInstance:
       value: PasswordDoor
       objectReference: {fileID: 0}
     - target: {fileID: 2613040185972649241, guid: c2146c8422432a341969e2933a3ae2f7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.9386237
+      objectReference: {fileID: 0}
+    - target: {fileID: 2613040185972649241, guid: c2146c8422432a341969e2933a3ae2f7, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.0838294
+      objectReference: {fileID: 0}
+    - target: {fileID: 2613040185972649241, guid: c2146c8422432a341969e2933a3ae2f7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 72.513
+      value: 72.5056
       objectReference: {fileID: 0}
     - target: {fileID: 2613040185972649241, guid: c2146c8422432a341969e2933a3ae2f7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.0115747
+      value: 3.056
       objectReference: {fileID: 0}
     - target: {fileID: 2613040185972649241, guid: c2146c8422432a341969e2933a3ae2f7, type: 3}
       propertyPath: m_LocalPosition.z

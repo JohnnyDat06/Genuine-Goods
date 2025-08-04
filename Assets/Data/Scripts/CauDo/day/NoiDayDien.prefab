@@ -699,7 +699,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linePrefab: {fileID: 8259876964505317589, guid: b67f9446adec81440b607e6a9395fbd9, type: 3}
-  itemName: 1
+  itemName: 2
   wireColor: 2
 --- !u!1 &3503582142554128574
 GameObject:
@@ -865,7 +865,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linePrefab: {fileID: 8259876964505317589, guid: b67f9446adec81440b607e6a9395fbd9, type: 3}
-  itemName: 3
+  itemName: 1
   wireColor: 1
 --- !u!1 &3703288165267310806
 GameObject:
@@ -1557,7 +1557,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -51.523926, y: 3.5098267}
+  m_AnchoredPosition: {x: 923.2718, y: 488.54666}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &8427923121418962847
@@ -1642,8 +1642,8 @@ MonoBehaviour:
   typingSpeed: 0.01
   popupAnimDuration: 0.3
   hintWithMessage: "G\u1EE3i \xFD: H\xECnh nh\u01B0 \xF4ng th\u1EE3 \u0111i\u1EC7n
-    c\xF3 nh\u1EAFc g\xEC \u0111\xF3 v\u1EC1 m\xE0u s\u1EAFc th\xEC ph\u1EA3i...\u0111\u1ECF
-    v\u1EDBi v\xE0ng,v\xE0ng v\u1EDBi xanh, cam v\u1EDBi \u0111\u1ECF..."
+    c\xF3 nh\u1EAFc g\xEC \u0111\xF3 v\u1EC1 m\xE0u s\u1EAFc th\xEC ph\u1EA3i...
+    \u0111\u1ECF-\u0111\u1ECF, v\xE0ng-v\xE0ng, cam-xanh, xanh-cam"
   hintWithoutMessage: "G\u1EE3i \xFD: C\u1EA7n ph\u1EA3i t\xECm m\u1EADt m\xE3 ho\u1EB7c
     manh m\u1ED1i \u1EDF \u0111\xE2u \u0111\xF3 tr\u01B0\u1EDBc."
   wrongAttemptLimit: 3
@@ -2004,7 +2004,7 @@ Transform:
   m_GameObject: {fileID: 5674951229275348875}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -872.86694, y: -517.6612, z: 398.02295}
+  m_LocalPosition: {x: 1.305, y: -0.658, z: 398.02295}
   m_LocalScale: {x: 1, y: 1.1010683, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2316,7 +2316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linePrefab: {fileID: 8259876964505317589, guid: b67f9446adec81440b607e6a9395fbd9, type: 3}
-  itemName: 2
+  itemName: 3
   wireColor: 4
 --- !u!1 &6673918132311237526
 GameObject:
