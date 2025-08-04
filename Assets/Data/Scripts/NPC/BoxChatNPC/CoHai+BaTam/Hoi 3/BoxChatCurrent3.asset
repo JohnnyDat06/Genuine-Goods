@@ -18,21 +18,30 @@ MonoBehaviour:
       n\xE0y c\xF4ng an \u0111i tu\u1EA7n su\u1ED1t kh\xF4ng? C\u1EE9 \u0111i qua
       \u0111i l\u1EA1i tr\u01B0\u1EDBc c\u1ED5ng c\xF4ng ty Kare su\u1ED1t.\r\n"
     voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
+    choiceData:
+      choices: []
   - characterName: "B\xE0 T\xE1m"
-    sentence: "Th\u1EA5y ch\u1EE9. M\xE0 kh\xF4ng ch\u1EC9 c\xF4ng an m\u1EB7c s\u1EAFc
-      ph\u1EE5c \u0111\xE2u, t\xF4i \u0111\u1EC3 \xFD c\xF2n c\xF3 m\u1EA5y anh m\u1EB7c
-      th\u01B0\u1EDDng ph\u1EE5c, nh\xECn l\u1EA1 l\u1EAFm, c\u1EE9 l\u01B0\u1EE3n
-      l\u1EDD quanh khu n\xE0y.\r\n"
+    sentence: "Th\u1EA5y ch\u1EE9 ch\xFAng n\xF3 t\u1EADp trung \u1EDF h\u1EBBm 104
+      ch\u1EE9 g\xEC. M\xE0 kh\xF4ng ch\u1EC9 c\xF4ng an m\u1EB7c s\u1EAFc ph\u1EE5c
+      \u0111\xE2u, t\xF4i \u0111\u1EC3 \xFD c\xF2n c\xF3 m\u1EA5y anh m\u1EB7c th\u01B0\u1EDDng
+      ph\u1EE5c, nh\xECn l\u1EA1 l\u1EAFm, c\u1EE9 l\u01B0\u1EE3n l\u1EDD quanh khu
+      n\xE0y.\r\n"
     voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
+    choiceData:
+      choices: []
   - characterName: "B\xE0 Hai"
     sentence: "C\xF3 khi n\xE0o s\u1EAFp c\xF3 bi\u1EBFn l\u1EDBn kh\xF4ng b\xE0?
       T\xF4i lo qu\xE1.\r\n"
     voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
+    choiceData:
+      choices: []
   - characterName: "B\xE0 T\xE1m"
     sentence: "T\xF4i c\u0169ng th\u1EA5y b\u1EA5t an. H\xF4m qua t\xF4i c\xF2n th\u1EA5y
       xe c\u1EE7a \xF4ng gi\xE1m \u0111\u1ED1c Tr\u1EA7n L\u1EF1c ph\xF3ng nhanh
       qua \u0111\xE2y, m\u1EB7t m\xE0y \xF4ng \u1EA5y c\u0103ng nh\u01B0 d\xE2y \u0111\xE0n.\r\n"
     voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
+    choiceData:
+      choices: []
   - characterName: "H\xF9ng (R\xF3t Tr\xE0 cho hai c\xF4)"
     sentence: "Hai c\xF4 c\u1EE9 y\xEAn t\xE2m. C\xF3 c\xE1c anh c\xF4ng an \u1EDF
       \u0111\xE2y th\xEC an ninh s\u1EBD \u0111\u01B0\u1EE3c \u0111\u1EA3m b\u1EA3o
@@ -41,6 +50,8 @@ MonoBehaviour:
       h\xE0nh \u0111\u1ED9ng g\xEC \u0111\xE1ng ng\u1EDD quanh tr\u1EE5 s\u1EDF Kare
       kh\xF4ng \u1EA1?\r\n"
     voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
+    choiceData:
+      choices: []
   - characterName: "B\xE0 T\xE1m"
     sentence: "\xC0 c\xF3! M\u1EA5y h\xF4m nay c\xF4 th\u1EA5y c\xF3 m\u1EA5y ng\u01B0\u1EDDi
       \u0103n m\u1EB7c sang tr\u1ECDng, x\xE1ch c\u1EB7p da, nh\u01B0ng c\u1EE9 \u0111\u1EBFn
@@ -48,3 +59,6 @@ MonoBehaviour:
       kh\xF4ng gi\u1ED1ng \u0111\u1ED1i t\xE1c l\xE0m \u0103n \u0111\xE0ng ho\xE0ng
       ch\xFAt n\xE0o.\r\n"
     voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
+    choiceData:
+      choices: []
+  followUpDialogue: {fileID: 0}

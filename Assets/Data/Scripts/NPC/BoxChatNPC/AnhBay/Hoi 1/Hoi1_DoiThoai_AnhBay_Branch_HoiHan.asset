@@ -15,7 +15,9 @@ MonoBehaviour:
   dialogueLines:
   - characterName: "Anh B\u1EA3y Ca S\u0129\t"
     sentence: "Nghe n\xF3i n\u1EB7ng l\u1EAFm, c\xF2n ph\u1EA3i s\xFAc ru\u1ED9t
-      \u0111\xF3 m\xE0y. T\u1ED9i nghi\u1EC7p con nh\u1ECF, hi\u1EC1n kh\xF4 \xE0."
+      \u0111\xF3 m\xE0y. T\u1ED9i nghi\u1EC7p con nh\u1ECF, hi\u1EC1n kh\xF4 \xE0.
+      M\xE0 nghe \u0111\xE2u n\u01A1i \u0111\xF3 g\u1EA7n khu ph\u1ED1 may m\u1EAFn
+      n\u1EB1m \u1EDF ph\xEDa b\xEAn ph\u1EA3i"
     voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
     choiceData:
       choices: []

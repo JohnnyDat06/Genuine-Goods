@@ -17,17 +17,27 @@ MonoBehaviour:
     sentence: "Em c\xF3 c\u1EA3m gi\xE1c s\u1EAFp c\xF3 b\xE3o l\u1EDBn \u0111\xF3
       anh Ch\xEDn.\r\n"
     voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
+    choiceData:
+      choices: []
   - characterName: "Anh Ch\xEDn Qu\xE8"
     sentence: "Kh\xF4ng ph\u1EA3i c\u1EA3m gi\xE1c \u0111\xE2u, l\xE0 th\u1EADt \u0111\xF3
       ch\xFA m\xE0y. S\xE1ng nay anh \u0111i ngang qua, th\u1EA5y b\xEAn trong c\xF4ng
       ty ch\xFAng n\xF3 c\xF3 g\xEC \u0111\xF3 r\u1EA5t l\u1EA1.\r\n"
     voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
+    choiceData:
+      choices: []
   - characterName: "H\xF9ng"
     sentence: "L\u1EA1 nh\u01B0 th\u1EBF n\xE0o v\u1EADy anh?"
     voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
+    choiceData:
+      choices: []
   - characterName: "Anh Ch\xEDn Qu\xE8"
     sentence: "Anh th\u1EA5y m\u1ED9t th\u1EB1ng cha qu\u1EA3n l\xFD, m\u1EB7t m\xE0y
       h\u1EDBt h\u1EA3i, \xF4m c\u1EA3 m\u1ED9t ch\u1ED3ng t\xE0i li\u1EC7u l\u1EDBn
       ch\u1EA1y v\xE0o ph\xF2ng h\u1EE7y gi\u1EA5y. C\xE1i m\xE1y h\u1EE7y n\xF3
-      ch\u1EA1y ro ro kh\xF4ng ng\u1EEBng ngh\u1EC9.\r\n"
+      ch\u1EA1y ro ro kh\xF4ng ng\u1EEBng ngh\u1EC9.. \xC2m thanh c\u1EE9 \u0111\xF9ng
+      \u0111\xF9ng vang v\u1ECDng kh\u1EAFp h\u1EBBm 104\r\n"
     voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
+    choiceData:
+      choices: []
+  followUpDialogue: {fileID: 0}

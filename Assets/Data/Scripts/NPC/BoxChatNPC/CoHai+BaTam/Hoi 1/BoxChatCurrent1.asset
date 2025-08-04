@@ -28,7 +28,8 @@ MonoBehaviour:
       choices: []
   - characterName: "C\xF4 Hai"
     sentence: "B\u1EDFi ! B\xE2y gi\u1EDD \u0111\u1ED3 th\u1EADt gi\u1EA3 l\u1EABn
-      l\u1ED9n ri\u1EBFt kh\xF4ng d\xE1m \u0103n g\xEC lu\xF4n qu\xE1"
+      l\u1ED9n ri\u1EBFt kh\xF4ng d\xE1m \u0103n g\xEC lu\xF4n qu\xE1 ,nghe \u0111\xE2u
+      b\xE1n \u1EDF ch\u1EE3"
     voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
     choiceData:
       choices: []
