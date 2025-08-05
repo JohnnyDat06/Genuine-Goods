@@ -142544,6 +142544,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5931403728502978012, guid: 6c5db896ca2045d459b8465f07fdfb6d, type: 3}
+      propertyPath: nextSceneName
+      value: FinalBoss
+      objectReference: {fileID: 0}
+    - target: {fileID: 5931403728502978012, guid: 6c5db896ca2045d459b8465f07fdfb6d, type: 3}
       propertyPath: hintWithMessage
       value: "G\u1EE3i \xFD: H\xECnh nh\u01B0 \xF4ng th\u1EE3 \u0111i\u1EC7n c\xF3
         nh\u1EAFc g\xEC \u0111\xF3 v\u1EC1 m\xE0u s\u1EAFc th\xEC ph\u1EA3i... \u0111\u1ECF-v\xE0ng,
