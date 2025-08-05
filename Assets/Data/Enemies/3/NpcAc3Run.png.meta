@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6a85c3911d1f5f34a970fdb0c11e6f36
+guid: 8ceb9a2ba6eaa3148b10bd654c74c6dd
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,70 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Hit_0
+      name: NpcAc3Run_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 168
+        width: 96
+        height: 84
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2f53efa94e5f554ea180cb4bea3c3b3
+      internalID: 978926967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NpcAc3Run_1
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 168
+        width: 96
+        height: 84
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b814c9642a2253a47920d37b36f15eba
+      internalID: 427487653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NpcAc3Run_2
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 168
+        width: 96
+        height: 84
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e59a2bea5d9d68540a19acf36a37261d
+      internalID: 1471949261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NpcAc3Run_3
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2ea4db2239058b543b07d6c700d54ec9
-      internalID: -810982226
+      spriteID: 4694cf16a24b74d439d7f86a615cb0e6
+      internalID: -194852697
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hit_1
+      name: NpcAc3Run_4
       rect:
         serializedVersion: 2
         x: 96
@@ -145,14 +208,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8bb7388d6b258584faeee7142ac872f9
-      internalID: 216850247
+      spriteID: 6799ccdec8fe40f4c9b679caa6ef5edc
+      internalID: -1131895244
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hit_2
+      name: NpcAc3Run_5
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 84
+        width: 96
+        height: 84
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d17ff469b58e04144878b2e7c09827cb
+      internalID: 863490730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NpcAc3Run_6
       rect:
         serializedVersion: 2
         x: 0
@@ -166,8 +250,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b184ebfb3adf83d45bdb65713fa93d35
-      internalID: 1750521302
+      spriteID: 14f44354b332f0d49bd5e818db1a2747
+      internalID: 389533990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NpcAc3Run_7
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 96
+        height: 84
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a27d7c1da69a964aae655d030839e86
+      internalID: -497342617
       vertices: []
       indices: 
       edges: []
@@ -183,9 +288,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Hit_0: -810982226
-      Hit_1: 216850247
-      Hit_2: 1750521302
+      NpcAc3Run_0: 978926967
+      NpcAc3Run_1: 427487653
+      NpcAc3Run_2: 1471949261
+      NpcAc3Run_3: -194852697
+      NpcAc3Run_4: -1131895244
+      NpcAc3Run_5: 863490730
+      NpcAc3Run_6: 389533990
+      NpcAc3Run_7: -497342617
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

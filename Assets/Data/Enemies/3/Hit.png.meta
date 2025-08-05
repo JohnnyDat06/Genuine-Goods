@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7215ba7bde20db84cab8bd169a5afaf5
+guid: 136e4517cfdee4142b7ab9b5dae1299d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,49 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Idle_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 168
-        width: 96
-        height: 84
-      alignment: 9
-      pivot: {x: 0.5, y: 0.3}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 39db4107d1783cb4d82c8b85ba70f7d6
-      internalID: -20964216
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Idle_1
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 168
-        width: 96
-        height: 84
-      alignment: 9
-      pivot: {x: 0.5, y: 0.3}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6ecc6330437d2ca49910565af78fe22b
-      internalID: -1396255696
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Idle_2
+      name: Hit_0
       rect:
         serializedVersion: 2
         x: 0
@@ -166,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d3200a56ab7ebee42a97f347a58c3251
-      internalID: 119315323
+      spriteID: f6abfe3c598627e438d60e3fc2ed4e5c
+      internalID: -298825675
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_3
+      name: Hit_1
       rect:
         serializedVersion: 2
         x: 96
@@ -187,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 742eaba9f9ba77344b2aeb56346c34a7
-      internalID: -1903125693
+      spriteID: f998c4571e88c1f45a946ad86eb97d9b
+      internalID: -384169531
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_4
+      name: Hit_2
       rect:
         serializedVersion: 2
         x: 0
@@ -208,29 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c0a514c8dc135c24b9865c071dea3812
-      internalID: -1849288289
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Idle_5
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 96
-        height: 84
-      alignment: 9
-      pivot: {x: 0.5, y: 0.3}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 69faddd17aea91f498362f8a794d90ac
-      internalID: 767519595
+      spriteID: 42f13ef680d9dfd4ea1621767696f011
+      internalID: 614146045
       vertices: []
       indices: 
       edges: []
@@ -246,12 +183,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Idle_0: -20964216
-      Idle_1: -1396255696
-      Idle_2: 119315323
-      Idle_3: -1903125693
-      Idle_4: -1849288289
-      Idle_5: 767519595
+      Hit_0: -298825675
+      Hit_1: -384169531
+      Hit_2: 614146045
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
