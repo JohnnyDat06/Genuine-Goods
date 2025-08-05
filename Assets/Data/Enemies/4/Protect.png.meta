@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c2ce6e6f9eb34e848a44767193af4574
+guid: 9d90b4d5c00d7b345b0edc527d1e12d4
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 25
+  spritePixelsToUnits: 20
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,70 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Die_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 168
-        width: 96
-        height: 84
-      alignment: 9
-      pivot: {x: 0.5, y: 0.3}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e6a616b334d337f4e9ad327c034909dd
-      internalID: 1202269747
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Die_1
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 168
-        width: 96
-        height: 84
-      alignment: 9
-      pivot: {x: 0.5, y: 0.3}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 307218bdcbbf97441877d29783e97ba7
-      internalID: -254628354
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Die_2
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 168
-        width: 96
-        height: 84
-      alignment: 9
-      pivot: {x: 0.5, y: 0.3}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fe9b35e2eeca77c4c904dc9137710c28
-      internalID: -318312830
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Die_3
+      name: Protect_0
       rect:
         serializedVersion: 2
         x: 0
@@ -187,56 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 57cfda47181f85748b814390071c44a0
-      internalID: 1063264152
+      spriteID: 28e6727a77cd3ad489cf66b0784d3a4b
+      internalID: 1093707994
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Die_4
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 84
-        width: 96
-        height: 84
-      alignment: 9
-      pivot: {x: 0.5, y: 0.3}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b4d068538074e8248b140baeee0b023e
-      internalID: 1874000169
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Die_5
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 84
-        width: 96
-        height: 84
-      alignment: 9
-      pivot: {x: 0.5, y: 0.3}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b5a412555ddb5744cb8a3c7e03f70a8f
-      internalID: 1936082902
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Die_6
+      name: Protect_1
       rect:
         serializedVersion: 2
         x: 0
@@ -250,29 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2005fcbf57fac564cbfe46accbf56b06
-      internalID: -1155056081
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Die_7
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 96
-        height: 84
-      alignment: 9
-      pivot: {x: 0.5, y: 0.3}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cf641dea06c1e9d428bf63e871a9e345
-      internalID: 308432689
+      spriteID: a5a35c9acfd9d634fbbe1f66a8add75d
+      internalID: -869140961
       vertices: []
       indices: 
       edges: []
@@ -288,14 +162,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Die_0: 1202269747
-      Die_1: -254628354
-      Die_2: -318312830
-      Die_3: 1063264152
-      Die_4: 1874000169
-      Die_5: 1936082902
-      Die_6: -1155056081
-      Die_7: 308432689
+      Protect_0: 1093707994
+      Protect_1: -869140961
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

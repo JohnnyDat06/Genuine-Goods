@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8ceb9a2ba6eaa3148b10bd654c74c6dd
+guid: c1f3b305ca5f2ba47ab2452b5ced8ae6
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 20
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: NpcAc3Run_0
+      name: Walk_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2f53efa94e5f554ea180cb4bea3c3b3
-      internalID: 978926967
+      spriteID: abfb11ebdf5f2844fbcd02a376bc3478
+      internalID: 1783308331
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NpcAc3Run_1
+      name: Walk_1
       rect:
         serializedVersion: 2
         x: 96
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b814c9642a2253a47920d37b36f15eba
-      internalID: 427487653
+      spriteID: fc527362c7b419c46bc691ef1488e8ed
+      internalID: -322022336
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NpcAc3Run_2
+      name: Walk_2
       rect:
         serializedVersion: 2
         x: 192
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e59a2bea5d9d68540a19acf36a37261d
-      internalID: 1471949261
+      spriteID: 285cf2e4b7edf684f91487dc87fd6a77
+      internalID: 1937539762
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NpcAc3Run_3
+      name: Walk_3
       rect:
         serializedVersion: 2
         x: 0
@@ -187,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4694cf16a24b74d439d7f86a615cb0e6
-      internalID: -194852697
+      spriteID: b1a53fab4384f5d498b64a9f8b50ea22
+      internalID: 1168402710
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NpcAc3Run_4
+      name: Walk_4
       rect:
         serializedVersion: 2
         x: 96
@@ -208,14 +208,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6799ccdec8fe40f4c9b679caa6ef5edc
-      internalID: -1131895244
+      spriteID: 148bfe7d926bc8640a8bbe6cda2d69f2
+      internalID: 1442757897
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NpcAc3Run_5
+      name: Walk_5
       rect:
         serializedVersion: 2
         x: 192
@@ -229,14 +229,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d17ff469b58e04144878b2e7c09827cb
-      internalID: 863490730
+      spriteID: 0eceda6f294bfc14d809217ae661a252
+      internalID: 309484789
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NpcAc3Run_6
+      name: Walk_6
       rect:
         serializedVersion: 2
         x: 0
@@ -250,14 +250,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 14f44354b332f0d49bd5e818db1a2747
-      internalID: 389533990
+      spriteID: e2c14c983571efe44a9333d2a9e721d6
+      internalID: 1367533627
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NpcAc3Run_7
+      name: Walk_7
       rect:
         serializedVersion: 2
         x: 96
@@ -271,8 +271,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a27d7c1da69a964aae655d030839e86
-      internalID: -497342617
+      spriteID: 37d0887f16eda2441bc7f256da1baee0
+      internalID: 666693358
       vertices: []
       indices: 
       edges: []
@@ -288,14 +288,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      NpcAc3Run_0: 978926967
-      NpcAc3Run_1: 427487653
-      NpcAc3Run_2: 1471949261
-      NpcAc3Run_3: -194852697
-      NpcAc3Run_4: -1131895244
-      NpcAc3Run_5: 863490730
-      NpcAc3Run_6: 389533990
-      NpcAc3Run_7: -497342617
+      Walk_0: 1783308331
+      Walk_1: -322022336
+      Walk_2: 1937539762
+      Walk_3: 1168402710
+      Walk_4: 1442757897
+      Walk_5: 309484789
+      Walk_6: 1367533627
+      Walk_7: 666693358
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
