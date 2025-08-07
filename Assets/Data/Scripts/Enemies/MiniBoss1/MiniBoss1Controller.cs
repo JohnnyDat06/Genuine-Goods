@@ -76,13 +76,13 @@ public class MiniBoss1Controller : MonoBehaviour
             StartCoroutine(UseSkill2());
             return;
         }
-        if (!skill2UsedAt25 && healthPercent <= 0.25f)
-        {
-            skill2UsedAt25 = true;
-            anim.SetBool("IsMove", true);
-            StartCoroutine(UseSkill2());
-            return;
-        }
+        //if (!skill2UsedAt25 && healthPercent <= 0.25f)
+        //{
+        //    skill2UsedAt25 = true;
+        //    anim.SetBool("IsMove", true);
+        //    StartCoroutine(UseSkill2());
+        //    return;
+        //}
 
         switch (currentState)
         {

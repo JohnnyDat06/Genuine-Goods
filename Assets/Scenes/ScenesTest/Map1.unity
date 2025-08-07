@@ -50797,7 +50797,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1341688748}
-  sceneName: 
+  sceneName: Map2
   points:
   - {fileID: 946335096}
   - {fileID: 1123185691}
@@ -77114,7 +77114,7 @@ Camera:
   far clip plane: 1000
   field of view: 3
   orthographic: 1
-  orthographic size: 3.82
+  orthographic size: 2.81
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -77139,7 +77139,7 @@ Transform:
   m_GameObject: {fileID: 1808709347}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.052415, y: -4.4353538, z: -10}
+  m_LocalPosition: {x: 87.11, y: 15.308553, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

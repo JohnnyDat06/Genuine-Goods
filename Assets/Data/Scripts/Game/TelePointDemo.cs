@@ -20,5 +20,12 @@ public class TelePointDemo : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F5)) player.transform.position = points[4].transform.position;
         if (Input.GetKeyDown(KeyCode.F6)) player.transform.position = points[5].transform.position;
         if (Input.GetKeyDown(KeyCode.F7) && sceneName != null) SceneManager.LoadScene(sceneName);
+        if (Input.GetKeyDown(KeyCode.F8)) MissionManager.Instance.CorrectLocation();
+        if (Input.GetKeyDown(KeyCode.F9)) MissionManager.Instance.failCount--;
+        if (Input.GetKeyDown(KeyCode.F10))
+        {
+            MissionManager.Instance.failCount = 0;
+            MissionManager.Instance.currentRaid = 0;
+        }
     }
 }
