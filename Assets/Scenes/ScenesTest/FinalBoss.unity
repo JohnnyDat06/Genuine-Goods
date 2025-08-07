@@ -848,7 +848,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -0.000007114543}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &297061326
@@ -878,12 +878,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
+    m_Left: 24
+    m_Right: 24
+    m_Top: 24
+    m_Bottom: 24
   m_ChildAlignment: 0
-  m_Spacing: 0
+  m_Spacing: 16
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -7548,6 +7548,7 @@ GameObject:
   - component: {fileID: 1585740745}
   - component: {fileID: 1585740747}
   - component: {fileID: 1585740746}
+  - component: {fileID: 1585740748}
   m_Layer: 5
   m_Name: 'ChatLog '
   m_TagString: Untagged
@@ -7569,10 +7570,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 297061325}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 847.9705, y: 47.484}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 447.98526, y: -67.1}
+  m_SizeDelta: {x: 847.9705, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1585740746
 MonoBehaviour:
@@ -7659,7 +7660,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 69.15561, y: 44.00818, z: -857.0249, w: -952.4613}
+  m_margin: {x: 69.15561, y: 44.00818, z: -857.0249, w: -903.92175}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -7673,6 +7674,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1585740744}
   m_CullTransparentMesh: 1
+--- !u!114 &1585740748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585740744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 0
+  m_VerticalFit: 2
 --- !u!224 &1586764879 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4896746964999022942, guid: 0e343d7002c676d43881f0d288188087, type: 3}
@@ -13144,6 +13159,7 @@ GameObject:
   - component: {fileID: 1962476656}
   - component: {fileID: 1962476655}
   - component: {fileID: 1962476654}
+  - component: {fileID: 1962476657}
   m_Layer: 5
   m_Name: Scroll View
   m_TagString: Untagged
@@ -13186,13 +13202,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Content: {fileID: 297061325}
-  m_Horizontal: 1
+  m_Horizontal: 0
   m_Vertical: 1
   m_MovementType: 1
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 20
   m_Viewport: {fileID: 1638872909}
   m_HorizontalScrollbar: {fileID: 350237803}
   m_VerticalScrollbar: {fileID: 1857327968}
@@ -13241,6 +13257,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1962476652}
   m_CullTransparentMesh: 1
+--- !u!114 &1962476657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1962476652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding: {x: 0, y: 0, z: 0, w: 0}
+  m_Softness: {x: 0, y: 0}
 --- !u!1 &1987734803
 GameObject:
   m_ObjectHideFlags: 3
