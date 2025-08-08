@@ -6670,7 +6670,7 @@ PrefabInstance:
       objectReference: {fileID: 28657148}
     - target: {fileID: 5987075598520525416, guid: 69486438bf6d12747904d49daa0f994a, type: 3}
       propertyPath: atk1
-      value: 500
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8716760619009368076, guid: 69486438bf6d12747904d49daa0f994a, type: 3}
       propertyPath: slider
@@ -8146,6 +8146,10 @@ PrefabInstance:
     - target: {fileID: 161048583443146591, guid: 8e0355c9ee897af42a7dcdf1767cfaf2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3500202704646630687, guid: 8e0355c9ee897af42a7dcdf1767cfaf2, type: 3}
+      propertyPath: startingHealth
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4382270781630178132, guid: 8e0355c9ee897af42a7dcdf1767cfaf2, type: 3}
       propertyPath: m_LocalPosition.y
