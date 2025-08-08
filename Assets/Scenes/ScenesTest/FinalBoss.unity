@@ -6850,7 +6850,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 47.30487, y: 64.00067, z: 8.3479, w: 0}
+  m_margin: {x: 47.30487, y: 64.00067, z: -261.5393, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -8199,7 +8199,6 @@ MonoBehaviour:
   allyChatPanel: {fileID: 1903553034}
   allyChatLogText: {fileID: 1219066853}
   fadeDuration: 0.3
-  typewriterSpeed: 0.03
   serverUrl: http://localhost:3000/api/chat
 --- !u!1 &1828264138
 GameObject:
