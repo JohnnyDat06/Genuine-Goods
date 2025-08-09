@@ -33,7 +33,7 @@ public class BaChuBanHang : MonoBehaviour
         isPlayerInRange = (distance <= interactionDistance);
 
         // Toggle chat panel with E key
-        if (isPlayerInRange && Input.GetKeyDown(interactionKey))
+        if (isPlayerInRange && Input.GetKeyDown(interactionKey) && MissionManager.Instance.canDash >= 1)
         {
             if (!isChatting)
             {
