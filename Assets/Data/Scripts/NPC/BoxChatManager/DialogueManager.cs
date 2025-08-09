@@ -1,8 +1,9 @@
 ﻿// File: DialogueManager.cs
-// Phiên bản đầy đủ, hoàn chỉnh, linh hoạt và đã sửa lỗi
+// Phiên bản đầy đủ, đã thêm chức năng chuyển scene khi chọn đúng
 
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement; // Thư viện để quản lý Scene
 using TMPro;
 using System;
 using System.Collections;
@@ -29,15 +30,14 @@ public class DialogueManager : MonoBehaviour
     [Tooltip("Kéo script điều khiển của người chơi (PlayerController hoặc HungController) vào đây.")]
     [SerializeField] private MonoBehaviour playerControlScript;
 
+    private MonoBehaviour controllerToDisable;
+    public MonoBehaviour SpeakingNPCController { get; private set; }
     private Queue<DialogueLine> sentences;
     public bool IsDialogueActive { get; private set; }
-
     private Coroutine typingCoroutine;
     private bool isTyping = false;
     private string currentFullSentence;
-    private NPC_Controller npcControllerToDisable;
     private Action onDialogueFinishedCallback;
-    public NPC_Controller SpeakingNPCController { get; private set; }
     private static List<Conversational_NPC> allNpcs = new List<Conversational_NPC>();
     private AudioSource audioSource;
     private DialogueLine currentLine;
@@ -57,7 +57,7 @@ public class DialogueManager : MonoBehaviour
         if (choicePanel != null) choicePanel.SetActive(false);
     }
 
-    public void StartDialogue(DialogueObject dialogue, NPC_Controller npcController, Conversational_NPC currentSpeaker, Action onDialogueFinished = null)
+    public void StartDialogue(DialogueObject dialogue, MonoBehaviour controllerToDisable, Conversational_NPC currentSpeaker, Action onDialogueFinished = null)
     {
         IsDialogueActive = true;
         dialoguePanel.SetActive(true);
@@ -65,39 +65,23 @@ public class DialogueManager : MonoBehaviour
         this.onDialogueFinishedCallback = onDialogueFinished;
         this.currentDialogue = dialogue;
 
-        // Vô hiệu hóa các NPC khác
         foreach (var npc in new List<Conversational_NPC>(allNpcs))
         {
-            if (npc != null && npc != currentSpeaker)
-            {
-                npc.DeactivateForDialogue();
-            }
+            if (npc != null && npc != currentSpeaker) npc.DeactivateForDialogue();
         }
 
-        // --- LOGIC VÔ HIỆU HÓA PLAYER ĐÃ ĐƯỢC NÂNG CẤP ---
         if (playerControlScript != null)
         {
-            // Tắt script điều khiển
             playerControlScript.enabled = false;
-
-            // Dùng GetComponentInChildren để tìm component ở cả object con
             Rigidbody2D playerRb = playerControlScript.GetComponentInChildren<Rigidbody2D>();
-            if (playerRb != null)
-            {
-                playerRb.velocity = Vector2.zero;
-            }
-
+            if (playerRb != null) playerRb.velocity = Vector2.zero;
             Animator playerAnimator = playerControlScript.GetComponentInChildren<Animator>();
-            if (playerAnimator != null)
-            {
-                playerAnimator.SetInteger("State", 0); // Giả sử State 0 là Idle
-            }
+            if (playerAnimator != null) playerAnimator.SetInteger("State", 0);
         }
-        // ----------------------------------------------------
 
-        npcControllerToDisable = npcController;
-        SpeakingNPCController = npcControllerToDisable;
-        if (npcControllerToDisable != null) npcControllerToDisable.enabled = false;
+        this.controllerToDisable = controllerToDisable;
+        SpeakingNPCController = this.controllerToDisable;
+        if (this.controllerToDisable != null) this.controllerToDisable.enabled = false;
 
         sentences.Clear();
         foreach (DialogueLine line in dialogue.DialogueLines)
@@ -118,21 +102,13 @@ public class DialogueManager : MonoBehaviour
         audioSource.Stop();
         audioSource.loop = false;
 
-        if (playerControlScript != null)
-        {
-            playerControlScript.enabled = true;
-        }
-
-        if (npcControllerToDisable != null) npcControllerToDisable.enabled = true;
+        if (playerControlScript != null) playerControlScript.enabled = true;
+        if (controllerToDisable != null) controllerToDisable.enabled = true;
         SpeakingNPCController = null;
 
-        // Kích hoạt lại các NPC khác
         foreach (var npc in new List<Conversational_NPC>(allNpcs))
         {
-            if (npc != null)
-            {
-                npc.ActivateAfterDialogue();
-            }
+            if (npc != null) npc.ActivateAfterDialogue();
         }
 
         onDialogueFinishedCallback?.Invoke();
@@ -143,6 +119,28 @@ public class DialogueManager : MonoBehaviour
     {
         if (choicePanel != null) choicePanel.SetActive(false);
         sentences.Clear();
+
+        if (choice.isCorrectChoice)
+        {
+            Debug.Log("Lựa chọn đúng! Đang tải scene: " + choice.sceneToLoad);
+
+            if (playerControlScript != null)
+            {
+                playerControlScript.enabled = true;
+            }
+
+            // Kiểm tra xem tên scene có rỗng không trước khi tải
+            if (!string.IsNullOrEmpty(choice.sceneToLoad))
+            {
+                SceneManager.LoadScene(choice.sceneToLoad);
+            }
+            else
+            {
+                Debug.LogWarning("Lựa chọn đúng nhưng không có tên scene để tải!");
+                EndDialogue();
+            }
+            return;
+        }
 
         if (choice.nextDialogue != null)
         {
@@ -170,7 +168,6 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    #region Unchanged Code (Các hàm không thay đổi)
     void Update()
     {
         if (!IsDialogueActive) return;
@@ -247,5 +244,4 @@ public class DialogueManager : MonoBehaviour
     }
     public static void RegisterNPC(Conversational_NPC npc) { if (!allNpcs.Contains(npc)) allNpcs.Add(npc); }
     public static void UnregisterNPC(Conversational_NPC npc) { if (allNpcs.Contains(npc)) allNpcs.Remove(npc); }
-    #endregion
 }
