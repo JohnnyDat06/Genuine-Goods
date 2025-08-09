@@ -50,5 +50,9 @@ MonoBehaviour:
       c\xF9ng c\u1EE7a ch\xFAng."
     voiceClip: {fileID: 8300000, guid: c26f246d17aa4b541811277e173c864c, type: 3}
     choiceData:
-      choices: []
+      choices:
+      - choiceText: ???
+        nextDialogue: {fileID: 11400000, guid: 0ea182c2e12fd0d458d8d20aa8d5561f, type: 2}
+        isCorrectChoice: 0
+        sceneToLoad: 
   followUpDialogue: {fileID: 0}

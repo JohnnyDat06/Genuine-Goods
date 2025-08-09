@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 495d568851805ff4187a025664193204, type: 3}
+  m_Name: Event
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - characterName: "Ch\xFA Ba"
+    sentence: "N\xE0y s\u1EB5n ti\u1EC7n t\xF4i c\xF3 m\u1ED9t m\u1ED9t nhi\u1EC7m
+      v\u1EE5 cho c\u1EADu \u0111i\u1EC1u tra v\u1EC1 v\u1EE5 \u0111\u1EB7t bi\u1EC7t
+      li\xEAn quan \u0111\u1EBFn m\u1ED9t c\xF4ng ty b\xE1n n\u01B0\u1EDBc m\u1EAFm
+      kh\xF4ng bi\u1EBFt b\u1EA1n c\xF3 ch\u1EA5p nh\u1EADn hay kh\xF4ng n\u1EBFu
+      kh\xF4ng c\u0169ng \u0111\u01B0\u1EE3c t\xF4i s\u1EBD c\u1EED m\u1ED9t ng\u01B0\u1EDDi
+      kh\xE1c l\xE0m nhi\u1EC7m v\u1EE5 \u0111\xF3"
+    voiceClip: {fileID: 0}
+    choiceData:
+      choices: []
+  - characterName: "H\xF9ng (N\u1ED9i T\xE2m)"
+    sentence: "(Nhi\u1EC7m v\u1EE5 \u0111\u1EB7t bi\u1EC7t \xE0?)"
+    voiceClip: {fileID: 0}
+    choiceData:
+      choices:
+      - choiceText: "\u0110\u01B0\u1EE3c r\u1ED3i t\xF4i ch\u1EA5p nh\u1EADn nhi\u1EC7m
+          v\u1EE5 n\xE0y"
+        nextDialogue: {fileID: 0}
+        isCorrectChoice: 1
+        sceneToLoad: NuocMam
+      - choiceText: "Th\xF4i anh h\xE3y giao cho ng\u01B0\u1EDDi kh\xE1c"
+        nextDialogue: {fileID: 11400000, guid: 85fa5c8abb7c1214aae12a488c59938b, type: 2}
+        isCorrectChoice: 0
+        sceneToLoad: 
+  followUpDialogue: {fileID: 0}

@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ScenesTest/MapError.unity
     guid: 40be012ec34ae6443bf4e556c34bdea5
+  - enabled: 1
+    path: Assets/Scenes/ScenesTest/NuocMam.unity
+    guid: 029a422283f7a32408f5baf1f49d881d
   m_configObjects: {}
