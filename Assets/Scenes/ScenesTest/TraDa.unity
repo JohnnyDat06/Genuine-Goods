@@ -8940,7 +8940,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70c1dc010e34a684d8e0c737276a525b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 326679050}
+  player: {fileID: 0}
   sceneName: 
   points: []
 --- !u!1001 &1110942528
