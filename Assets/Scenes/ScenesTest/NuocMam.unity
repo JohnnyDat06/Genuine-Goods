@@ -4946,6 +4946,14 @@ PrefabInstance:
       propertyPath: m_BodyType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6305828294112078284, guid: bb3bd80d847ea794eb89d375e0a2dcdf, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6305828294112078284, guid: bb3bd80d847ea794eb89d375e0a2dcdf, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -564610189
+      objectReference: {fileID: 0}
     - target: {fileID: 6848843533029723886, guid: bb3bd80d847ea794eb89d375e0a2dcdf, type: 3}
       propertyPath: m_Name
       value: ongThoDien
