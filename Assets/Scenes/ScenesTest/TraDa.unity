@@ -8897,8 +8897,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d53a34d6c54bd0468a7f65b0f0c862f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentRaid: 2
+  currentRaid: 0
   failCount: 0
+  canDash: 0
 --- !u!4 &1107671853
 Transform:
   m_ObjectHideFlags: 0
