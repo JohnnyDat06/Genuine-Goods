@@ -627,6 +627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1895945679}
+  sceneName: 
   points:
   - {fileID: 1299041173}
   - {fileID: 1459441867}
@@ -711,6 +712,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentRaid: 0
   failCount: 0
+  canDash: 0
 --- !u!1 &684819912
 GameObject:
   m_ObjectHideFlags: 0
@@ -6385,6 +6387,14 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 585965212}
+    - target: {fileID: 2958941974757659823, guid: 69486438bf6d12747904d49daa0f994a, type: 3}
+      propertyPath: dashCooldown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2958941974757659823, guid: 69486438bf6d12747904d49daa0f994a, type: 3}
+      propertyPath: dashDistance
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8716760619009368076, guid: 69486438bf6d12747904d49daa0f994a, type: 3}
       propertyPath: slider
       value: 
@@ -6698,11 +6708,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3292539987817526303, guid: e0643eedee634464a8f0cf151f622f25, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.93
+      value: 1.42
       objectReference: {fileID: 0}
     - target: {fileID: 3292539987817526303, guid: e0643eedee634464a8f0cf151f622f25, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.19
+      value: -0.05
       objectReference: {fileID: 0}
     - target: {fileID: 3292539987817526303, guid: e0643eedee634464a8f0cf151f622f25, type: 3}
       propertyPath: m_LocalPosition.z

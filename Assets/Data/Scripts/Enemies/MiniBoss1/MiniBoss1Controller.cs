@@ -209,6 +209,11 @@ public class MiniBoss1Controller : MonoBehaviour
         isWaitingForMinions = true;
     }
 
+    public void CanDash()
+    {
+        MissionManager.Instance.CanDash();
+    }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

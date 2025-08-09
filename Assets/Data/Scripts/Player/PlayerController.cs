@@ -29,6 +29,14 @@ public class PlayerController : MonoBehaviour
     [Header("Combat setting")]
     [SerializeField] private ComboAttack comboAttack;
     [SerializeField] private float parryDuration = 0.5f;
+    
+    [Header("Dash Settings")]
+    [SerializeField] private float dashDistance = 5f;  // khoảng cách dash
+    [SerializeField] private float dashDuration = 0.2f;
+    [SerializeField] private float dashCooldown = 1.5f; // thời gian chờ giữa các lần dash
+    private float lastDashTime = -999f;
+    private bool isDashing = false;
+
     public bool isParrying { get; private set; }
 
     private int facingDirection = 1;
@@ -167,6 +175,14 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(ParryCoroutine());
         }
+        
+        if (Input.GetKeyDown(KeyCode.L) && !isDashing && canMove && MissionManager.Instance.canDash >= 1)
+        {
+            if (Time.time >= lastDashTime + dashCooldown)
+            {
+                StartCoroutine(DashThroughEnemies());
+            }
+        }
 
     }
 
@@ -184,6 +200,55 @@ public class PlayerController : MonoBehaviour
             playerRigidbody.AddForce(forceToAdd, ForceMode2D.Impulse);
         }
     }
+    
+    private IEnumerator DashThroughEnemies()
+    {
+        isDashing = true;
+        canMove = false;
+        playerAnimator.SetTrigger("IsDash");
+        // Tìm tất cả enemy có collider
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
+        {
+            Collider2D enemyCol = enemy.GetComponent<Collider2D>();
+            if (enemyCol != null)
+            {
+                Physics2D.IgnoreCollision(playerCollider, enemyCol, true);
+            }
+        }
+
+        // Dash
+        float elapsed = 0f;
+        Vector2 startPos = playerRigidbody.position;
+        int direction = isFacingRight ? 1 : -1;
+        Vector2 targetPos = startPos + new Vector2(direction * dashDistance, 0f);
+
+        while (elapsed < dashDuration)
+        {
+            float t = elapsed / dashDuration;
+            playerRigidbody.MovePosition(Vector2.Lerp(startPos, targetPos, t));
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        playerRigidbody.MovePosition(targetPos);
+
+        // Bật lại va chạm
+        foreach (GameObject enemy in enemies)
+        {
+            Collider2D enemyCol = enemy.GetComponent<Collider2D>();
+            if (enemyCol != null)
+            {
+                Physics2D.IgnoreCollision(playerCollider, enemyCol, false);
+            }
+        }
+        playerAnimator.ResetTrigger("IsDash");
+        lastDashTime = Time.time;
+        canMove = true;
+        isDashing = false;
+    }
+
+
 
     //private void CheckAttack()
     //{

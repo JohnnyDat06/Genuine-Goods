@@ -6,6 +6,7 @@ public class MissionManager : MonoBehaviour
 
     public int currentRaid = 0;
     public int failCount = 0;
+    public int canDash = 0;
 
     private void Awake()
     {
@@ -25,5 +26,10 @@ public class MissionManager : MonoBehaviour
     public void WrongLocation()
     {
         failCount++;
+    }
+
+    public void CanDash()
+    {
+        canDash++;
     }
 }
