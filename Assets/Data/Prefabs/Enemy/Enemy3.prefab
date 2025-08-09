@@ -76,9 +76,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -564610189
+  m_SortingLayer: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 1473598941, guid: 8703261cff043bf499b56f57ba16000d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -212,12 +212,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fcdf90b7e02a50409383e8722249b0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  electricianTarget: {fileID: 0}
+  playerDetectionRange: 15
   attackRange: 1
   attackDamage: 60
-  moveRange: 5
   attackCoolDown: 2
   moveSpeed: 2
-  startPoint: {fileID: 8227675036582696115}
   rb: {fileID: 5363128202502895264}
 --- !u!114 &4375617143366371869
 MonoBehaviour:
