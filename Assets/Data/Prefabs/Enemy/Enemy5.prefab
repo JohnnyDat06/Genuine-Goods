@@ -275,10 +275,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fcdf90b7e02a50409383e8722249b0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  electricianTarget: {fileID: 0}
+  playerDetectionRange: 5
   attackRange: 1
   attackDamage: 30
-  moveRange: 5
   attackCoolDown: 2
   moveSpeed: 2
-  startPoint: {fileID: 9071702052474788868}
   rb: {fileID: 729797753068319689}
