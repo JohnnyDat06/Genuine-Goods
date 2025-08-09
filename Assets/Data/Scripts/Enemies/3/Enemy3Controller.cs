@@ -7,7 +7,7 @@ public class Enemy3Controller : MonoBehaviour
     private State currentState;
 
     [Header("Target Settings")]
-    [Tooltip("Kéo object Ông Thợ Điện vào đây")]
+    [Tooltip("Kéo object Ông Thợ Điện vào đây (có thể để trống)")]
     [SerializeField] private Transform electricianTarget;
     [Tooltip("Khoảng cách mà Enemy sẽ phát hiện và chuyển mục tiêu sang Player")]
     [SerializeField] private float playerDetectionRange = 15f;
@@ -27,25 +27,20 @@ public class Enemy3Controller : MonoBehaviour
     private Animator anim;
     private float cooldownTimer = Mathf.Infinity;
     private EnemyHealth enemyHealth;
-
-    // ===== THAY ĐỔI MỚI 1: KHAI BÁO BIẾN CHO COLLIDER =====
     private Collider2D myCollider;
     private Collider2D electricianCollider;
-    // =======================================================
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
         enemyHealth = GetComponent<EnemyHealth>();
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
-
-        // ===== THAY ĐỔI MỚI 2: LẤY COMPONENT COLLIDER =====
         myCollider = GetComponent<Collider2D>();
+
         if (electricianTarget != null)
         {
             electricianCollider = electricianTarget.GetComponent<Collider2D>();
         }
-        // ====================================================
 
         float multiplier = 1f;
         if (MissionManager.Instance != null)
@@ -57,16 +52,27 @@ public class Enemy3Controller : MonoBehaviour
 
     void Start()
     {
+        // ===== THAY ĐỔI 1: XỬ LÝ KHI KHÔNG CÓ THỢ ĐIỆN =====
+        // Nếu có mục tiêu Thợ điện, đuổi theo ông ta.
         if (electricianTarget != null)
         {
             currentTarget = electricianTarget;
             currentState = State.Chasing;
         }
+        // Nếu không có Thợ điện nhưng có Player, đuổi theo Player ngay lập tức.
+        else if (player != null)
+        {
+            currentTarget = player;
+            currentState = State.Chasing;
+            Debug.Log("Không có mục tiêu Thợ Điện, chuyển sang đuổi theo Player.");
+        }
+        // Nếu không có cả hai, đứng yên.
         else
         {
             currentState = State.Idle;
-            Debug.LogWarning("Enemy chưa được gán mục tiêu Thợ Điện!");
+            Debug.LogWarning("Enemy không có mục tiêu nào để đuổi theo (cả Thợ Điện và Player).");
         }
+        // ====================================================
     }
 
     private void Update()
@@ -121,35 +127,34 @@ public class Enemy3Controller : MonoBehaviour
 
     private void UpdateTarget()
     {
-        // Kiểm tra để đảm bảo các collider đã được gán trước khi sử dụng
+        // Nếu không có Thợ điện, mục tiêu luôn là Player (nếu có)
+        if (electricianTarget == null)
+        {
+            if (player != null) currentTarget = player;
+            return; // Bỏ qua logic chuyển đổi mục tiêu phức tạp bên dưới
+        }
+
+        // Logic cũ vẫn giữ nguyên nếu có Thợ điện
         if (myCollider == null || electricianCollider == null) return;
 
-        // Ưu tiên Player nếu trong tầm phát hiện
         if (player != null && Vector2.Distance(transform.position, player.position) <= playerDetectionRange)
         {
             if (currentTarget != player)
             {
                 currentTarget = player;
                 currentState = State.Chasing;
-                // ===== THAY ĐỔI MỚI 3: BẬT XUYÊN THẤU =====
-                // Khi mục tiêu là Player, cho phép Enemy đi xuyên qua Thợ điện
                 Physics2D.IgnoreCollision(myCollider, electricianCollider, true);
                 Debug.Log("Đã bật ignore collision: Enemy có thể đi xuyên qua Thợ điện.");
-                // ============================================
             }
         }
-        // Nếu Player ngoài tầm, quay về mục tiêu là Thợ điện
         else
         {
             if (currentTarget != electricianTarget)
             {
                 currentTarget = electricianTarget;
                 currentState = State.Chasing;
-                // ===== THAY ĐỔI MỚI 4: TẮT XUYÊN THẤU =====
-                // Khi mục tiêu là Thợ điện, tắt ignore để có thể va chạm và tấn công
                 Physics2D.IgnoreCollision(myCollider, electricianCollider, false);
                 Debug.Log("Đã tắt ignore collision: Enemy sẽ va chạm với Thợ điện.");
-                // ===========================================
             }
         }
     }
